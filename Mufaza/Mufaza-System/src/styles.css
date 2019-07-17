@@ -33,15 +33,12 @@ form.normal-form{
 }
 
 
-.example-right-align {
-    text-align: right;
-  }
-  
-  input.example-right-align::-webkit-outer-spin-button,
-  input.example-right-align::-webkit-inner-spin-button {
-    display: none;
-  }
-  
-  input.example-right-align {
-    -moz-appearance: textfield;
-  }
+snack-bar-container.success{
+    background-color: green;
+    color: #fff;
+}
+
+snack-bar-container.notification simple-snack-bar{
+    font-size: 18px !important;
+    font-weight: bold;
+}
