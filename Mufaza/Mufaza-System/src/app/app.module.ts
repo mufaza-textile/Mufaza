@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from './material/material.module';
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule  } from "@angular/platform-browser/animations";
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database";
@@ -13,17 +13,20 @@ import { SupplierComponent } from './suppliers/supplier/supplier.component';
 import { SuppliersService } from './shared/suppliers.service';
 import { environment } from "../environments/environment";
 import { OrderTypesService } from "./shared/order-types.service";
+import { AddProductFormComponent } from './products/add-product-form/add-product-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SuppliersComponent,
-    SupplierComponent
+    SupplierComponent,
+    AddProductFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
+    FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AngularFireDatabaseModule,
