@@ -1,4 +1,4 @@
-<form [formGroup]="service.form" class="normal-form">
+<form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()">
     <mat-grid-list cols="2" rowHeight="300px">
       <mat-grid-tile>
         <div class="controles-container2">
@@ -29,8 +29,8 @@
             <mat-form-field>
                 <mat-select formControlName="oType" placeholder="Order Type">
                     <mat-option>None</mat-option>
-                        <ng-container *ngFor="let oType of orderTypes">
-                            <mat-option value="{{oType.id}}">{{oType.value}}</mat-option>
+                        <ng-container *ngFor="let oType of ordType.array">
+                            <mat-option value="{{oType.$key}}">{{oType.name}}</mat-option>
                         </ng-container>
                 </mat-select>
             </mat-form-field>

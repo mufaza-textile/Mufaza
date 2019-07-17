@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AngularFireDatabase,AngularFireList } from "angularfire2/database";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SuppliersService {
 
-  constructor() { }
+  constructor(private firebase :AngularFireDatabase) { }
+
+  supplierList : AngularFireList<any>;
 
   form : FormGroup = new FormGroup({
 
@@ -39,10 +42,52 @@ export class SuppliersService {
       oDate:'',
       payment:'',
     })
+  }
 
+    getSuppliers(){
+      this.supplierList =this.firebase.list('suppliers');
+      return this.supplierList.snapshotChanges(); 
+    }
+
+
+    insertSupplier(supplier){
+      this.supplierList.push({
+        supName: supplier.supName,
+        compName: supplier.compName,
+        email: supplier.email,
+        mobile: supplier.mobile,
+        address: supplier.address,
+        oType: supplier.oType,
+        oDate: supplier.oDate,
+        payment: supplier.payment,
+      });
+    }
+
+
+    updateSupplier(supplier){
+      this.supplierList.update(supplier.$key,
+        {
+          supName: supplier.supName,
+          compName: supplier.compName,
+          email: supplier.email,
+          mobile: supplier.mobile,
+          address: supplier.address,
+          oType: supplier.oType,
+          oDate: supplier.oDate,
+          payment: supplier.payment
+        } );
+    }
+
+
+
+
+
+  
+
+  deleteSupplier($key:string){
+    this.supplierList.remove($key);
 
   }
 
-
-
 }
+

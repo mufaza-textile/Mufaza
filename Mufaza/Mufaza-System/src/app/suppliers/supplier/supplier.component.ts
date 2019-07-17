@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { SuppliersService } from "../../shared/suppliers.service";
+import { OrderTypesService } from "../../shared/order-types.service";
+import { NotifcationService } from "../../shared/notifcation.service";
+
 @Component({
   selector: 'app-supplier',
   templateUrl: './supplier.component.html',
@@ -8,23 +11,32 @@ import { SuppliersService } from "../../shared/suppliers.service";
 })
 export class SupplierComponent implements OnInit {
 
-  constructor(private service: SuppliersService) { }
+  constructor(private service: SuppliersService,
+    private ordType : OrderTypesService,
+    private notificationService : NotifcationService) { }
 
   ngOnInit() {
+    this.service.getSuppliers();
   }
 
-  orderTypes = [
-    {id: 1 , value: 'Type 1'},
-    {id: 2 , value: 'Type 2'},
-    {id: 3 , value: 'Type 3'},
-
-
-  ]
 
 
   onClear() {
     this.service.form.reset();
     this.service.initializeFormGroup();
+
   }
+
+  onSubmit(){
+    if(this.service.form.valid){
+      this.service.insertSupplier(this.service.form.value)
+      this.service.form.reset();
+      this.service.initializeFormGroup();
+      this.notificationService.success(':: Submitted Succesfully' );
+
+    }
+
+  }
+
 
 }
