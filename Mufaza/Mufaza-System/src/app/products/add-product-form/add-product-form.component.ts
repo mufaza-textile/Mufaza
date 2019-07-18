@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../../shared/product.service';
 
 
 @Component({
@@ -8,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddProductFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: ProductService) { }
 
   ngOnInit() {
   }
 
+onClear() {
+    let $key = this.service.form.get('$key').value;
+    this.service.form.reset();
+    this.service.initializeFormGroup();
+    this.service.form.patchValue({ $key });
+  }
 }

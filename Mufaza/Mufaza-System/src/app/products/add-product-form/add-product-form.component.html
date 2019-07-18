@@ -1,33 +1,44 @@
-<form>
-  <div class="col-xs-4">
-      <label for="title">Title</label>
-      <input id="title" type="text" class="form-control">
-  </div>
-  <br><br><br><br>
-  <div class="form-group" class="col-xs-4">
-      <label for="price">Price</label>
-      <div class="input-group">
-          <span class="input-group-addon">$</span>
-          <input id="price" type="number" class="form-control">
-      </div>
-  </div>
-  <br><br><br><br>
-  <div class="form-group" class="col-xs-4">
-      <label for="category">Category</label>
-      <select id="category" class="form-control">
-          <option value=""></option>
-      </select>
-  </div>
-  <br><br><br><br>
-  <div class="form-group" class="col-xs-4">
-      <label for="imageUrl">ImageUrl</label>
-      <select id="imageUrl" class="form-control">
-          <option value=""></option>
-      </select>
-  </div>
-  <br><br><br><br>
-  <div class="form-group" class="col-xs-4">
-      <button class="btn btn-primary">Save</button>
-  </div>
-</form>
+<mat-toolbar>
+  <span class="fill-remaining-space"></span>
+  <span>Add New Product Form</span>
+  <span class="fill-remaining-space"></span>
+</mat-toolbar>
+<form [formGroup]="service.form" class="normal-form">
+        <mat-grid-list cols="1" rowHeight="300px">
+          <mat-grid-tile>
+            <div class="controles-container">
+              <input type="hidden" formControlName="$key">
+              <mat-form-field>
+                    <input formControlName="title" matInput placeholder="Title*">
+                    <mat-error>This field is mandatory.</mat-error>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input formControlName="price" matInput placeholder="Price" type="number">
+                    <span matPrefix>RS&nbsp;</span>
+                    <span matSuffix>.00</span>
+                    <mat-error>This field is mandatory.</mat-error>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input formControlName="category" matInput placeholder="Category">
+                  </mat-form-field>
+              <mat-form-field>
+                <input formControlName="imgUrl" matInput placeholder="Image URL">
+              </mat-form-field>
+              <br><br>
+                <div class="button-row">
+                  <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+                  <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+                </div>
+              
+              
+            </div>
+            
+          </mat-grid-tile>
+          
+        </mat-grid-list>
+        
+      </form>
 
+      <style>
+      
+      </style>

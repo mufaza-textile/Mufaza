@@ -14,6 +14,7 @@ import { SuppliersService } from './shared/suppliers.service';
 import { environment } from "../environments/environment";
 import { OrderTypesService } from "./shared/order-types.service";
 import { AddProductFormComponent } from './products/add-product-form/add-product-form.component';
+import { ProductService } from './shared/product.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { AddProductFormComponent } from './products/add-product-form/add-product
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [SuppliersService,OrderTypesService],
+  providers: [SuppliersService,OrderTypesService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
