@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+import { OrderTypesService } from "../../shared/order-types.service";
 import { ProductService } from '../../shared/product.service';
 import { NotifcationService } from "../../shared/notifcation.service";
 
@@ -10,7 +12,7 @@ import { NotifcationService } from "../../shared/notifcation.service";
 })
 export class AddProductFormComponent implements OnInit {
 
-  constructor(private service: ProductService, private notificationService : NotifcationService) { }
+  constructor(private service: ProductService, private ordType : OrderTypesService, private notificationService : NotifcationService) { }
 
   ngOnInit() {
     this.service.getProducts();

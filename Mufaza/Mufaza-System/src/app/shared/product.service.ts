@@ -15,7 +15,7 @@ export class ProductService {
     $key: new FormControl(null),
     title: new FormControl('', Validators.required),
     price: new FormControl('', Validators.required),
-    category: new FormControl(''),
+    category: new FormControl('0'),
     imgUrl: new FormControl('')
   });
 
@@ -24,7 +24,7 @@ initializeFormGroup() {
       $key: null,
       title: '',
       price: '',
-      category: '',
+      category: '0',
       imgUrl: ''
     });
   }

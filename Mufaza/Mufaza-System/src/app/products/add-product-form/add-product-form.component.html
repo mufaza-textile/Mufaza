@@ -19,8 +19,14 @@
                     <mat-error>This field is mandatory.</mat-error>
                   </mat-form-field>
                   <mat-form-field>
-                    <input formControlName="category" matInput placeholder="Category">
-                  </mat-form-field>
+                    <mat-select formControlName="category" placeholder="Category">
+                        <mat-option>None</mat-option>
+                            <ng-container *ngFor="let oType of ordType.array">
+                                <mat-option value="{{oType.$key}}">{{oType.name}}</mat-option>
+                            </ng-container>
+                    </mat-select>
+                </mat-form-field>
+
               <mat-form-field>
                 <input formControlName="imgUrl" matInput placeholder="Image URL">
               </mat-form-field>
