@@ -3,7 +3,7 @@
   <span>Add New Product Form</span>
   <span class="fill-remaining-space"></span>
 </mat-toolbar>
-<form [formGroup]="service.form" class="normal-form">
+<form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()">
         <mat-grid-list cols="1" rowHeight="300px">
           <mat-grid-tile>
             <div class="controles-container">

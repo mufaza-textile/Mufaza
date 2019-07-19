@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../shared/product.service';
+import { NotifcationService } from "../../shared/notifcation.service";
 
 
 @Component({
@@ -9,9 +10,10 @@ import { ProductService } from '../../shared/product.service';
 })
 export class AddProductFormComponent implements OnInit {
 
-  constructor(private service: ProductService) { }
+  constructor(private service: ProductService, private notificationService : NotifcationService) { }
 
   ngOnInit() {
+    this.service.getProducts();
   }
 
 onClear() {
@@ -19,5 +21,15 @@ onClear() {
     this.service.form.reset();
     this.service.initializeFormGroup();
     this.service.form.patchValue({ $key });
+  }
+
+  onSubmit(){
+    if(this.service.form.valid){
+      this.service.insertProduct(this.service.form.value)
+      this.service.form.reset();
+      this.service.initializeFormGroup();
+      this.notificationService.success(':: Submitted Succesfully' );
+    }
+
   }
 }
