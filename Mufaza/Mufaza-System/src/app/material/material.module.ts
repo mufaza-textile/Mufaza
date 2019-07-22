@@ -16,7 +16,8 @@ import * as  Material from "@angular/material";
     Material.MatButtonModule,
     Material.MatSnackBarModule,
     Material.MatRadioModule,
-    Material.MatCheckboxModule
+    Material.MatCheckboxModule,
+    Material.MatTabsModule
 
   ],
   exports: [
@@ -30,7 +31,8 @@ import * as  Material from "@angular/material";
     Material.MatButtonModule,
     Material.MatSnackBarModule,
     Material.MatRadioModule,
-    Material.MatCheckboxModule
+    Material.MatCheckboxModule,
+    Material.MatTabsModule
 
   ]
 })
