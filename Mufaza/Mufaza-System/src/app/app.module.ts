@@ -15,13 +15,18 @@ import { environment } from "../environments/environment";
 import { OrderTypesService } from "./shared/order-types.service";
 import { AddProductFormComponent } from './products/add-product-form/add-product-form.component';
 import { ProductService } from './shared/product.service';
+import { InternalUserComponent } from './internal-user/internal-user.component';
+import { RegisterComponent } from './internal-user/register/register.component';
+import { RegisterService } from './shared/register.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     SuppliersComponent,
     SupplierComponent,
-    AddProductFormComponent
+    AddProductFormComponent,
+    InternalUserComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,7 @@ import { ProductService } from './shared/product.service';
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [SuppliersService,OrderTypesService, ProductService],
+  providers: [SuppliersService,OrderTypesService, ProductService, RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
