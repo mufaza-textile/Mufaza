@@ -1,3 +1,11 @@
+<mat-tab-group>
+  
+<mat-tab label="Add User"> 
+ <mat-toolbar>
+        <span class="fill-remaining-space"></span>
+        <span>Add User Form</span>
+        <span class="fill-remaining-space"></span>
+    </mat-toolbar>
 <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()">
     <mat-grid-list cols="2" rowHeight="300px">
       <mat-grid-tile>
@@ -12,6 +20,11 @@
           </mat-form-field>
           <mat-form-field>
                 <input formControlName="password" matInput placeholder="Password">
+                <mat-error>Invalid Password</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+                <input formControlName="confirmpswd" matInput [type]="hide ? 'password' : 'text'" placeholder="Confirm Password">
+                
                 <mat-error>Invalid Password</mat-error>
           </mat-form-field>
         </div>
@@ -32,14 +45,9 @@
                     <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
             </div>
 
-
-
-
-
-
-
-
         </div>       
       </mat-grid-tile>
     </mat-grid-list>
   </form>
+</mat-tab>
+</mat-tab-group>

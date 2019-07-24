@@ -19,7 +19,7 @@ export class RegisterService {
     empId : new FormControl('',[Validators.required,Validators.minLength(10)]),
     position : new FormControl('0'),
     password : new FormControl('',[Validators.required,Validators.minLength(8)]),
-    
+    confirmpswd : new FormControl('',[Validators.required,Validators.minLength(8)])
   
 
 
