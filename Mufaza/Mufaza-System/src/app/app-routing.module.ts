@@ -6,7 +6,8 @@ import {RegisterComponent} from "./internal-user/register/register.component";
 
 const routes: Routes = [
   {path: 'suppliers', component: SuppliersComponent},
-  {path: 'product', component: AddProductFormComponent}
+  {path: 'product', component: AddProductFormComponent},
+  {path: 'internal-user', component: RegisterComponent}
 ];
 
 @NgModule({
