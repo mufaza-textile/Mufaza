@@ -18,6 +18,7 @@ import { ProductService } from './shared/product.service';
 import { InternalUserComponent } from './internal-user/internal-user.component';
 import { RegisterComponent } from './internal-user/register/register.component';
 import { RegisterService } from './shared/register.service';
+import { SupplierListComponent } from './suppliers/supplier-list/supplier-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RegisterService } from './shared/register.service';
     SupplierComponent,
     AddProductFormComponent,
     InternalUserComponent,
-    RegisterComponent
+    RegisterComponent,
+    SupplierListComponent
   ],
   imports: [
     BrowserModule,

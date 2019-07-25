@@ -17,8 +17,11 @@ import * as  Material from "@angular/material";
     Material.MatSnackBarModule,
     Material.MatRadioModule,
     Material.MatCheckboxModule,
-    Material.MatTabsModule
-
+    Material.MatTabsModule,
+    Material.MatTableModule,
+    Material.MatIconModule,
+    Material.MatPaginatorModule,
+    Material.MatSortModule
   ],
   exports: [
     Material.MatToolbarModule,
@@ -32,7 +35,12 @@ import * as  Material from "@angular/material";
     Material.MatSnackBarModule,
     Material.MatRadioModule,
     Material.MatCheckboxModule,
-    Material.MatTabsModule
+    Material.MatTabsModule,
+    Material.MatTableModule,
+    Material.MatIconModule,
+    Material.MatPaginatorModule,
+    Material.MatSortModule
+
 
   ]
 })
