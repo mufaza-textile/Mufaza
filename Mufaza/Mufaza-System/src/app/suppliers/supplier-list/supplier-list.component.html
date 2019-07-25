@@ -1,0 +1,78 @@
+<div class="mat-elevation-z8">
+
+    <mat-table [dataSource]="listData"  matSort>
+  
+      <ng-container matColumnDef="supName">
+  
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>Supplier Name</mat-header-cell>
+  
+        <mat-cell *matCellDef="let element">{{element.supName}}</mat-cell>
+  
+      </ng-container>
+
+      <ng-container matColumnDef="compName">
+
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>Company Name</mat-header-cell>
+  
+        <mat-cell *matCellDef="let element">{{element.compName}}</mat-cell>
+  
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>Email</mat-header-cell>
+  
+        <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
+  
+      </ng-container>
+  
+      <ng-container matColumnDef="mobile">
+  
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Mobile</mat-header-cell>
+  
+        <mat-cell *matCellDef="let element">{{element.mobile}}</mat-cell>
+  
+      </ng-container>
+
+      <ng-container matColumnDef="address">
+
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>Address</mat-header-cell>
+  
+        <mat-cell *matCellDef="let element">{{element.address}}</mat-cell>
+  
+      </ng-container>
+
+      <ng-container matColumnDef="payment">
+
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>Payment</mat-header-cell>
+  
+        <mat-cell *matCellDef="let element">{{element.payment}}</mat-cell>
+  
+      </ng-container>
+
+      
+    <ng-container matColumnDef="actions">
+
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+  
+        <mat-cell *matCellDef="let row">
+  
+          <button mat-icon-button><mat-icon>launch</mat-icon></button>
+  
+          <button mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
+  
+        </mat-cell>
+  
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  
+      
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+
+    
+  
+  </div>
