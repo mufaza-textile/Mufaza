@@ -6,8 +6,8 @@
         <span>Add New Product Form</span>
         <span class="fill-remaining-space"></span>
       </mat-toolbar>
-      <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()">
-        <mat-grid-list cols="2" rowHeight="400px">
+      <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()" style="padding-left : 5%">
+        <mat-grid-list cols="2" rowHeight="400px" rowWidth="400px">
           <mat-grid-tile>
             <div class="controles-container2">
               <input type="hidden" formControlName="$key">
@@ -27,7 +27,7 @@
                     <mat-select [(ngModel)]="category" formControlName="category" placeholder="Category">
                       <mat-option>None</mat-option>
                         <ng-container *ngFor="let oType of ordType.array">
-                           <mat-option value="{{oType.$key}}">{{oType.name}}</mat-option>
+                           <mat-option value="{{oType.name}}">{{oType.name}}</mat-option>
                         </ng-container>
                     </mat-select>
                   </mat-form-field>
@@ -47,14 +47,14 @@
 
           <mat-grid-tile>
             <div class="controles-container">
-              <div class="card" style="width: 30rem; height:100%">
-                  <span class="border border-primary">
-                  <img [src] = "imgUrl" width="100%" class="card-img-top" class="rounded">
+              <div class="card" style="width: 290px; height:400px">
+                  <!-- <span class="border border-primary"> -->
+                  <img [src] = "imgUrl" width="280px" height="300px" style="padding : 5px 5px 5px 5px;" class="card-img-top" class="rounded">
                     <div class="card-body">
                       <h3 class="card-title"><b>{{title}} </b> </h3>
                       <h4 class="card-text"> {{price | currency : 'LKR ' : true}}</h4>
                     </div>
-                  </span>
+                  <!-- </span> -->
                 </div>
               </div>
             </mat-grid-tile>
@@ -66,7 +66,33 @@
    
   </mat-tab>
 
-  <mat-tab label="Products Report"> Content 1
-     
+  <mat-tab label="Products Report">
+      <mat-toolbar>
+          <span class="fill-remaining-space"></span>
+          <span>Products Report</span>
+          <span class="fill-remaining-space"></span>
+        </mat-toolbar>
+     <table class="table">
+        <thead>
+          <tr> 
+              <th></th>
+              <th>#</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let oType of service.array; index as i">
+            <td></td>
+            <td>{{i + 1}}</td>
+            <td>{{oType.title}}</td>
+            <td>{{oType.category}}</td>
+            <td>{{oType.price}}</td>
+            <td><a routerLink="product,oType.$key">Edit</a></td>
+          </tr>
+        </tbody>
+     </table>
   </mat-tab>
 </mat-tab-group>
