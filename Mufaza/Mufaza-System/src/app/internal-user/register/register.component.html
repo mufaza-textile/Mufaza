@@ -12,20 +12,23 @@
         <div class="controles-container2">
           <input type="hidden" formControlName="$key">
           <mat-form-field>
-            <input formControlName="userName" matInput placeholder="User's Name">
+            <input formControlName="userName" matInput placeholder="User Name">
             <mat-error>This field is mandatory</mat-error>
           </mat-form-field>
           <mat-form-field>
                 <input formControlName="empId" matInput placeholder="Employee ID">
           </mat-form-field>
           <mat-form-field>
-                <input formControlName="password" matInput placeholder="Password">
-                <mat-error>Invalid Password</mat-error>
-          </mat-form-field>
+                <input matInput placeholder="Enter your password" formControlName="password" [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
           <mat-form-field>
-                <input formControlName="confirmpswd" matInput [type]="hide ? 'password' : 'text'" placeholder="Confirm Password">
-                
-                <mat-error>Invalid Password</mat-error>
+                <input matInput placeholder="Confirm password" formControlName="confirmpswd" [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
           </mat-form-field>
         </div>
       </mat-grid-tile>

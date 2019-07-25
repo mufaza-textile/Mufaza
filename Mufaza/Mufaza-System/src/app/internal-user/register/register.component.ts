@@ -15,8 +15,8 @@ export class RegisterComponent implements OnInit {
     {id: 3 ,value: 'Product Manager'},
     {id: 4 ,value: 'Delivery Manager'}
 
-
   ]  
+    hide = true;
   ngOnInit() {
   }
 
