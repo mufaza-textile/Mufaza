@@ -18,6 +18,19 @@ export class RegisterComponent implements OnInit {
   ]  
     hide = true;
   ngOnInit() {
+    this.service.getInternalUsers();
   }
 
+  onClear(){
+    this.service.form.reset();
+    this.service.initializeFormGroup();
+  }
+
+  onSubmit(){
+     if(this.service.form.valid){
+       this.service.insertInternalUser(this.service.form.value);
+       this.service.form.reset();
+       this.service.initializeFormGroup(); 
+     }
+  }
 }

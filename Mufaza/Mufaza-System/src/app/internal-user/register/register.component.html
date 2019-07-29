@@ -20,23 +20,15 @@
           </mat-form-field>
           <mat-form-field>
                 <input matInput placeholder="Enter your password" formControlName="password" [type]="hide ? 'password' : 'text'">
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
+                
               </mat-form-field>
-          <mat-form-field>
-                <input matInput placeholder="Confirm password" formControlName="confirmpswd" [type]="hide ? 'password' : 'text'">
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-          </mat-form-field>
         </div>
       </mat-grid-tile>
       <mat-grid-tile>
         <div class="controles-container">
             <mat-form-field>
                 <mat-select formControlName="position" placeholder="Position">
-                    <mat-option>None</mat-option>
+                  
                         <ng-container *ngFor="let position of positions">
                             <mat-option value="{{position.ID}}">{{position.value}}</mat-option>
                         </ng-container>
