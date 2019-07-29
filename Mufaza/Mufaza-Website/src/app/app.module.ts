@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireDatabaseModule} from '@angular/fire/database';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -49,6 +49,7 @@ const config = {
   ],
   imports: [
     BrowserModule,
+    NgbModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule, // firestore
@@ -64,6 +65,7 @@ const config = {
       {path: 'login', component: LoginComponent},
       {path: 'admin/products', component: AdminProductsComponent},
       {path: 'admin/orders', component: AdminOrdersComponent},
+      {path: 'my/orders', component: MyOrdersComponent}
     ])
   ],
   providers: [],
