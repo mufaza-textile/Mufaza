@@ -36,7 +36,16 @@
     </tbody>
     <tfoot>
       <tr>
-        <th></th>
+        <th>
+          <form class="promo p-2">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Promo code" autocomplete="off">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-secondary">Redeem</button>
+              </div>
+            </div>
+          </form>
+        </th>
         <th></th>
         <th></th>
         <th class="text-right">{{ cart.totalPrice | currency:'USD':true }}</th>
