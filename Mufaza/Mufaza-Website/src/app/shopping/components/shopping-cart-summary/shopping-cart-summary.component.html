@@ -10,7 +10,7 @@
         </div>
       </li>
       <li class="list-group-item font-weight-bold">
-        Total 
+        Total
         <div class="float-right">
           {{ cart.totalPrice | currency:'USD':true }}
         </div>
@@ -18,3 +18,11 @@
     </ul>
   </div>
 </div>
+<form class="card p-2">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Promo code" autocomplete="off">
+    <div class="input-group-append">
+      <button type="submit" class="btn btn-secondary">Redeem</button>
+    </div>
+  </div>
+</form>
