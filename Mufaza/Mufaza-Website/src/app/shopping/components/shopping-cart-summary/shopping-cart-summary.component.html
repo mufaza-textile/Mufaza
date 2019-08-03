@@ -11,8 +11,11 @@
       </li>
       <li class="list-group-item font-weight-bold">
         Total
-        <div class="float-right">
+        <div class="float-right" [ngClass]="{'strike':promo === true}">
           {{ cart.totalPrice | currency:'USD':true }}
+        </div><br>
+        <div class="float-right" *ngIf="promo === true">
+          {{newprice | currency: 'USD':true}}
         </div>
       </li>
     </ul>
@@ -20,9 +23,15 @@
 </div>
 <form class="block-margin card p-2">
   <div class="input-group">
-    <input type="text" class="form-control" placeholder="Promo code" autocomplete="off">
+    <input type="text" name="promocode" class="form-control" [(ngModel)]="promocode" style="text-transform:uppercase" placeholder="Promo Code" [disabled]="promo"/>
     <div class="input-group-append">
-      <button type="submit" class="btn btn-secondary">Redeem</button>
+      <button type="submit" class="btn btn-secondary" [disabled]= "!promocode || promo" (click)="promotion(promocode)" >Redeem</button>
     </div>
   </div>
 </form>
+<div class="alert alert-success" role="alert" *ngIf="promo ===true">
+  Valid
+</div>
+<div class="alert alert-danger" role="alert" *ngIf="error === true">
+  Not valid
+</div>
