@@ -1,0 +1,48 @@
+<!--<mat-tab label="Allocate Rider">
+    <mat-toolbar>
+            <span class="fill-remaining-space"></span>
+            <span>Allocate New Rider</span>
+            <span class="fill-remaining-space"></span>
+    </mat-toolbar>-->
+
+
+          <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()" style="padding-left : 35%">
+            <mat-grid-list cols="2" rowHeight="400px" rowWidth="400px">
+              <mat-grid-tile>
+                <div class="controles-container2">
+                  <input type="hidden" formControlName="$key">
+                    <mat-form-field>
+                        <input formControlName="riderId" matInput placeholder="Rider ID" type="number">
+                        <mat-error>This field is mandatory.</mat-error>
+                    </mat-form-field>
+    
+                    <mat-form-field>
+                      <input formControlName="orderId" matInput placeholder="Order ID" type="number">
+                      <mat-error>This field is mandatory.</mat-error>
+                  </mat-form-field>
+                              
+                  <mat-form-field>
+                      <input formControlName="cusName" matInput placeholder="Customer Name">
+                  </mat-form-field>
+            
+                  <mat-form-field>
+                      <input formControlName="deliveryAddress" matInput placeholder="Delivery Address">
+                  </mat-form-field>
+  
+                  <mat-form-field>
+                      <input formControlName="deliveryDate" matInput placeholder="Delivery Date" type="date">
+                      <mat-error>This field is mandatory.</mat-error>
+                  </mat-form-field>
+    
+                      <br><br>
+    
+                      <div class="button-row" style="padding-left : 20%">
+                        <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+                        <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+                      </div>          
+                </div>  
+              </mat-grid-tile>
+              </mat-grid-list>  
+            </form>     
+
+      <!--</mat-tab>-->

@@ -1,0 +1,107 @@
+<!--<mat-tab label="Delivery Report">
+    <mat-toolbar>
+        <span class="fill-remaining-space"></span>
+        <span>Delivery Report</span>
+        <span class="fill-remaining-space"></span>
+    </mat-toolbar>-->
+
+    <div class="search-div" style="padding-left : 20%">
+
+      <button mat-raised-button>
+    
+        <mat-icon>add</mat-icon>Create
+    
+      </button>
+    
+      <mat-form-field class="search-form-field" floatLabel="never">
+    
+        <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+    
+        <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey"  (click)="onSearchClear()">
+    
+          <mat-icon>close</mat-icon>
+    
+        </button>
+    
+      </mat-form-field>
+    
+    </div>
+
+    <div class="mat-elevation-z8">
+
+          <mat-table [dataSource]="listData"  matSort>
+
+              <ng-container matColumnDef="#">
+        
+                  <mat-header-cell *matHeaderCellDef  mat-sort-header>#</mat-header-cell>
+            
+                  <mat-cell *matCellDef="let element; index as i">{{i + 1}}</mat-cell>
+            
+                </ng-container>
+        
+            <ng-container matColumnDef="riderId">
+        
+              <mat-header-cell *matHeaderCellDef  mat-sort-header>Rider ID</mat-header-cell>
+        
+              <mat-cell *matCellDef="let element">{{element.riderId}}</mat-cell>
+        
+            </ng-container>
+      
+            <ng-container matColumnDef="orderId">
+      
+              <mat-header-cell *matHeaderCellDef  mat-sort-header>Order ID</mat-header-cell>
+        
+              <mat-cell *matCellDef="let element">{{element.orderId}}</mat-cell>
+        
+            </ng-container>
+
+            <ng-container matColumnDef="cusName">
+      
+              <mat-header-cell *matHeaderCellDef  mat-sort-header>Customer Name</mat-header-cell>
+        
+              <mat-cell *matCellDef="let element">{{element.cusName}}</mat-cell>
+        
+            </ng-container>
+
+            <ng-container matColumnDef="deliveryAddress">
+      
+              <mat-header-cell *matHeaderCellDef  mat-sort-header>Delivery Address</mat-header-cell>
+        
+              <mat-cell *matCellDef="let element">{{element.deliveryAddress}}</mat-cell>
+        
+            </ng-container>
+
+            <ng-container matColumnDef="deliveryDate">
+      
+              <mat-header-cell *matHeaderCellDef  mat-sort-header>Delivery Date</mat-header-cell>
+        
+              <mat-cell *matCellDef="let element">{{element.deliveryDate}}</mat-cell>
+        
+            </ng-container>
+      
+          <ng-container matColumnDef="actions">
+      
+              <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        
+              <mat-cell *matCellDef="let row">
+        
+                <button mat-icon-button><mat-icon>launch</mat-icon></button>
+        
+                <button mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
+        
+              </mat-cell>
+        
+            </ng-container>
+        
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        
+            
+          </mat-table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+        
+        </div>
+  
+<!--</mat-tab>
+-->

@@ -19,6 +19,11 @@ import { InternalUserComponent } from './internal-user/internal-user.component';
 import { RegisterComponent } from './internal-user/register/register.component';
 import { RegisterService } from './shared/register.service';
 import { SupplierListComponent } from './suppliers/supplier-list/supplier-list.component';
+import { DeliveryComponent } from './delivery/delivery.component';
+import { DeliveryRiderListComponent } from './delivery/delivery-rider-list/delivery-rider-list.component';
+import { DeliveryAllocateRiderComponent } from './delivery/delivery-allocate-rider/delivery-allocate-rider.component';
+import { DeliveryReportComponent } from './delivery/delivery-report/delivery-report.component';
+import { DeliveryAddRiderComponent } from './delivery/delivery-add-rider/delivery-add-rider.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,12 @@ import { SupplierListComponent } from './suppliers/supplier-list/supplier-list.c
     AddProductFormComponent,
     InternalUserComponent,
     RegisterComponent,
-    SupplierListComponent
+    SupplierListComponent,
+    DeliveryComponent,
+    DeliveryRiderListComponent,
+    DeliveryAllocateRiderComponent,
+    DeliveryReportComponent,
+    DeliveryAddRiderComponent
   ],
   imports: [
     BrowserModule,
