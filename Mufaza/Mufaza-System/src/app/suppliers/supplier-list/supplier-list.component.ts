@@ -1,6 +1,8 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
+import { SupplierComponent } from "./../supplier/supplier.component";
 import { SuppliersService } from '../../shared/suppliers.service';
 import { MatTableDataSource,MatSort,MatPaginator } from "@angular/material";
+import { MatDialog, MatDialogConfig } from "@angular/material";
 
 
 @Component({
@@ -10,7 +12,8 @@ import { MatTableDataSource,MatSort,MatPaginator } from "@angular/material";
 })
 export class SupplierListComponent implements OnInit {
 
-  constructor(private service : SuppliersService) { }
+  constructor(private service : SuppliersService,
+    private dialog: MatDialog,) { }
 
   listData: MatTableDataSource<any>;
   
@@ -43,6 +46,29 @@ export class SupplierListComponent implements OnInit {
 
   applyFilter() {
     this.listData.filter = this.searchKey.trim().toLowerCase();
+  }
+
+
+  onCreate() {
+    this.service.initializeFormGroup();
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    this.dialog.open(SupplierComponent,dialogConfig);
+  }
+
+  onEdit(row){
+    this.service.populateForm(row);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    this.dialog.open(SupplierComponent,dialogConfig);
+  }
+
+  onDelete($key){
+    this.service.deleteSupplier($key);
   }
 
 }

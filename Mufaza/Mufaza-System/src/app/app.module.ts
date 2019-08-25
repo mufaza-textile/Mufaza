@@ -24,6 +24,7 @@ import { DeliveryRiderListComponent } from './delivery/delivery-rider-list/deliv
 import { DeliveryAllocateRiderComponent } from './delivery/delivery-allocate-rider/delivery-allocate-rider.component';
 import { DeliveryReportComponent } from './delivery/delivery-report/delivery-report.component';
 import { DeliveryAddRiderComponent } from './delivery/delivery-add-rider/delivery-add-rider.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { DeliveryAddRiderComponent } from './delivery/delivery-add-rider/deliver
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [SuppliersService,OrderTypesService, ProductService, RegisterService],
-  bootstrap: [AppComponent]
+  providers: [SuppliersService,OrderTypesService, ProductService, RegisterService,DatePipe],
+  bootstrap: [AppComponent],
+  entryComponents:[SupplierComponent]
 })
 export class AppModule { }
