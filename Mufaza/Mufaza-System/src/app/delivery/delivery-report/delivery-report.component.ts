@@ -13,7 +13,7 @@ export class DeliveryReportComponent implements OnInit {
  
   listData: MatTableDataSource<any>;
   
-  displayedColumns: string[] =[`riderId`,`orderId`,`cusName`,`deliveryAddress`,`deliveryDate`];
+  displayedColumns: string[] =[`riderId`,`orderId`,`cusName`,`deliveryAddress`,`deliveryDate`,`actions`];
   
       @ViewChild(MatSort,{static: true}) sort: MatSort;
       @ViewChild(MatPaginator,{static: true}) paginator: MatPaginator;

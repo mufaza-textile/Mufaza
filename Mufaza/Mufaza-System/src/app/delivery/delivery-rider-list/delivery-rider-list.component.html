@@ -7,7 +7,7 @@
 
     <div class="search-div" style="padding-left : 20%">
 
-      <button mat-raised-button (click)="directsTo()">
+      <button mat-raised-button>
     
         <mat-icon>add</mat-icon>Create
     
@@ -17,7 +17,7 @@
     
         <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
     
-        <button mat-button matSuffix mat-icon-button aria-label="Clear"  (click)="onSearchClear()">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
     
           <mat-icon>close</mat-icon>
     

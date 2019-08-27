@@ -13,7 +13,7 @@ export class DeliveryRiderListComponent implements OnInit {
  
   listData: MatTableDataSource<any>;
   
-  displayedColumns: string[] =[`riderName`,`riderAddress`,`riderMobile`,`riderEmail`,`bikenumber`];
+  displayedColumns: string[] =[`riderName`,`riderAddress`,`riderMobile`,`riderEmail`,`bikenumber`,`actions`];
   
       @ViewChild(MatSort,{static: true}) sort: MatSort;
       @ViewChild(MatPaginator,{static: true}) paginator: MatPaginator;
@@ -33,5 +33,6 @@ export class DeliveryRiderListComponent implements OnInit {
       }
     );
   }
+
 
 }
