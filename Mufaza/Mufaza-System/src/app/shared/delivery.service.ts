@@ -57,6 +57,10 @@ initializeFormGroup() {
       } );
   }
 
+  populateForm(delivery) {
+    this.form.patchValue(delivery);
+  }
+
   deleteDelivery($key:string){
     this.deliveryList.remove($key);
   }

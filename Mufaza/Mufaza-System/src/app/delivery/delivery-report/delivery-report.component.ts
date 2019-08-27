@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource, MatDialogConfig } from '@angular/material';
 import { DeliveryService } from 'src/app/shared/delivery-add.service';
 
 @Component({
@@ -8,12 +8,13 @@ import { DeliveryService } from 'src/app/shared/delivery-add.service';
   styleUrls: ['./delivery-report.component.css']
 })
 export class DeliveryReportComponent implements OnInit {
+  dialog: any;
 
   constructor(private service : DeliveryService) { }
  
   listData: MatTableDataSource<any>;
   
-  displayedColumns: string[] =[`riderId`,`orderId`,`cusName`,`deliveryAddress`,`deliveryDate`];
+  displayedColumns: string[] =[`riderId`,`orderId`,`cusName`,`deliveryAddress`,`deliveryDate`,`actions`];
   
       @ViewChild(MatSort,{static: true}) sort: MatSort;
       @ViewChild(MatPaginator,{static: true}) paginator: MatPaginator;
@@ -32,6 +33,19 @@ export class DeliveryReportComponent implements OnInit {
         this.listData.paginator = this.paginator;
       }
     );
+  }
+
+  onEdit(row){
+    this.service.populateForm(row);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    this.dialog.open(DeliveryReportComponent,dialogConfig);
+  }
+
+onDelete($key){
+    this.service.deleteDelivery($key);
   }
 }
 
