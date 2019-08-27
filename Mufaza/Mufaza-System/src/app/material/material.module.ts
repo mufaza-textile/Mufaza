@@ -16,7 +16,11 @@ import * as  Material from "@angular/material";
     Material.MatButtonModule,
     Material.MatSnackBarModule,
     Material.MatRadioModule,
-    Material.MatCheckboxModule
+    Material.MatCheckboxModule,
+    Material.MatTableModule,
+    Material.MatSortModule,
+    Material.MatIconModule,
+    Material.MatPaginatorModule,
 
   ],
   exports: [
@@ -30,8 +34,13 @@ import * as  Material from "@angular/material";
     Material.MatButtonModule,
     Material.MatSnackBarModule,
     Material.MatRadioModule,
-    Material.MatCheckboxModule
+    Material.MatCheckboxModule,
+     Material.MatTableModule,
+     Material.MatIconModule,
+     Material.MatPaginatorModule,
+     Material.MatSortModule,
 
   ]
+ 
 })
 export class MaterialModule { }

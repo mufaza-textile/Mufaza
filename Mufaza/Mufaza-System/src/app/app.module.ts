@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule  } from "@angular/platform-browser/animations";
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database";
+import { DatePipe } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,13 +16,23 @@ import { environment } from "../environments/environment";
 import { OrderTypesService } from "./shared/order-types.service";
 import { AddProductFormComponent } from './products/add-product-form/add-product-form.component';
 import { ProductService } from './shared/product.service';
+import { EmployeeComponent } from './employees/employee/employee.component';
+import { employeesComponent } from './employees/employees.component';
+import { employeesService } from './shared/employees.service';
+import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
+import { DepartmentService } from './shared/department.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     SuppliersComponent,
     SupplierComponent,
-    AddProductFormComponent
+    AddProductFormComponent,
+    EmployeeComponent,
+    employeesComponent,
+    EmployeeListComponent,
+  
+   
   ],
   imports: [
     BrowserModule,
@@ -32,8 +43,10 @@ import { ProductService } from './shared/product.service';
     BrowserAnimationsModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
+    
   ],
-  providers: [SuppliersService,OrderTypesService, ProductService],
-  bootstrap: [AppComponent]
+  providers: [SuppliersService, DepartmentService,OrderTypesService, ProductService,employeesService,DatePipe],
+  bootstrap: [AppComponent],
+  entryComponents:[EmployeeComponent],
 })
 export class AppModule { }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebaseConfig :  {
+  firebaseConfig :{
     apiKey: "AIzaSyDXeOHxnq90j-DE3Re42X-74N9wbvxF8qM",
     authDomain: "mufaza-textile.firebaseapp.com",
     databaseURL: "https://mufaza-textile.firebaseio.com",
