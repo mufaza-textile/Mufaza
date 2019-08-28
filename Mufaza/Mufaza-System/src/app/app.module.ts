@@ -65,6 +65,6 @@ import {UserListComponent} from './internal-user/user-list/user-list.component'
   ],
   providers: [SuppliersService,OrderTypesService, ProductService,EmployeesService, RegisterService,DatePipe],
   bootstrap: [AppComponent],
-  entryComponents:[SupplierComponent,InternalUserComponent,EmployeeComponent]
+  entryComponents:[SupplierComponent,InternalUserComponent,EmployeeComponent,RegisterComponent]
 })
 export class AppModule { }
