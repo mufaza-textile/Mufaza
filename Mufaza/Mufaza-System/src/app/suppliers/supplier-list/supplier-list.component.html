@@ -58,6 +58,22 @@
   
       </ng-container>
 
+      <ng-container matColumnDef="quantity">
+  
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</mat-header-cell>
+  
+        <mat-cell *matCellDef="let element">{{element.quantity}}</mat-cell>
+  
+      </ng-container>
+
+      <ng-container matColumnDef="oDate">
+  
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Order Date</mat-header-cell>
+  
+        <mat-cell *matCellDef="let element">{{element.oDate | date}}</mat-cell>
+  
+      </ng-container>
+
       <ng-container matColumnDef="address">
 
         <mat-header-cell *matHeaderCellDef  mat-sort-header>Address</mat-header-cell>
@@ -88,7 +104,7 @@
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
    -->
       
-   <ng-container matColumnDef="expandedDetail">
+   <ng-container matColumnDef="expandedDetail" class="xyz">
       <mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
          <div class="example-element-detail"
               [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
@@ -96,13 +112,13 @@
               <table style="width:100%; align-content:center;" class="abc" >
                   <span class="fill-remaining-space"></span>
                   <tr>                   
-                     <td ><mat-icon>call</mat-icon></td> <td>  <p>{{element.mobile}}</p></td>                      
+                     <td ><mat-icon style="color: orangered;">call</mat-icon></td><td><p>&nbsp; &nbsp; -&nbsp; &nbsp; </p></td> <td>  <p style="color:black;font-size: 17px;"> &nbsp; &nbsp;  {{element.mobile}}  </p></td>                      
                  </tr>
                  <tr>
-                    <td><mat-icon>mail</mat-icon> </td> <td>  <p>{{element.email}}</p></td>
+                    <td><mat-icon style="color: orangered">mail</mat-icon> </td><td><p>&nbsp; &nbsp; -&nbsp; &nbsp; </p></td> <td>  <p style="color:black;font-size: 17px;">&nbsp; &nbsp; {{element.email}}</p></td>
                  </tr>
                  <tr>
-                   <td><mat-icon>location_city</mat-icon> </td> <td>  <p>{{element.address}}</p></td>
+                   <td><mat-icon style="color: orangered">location_city</mat-icon> </td> <td><p>&nbsp; &nbsp; -&nbsp; &nbsp; </p></td><td>  <p style="color:black;font-size: 17px;">&nbsp; &nbsp; {{element.address}}</p></td>
                 </tr>
           </table>  
         
