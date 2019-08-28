@@ -1,24 +1,21 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
-
-import { OrderTypesService } from "../../shared/order-types.service";
-import { ProductService } from '../../shared/product.service';
-import { NotifcationService } from "../../shared/notifcation.service";
-import { MatTableDataSource,MatSort,MatPaginator } from "@angular/material";
-
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ProductService } from '../shared/product.service';
+import { OrderTypesService } from '../shared/order-types.service';
+import { NotifcationService } from '../shared/notifcation.service';
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 
 @Component({
-  selector: 'app-add-product-form',
-  templateUrl: './add-product-form.component.html',
-  styleUrls: ['./add-product-form.component.css']
+  selector: 'app-delivery',
+  templateUrl: './delivery.component.html',
+  styleUrls: ['./delivery.component.css']
 })
-export class AddProductFormComponent implements OnInit {
+export class DeliveryComponent implements OnInit {
 
   constructor(private service: ProductService, private ordType : OrderTypesService, private notificationService : NotifcationService) { }
 
-  
   listData: MatTableDataSource<any>;
   
-  displayedColumns: string[] =[`#`,`title`,`price`,'actions'];
+  displayedColumns: string[] =[`#`,`riderName`,`riderAddress`,`riderMobile`,`riderEmail`,`bikenumber`,'actions'];
   
       @ViewChild(MatSort,{static: true}) sort: MatSort;
       @ViewChild(MatPaginator,{static: true}) paginator: MatPaginator;
@@ -53,9 +50,5 @@ onClear() {
       this.notificationService.success(':: Submitted Succesfully' );
     }
 
-  }
-
-  onDelete($key){
-    this.service.deleteProduct($key);
   }
 }
