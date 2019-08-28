@@ -69,4 +69,8 @@ updateInternalUser(user){
 deleteInternalUser($key: string){
   this.registerList.remove($key);
 }
+
+populateForm(user) {
+  this.form.patchValue(user);
+}
 }

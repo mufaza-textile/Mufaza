@@ -29,7 +29,7 @@ import { DeliveryReportComponent } from './delivery/delivery-report/delivery-rep
 import { DeliveryAddRiderComponent } from './delivery/delivery-add-rider/delivery-add-rider.component';
 import { DatePipe } from '@angular/common';
 import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
-
+import {UserListComponent} from './internal-user/user-list/user-list.component'
 
 
 
@@ -50,6 +50,7 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
     DeliveryAllocateRiderComponent,
     DeliveryReportComponent,
     DeliveryAddRiderComponent,
+    UserListComponent
     
   ],
   imports: [
@@ -64,6 +65,6 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
   ],
   providers: [SuppliersService,OrderTypesService, ProductService,EmployeesService, RegisterService,DatePipe],
   bootstrap: [AppComponent],
-  entryComponents:[SupplierComponent,EmployeeComponent]
+  entryComponents:[SupplierComponent,InternalUserComponent,EmployeeComponent]
 })
 export class AppModule { }
