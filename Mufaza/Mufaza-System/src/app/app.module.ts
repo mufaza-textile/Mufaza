@@ -18,13 +18,17 @@ import { ProductService } from './shared/product.service';
 import { InternalUserComponent } from './internal-user/internal-user.component';
 import { RegisterComponent } from './internal-user/register/register.component';
 import { RegisterService } from './shared/register.service';
-import { SupplierListComponent } from './suppliers/supplier-list/supplier-list.component';
+import { SupplierListComponent } from './suppliers/supplier-list/supplier-list.componen
+import { EmployeesComponent } from './employees/employees.component';
+import { EmployeeComponent } from './employees/employee/employee.component';
+import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
 import { DeliveryComponent } from './delivery/delivery.component';
 import { DeliveryRiderListComponent } from './delivery/delivery-rider-list/delivery-rider-list.component';
 import { DeliveryAllocateRiderComponent } from './delivery/delivery-allocate-rider/delivery-allocate-rider.component';
 import { DeliveryReportComponent } from './delivery/delivery-report/delivery-report.component';
 import { DeliveryAddRiderComponent } from './delivery/delivery-add-rider/delivery-add-rider.component';
 import { DatePipe } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +39,9 @@ import { DatePipe } from '@angular/common';
     InternalUserComponent,
     RegisterComponent,
     SupplierListComponent,
+    EmployeesComponent,
+    EmployeeComponent,
+    EmployeeListComponet,
     DeliveryComponent,
     DeliveryRiderListComponent,
     DeliveryAllocateRiderComponent,
