@@ -19,6 +19,9 @@ import { InternalUserComponent } from './internal-user/internal-user.component';
 import { RegisterComponent } from './internal-user/register/register.component';
 import { RegisterService } from './shared/register.service';
 import { SupplierListComponent } from './suppliers/supplier-list/supplier-list.component';
+import { EmployeesComponent } from './employees/employees.component';
+import { EmployeeComponent } from './employees/employee/employee.component';
+import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { SupplierListComponent } from './suppliers/supplier-list/supplier-list.c
     AddProductFormComponent,
     InternalUserComponent,
     RegisterComponent,
-    SupplierListComponent
+    SupplierListComponent,
+    EmployeesComponent,
+    EmployeeComponent,
+    EmployeeListComponent
   ],
   imports: [
     BrowserModule,
