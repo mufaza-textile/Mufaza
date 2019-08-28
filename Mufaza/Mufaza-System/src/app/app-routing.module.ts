@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'product', component: AddProductFormComponent},
   {path: 'internal-user', component: RegisterComponent},
   {path: 'delivery', component: DeliveryComponent},
-  {path: 'employees', component: EmployeesComponent}
+  {path: 'employees', component: EmployeesComponent},
   {path: 'internal-user', component: InternalUserComponent},
 ];
 
