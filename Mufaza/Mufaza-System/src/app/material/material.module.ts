@@ -22,6 +22,15 @@ import * as  Material from "@angular/material";
     Material.MatIconModule,
     Material.MatPaginatorModule,
 
+    Material.MatTabsModule,
+    Material.MatTableModule,
+    Material.MatIconModule,
+    Material.MatPaginatorModule,
+    Material.MatSortModule,
+    Material.MatAutocompleteModule,
+    Material.MatDialogModule,
+
+
   ],
   exports: [
     Material.MatToolbarModule,
@@ -39,6 +48,13 @@ import * as  Material from "@angular/material";
      Material.MatIconModule,
      Material.MatPaginatorModule,
      Material.MatSortModule,
+    Material.MatTabsModule,
+    Material.MatTableModule,
+    Material.MatIconModule,
+    Material.MatPaginatorModule,
+    Material.MatSortModule,
+    Material.MatAutocompleteModule,
+    Material.MatDialogModule, 
 
   ]
  
