@@ -19,13 +19,19 @@ import { InternalUserComponent } from './internal-user/internal-user.component';
 import { RegisterComponent } from './internal-user/register/register.component';
 import { RegisterService } from './shared/register.service';
 import { SupplierListComponent } from './suppliers/supplier-list/supplier-list.component';
+import { EmployeesComponent } from './employees/employees.component';
+import { EmployeeComponent } from './employees/employee/employee.component';
+import { EmployeesService } from './shared/employees.service';
 import { DeliveryComponent } from './delivery/delivery.component';
 import { DeliveryRiderListComponent } from './delivery/delivery-rider-list/delivery-rider-list.component';
 import { DeliveryAllocateRiderComponent } from './delivery/delivery-allocate-rider/delivery-allocate-rider.component';
 import { DeliveryReportComponent } from './delivery/delivery-report/delivery-report.component';
 import { DeliveryAddRiderComponent } from './delivery/delivery-add-rider/delivery-add-rider.component';
 import { DatePipe } from '@angular/common';
-import { UserListComponent } from './internal-user/user-list/user-list.component';
+import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
+import {UserListComponent} from './internal-user/user-list/user-list.component'
+
+
 
 @NgModule({
   declarations: [
@@ -36,12 +42,16 @@ import { UserListComponent } from './internal-user/user-list/user-list.component
     InternalUserComponent,
     RegisterComponent,
     SupplierListComponent,
+    EmployeesComponent,
+    EmployeeComponent,
+    EmployeeListComponent,
     DeliveryComponent,
     DeliveryRiderListComponent,
     DeliveryAllocateRiderComponent,
     DeliveryReportComponent,
     DeliveryAddRiderComponent,
     UserListComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -53,8 +63,8 @@ import { UserListComponent } from './internal-user/user-list/user-list.component
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [SuppliersService,OrderTypesService, ProductService, RegisterService,DatePipe],
+  providers: [SuppliersService,OrderTypesService, ProductService,EmployeesService, RegisterService,DatePipe],
   bootstrap: [AppComponent],
-  entryComponents:[SupplierComponent,InternalUserComponent]
+  entryComponents:[SupplierComponent,InternalUserComponent,EmployeeComponent]
 })
 export class AppModule { }

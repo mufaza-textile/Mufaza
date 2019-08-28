@@ -22,9 +22,9 @@
 
 </div>
 
-<div class="mat-elevation-z8">
+<div class="mat-elevation-z8 table">
 
-    <mat-table [dataSource]="listData"  matSort>
+    <mat-table DataPreview [dataSource]="listData" multiTemplateDataRows  matSort width = "100%">
   
       <ng-container matColumnDef="supName">
   
@@ -83,14 +83,72 @@
         </mat-cell>
       </ng-container>
   
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <!-- <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  
+   -->
       
+   <ng-container matColumnDef="expandedDetail">
+      <mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+         <div class="example-element-detail"
+              [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+              <span class="fill-remaining-space"></span>
+              <table style="width:100%; align-content:center;" class="abc" >
+                  <span class="fill-remaining-space"></span>
+                  <tr>                   
+                     <td ><mat-icon>call</mat-icon></td> <td>  <p>{{element.mobile}}</p></td>                      
+                 </tr>
+                 <tr>
+                    <td><mat-icon>mail</mat-icon> </td> <td>  <p>{{element.email}}</p></td>
+                 </tr>
+                 <tr>
+                   <td><mat-icon>location_city</mat-icon> </td> <td>  <p>{{element.address}}</p></td>
+                </tr>
+          </table>  
+        
+         </div>
+      </mat-cell>
+   </ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+   <mat-row *matRowDef="let row; columns: displayedColumns;"
+                                         class="example-element-row"
+                                         [class.example-expanded-row]="expandedElement === row"
+                                         (click)="expandedElement = row"
+                                     ></mat-row>
+   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+
+
+
+
+
+
+
+
+
+
     </mat-table>
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
 
     
   
   </div>
+  
+
+
+
+
+
+
+  
