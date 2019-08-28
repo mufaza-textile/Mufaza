@@ -25,6 +25,7 @@ import { DeliveryAllocateRiderComponent } from './delivery/delivery-allocate-rid
 import { DeliveryReportComponent } from './delivery/delivery-report/delivery-report.component';
 import { DeliveryAddRiderComponent } from './delivery/delivery-add-rider/delivery-add-rider.component';
 import { DatePipe } from '@angular/common';
+import { UserListComponent } from './internal-user/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { DatePipe } from '@angular/common';
     DeliveryRiderListComponent,
     DeliveryAllocateRiderComponent,
     DeliveryReportComponent,
-    DeliveryAddRiderComponent
+    DeliveryAddRiderComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +55,6 @@ import { DatePipe } from '@angular/common';
   ],
   providers: [SuppliersService,OrderTypesService, ProductService, RegisterService,DatePipe],
   bootstrap: [AppComponent],
-  entryComponents:[SupplierComponent]
+  entryComponents:[SupplierComponent,InternalUserComponent]
 })
 export class AppModule { }
