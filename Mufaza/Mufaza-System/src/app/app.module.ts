@@ -33,6 +33,8 @@ import { DepartmentService } from './shared/department.service';
 import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
 import {UserListComponent} from './internal-user/user-list/user-list.component';
 import { DeliveryService } from './shared/delivery.service';
+import { TailoringsComponent } from './tailorings/tailorings.component';
+import { TailoringComponent } from './tailorings/tailoring/tailoring.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { DeliveryService } from './shared/delivery.service';
     DeliveryAddRiderComponent,
     MatConfirmDialogComponent,
     UserListComponent,
+    TailoringsComponent,
+    TailoringComponent,
     
 
     
