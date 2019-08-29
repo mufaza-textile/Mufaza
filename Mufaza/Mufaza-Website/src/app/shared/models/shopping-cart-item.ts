@@ -6,7 +6,6 @@ export class ShoppingCartItem {
   imageUrl: string;
   price: number;
   quantity: number;
-  newPrice: number;
   
 
   constructor(init?: Partial<ShoppingCartItem>) {
@@ -14,4 +13,8 @@ export class ShoppingCartItem {
   }
 
   get totalPrice() { return this.price * this.quantity; }
+
+  get newPrice(){
+    return this.newPrice;
+  }
 }

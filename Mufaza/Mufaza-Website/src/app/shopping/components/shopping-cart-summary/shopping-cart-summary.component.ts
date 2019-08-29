@@ -16,8 +16,11 @@ export class ShoppingCartSummaryComponent implements OnInit{
   newprice: any;
   promo: boolean = false;
   error:boolean= false;
+  newPrice: number;
 
   public promotions: FirebaseListObservable<Promotions[]>;
+
+
   constructor(public promotionService: PromotionService){
 
 }
@@ -31,7 +34,7 @@ ngOnInit(){
     if(promocode === "10off") {
       this.promo = true;
       this.error = false;
-      this.newprice = this.cart.totalPrice - (this.cart.totalPrice * 0.1);
+      this.newPrice = this.cart.totalPrice - (this.cart.totalPrice * 0.1);
     }
     else {
       this.error= true;
