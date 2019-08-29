@@ -24,6 +24,7 @@ import { DeliveryRiderListComponent } from './delivery/delivery-rider-list/deliv
 import { DeliveryAllocateRiderComponent } from './delivery/delivery-allocate-rider/delivery-allocate-rider.component';
 import { DeliveryReportComponent } from './delivery/delivery-report/delivery-report.component';
 import { DeliveryAddRiderComponent } from './delivery/delivery-add-rider/delivery-add-rider.component';
+import { DeliveryAddService} from './shared/delivery-add.service';
 
 @NgModule({
   declarations: [
