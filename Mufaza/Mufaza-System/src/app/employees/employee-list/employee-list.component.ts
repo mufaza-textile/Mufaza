@@ -77,12 +77,9 @@ export class EmployeeListComponent implements OnInit {
 
 
     onDelete($key){
-      this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
-      .afterClosed().subscribe(res =>{
-        if(res){
+    
           this.service.deleteEmployee($key);
           
-        }
-      });
+    
     }
   } 

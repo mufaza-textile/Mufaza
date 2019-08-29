@@ -67,7 +67,7 @@ import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dial
   ],
   providers: [SuppliersService,OrderTypesService,DepartmentService, ProductService,EmployeesService, RegisterService,DatePipe],
   bootstrap: [AppComponent],
-  entryComponents:[SupplierComponent,EmployeeComponent]
+  entryComponents:[SupplierComponent,EmployeeComponent,MatConfirmDialogComponent,]
 })
 export class AppModule { }
   
