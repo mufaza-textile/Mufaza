@@ -11,7 +11,6 @@ export class Order implements AfterViewInit{
 
   constructor(public userId: string, public shipping: any, shoppingCart: ShoppingCart) {
     this.datePlaced = new Date().getTime();
-
     this.items = shoppingCart.items.map(i => {
       return {
         product: {
@@ -21,12 +20,13 @@ export class Order implements AfterViewInit{
         },
         quantity: i.quantity,
         totalPrice: i.totalPrice,
-
+        
       }
     })
+   
   }
-
   ngAfterViewInit(){
-    this.newPrice = this.ShoppingCartSummaryComponent.newPrice;
+    this.newPrice= this.ShoppingCartSummaryComponent.newPrice;
   }
+  
 }

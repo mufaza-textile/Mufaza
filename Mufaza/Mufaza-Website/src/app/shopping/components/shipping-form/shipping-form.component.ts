@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Order } from "../../../shared/models/order";
+import { ShoppingCartSummaryComponent } from '../shopping-cart-summary/shopping-cart-summary.component';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'shipping-form',
@@ -16,6 +18,8 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
   shipping = {}; 
   userSubscription: Subscription;
   userId: string;
+  shoppingcartSummary: ShoppingCartSummaryComponent;
+
   
   constructor(
     private router: Router,
@@ -35,5 +39,7 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
     let order = new Order(this.userId, this.shipping, this.cart);
     let result = await this.orderService.placeOrder(order);
     this.router.navigate(['/order-success', result.key]);
-  }    
+  } 
+  
+  
 }

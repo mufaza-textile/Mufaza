@@ -15,7 +15,7 @@
           {{ cart.totalPrice | currency:'USD':true }}
         </div><br>
         <div class="float-right" *ngIf="promo === true">
-          {{newprice | currency: 'USD':true}}
+          {{ newPrice | currency:'USD':true }}
         </div>
       </li>
     </ul>
