@@ -20,35 +20,5 @@ export class DeliveryComponent implements OnInit {
       @ViewChild(MatSort,{static: true}) sort: MatSort;
       @ViewChild(MatPaginator,{static: true}) paginator: MatPaginator;
   ngOnInit() {
-    this.service.getProducts().subscribe(
-      list => {
-        let array = list.map(item =>{
-          return {
-            $key: item.key,
-            ...item.payload.val()
-          };
-        });
-        this.listData = new MatTableDataSource(array);
-        this.listData.sort = this.sort;
-        this.listData.paginator = this.paginator;
-      }
-    );
-  }
-
-onClear() {
-    let $key = this.service.form.get('$key').value;
-    this.service.form.reset();
-    this.service.initializeFormGroup();
-    this.service.form.patchValue({ $key });
-  }
-
-  onSubmit(){
-    if(this.service.form.valid){
-      this.service.insertProduct(this.service.form.value)
-      this.service.form.reset();
-      this.service.initializeFormGroup();
-      this.notificationService.success(':: Submitted Succesfully' );
-    }
-
   }
 }

@@ -70,7 +70,7 @@ deleteInternalUser($key: string){
   this.registerList.remove($key);
 }
 
-populateForm(user) {
+populateForm(user){
   this.form.patchValue(user);
 }
 }

@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
      }
 
   }
-  onClose() {
+  onClose(){
     this.service.form.reset();
     this.service.initializeFormGroup();
     this.dialogRef.close();

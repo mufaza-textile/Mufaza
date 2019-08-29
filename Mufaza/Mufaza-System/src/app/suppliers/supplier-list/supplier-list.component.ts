@@ -28,7 +28,7 @@ export class SupplierListComponent implements OnInit {
 
   listData: MatTableDataSource<any>;
   
-  displayedColumns: string[] =[`supName`,`compName`,`payment`,`actions`];
+  displayedColumns: string[] =[`supName`,`compName`,`oDate`,`quantity`,`payment`,`actions`];
 
 
   expandedElement : MatTableDataSource<any>;
