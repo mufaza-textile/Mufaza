@@ -1,16 +1,20 @@
-
+<mat-tab-group>
+  
+<mat-tab label="Add User"> 
  <mat-toolbar>
-  <span>{{service.form.controls['$key'].value?"Modify User":"New User"}}</span>
-  <span class="fill-remaining-space"></span>
-  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
-</mat-toolbar>
-
+        <span class="fill-remaining-space"></span>
+        <span>Add User Form</span>
+        <span class="fill-remaining-space"></span>
+    </mat-toolbar>
 <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()">
     <mat-grid-list cols="2" rowHeight="300px">
       <mat-grid-tile>
         <div class="controles-container2">
           <input type="hidden" formControlName="$key">
-          
+          <mat-form-field>
+            <input formControlName="userName" matInput placeholder="User Name">
+            <mat-error>This field is mandatory</mat-error>
+          </mat-form-field>
           <mat-form-field>
                 <input formControlName="empId" matInput placeholder="Employee ID">
           </mat-form-field>
@@ -23,10 +27,12 @@
       <mat-grid-tile>
         <div class="controles-container">
             <mat-form-field>
-                <input formControlName="position" placeholder="Position" matInput [matAutocomplete]="auto" aria-label="Number">
-                <mat-autocomplete #auto="matAutocomplete">
-                      <mat-option *ngFor="let position of positions" [value]="position">{{position}}</mat-option>
-                </mat-autocomplete>
+                <mat-select formControlName="position" placeholder="Position">
+                  
+                        <ng-container *ngFor="let position of positions">
+                            <mat-option value="{{position.ID}}">{{position.value}}</mat-option>
+                        </ng-container>
+                </mat-select>
             </mat-form-field>
 
             <div class="button-row">
@@ -38,7 +44,5 @@
       </mat-grid-tile>
     </mat-grid-list>
   </form>
-
-
-   
-   
+</mat-tab>
+</mat-tab-group>
