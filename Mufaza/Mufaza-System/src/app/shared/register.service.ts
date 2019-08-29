@@ -2,32 +2,24 @@ import { Injectable } from '@angular/core';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFireDatabase,AngularFireList } from "angularfire2/database";
-import { __values } from 'tslib';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
-  array =[];
-  constructor(private firebase :AngularFireDatabase) { 
-    list => {
-      this.array = list.map(item =>{
-        return {
-          $key: item.key,
-          ...item.payload.val()
-        };
-      });
-    }
-  }
+
+  constructor(private firebase :AngularFireDatabase) { }
 
   registerList : AngularFireList<any>;
 
   form : FormGroup = new FormGroup({
 
     $key : new FormControl(null),
-    empId : new FormControl('',[Validators.required,Validators.maxLength(5)]),
-    position : new FormControl('',[Validators.required]),
+    userName : new FormControl('',Validators.required),
+    empId : new FormControl('',[Validators.required,Validators.minLength(5)]),
+    position : new FormControl('0'),
     password : new FormControl('',[Validators.required,Validators.minLength(5)])
+    //confirmpswd : new FormControl('',[Validators.required,Validators.minLength(8)])
   
 
 
@@ -38,9 +30,11 @@ export class RegisterService {
     this.form.setValue({
 
       $key:null,
+      userName:'',
       empId:'',
-      position:'',
+      position:0,
       password:''
+     // confirmpswd:''
       
     });
 }
@@ -51,7 +45,8 @@ getInternalUsers(){
 }
 insertInternalUser(user){
   this.registerList.push({
-      userId:user.empId,
+      userName:user.userName,
+      employeeId:user.empId,
       position:user.position,
       password:user.password
   });
@@ -60,6 +55,7 @@ insertInternalUser(user){
 updateInternalUser(user){
   this.registerList.update(user.$key,
     {
+      userName:user.userName,
       employeeId:user.empId,
       position:user.position,
       password:user.password
@@ -68,9 +64,5 @@ updateInternalUser(user){
 
 deleteInternalUser($key: string){
   this.registerList.remove($key);
-}
-
-populateForm(user){
-  this.form.patchValue(user);
 }
 }
