@@ -32,7 +32,6 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
 import { DepartmentService } from './shared/department.service';
 import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
 import {UserListComponent} from './internal-user/user-list/user-list.component';
-import { DeliveryAddService} from './shared/delivery-add.service';
 import { DeliveryService } from './shared/delivery.service';
 
 @NgModule({
@@ -53,7 +52,8 @@ import { DeliveryService } from './shared/delivery.service';
     DeliveryReportComponent,
     DeliveryAddRiderComponent,
     MatConfirmDialogComponent,
-    UserListComponent
+    UserListComponent,
+    
 
     
   ],
@@ -68,7 +68,7 @@ import { DeliveryService } from './shared/delivery.service';
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
 
-  providers: [SuppliersService,OrderTypesService, ProductService,EmployeesService, RegisterService,DatePipe, DeliveryAddService, DeliveryService],
+  providers: [SuppliersService,OrderTypesService, ProductService,EmployeesService, RegisterService,DatePipe, DeliveryService],
 
   bootstrap: [AppComponent],
   entryComponents:[SupplierComponent,InternalUserComponent,EmployeeComponent,RegisterComponent,DeliveryAddRiderComponent,DeliveryAllocateRiderComponent, MatConfirmDialogComponent]
