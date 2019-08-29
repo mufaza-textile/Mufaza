@@ -33,6 +33,7 @@ import {UserListComponent} from './internal-user/user-list/user-list.component'
 
 
 import { DeliveryAddService} from './shared/delivery-add.service';
+import { DeliveryService } from './shared/delivery.service';
 
 @NgModule({
   declarations: [
@@ -64,8 +65,8 @@ import { DeliveryAddService} from './shared/delivery-add.service';
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [SuppliersService,OrderTypesService, ProductService,EmployeesService, RegisterService,DatePipe],
+  providers: [SuppliersService,OrderTypesService, ProductService,EmployeesService, RegisterService,DatePipe,DeliveryAddService, DeliveryService],
   bootstrap: [AppComponent],
-  entryComponents:[SupplierComponent,InternalUserComponent,EmployeeComponent,RegisterComponent]
+  entryComponents:[SupplierComponent,InternalUserComponent,EmployeeComponent,RegisterComponent,DeliveryAddRiderComponent,DeliveryAllocateRiderComponent]
 })
 export class AppModule { }

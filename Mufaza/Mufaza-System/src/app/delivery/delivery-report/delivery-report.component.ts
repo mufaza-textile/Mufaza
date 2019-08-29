@@ -62,7 +62,7 @@ export class DeliveryReportComponent implements OnInit {
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
-    this.dialog.open(DeliveryReportComponent,dialogConfig);
+    this.dialog.open(DeliveryAllocateRiderComponent,dialogConfig);
   }
 
 onDelete($key){
