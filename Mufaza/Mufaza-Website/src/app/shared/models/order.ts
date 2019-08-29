@@ -16,6 +16,7 @@ export class Order {
         },
         quantity: i.quantity,
         totalPrice: i.totalPrice,
+        newPrice: i.newPrice
 
       }
     })
