@@ -9,6 +9,7 @@ export class PromotionService {
 
   promocodes: FirebaseListObservable<Promotions[]> = null;
   promocode: FirebaseObjectObservable<Promotions> = null;
+  handleError: any;
 
   constructor( private db: AngularFireDatabase) {
   
@@ -25,7 +26,27 @@ export class PromotionService {
     this.promocode = this.db.object(promoPath)
     return this.promocode
   }
-  
+
+  createPromocode(promocode: Promotions): void{
+    this.promocodes.push(promocode)
+    .catch(error => this.handleError(error))
+  }
+
+  //update an existing promocode
+  updatePromocode(key: string, value:any): void{
+    this.promocodes.update(key,value).catch(error => this.handleError(error))
+  }
+
+  //delete a single item
+  deletePromocode(key: string): void{
+    this.promocodes.remove(key).catch(error => this.handleError(error))
+  }
+
+  //delete the entire list of codes
+  deleteAll():void{
+    this.promocodes.remove().catch(error => this.handleError(error))
+  }
+
   
   
   }
