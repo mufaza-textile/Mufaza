@@ -32,6 +32,7 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
 import {UserListComponent} from './internal-user/user-list/user-list.component'
 
 
+import { DeliveryAddService} from './shared/delivery-add.service';
 
 @NgModule({
   declarations: [
