@@ -22,6 +22,7 @@ export class AddProductFormComponent implements OnInit {
   
       @ViewChild(MatSort,{static: true}) sort: MatSort;
       @ViewChild(MatPaginator,{static: true}) paginator: MatPaginator;
+      searchKey: string;
   ngOnInit() {
     this.service.getProducts().subscribe(
       list => {
@@ -53,6 +54,15 @@ onClear() {
       this.notificationService.success(':: Submitted Succesfully' );
     }
 
+  }
+
+  onSearchClear() {
+    this.searchKey = "";
+    this.applyFilter();
+  }
+
+  applyFilter() {
+    this.listData.filter = this.searchKey.trim().toLowerCase();
   }
 
   onDelete($key){

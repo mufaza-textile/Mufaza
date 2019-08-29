@@ -5,8 +5,20 @@
         <span class="fill-remaining-space"></span>
         <span>Products Report</span>
         <span class="fill-remaining-space"></span>
-      </mat-toolbar>
+    </mat-toolbar>
+<br>
+    <mat-form-field class="search-form-field" floatLabel="never">
 
+      <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+  
+      <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey"  (click)="onSearchClear()">
+  
+        <mat-icon>close</mat-icon>
+  
+      </button>
+  
+    </mat-form-field>
+<br><br>
       <div class="mat-elevation-z8">
 
           <mat-table [dataSource]="listData"  matSort>
