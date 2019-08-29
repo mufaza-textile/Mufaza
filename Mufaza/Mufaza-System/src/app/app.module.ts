@@ -31,9 +31,9 @@ import { DatePipe } from '@angular/common';
 import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
 import { DepartmentService } from './shared/department.service';
 import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
-
-
-
+import {UserListComponent} from './internal-user/user-list/user-list.component';
+import { DeliveryAddService} from './shared/delivery-add.service';
+import { DeliveryService } from './shared/delivery.service';
 
 @NgModule({
   declarations: [
@@ -53,6 +53,8 @@ import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dial
     DeliveryReportComponent,
     DeliveryAddRiderComponent,
     MatConfirmDialogComponent,
+    UserListComponent
+
     
   ],
   imports: [
@@ -65,9 +67,11 @@ import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dial
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [SuppliersService,OrderTypesService,DepartmentService, ProductService,EmployeesService, RegisterService,DatePipe],
+
+  providers: [SuppliersService,OrderTypesService, ProductService,EmployeesService, RegisterService,DatePipe, DeliveryAddService, DeliveryService],
+
   bootstrap: [AppComponent],
-  entryComponents:[SupplierComponent,EmployeeComponent]
+  entryComponents:[SupplierComponent,InternalUserComponent,EmployeeComponent,RegisterComponent,DeliveryAddRiderComponent,DeliveryAllocateRiderComponent, MatConfirmDialogComponent]
 })
 export class AppModule { }
   
