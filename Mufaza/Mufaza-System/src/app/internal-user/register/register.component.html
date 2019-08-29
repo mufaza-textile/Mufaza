@@ -1,11 +1,10 @@
-<mat-tab-group>
-  
-<mat-tab label="Add User"> 
+
  <mat-toolbar>
-        <span class="fill-remaining-space"></span>
-        <span>Add User Form</span>
-        <span class="fill-remaining-space"></span>
-    </mat-toolbar>
+  <span>{{service.form.controls['$key'].value?"Modify User":"New User"}}</span>
+  <span class="fill-remaining-space"></span>
+  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+
 <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()">
     <mat-grid-list cols="2" rowHeight="300px">
       <mat-grid-tile>
@@ -39,72 +38,7 @@
       </mat-grid-tile>
     </mat-grid-list>
   </form>
-</mat-tab>
-<mat-tab label="Internal Users">
-  <mat-toolbar>
-      <span class="fill-remaining-space"></span>
-      <span>Internal Users</span>
-      <span class="fill-remaining-space"></span>
-    </mat-toolbar>
 
-    <div class="mat-elevation-z8">
 
-        <mat-table [dataSource]="listData"  matSort>
-
-            <ng-container matColumnDef="#">
-      
-                <mat-header-cell *matHeaderCellDef  mat-sort-header>#</mat-header-cell>
-          
-                <mat-cell *matCellDef="let element; index as i">{{i + 1}}</mat-cell>
-          
-              </ng-container>
-              <ng-container matColumnDef="empID">
-      
-                <mat-header-cell *matHeaderCellDef  mat-sort-header>Employee ID</mat-header-cell>
-          
-                <mat-cell *matCellDef="let element">{{element.userId}}</mat-cell>
-          
-              </ng-container>
-      
-          <ng-container matColumnDef="position">
-      
-            <mat-header-cell *matHeaderCellDef  mat-sort-header>Position</mat-header-cell>
-      
-            <mat-cell *matCellDef="let element">{{element.position}}</mat-cell>
-      
-          </ng-container>
-    
-          <ng-container matColumnDef="password">
-    
-            <mat-header-cell *matHeaderCellDef  mat-sort-header>Password</mat-header-cell>
-      
-            <mat-cell *matCellDef="let element">{{element.password}}</mat-cell>
-      
-          </ng-container>
-    
-        <ng-container matColumnDef="actions">
-    
-            <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      
-            <mat-cell *matCellDef="let row">
-      
-              <button mat-icon-button><mat-icon>launch</mat-icon></button>
-      
-              <button mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
-      
-            </mat-cell>
-      
-          </ng-container>
-      
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      
-          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      
-          
-        </mat-table>
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
-    
-        
-      </div>
-</mat-tab>
-</mat-tab-group>
+   
+   

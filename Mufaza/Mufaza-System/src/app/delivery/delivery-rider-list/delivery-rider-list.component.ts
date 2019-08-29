@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DeliveryService } from '../../shared/delivery.service';
-import { MatTableDataSource,MatSort,MatPaginator, MatDialogConfig } from "@angular/material";
+import { MatTableDataSource,MatSort,MatPaginator, MatDialogConfig, MatDialog } from "@angular/material";
+import { DeliveryAddRiderComponent } from './../delivery-add-rider/delivery-add-rider.component'
 
 @Component({
   selector: 'app-delivery-rider-list',
@@ -8,9 +9,9 @@ import { MatTableDataSource,MatSort,MatPaginator, MatDialogConfig } from "@angul
   styleUrls: ['./delivery-rider-list.component.css']
 })
 export class DeliveryRiderListComponent implements OnInit {
-  dialog: any;
 
-  constructor(private service : DeliveryService) { }
+  constructor(private service : DeliveryService,
+    private dialog: MatDialog,) { }
  
   listData: MatTableDataSource<any>;
   
@@ -18,6 +19,7 @@ export class DeliveryRiderListComponent implements OnInit {
   
       @ViewChild(MatSort,{static: true}) sort: MatSort;
       @ViewChild(MatPaginator,{static: true}) paginator: MatPaginator;
+      searchKey: string;
 
   ngOnInit() {
     this.service.getDelivery().subscribe(
@@ -35,16 +37,37 @@ export class DeliveryRiderListComponent implements OnInit {
     );
   }
 
+  
+
+  onSearchClear(){
+    this.searchKey = "";
+    this.applyFilter();
+  }
+
+  applyFilter() {
+    this.listData.filter = this.searchKey.trim().toLowerCase();
+  }
+
+  onCreate() {
+    this.service.initializeFormGroup();
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    this.dialog.open(DeliveryAddRiderComponent,dialogConfig);
+  }
+
+
   onEdit(row){
     this.service.populateForm(row);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
-    this.dialog.open(DeliveryRiderListComponent,dialogConfig);
+    this.dialog.open(DeliveryAddRiderComponent,dialogConfig);
   }
 
-onDelete($key){
+  onDelete($key){
     this.service.deleteDelivery($key);
   }
 

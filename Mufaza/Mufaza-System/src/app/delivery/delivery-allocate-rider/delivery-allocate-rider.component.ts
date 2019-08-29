@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DeliveryService } from "../../shared/delivery-add.service";
+import { DeliveryAddService } from "../../shared/delivery-add.service";
 import { NotifcationService } from "../../shared/notifcation.service";
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-delivery-allocate-rider',
@@ -9,8 +10,9 @@ import { NotifcationService } from "../../shared/notifcation.service";
 })
 export class DeliveryAllocateRiderComponent implements OnInit {
 
-  constructor(private service: DeliveryService,
-    private notificationService : NotifcationService) { }
+  constructor(private service: DeliveryAddService,
+    private notificationService : NotifcationService,
+    public dialogRef: MatDialogRef <DeliveryAllocateRiderComponent>) { }
 
     ngOnInit() {
       this.service.getDelivery();
@@ -26,13 +28,21 @@ export class DeliveryAllocateRiderComponent implements OnInit {
   
     onSubmit(){
       if(this.service.form.valid){
+        if (!this.service.form.get('$key').value)
         this.service.insertDelivery(this.service.form.value)
+        else
+        this.service.updateDelivery(this.service.form.value);
         this.service.form.reset();
         this.service.initializeFormGroup();
         this.notificationService.success(':: Submitted Succesfully' );
-  
-      }
-  
+        this.onClose();
+      } 
     }
 
+    onClose() {
+      this.service.form.reset();
+      this.service.initializeFormGroup();
+      this.dialogRef.close();
+    }
+  
 }

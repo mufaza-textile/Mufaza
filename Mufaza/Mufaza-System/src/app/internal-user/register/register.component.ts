@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { RegisterService } from '../../shared/register.service';
-import { MatTableDataSource,MatSort,MatPaginator } from "@angular/material";
 import { NotifcationService } from "../../shared/notifcation.service";
+import { MatDialogRef } from '@angular/material';
+import { UserListComponent } from '../user-list/user-list.component';
+
+
 
 @Component({
   selector: 'app-register',
@@ -10,46 +13,40 @@ import { NotifcationService } from "../../shared/notifcation.service";
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private service:RegisterService, private notificationService : NotifcationService) { }
-  listData: MatTableDataSource<any>;
-  displayedColumns: string[] =['#',`empID`,`position`,`password`,'actions'];
+  constructor(private service:RegisterService, private notificationService : NotifcationService, private dialogRef:MatDialogRef <RegisterComponent>) { }
   
-  @ViewChild(MatSort,{static: true}) sort: MatSort;
-  @ViewChild(MatPaginator,{static: true}) paginator: MatPaginator;
 
   positions:string[] = ['Admin','HR', 'Product Manager','Delivery Manager']  
     hide = true;
 
   ngOnInit() {
-    this.service.getInternalUsers().subscribe(
-      list => {
-        let array = list.map(item =>{
-          return {
-            $key: item.key,
-            ...item.payload.val()
-          };
-        });
-    this.listData = new MatTableDataSource(array);
-    this.listData.sort = this.sort;
-    this.listData.paginator = this.paginator;
-       } );
-  
+    this.service.getInternalUsers();
   }
+
+  
   onClear(){
-    let $key = this.service.form.get('$key').value;
     this.service.form.reset();
     this.service.initializeFormGroup();
-    this.service.form.patchValue({ $key });
 
   }
 
   onSubmit(){
      if(this.service.form.valid){
+      if (!this.service.form.get('$key').value)
        this.service.insertInternalUser(this.service.form.value);
+      else
+       this.service.updateInternalUser(this.service.form.value);
        this.service.form.reset();
        this.service.initializeFormGroup(); 
        this.notificationService.success(':: Submitted Succesfully' );
-
+       this.onClose();
      }
+
   }
+  onClose(){
+    this.service.form.reset();
+    this.service.initializeFormGroup();
+    this.dialogRef.close();
+  }
+  
 }
