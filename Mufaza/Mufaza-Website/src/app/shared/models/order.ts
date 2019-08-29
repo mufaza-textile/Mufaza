@@ -21,7 +21,6 @@ export class Order implements AfterViewInit{
         },
         quantity: i.quantity,
         totalPrice: i.totalPrice,
-        newPrice: i.newPrice
 
       }
     })
