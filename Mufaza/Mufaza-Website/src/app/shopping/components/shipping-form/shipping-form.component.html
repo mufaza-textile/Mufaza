@@ -1,5 +1,8 @@
 <form #f="ngForm">
-    
+    <button
+    (click)="f.reset({})"
+    class="btn btn-secondary"
+    style="margin-left: 450px">Reset</button>
   <div class="form-group">
     <label for="">Name</label>
     <input #name="ngModel" name="name" [(ngModel)]="shipping.name" type="text" class="form-control" required>
@@ -32,9 +35,6 @@
     [disabled]="!f.valid"
     (click)="placeOrder()"
     class="btn btn-primary">Place Order</button>
-    <button
-    (click)="f.reset({})"
-    class="btn btn-secondary"
-    style="margin-left: 30px">Reset</button>
+   
 
 </form>    

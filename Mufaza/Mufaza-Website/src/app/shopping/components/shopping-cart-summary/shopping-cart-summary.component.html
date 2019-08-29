@@ -25,7 +25,7 @@
   <div class="input-group">
     <input type="text" name="promocode" class="form-control" [(ngModel)]="promocode" style="text-transform:uppercase" placeholder="Promo Code" [disabled]="promo"/>
     <div class="input-group-append">
-      <button type="submit" class="btn btn-secondary" [disabled]= "!promocode || promo" (click)="promotion(promocode)" >Redeem</button>
+      <button type="submit" class="btn btn-success" [disabled]= "!promocode || promo" (click)="promotion(promocode)" >Redeem</button>
     </div>
   </div>
 </form>
