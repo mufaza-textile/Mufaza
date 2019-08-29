@@ -31,21 +31,25 @@ export class EmployeeComponent implements OnInit {
 
   /*form is valid or not , 
   */
-  onSubmit(){
-    if(this.service.form.valid){
-      this.service.insertEmployee(this.service.form.value)
-      this.service.form.reset();
-      this.service.initializeFormGroup();//initial to default value
-      this.notificationService.success(':: Submitted Succesfully' );
 
+  
+  onSubmit() {
+    if (this.service.form.valid) {
+      if (!this.service.form.get('$key').value)
+        this.service.insertEmployee(this.service.form.value);
+      else
+      this.service.updateEmployee(this.service.form.value);
+      this.service.form.reset();
+      this.service.initializeFormGroup();
+      this.notificationService.success(':: Submitted successfully');
+      this.onClose();
     }
   }
 
-  onClose(){
-      this.service.form.reset();
-      this.service.initializeFormGroup();
-      this.dialogRef.close();
+  onClose() {
+    this.service.form.reset();
+    this.service.initializeFormGroup();
+    this.dialogRef.close();
   }
-
 
 }

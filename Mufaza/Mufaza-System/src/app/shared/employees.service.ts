@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFireDatabase,AngularFireList } from "angularfire2/database";
-
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -98,8 +98,8 @@ export class EmployeesService {
   }
 
 
-populateForm(employee){
-  this.form.setValue(employee);
+  populateForm(employee){
+  this.form.setValue(employee); //department which is to be ommited
 }
 
 

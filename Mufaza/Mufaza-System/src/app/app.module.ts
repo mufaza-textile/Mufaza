@@ -29,9 +29,9 @@ import { DeliveryReportComponent } from './delivery/delivery-report/delivery-rep
 import { DeliveryAddRiderComponent } from './delivery/delivery-add-rider/delivery-add-rider.component';
 import { DatePipe } from '@angular/common';
 import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
-import {UserListComponent} from './internal-user/user-list/user-list.component'
-
-
+import { DepartmentService } from './shared/department.service';
+import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
+import {UserListComponent} from './internal-user/user-list/user-list.component';
 import { DeliveryAddService} from './shared/delivery-add.service';
 import { DeliveryService } from './shared/delivery.service';
 
@@ -52,7 +52,9 @@ import { DeliveryService } from './shared/delivery.service';
     DeliveryAllocateRiderComponent,
     DeliveryReportComponent,
     DeliveryAddRiderComponent,
+    MatConfirmDialogComponent,
     UserListComponent
+
     
   ],
   imports: [
@@ -60,13 +62,16 @@ import { DeliveryService } from './shared/delivery.service';
     AppRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule, 
     BrowserAnimationsModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
+
   providers: [SuppliersService,OrderTypesService, ProductService,EmployeesService, RegisterService,DatePipe, DeliveryAddService, DeliveryService],
+
   bootstrap: [AppComponent],
-  entryComponents:[SupplierComponent,InternalUserComponent,EmployeeComponent,RegisterComponent,DeliveryAddRiderComponent,DeliveryAllocateRiderComponent]
+  entryComponents:[SupplierComponent,InternalUserComponent,EmployeeComponent,RegisterComponent,DeliveryAddRiderComponent,DeliveryAllocateRiderComponent, MatConfirmDialogComponent]
 })
 export class AppModule { }
+  
