@@ -1,16 +1,32 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
+import { Promotions } from 'shared/models/Promotions';
 
 @Injectable()
 export class PromotionService {
-  promocodes: FirebaseListObservable<any []>;
-  promocode: FirebaseObjectObservable<any>;
+  private basePath: string = '/promotions';
 
-  constructor(public db: AngularFireDatabase) {
-    this.promocodes = this.db.list('/promotions/') as FirebaseListObservable<promocode[]>;
+  promocodes: FirebaseListObservable<Promotions[]> = null;
+  promocode: FirebaseObjectObservable<Promotions> = null;
+
+  constructor( private db: AngularFireDatabase) {
+  
   }
-   getPromotions(){
-    return this.promocodes;
-   }
-}
+
+  getPromoList(query={}): FirebaseListObservable<Promotions[]>{
+    this.promocodes = this.db.list(this.basePath,{
+      query: query});
+      return this.promocodes
+    }
+
+  getPromocode(key: string): FirebaseObjectObservable<Promotions>{
+    const promoPath = `${this.basePath}/${key}`;
+    this.promocode = this.db.object(promoPath)
+    return this.promocode
+  }
+  
+  
+  }
+   
+

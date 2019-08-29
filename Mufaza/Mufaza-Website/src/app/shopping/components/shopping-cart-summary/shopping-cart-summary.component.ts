@@ -2,6 +2,7 @@ import { ShoppingCart } from '../../../shared/models/shopping-cart';
 import { Component, OnInit, Input } from '@angular/core';
 import {PromotionService} from 'shared/services/promotion.service';
 import {Promotions} from 'shared/models/Promotions';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'shopping-cart-summary',
@@ -15,18 +16,13 @@ export class ShoppingCartSummaryComponent implements OnInit{
   promo: boolean = false;
   error:boolean= false;
 
-  promotions : Promotions[];
+  promotions: Promotions[];
 constructor(public promotionService: PromotionService){
 
 }
 
 ngOnInit(){
-  this.promotionService.getPromotions().subscribe(promotions =>
-  {
-    this.promotions = promotions;
-  }
-
-)
+ 
 }
 
 
