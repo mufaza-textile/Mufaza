@@ -16,8 +16,7 @@ import { OrderService } from './services/order.service';
 import { ProductService } from './services/product.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { UserService } from './services/user.service';
-import { PromotionService} from 'shared/services/promotion.service';
-
+import{ PromotionService } from './services/promotion.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -26,7 +25,7 @@ import { PromotionService} from 'shared/services/promotion.service';
     DataTableModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    NgbModule.forRoot(),
+    NgbModule.forRoot()
   ],
   declarations: [
     ProductCardComponent,
@@ -51,7 +50,7 @@ import { PromotionService} from 'shared/services/promotion.service';
     ProductService,
     ShoppingCartService,
     OrderService,
-    PromotionService
+    PromotionService,
   ]
 })
 export class SharedModule { }
