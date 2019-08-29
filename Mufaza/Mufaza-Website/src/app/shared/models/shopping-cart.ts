@@ -25,10 +25,6 @@ export class ShoppingCart {
       sum += this.items[productId].totalPrice;
     return sum;
   }
-  afterDiscount(promocode: string) {
-    let sum = this.totalPrice;
-
-  }
 
   get totalItemsCount() {
     let count = 0;
@@ -36,4 +32,5 @@ export class ShoppingCart {
       count += this.itemsMap[productId].quantity;
     return count;
   }
+
 }
