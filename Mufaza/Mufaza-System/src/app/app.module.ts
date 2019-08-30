@@ -36,46 +36,71 @@ import { DeliveryService } from './shared/delivery.service';
 import { TailoringsComponent } from './tailorings/tailorings.component';
 import { TailoringComponent } from './tailorings/tailoring/tailoring.component';
 
+import { PromotionsComponent } from './promotions/promotions.component';
+import { PromotionListComponent } from './promotions/promotion-list/promotion-list.component';
+import { PromotionsService } from './shared/promotions.service';
+import { PromotionComponent } from './promotions/promotion/promotion.component';
+
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    SuppliersComponent,
-    SupplierComponent,
-    AddProductFormComponent,
-    InternalUserComponent,
-    RegisterComponent,
-    SupplierListComponent,
-    EmployeesComponent,
-    EmployeeComponent,
-    EmployeeListComponent,
-    DeliveryComponent,
-    DeliveryRiderListComponent,
-    DeliveryAllocateRiderComponent,
-    DeliveryReportComponent,
-    DeliveryAddRiderComponent,
-    MatConfirmDialogComponent,
-    UserListComponent,
-    TailoringsComponent,
-    TailoringComponent,
-    
+   declarations: [
+      AppComponent,
+      SuppliersComponent,
+      SupplierComponent,
+      AddProductFormComponent,
+      InternalUserComponent,
+      RegisterComponent,
+      SupplierListComponent,
+      EmployeesComponent,
+      EmployeeComponent,
+      EmployeeListComponent,
+      DeliveryComponent,
+      DeliveryRiderListComponent,
+      DeliveryAllocateRiderComponent,
+      DeliveryReportComponent,
+      DeliveryAddRiderComponent,
+      MatConfirmDialogComponent,
+      UserListComponent,
+      TailoringsComponent,
+      TailoringComponent,
 
-    
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule, 
-    BrowserAnimationsModule,
-    AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
-  ],
-
-  providers: [SuppliersService,OrderTypesService, ProductService,EmployeesService, RegisterService,DatePipe, DeliveryService],
-
-  bootstrap: [AppComponent],
-  entryComponents:[SupplierComponent,InternalUserComponent,EmployeeComponent,RegisterComponent,DeliveryAddRiderComponent,DeliveryAllocateRiderComponent, MatConfirmDialogComponent]
+      PromotionsComponent,
+      PromotionComponent,
+      PromotionListComponent
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      MaterialModule,
+      FormsModule,
+      ReactiveFormsModule,
+      BrowserAnimationsModule,
+      AngularFireDatabaseModule,
+      AngularFireModule.initializeApp(environment.firebaseConfig)
+   ],
+   providers: [
+      SuppliersService,
+      OrderTypesService,
+      ProductService,
+      EmployeesService,
+      RegisterService,
+      DatePipe,
+      DeliveryService,
+      PromotionsService
+   ],
+   bootstrap: [
+      AppComponent
+   ],
+   entryComponents: [
+      SupplierComponent,
+      InternalUserComponent,
+      EmployeeComponent,
+      RegisterComponent,
+      DeliveryAddRiderComponent,
+      DeliveryAllocateRiderComponent,
+      MatConfirmDialogComponent,
+      PromotionComponent
+   ]
 })
 export class AppModule { }
   
