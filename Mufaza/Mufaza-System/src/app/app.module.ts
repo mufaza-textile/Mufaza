@@ -38,6 +38,7 @@ import { TailoringComponent } from './tailorings/tailoring/tailoring.component';
 import { PromoComponent } from './promo/promo.component';
 import { PromoListComponent } from './promo/promo-list/promo-list.component';
 import { PromocodeComponent } from './promo/promocode/promocode.component';
+import { PromoService } from './shared/promo.service';
 
 
 
@@ -86,6 +87,7 @@ import { PromocodeComponent } from './promo/promocode/promocode.component';
       RegisterService,
       DatePipe,
       DeliveryService,
+      PromoService
 
    ],
    bootstrap: [
@@ -99,6 +101,7 @@ import { PromocodeComponent } from './promo/promocode/promocode.component';
       DeliveryAddRiderComponent,
       DeliveryAllocateRiderComponent,
       MatConfirmDialogComponent,
+      PromoComponent
 
    ]
 })
