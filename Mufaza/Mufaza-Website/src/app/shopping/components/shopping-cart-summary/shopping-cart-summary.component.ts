@@ -3,6 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {PromotionService} from 'shared/services/promotion.service';
 import {Promotions} from 'shared/models/Promotions';
 import { FirebaseListObservable } from 'angularfire2/database';
+import{ShoppingCartSummary} from '../../../shared/models/shopping-cart-summary';
 
 @Component({
   selector: 'shopping-cart-summary',
@@ -10,10 +11,11 @@ import { FirebaseListObservable } from 'angularfire2/database';
   styleUrls: ['./shopping-cart-summary.component.css']
 })
 export class ShoppingCartSummaryComponent implements OnInit{
+  
  
   @Input('cart') cart: ShoppingCart;
+  summary: ShoppingCartSummary;
   promocode: string;
-  newprice: any;
   promo: boolean = false;
   error:boolean= false;
   newPrice: number;
@@ -34,14 +36,14 @@ ngOnInit(){
     if(promocode === "10off") {
       this.promo = true;
       this.error = false;
-      this.newPrice = this.cart.totalPrice - (this.cart.totalPrice * 0.1);
+      this.newPrice =(this.cart.totalPrice - (this.cart.totalPrice * 0.1));
+      this.summary.newPrice = this.newPrice;
     }
     else {
       this.error= true;
       this.promo = false;
     }
-
   }
-
+  
 
 }

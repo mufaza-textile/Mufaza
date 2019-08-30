@@ -7,21 +7,23 @@ import { Component, OnInit, OnDestroy, Input, AfterViewInit, ViewChild } from '@
 import { Order } from "../../../shared/models/order";
 import { ShoppingCartSummaryComponent } from '../shopping-cart-summary/shopping-cart-summary.component';
 import { FormGroup } from '@angular/forms';
+import { SummaryResolver } from '@angular/compiler';
+import { ShoppingCartSummary } from 'shared/models/shopping-cart-summary';
 
 @Component({
   selector: 'shipping-form',
   templateUrl: './shipping-form.component.html',
   styleUrls: ['./shipping-form.component.css']
 })
-export class ShippingFormComponent implements OnInit, OnDestroy {
+export class ShippingFormComponent implements OnInit, OnDestroy,AfterViewInit {
 
   @Input('cart') cart: ShoppingCart;
-  
-  newPrice:number;
   shipping = {}; 
   userSubscription: Subscription;
   userId: string;
-  
+  newPrice: number;
+  ShoppingCartSummary: ShoppingCartSummary;
+
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -35,7 +37,9 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
   ngOnDestroy() { 
     this.userSubscription.unsubscribe();
   }
-
+ngAfterViewInit(): void {
+    this.newPrice = this.ShoppingCartSummary.newPrice;
+  }
 
   async placeOrder() {
     let order = new Order(this.userId, this.shipping, this.cart);
