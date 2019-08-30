@@ -11,7 +11,7 @@ export class Order{
   newprice: number;
 
 
-  constructor(public userId: string, public shipping: any, shoppingCart: ShoppingCart,NewPrice: number) {
+  constructor(public userId: string, public shipping: any, shoppingCart: ShoppingCart, NewPrice: number) {
     this.datePlaced = new Date().getTime();
     this.items = shoppingCart.items.map(i => {
       return {

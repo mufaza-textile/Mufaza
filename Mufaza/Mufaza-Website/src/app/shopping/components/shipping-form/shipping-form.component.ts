@@ -19,7 +19,6 @@ import { NewPriceService } from 'shared/services/new-price.service';
 export class ShippingFormComponent implements OnInit, OnDestroy {
 
   @Input('cart') cart: ShoppingCart;
-  @Input('summary')summary: ShoppingCartSummary;
   shipping = {}; 
   userSubscription: Subscription;
   userId: string;
@@ -41,12 +40,10 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
   }
 
   async placeOrder() {
+    this.newPrice = this.sharedService.newPrice;
     let order = new Order(this.userId, this.shipping, this.cart, this.newPrice);
     let result = await this.orderService.placeOrder(order);
     this.router.navigate(['/order-success', result.key]);
   } 
-  ngAfterNewPriceChecked(){
-    this.newPrice = this.sharedService.newPrice
-  }
   
 }
