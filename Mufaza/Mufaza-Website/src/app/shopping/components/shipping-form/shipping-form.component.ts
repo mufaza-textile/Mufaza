@@ -9,25 +9,27 @@ import { ShoppingCartSummaryComponent } from '../shopping-cart-summary/shopping-
 import { FormGroup } from '@angular/forms';
 import { SummaryResolver } from '@angular/compiler';
 import { ShoppingCartSummary } from 'shared/models/shopping-cart-summary';
+import { NewPriceService } from 'shared/services/new-price.service';
 
 @Component({
   selector: 'shipping-form',
   templateUrl: './shipping-form.component.html',
   styleUrls: ['./shipping-form.component.css']
 })
-export class ShippingFormComponent implements OnInit, OnDestroy,AfterViewInit {
+export class ShippingFormComponent implements OnInit, OnDestroy {
 
   @Input('cart') cart: ShoppingCart;
+  @Input('summary')summary: ShoppingCartSummary;
   shipping = {}; 
   userSubscription: Subscription;
   userId: string;
   newPrice: number;
-  ShoppingCartSummary: ShoppingCartSummary;
 
   constructor(
     private router: Router,
     private authService: AuthService,
-    private orderService: OrderService) {
+    private orderService: OrderService,
+    private sharedService: NewPriceService) {
   }
 
   ngOnInit() {
@@ -37,15 +39,14 @@ export class ShippingFormComponent implements OnInit, OnDestroy,AfterViewInit {
   ngOnDestroy() { 
     this.userSubscription.unsubscribe();
   }
-ngAfterViewInit(): void {
-    this.newPrice = this.ShoppingCartSummary.newPrice;
-  }
 
   async placeOrder() {
-    let order = new Order(this.userId, this.shipping, this.cart);
+    let order = new Order(this.userId, this.shipping, this.cart, this.newPrice);
     let result = await this.orderService.placeOrder(order);
     this.router.navigate(['/order-success', result.key]);
   } 
-  
+  ngAfterNewPriceChecked(){
+    this.newPrice = this.sharedService.newPrice
+  }
   
 }

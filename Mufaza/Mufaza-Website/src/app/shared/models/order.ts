@@ -3,15 +3,15 @@ import { ShoppingCartSummaryComponent } from 'app/shopping/components/shopping-c
 import { ViewChild, AfterContentChecked, AfterViewChecked, AfterViewInit } from '@angular/core';
 import { ShoppingCartSummary } from './shopping-cart-summary';
 
-export class Order implements AfterViewInit{
+export class Order{
   
 
   datePlaced: number;
   items: any[];
   newprice: number;
-  ShoppingCartSummary: ShoppingCartSummaryComponent
 
-  constructor(public userId: string, public shipping: any, shoppingCart: ShoppingCart) {
+
+  constructor(public userId: string, public shipping: any, shoppingCart: ShoppingCart,NewPrice: number) {
     this.datePlaced = new Date().getTime();
     this.items = shoppingCart.items.map(i => {
       return {
@@ -25,10 +25,9 @@ export class Order implements AfterViewInit{
         
       }
     });
+    this.newprice = NewPrice;
    
   }
-  ngAfterViewInit(): void {
-    this.newprice = this.ShoppingCartSummary.newPrice;
-  }
+ 
   
 }
