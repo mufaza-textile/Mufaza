@@ -54,8 +54,4 @@ onClear() {
     }
 
   }
-
-  onDelete($key){
-    this.service.deleteProduct($key);
-  }
 }

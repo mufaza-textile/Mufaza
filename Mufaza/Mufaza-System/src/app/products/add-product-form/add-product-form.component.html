@@ -1,64 +1,5 @@
 <mat-tab-group>
   
-  <mat-tab label="Products Report">
-    <mat-toolbar>
-        <span class="fill-remaining-space"></span>
-        <span>Products Report</span>
-        <span class="fill-remaining-space"></span>
-      </mat-toolbar>
-
-      <div class="mat-elevation-z8">
-
-          <mat-table [dataSource]="listData"  matSort>
-
-              <ng-container matColumnDef="#">
-        
-                  <mat-header-cell *matHeaderCellDef  mat-sort-header>#</mat-header-cell>
-            
-                  <mat-cell *matCellDef="let element; index as i">{{i + 1}}</mat-cell>
-            
-                </ng-container>
-        
-            <ng-container matColumnDef="title">
-        
-              <mat-header-cell *matHeaderCellDef  mat-sort-header>Title</mat-header-cell>
-        
-              <mat-cell *matCellDef="let element">{{element.title}}</mat-cell>
-        
-            </ng-container>
-      
-            <ng-container matColumnDef="price">
-      
-              <mat-header-cell *matHeaderCellDef  mat-sort-header>Price</mat-header-cell>
-        
-              <mat-cell *matCellDef="let element">{{element.price}}</mat-cell>
-        
-            </ng-container>
-      
-          <ng-container matColumnDef="actions">
-      
-              <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        
-              <mat-cell *matCellDef="let row">
-        
-                <button mat-icon-button><mat-icon>launch</mat-icon></button>
-        
-                <button mat-icon-button color="warn" (click)="onDelete(row.$key)"><mat-icon>delete_outline</mat-icon></button>
-        
-              </mat-cell>
-        
-            </ng-container>
-        
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        
-            
-          </mat-table>
-          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
-      </div>
-   </mat-tab>
-
   <mat-tab label="Add Product"> 
       <mat-toolbar>
         <span class="fill-remaining-space"></span>
@@ -121,5 +62,92 @@
         </form>     
   </mat-tab>
 
-  
+  <mat-tab label="Edit/ Delete Poduct">
+   
+  </mat-tab>
+
+  <mat-tab label="Products Report">
+      <mat-toolbar>
+          <span class="fill-remaining-space"></span>
+          <span>Products Report</span>
+          <span class="fill-remaining-space"></span>
+        </mat-toolbar>
+
+        <div class="mat-elevation-z8">
+
+            <mat-table [dataSource]="listData"  matSort>
+
+                <ng-container matColumnDef="#">
+          
+                    <mat-header-cell *matHeaderCellDef  mat-sort-header>#</mat-header-cell>
+              
+                    <mat-cell *matCellDef="let element; index as i">{{i + 1}}</mat-cell>
+              
+                  </ng-container>
+          
+              <ng-container matColumnDef="title">
+          
+                <mat-header-cell *matHeaderCellDef  mat-sort-header>Title</mat-header-cell>
+          
+                <mat-cell *matCellDef="let element">{{element.title}}</mat-cell>
+          
+              </ng-container>
+        
+              <ng-container matColumnDef="price">
+        
+                <mat-header-cell *matHeaderCellDef  mat-sort-header>Price</mat-header-cell>
+          
+                <mat-cell *matCellDef="let element">{{element.price}}</mat-cell>
+          
+              </ng-container>
+        
+            <ng-container matColumnDef="actions">
+        
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          
+                <mat-cell *matCellDef="let row">
+          
+                  <button mat-icon-button><mat-icon>launch</mat-icon></button>
+          
+                  <button mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
+          
+                </mat-cell>
+          
+              </ng-container>
+          
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          
+              
+            </mat-table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+        
+            
+          
+          </div>
+        
+
+     <!-- <table class="table">
+        <thead>
+          <tr> 
+            <th></th>
+            <th>#</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of service.array; index as i">
+            <td></td>
+            <td>{{i + 1}}</td>
+            <td>{{p.title}}</td>
+            <td>{{p.category}}</td>
+            <td>{{p.price}}</td>
+          </tr>
+        </tbody>
+     </table> -->
+  </mat-tab>
 </mat-tab-group>
