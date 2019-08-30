@@ -40,6 +40,7 @@ import { PromotionsComponent } from './promotions/promotions.component';
 import { PromotionListComponent } from './promotions/promotion-list/promotion-list.component';
 import { PromotionsService } from './shared/promotions.service';
 import { PromotionComponent } from './promotions/promotion/promotion.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { PromotionComponent } from './promotions/promotion/promotion.component';
 
       PromotionsComponent,
       PromotionComponent,
-      PromotionListComponent
+      PromotionListComponent,
+      NavigationComponent
    ],
    imports: [
       BrowserModule,
