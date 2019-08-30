@@ -35,11 +35,10 @@ import {UserListComponent} from './internal-user/user-list/user-list.component';
 import { DeliveryService } from './shared/delivery.service';
 import { TailoringsComponent } from './tailorings/tailorings.component';
 import { TailoringComponent } from './tailorings/tailoring/tailoring.component';
+import { PromoComponent } from './promo/promo.component';
+import { PromoListComponent } from './promo/promo-list/promo-list.component';
+import { PromocodeComponent } from './promo/promocode/promocode.component';
 
-import { PromotionsComponent } from './promotions/promotions.component';
-import { PromotionListComponent } from './promotions/promotion-list/promotion-list.component';
-import { PromotionsService } from './shared/promotions.service';
-import { PromotionComponent } from './promotions/promotion/promotion.component';
 
 
 @NgModule({
@@ -63,10 +62,11 @@ import { PromotionComponent } from './promotions/promotion/promotion.component';
       UserListComponent,
       TailoringsComponent,
       TailoringComponent,
+      PromoComponent,
+      PromoListComponent,
+      PromocodeComponent,
 
-      PromotionsComponent,
-      PromotionComponent,
-      PromotionListComponent
+
    ],
    imports: [
       BrowserModule,
@@ -86,7 +86,7 @@ import { PromotionComponent } from './promotions/promotion/promotion.component';
       RegisterService,
       DatePipe,
       DeliveryService,
-      PromotionsService
+
    ],
    bootstrap: [
       AppComponent
@@ -99,7 +99,7 @@ import { PromotionComponent } from './promotions/promotion/promotion.component';
       DeliveryAddRiderComponent,
       DeliveryAllocateRiderComponent,
       MatConfirmDialogComponent,
-      PromotionComponent
+
    ]
 })
 export class AppModule { }
