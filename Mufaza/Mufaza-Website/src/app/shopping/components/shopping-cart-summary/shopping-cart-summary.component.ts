@@ -12,8 +12,8 @@ import { NewPriceService } from 'shared/services/new-price.service';
   styleUrls: ['./shopping-cart-summary.component.css']
 })
 export class ShoppingCartSummaryComponent implements OnInit{
-  
- 
+
+
   @Input('cart') cart: ShoppingCart;
   promocode: string;
   promo: boolean = false;
@@ -37,13 +37,12 @@ ngOnInit(){
       this.promo = true;
       this.error = false;
       this.newPrice = (this.cart.totalPrice - (this.cart.totalPrice * 0.1));
-      this.sharedService.newPrice = this.newPrice;
+      this.sharedService.addnewprice(this.newPrice);
     }
     else {
       this.error= true;
       this.promo = false;
-      this.newPrice = this.cart.totalPrice;
-      this.sharedService.newPrice = this.newPrice;
+      this.sharedService.addnewprice(0);
     }
   }
 

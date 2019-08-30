@@ -4,14 +4,14 @@ import { ViewChild, AfterContentChecked, AfterViewChecked, AfterViewInit } from 
 import { ShoppingCartSummary } from './shopping-cart-summary';
 
 export class Order{
-  
+
 
   datePlaced: number;
   items: any[];
   newprice: number;
 
 
-  constructor(public userId: string, public shipping: any, shoppingCart: ShoppingCart, NewPrice: number) {
+  constructor(public userId: string, public shipping: any, shoppingCart: ShoppingCart, NewPrice?: number) {
     this.datePlaced = new Date().getTime();
     this.items = shoppingCart.items.map(i => {
       return {
@@ -22,12 +22,12 @@ export class Order{
         },
         quantity: i.quantity,
         totalPrice: i.totalPrice,
-        
+
       }
     });
     this.newprice = NewPrice;
-   
+
   }
- 
-  
+
+
 }
