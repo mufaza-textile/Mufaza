@@ -7,6 +7,15 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of'; 
 import * as firebase from 'firebase'; 
+import { Injectable, NgZone } from '@angular/core';
+import { User } from "../models/user";
+import { auth } from 'firebase/app';
+//import { AngularFireAuth } from "@angular/fire/auth";
+//import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Router } from "@angular/router";
+import {AngularFireDatabase, } from 'angularfire2/database';
+//import {AngularFireDatabase} from '@angular/fire/database'
+
 
 @Injectable()
 export class AuthService {
@@ -66,7 +75,7 @@ export class AuthService {
          this.ngZone.run(() => {
            this.router.navigate(['dashboard']);
          });
-         this.SetUserData(result.user);
+        // this.SetUserData(result.user);
        }).catch((error) => {
          window.alert(error.message)
        })
@@ -159,12 +168,13 @@ export class AuthService {
       
    } 
  
-   UpdateUserData(details){
+   UpdateUserData(add,name,phone){
     this.db.object('/customers/'+ this.userData.uid).update({
-     address:details.address,
-     phoneNo:details.phone,
-     displayName:details.name
+     address:add,
+     phoneNo:phone,
+     displayName:name
     })
+    this.router.navigate(['dashboard']);
    }
 
    // Sign out 
@@ -174,6 +184,16 @@ export class AuthService {
        this.router.navigate(['/']);
      })
    }
+
+   getCustomers(userId: string) {
+    return this.db.list('/customers', {
+      query: {
+        orderByChild: 'uid',
+        equalTo: userId        
+      }
+    });
+  }
+
  
    // getCustomers(user){
    //  return this.db.object('/customers/'+ user.uid);
@@ -181,14 +201,6 @@ export class AuthService {
   
 }
 
-import { Injectable, NgZone } from '@angular/core';
-import { User } from "../models/user";
-import { auth } from 'firebase/app';
-//import { AngularFireAuth } from "@angular/fire/auth";
-//import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Router } from "@angular/router";
-import {AngularFireDatabase, } from 'angularfire2/database';
-//import {AngularFireDatabase} from '@angular/fire/database'
 
 // @Injectable({
 //   providedIn: 'root'

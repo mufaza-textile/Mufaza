@@ -1,4 +1,31 @@
 
+<nav class="col-md-2 d-md-block bg-light sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link ">
+          <i class="fas fa-user"></i>User Profile
+        </a>
+      </li>
+      <!-- Calling SignOut() Api from AuthService -->
+      <li class="nav-item">
+        <a class="nav-link" (click)="authService.SignOut()">
+          <i class="fas fa-sign-out-alt"></i>Log out
+        </a>
+      </li>
+      <li class = "nav-item">
+        <a class="nav-link active" routerLink="/editinfo" >
+          <i class="fas fa-edit"></i>Edit Profile
+        </a>
+      </li>
+      <li class = "nav-item">
+        <a class="nav-link" >
+          <i class="fas fa-user-times"></i>Delete Account
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 <div class="displayTable">
   <div class="displayTableCell">
@@ -20,8 +47,7 @@
 
       <!-- Calling SignIn Api from AuthService -->
       <div class="formGroup">
-        <input type="button" class="btn btnPrimary" value="Submit" (click)="authService.UpdateUserData(details
-        )">
+        <input type="button" class="btn googleBtn" value="Submit" (click)="authService.UpdateUserData(address.value, Name.value, phone.value)">
       </div>
 
      
