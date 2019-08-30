@@ -1,5 +1,5 @@
 import { ShoppingCart } from '../../../shared/models/shopping-cart';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {PromotionService} from 'shared/services/promotion.service';
 import {Promotions} from 'shared/models/Promotions';
 import { FirebaseListObservable } from 'angularfire2/database';
@@ -42,4 +42,6 @@ ngOnInit(){
     }
 
   }
+
+
 }

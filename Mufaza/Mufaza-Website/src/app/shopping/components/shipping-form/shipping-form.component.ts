@@ -3,7 +3,7 @@ import { OrderService } from '../../../shared/services/order.service';
 import { AuthService } from '../../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, AfterViewInit, ViewChild } from '@angular/core';
 import { Order } from "../../../shared/models/order";
 import { ShoppingCartSummaryComponent } from '../shopping-cart-summary/shopping-cart-summary.component';
 import { FormGroup } from '@angular/forms';
@@ -14,12 +14,13 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./shipping-form.component.css']
 })
 export class ShippingFormComponent implements OnInit, OnDestroy {
+
   @Input('cart') cart: ShoppingCart;
+  
+  newPrice:number;
   shipping = {}; 
   userSubscription: Subscription;
   userId: string;
-  shoppingcartSummary: ShoppingCartSummaryComponent;
-
   
   constructor(
     private router: Router,
@@ -34,6 +35,7 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
   ngOnDestroy() { 
     this.userSubscription.unsubscribe();
   }
+
 
   async placeOrder() {
     let order = new Order(this.userId, this.shipping, this.cart);
