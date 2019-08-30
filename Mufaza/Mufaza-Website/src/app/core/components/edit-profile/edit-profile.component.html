@@ -1,0 +1,39 @@
+
+
+<div class="displayTable">
+  <div class="displayTableCell">
+
+    
+
+    <div class="authBlock">
+      <h3>Edit Profile</h3>
+      <div class="formGroup">
+        <input type="text" class="formControl" placeholder="Name" #Name required>
+      </div>
+
+      <div class="formGroup">
+        <input type="number" class="formControl" placeholder="PhoneNumber" #phone required>
+      </div>
+      <div class="formGroupbig">
+        <input type="text" class="formControlbig" placeholder="Address" #address required>
+      </div>
+
+      <!-- Calling SignIn Api from AuthService -->
+      <div class="formGroup">
+        <input type="button" class="btn btnPrimary" value="Submit" (click)="authService.UpdateUserData(details
+        )">
+      </div>
+
+     
+
+      <!-- Calling GoogleAuth Api from AuthService -->
+     
+    
+
+  </div>
+  <div class="forgotPassword">
+    <span class="redirect" routerLink="/dashboard">Go back to your Profile?</span>
+  </div>
+
+</div>
+</div>
