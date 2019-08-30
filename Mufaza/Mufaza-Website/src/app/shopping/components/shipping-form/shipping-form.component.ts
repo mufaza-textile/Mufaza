@@ -40,13 +40,9 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
   }
 
   async placeOrder() {
-<<<<<<< HEAD
     let order = new Order(this.userId, this.shipping, this.cart,this.sharedService.newprice);
-=======
-    this.newPrice = this.sharedService.getNewprice();
-    let order = new Order(this.userId, this.shipping, this.cart, this.newPrice);
     console.log(this.sharedService.newPrice);
->>>>>>> 04a85923682ce9a89044f467218f7747ee12bcf3
+
     let result = await this.orderService.placeOrder(order);
     this.router.navigate(['/order-success', result.key]);
   }

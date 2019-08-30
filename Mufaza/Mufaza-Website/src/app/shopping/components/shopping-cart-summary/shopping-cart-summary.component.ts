@@ -42,16 +42,9 @@ ngOnInit(){
     else {
       this.error= true;
       this.promo = false;
-<<<<<<< HEAD
       this.newPrice = this.cart.totalPrice;
-      this.sharedService.newPrice=this.newPrice;
-=======
-      this.sharedService.addnewprice(0);
->>>>>>> 04a85923682ce9a89044f467218f7747ee12bcf3
-    }
-  }
+      this.sharedService.newPrice = this.newPrice;
 
-  addValue(val){
-    this.sharedService.updatenewPrice(val);
+  }
   }
 }
