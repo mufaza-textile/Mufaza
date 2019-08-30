@@ -27,12 +27,12 @@ export class ShoppingCartSummaryComponent implements OnInit{
 }
 
 ngOnInit(){
-  this.promotions = this.promotionService.getPromoList({});
+
 }
 
   promotion(promocode: string){
     this.promocode = promocode;
-
+    
     if(this.promocode === "10off") {
       this.promo = true;
       this.error = false;
