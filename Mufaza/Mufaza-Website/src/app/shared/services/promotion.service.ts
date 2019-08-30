@@ -5,7 +5,7 @@ import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} f
 
 @Injectable()
 export class PromotionService {
-  private basePath: string = '/promotions';
+  private basePath: string = '/promotions/';
 
   promocode: FirebaseObjectObservable<any>;
 
