@@ -40,6 +40,8 @@ import { PromotionsComponent } from './promotions/promotions.component';
 import { PromotionListComponent } from './promotions/promotion-list/promotion-list.component';
 import { PromotionsService } from './shared/promotions.service';
 import { PromotionComponent } from './promotions/promotion/promotion.component';
+import { SuppliesComponent } from './suppliers/supplies/supplies.component';
+import { SuppliesService } from "./shared/supplies.service";
 
 
 @NgModule({
@@ -66,7 +68,8 @@ import { PromotionComponent } from './promotions/promotion/promotion.component';
 
       PromotionsComponent,
       PromotionComponent,
-      PromotionListComponent
+      PromotionListComponent,
+      SuppliesComponent
    ],
    imports: [
       BrowserModule,
@@ -86,7 +89,8 @@ import { PromotionComponent } from './promotions/promotion/promotion.component';
       RegisterService,
       DatePipe,
       DeliveryService,
-      PromotionsService
+      PromotionsService,
+      SuppliesService
    ],
    bootstrap: [
       AppComponent

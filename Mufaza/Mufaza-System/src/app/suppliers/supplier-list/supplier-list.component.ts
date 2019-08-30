@@ -7,6 +7,7 @@ import { DataSource } from '@angular/cdk/collections';
 import { Observable, of } from 'rxjs';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { element } from 'protractor';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -24,16 +25,19 @@ import { element } from 'protractor';
 export class SupplierListComponent implements OnInit {
 
   constructor(private service : SuppliersService,
-    private dialog: MatDialog,) { }
+    private dialog: MatDialog,
+    private router : Router) { }
 
   listData: MatTableDataSource<any>;
   
   displayedColumns: string[] =[`supName`,`compName`,`oDate`,`quantity`,`payment`,`actions`];
 
 
+  key : string;
+
   expandedElement : MatTableDataSource<any>;
   
-
+    
       @ViewChild(MatSort,{static: true}) sort: MatSort;
       @ViewChild(MatPaginator,{static: true}) paginator: MatPaginator;
       searchKey: string;
@@ -85,5 +89,13 @@ export class SupplierListComponent implements OnInit {
   onDelete($key){
     this.service.deleteSupplier($key);
   }
+
+  navigate($key){
+    this.router.navigateByUrl('supplies');
+  }
+getkey(){
+  return this.key;
+}
+
 
 }
