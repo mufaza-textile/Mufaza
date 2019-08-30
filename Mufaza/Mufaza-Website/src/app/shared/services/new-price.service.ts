@@ -6,6 +6,7 @@ export class NewPriceService {
   newPrice: number;
   
   _newPriceBS = new BehaviorSubject<number>(null);
+  
   constructor() { 
     this.newPrice;
 
