@@ -19,6 +19,7 @@ import { VerifyEmailComponent } from './core/components/verify-email/verify-emai
 import { ForgotPasswordComponent } from './core/components/forgot-password/forgot-password.component';
 import { MyProfileComponent } from './core/components/my-profile/my-profile.component';
 import { AuthService } from 'shared/services/auth.service';
+import { EditProfileComponent} from './core/components/edit-profile/edit-profile.component'
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AuthService } from 'shared/services/auth.service';
     VerifyEmailComponent,
     SignInComponent,
     SignUpComponent,
-    MyProfileComponent,  
+    MyProfileComponent, 
+    //EditProfileComponent 
   ],
   imports: [
     BrowserModule,
@@ -46,6 +48,7 @@ import { AuthService } from 'shared/services/auth.service';
       { path: 'dashboard', component: MyProfileComponent },
       { path: 'forgotpassword', component: ForgotPasswordComponent },
       { path: 'verifyemail', component: VerifyEmailComponent },
+      { path: 'editinfo', component: EditProfileComponent },
 
     ])    
   ],

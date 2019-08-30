@@ -153,13 +153,20 @@ export class AuthService {
      displayName: user.displayName,
      photoURL: user.photoURL,
      emailVerified: user.emailVerified,
-     address:'',
-     phoneNo:null
+     
     })
       
       
    } 
  
+   UpdateUserData(details){
+    this.db.object('/customers/'+ this.userData.uid).update({
+     address:details.address,
+     phoneNo:details.phone,
+     displayName:details.name
+    })
+   }
+
    // Sign out 
    SignOut() {
      return this.afAuth.auth.signOut().then(() => {
