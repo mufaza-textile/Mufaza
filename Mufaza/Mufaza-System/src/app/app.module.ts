@@ -35,11 +35,11 @@ import {UserListComponent} from './internal-user/user-list/user-list.component';
 import { DeliveryService } from './shared/delivery.service';
 import { TailoringsComponent } from './tailorings/tailorings.component';
 import { TailoringComponent } from './tailorings/tailoring/tailoring.component';
+import { PromoComponent } from './promo/promo.component';
+import { PromoListComponent } from './promo/promo-list/promo-list.component';
+import { PromocodeComponent } from './promo/promocode/promocode.component';
+import { PromoService } from './shared/promo.service';
 
-import { PromotionsComponent } from './promotions/promotions.component';
-import { PromotionListComponent } from './promotions/promotion-list/promotion-list.component';
-import { PromotionsService } from './shared/promotions.service';
-import { PromotionComponent } from './promotions/promotion/promotion.component';
 import { SuppliesComponent } from './suppliers/supplies/supplies.component';
 import { SuppliesService } from "./shared/supplies.service";
 
@@ -65,11 +65,14 @@ import { SuppliesService } from "./shared/supplies.service";
       UserListComponent,
       TailoringsComponent,
       TailoringComponent,
+      PromoComponent,
+      PromoListComponent,
+      PromocodeComponent,
 
-      PromotionsComponent,
-      PromotionComponent,
-      PromotionListComponent,
+
+
       SuppliesComponent
+
    ],
    imports: [
       BrowserModule,
@@ -89,8 +92,10 @@ import { SuppliesService } from "./shared/supplies.service";
       RegisterService,
       DatePipe,
       DeliveryService,
-      PromotionsService,
-      SuppliesService
+      SuppliesService,
+
+      PromoService
+
    ],
    bootstrap: [
       AppComponent
@@ -103,7 +108,9 @@ import { SuppliesService } from "./shared/supplies.service";
       DeliveryAddRiderComponent,
       DeliveryAllocateRiderComponent,
       MatConfirmDialogComponent,
-      PromotionComponent
+      PromoComponent,
+      PromocodeComponent
+
    ]
 })
 export class AppModule { }

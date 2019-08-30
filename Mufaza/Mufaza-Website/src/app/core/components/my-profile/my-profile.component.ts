@@ -13,7 +13,9 @@ export class MyProfileComponent implements OnInit {
     public authService: AuthService,
     public router: Router,
     public ngZone: NgZone,
-  ) { }
+  ) {
+    //this.customer = authService.getCustomers(u);
+  }
 
   ngOnInit() {
   }
