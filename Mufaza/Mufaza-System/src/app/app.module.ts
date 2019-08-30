@@ -101,7 +101,8 @@ import { PromoService } from './shared/promo.service';
       DeliveryAddRiderComponent,
       DeliveryAllocateRiderComponent,
       MatConfirmDialogComponent,
-      PromoComponent
+      PromoComponent,
+      PromocodeComponent
 
    ]
 })
