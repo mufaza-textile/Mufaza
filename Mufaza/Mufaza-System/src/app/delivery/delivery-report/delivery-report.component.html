@@ -75,7 +75,7 @@
       
               <mat-header-cell *matHeaderCellDef  mat-sort-header>Delivery Date</mat-header-cell>
         
-              <mat-cell *matCellDef="let element">{{element.deliveryDate}}</mat-cell>
+              <mat-cell *matCellDef="let element">{{element.deliveryDate | date}}</mat-cell>
         
             </ng-container>
       
