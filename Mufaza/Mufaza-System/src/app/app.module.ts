@@ -24,36 +24,91 @@ import { DeliveryRiderListComponent } from './delivery/delivery-rider-list/deliv
 import { DeliveryAllocateRiderComponent } from './delivery/delivery-allocate-rider/delivery-allocate-rider.component';
 import { DeliveryReportComponent } from './delivery/delivery-report/delivery-report.component';
 import { DeliveryAddRiderComponent } from './delivery/delivery-add-rider/delivery-add-rider.component';
-import { DeliveryAddService} from './shared/delivery-add.service';
+import { DatePipe } from '@angular/common';
+import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
+import { DepartmentService } from './shared/department.service';
+import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
+import {UserListComponent} from './internal-user/user-list/user-list.component';
 import { DeliveryService } from './shared/delivery.service';
+import { TailoringsComponent } from './tailorings/tailorings.component';
+import { TailoringComponent } from './tailorings/tailoring/tailoring.component';
+import { PromoComponent } from './promo/promo.component';
+import { PromoListComponent } from './promo/promo-list/promo-list.component';
+import { PromocodeComponent } from './promo/promocode/promocode.component';
+import { PromoService } from './shared/promo.service';
+
+import { SuppliesComponent } from './suppliers/supplies/supplies.component';
+import { SuppliesService } from "./shared/supplies.service";
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SuppliersComponent,
-    SupplierComponent,
-    AddProductFormComponent,
-    InternalUserComponent,
-    RegisterComponent,
-    SupplierListComponent,
-    DeliveryComponent,
-    DeliveryRiderListComponent,
-    DeliveryAllocateRiderComponent,
-    DeliveryReportComponent,
-    DeliveryAddRiderComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
-  ],
-  providers: [SuppliersService,OrderTypesService, ProductService, RegisterService,DeliveryAddService, DeliveryService],
-  bootstrap: [AppComponent],
-  entryComponents:[SupplierComponent,InternalUserComponent,RegisterComponent,DeliveryAddRiderComponent,DeliveryAllocateRiderComponent]
+   declarations: [
+      AppComponent,
+      SuppliersComponent,
+      SupplierComponent,
+      AddProductFormComponent,
+      InternalUserComponent,
+      RegisterComponent,
+      SupplierListComponent,
+      EmployeesComponent,
+      EmployeeComponent,
+      EmployeeListComponent,
+      DeliveryComponent,
+      DeliveryRiderListComponent,
+      DeliveryAllocateRiderComponent,
+      DeliveryReportComponent,
+      DeliveryAddRiderComponent,
+      MatConfirmDialogComponent,
+      UserListComponent,
+      TailoringsComponent,
+      TailoringComponent,
+      PromoComponent,
+      PromoListComponent,
+      PromocodeComponent,
+
+
+
+      SuppliesComponent
+
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      MaterialModule,
+      FormsModule,
+      ReactiveFormsModule,
+      BrowserAnimationsModule,
+      AngularFireDatabaseModule,
+      AngularFireModule.initializeApp(environment.firebaseConfig)
+   ],
+   providers: [
+      SuppliersService,
+      OrderTypesService,
+      ProductService,
+      EmployeesService,
+      RegisterService,
+      DatePipe,
+      DeliveryService,
+      SuppliesService,
+
+      PromoService
+
+   ],
+   bootstrap: [
+      AppComponent
+   ],
+   entryComponents: [
+      SupplierComponent,
+      InternalUserComponent,
+      EmployeeComponent,
+      RegisterComponent,
+      DeliveryAddRiderComponent,
+      DeliveryAllocateRiderComponent,
+      MatConfirmDialogComponent,
+      PromoComponent,
+      PromocodeComponent
+
+   ]
 })
 export class AppModule { }
+  

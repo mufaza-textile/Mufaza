@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
 import { AngularFireDatabase,AngularFireList } from "angularfire2/database";
 
 @Injectable({
@@ -15,15 +15,28 @@ export class RegisterService {
   form : FormGroup = new FormGroup({
 
     $key : new FormControl(null),
-    userName : new FormControl('',Validators.required),
-    empId : new FormControl('',[Validators.required,Validators.minLength(5)]),
-    position : new FormControl('0'),
+    empId : new FormControl('',[Validators.required,Validators.maxLength(5),this.alphaNumeric('abc')]),
+    position : new FormControl('',[Validators.required]),
     password : new FormControl('',[Validators.required,Validators.minLength(5)])
     //confirmpswd : new FormControl('',[Validators.required,Validators.minLength(8)])
   
 
 
   });
+
+  alphaNumeric(allowedPhrase: string): ValidatorFn {
+    return (c: FormControl): { [key: string]: boolean } | null => {
+      if (c.value) {
+        allowedPhrase = allowedPhrase ? allowedPhrase : '';
+        let regEx = new RegExp(/^[a-zA-Z0-9]*$/);
+        if (!regEx.test(c.value.replace(allowedPhrase.toUpperCase(), '').replace(allowedPhrase.toLowerCase(), ''))) {
+          return { 'alphanumeric': true };
+        }
+      }
+      return null;
+    };
+  };
+
 
   initializeFormGroup(){
 
