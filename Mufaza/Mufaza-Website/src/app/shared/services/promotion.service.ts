@@ -5,18 +5,17 @@ import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} f
 
 @Injectable()
 export class PromotionService {
-  private basePath: string = '/promotions/';
 
   promocode: FirebaseObjectObservable<any>;
 
   promocodes: FirebaseListObservable<any[]>;
 
-  constructor( private db: AngularFireDatabase) {
+  constructor( public af: AngularFireDatabase) {
+    this.promocodes = this.af.list('/promotions');
   
   }
 
   getPromocodes(){
-   this.promocodes = this.db.list(this.basePath);
     return this.promocodes;
   }
 
