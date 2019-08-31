@@ -21,10 +21,7 @@ import * as  Material from "@angular/material";
     Material.MatTableModule,
     Material.MatIconModule,
     Material.MatPaginatorModule,
-    Material.MatSortModule,
-    Material.MatAutocompleteModule,
-    Material.MatDialogModule,
-
+    Material.MatSortModule
   ],
   exports: [
     Material.MatToolbarModule,
@@ -42,9 +39,8 @@ import * as  Material from "@angular/material";
     Material.MatTableModule,
     Material.MatIconModule,
     Material.MatPaginatorModule,
-    Material.MatSortModule,
-    Material.MatAutocompleteModule,
-    Material.MatDialogModule, 
+    Material.MatSortModule
+
 
   ]
 })

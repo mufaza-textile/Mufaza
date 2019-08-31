@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFireDatabase,AngularFireList } from "angularfire2/database";
-import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +19,6 @@ export class SuppliersService {
     compName : new FormControl(''),
     email : new FormControl('',Validators.email),
     mobile : new FormControl('',[Validators.required,Validators.minLength(10)]),
-    quantity : new FormControl(''),
     address : new FormControl(''),
     oType : new FormControl(0),
     oDate : new FormControl(''),
@@ -41,7 +39,6 @@ export class SuppliersService {
       mobile:'',
       address:'',
       oType:0,
-      quantity:'',
       oDate:'',
       payment:'',
     })
@@ -61,7 +58,6 @@ export class SuppliersService {
         mobile: supplier.mobile,
         address: supplier.address,
         oType: supplier.oType,
-        quantity: supplier.quantity,
         oDate: supplier.oDate,
         payment: supplier.payment,
       });
@@ -77,7 +73,6 @@ export class SuppliersService {
           mobile: supplier.mobile,
           address: supplier.address,
           oType: supplier.oType,
-          quantity: supplier.quantity,
           oDate: supplier.oDate,
           payment: supplier.payment
         } );
@@ -92,10 +87,6 @@ export class SuppliersService {
   deleteSupplier($key:string){
     this.supplierList.remove($key);
 
-  }
-
-  populateForm(supplier) {
-    this.form.patchValue(supplier);
   }
 
 }
