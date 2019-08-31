@@ -23,7 +23,7 @@ export class PromoService {
    form : FormGroup = new FormGroup({
  
      $key : new FormControl(null),
-     promocode : new FormControl('',[Validators.required,Validators.maxLength(5)]),
+     promocode : new FormControl('',[Validators.required,Validators.maxLength(30)]),
      discount : new FormControl('',[Validators.required])
   
    });
