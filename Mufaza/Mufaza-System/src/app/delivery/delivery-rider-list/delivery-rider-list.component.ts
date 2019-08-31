@@ -13,9 +13,9 @@ export class DeliveryRiderListComponent implements OnInit {
   constructor(private service : DeliveryService,
     private dialog: MatDialog,) { }
  
-  listData: MatTableDataSource<any>;
+  listDataa: MatTableDataSource<any>;
   
-  displayedColumns: string[] =[`riderName`,`riderAddress`,`riderMobile`,`riderEmail`,`bikenumber`,`actions`];
+  displayedColumns: string[] =[`#`,`riderName`,`riderAddress`,`riderMobile`,`riderEmail`,`bikenumber`,`actions`];
   
       @ViewChild(MatSort,{static: true}) sort: MatSort;
       @ViewChild(MatPaginator,{static: true}) paginator: MatPaginator;
@@ -26,13 +26,13 @@ export class DeliveryRiderListComponent implements OnInit {
       list => {
         let array = list.map(item =>{
           return {
-            $key: item.key,
+            $keys: item.key,
             ...item.payload.val()
           };
         });
-        this.listData = new MatTableDataSource(array);
-        this.listData.sort = this.sort;
-        this.listData.paginator = this.paginator;
+        this.listDataa = new MatTableDataSource(array);
+        this.listDataa.sort = this.sort;
+        this.listDataa.paginator = this.paginator;
       }
     );
   }
@@ -45,7 +45,7 @@ export class DeliveryRiderListComponent implements OnInit {
   }
 
   applyFilter() {
-    this.listData.filter = this.searchKey.trim().toLowerCase();
+    this.listDataa.filter = this.searchKey.trim().toLowerCase();
   }
 
   onCreate() {
@@ -53,7 +53,7 @@ export class DeliveryRiderListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
+    dialogConfig.width = "40%";
     this.dialog.open(DeliveryAddRiderComponent,dialogConfig);
   }
 
@@ -63,12 +63,12 @@ export class DeliveryRiderListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
+    dialogConfig.width = "40%";
     this.dialog.open(DeliveryAddRiderComponent,dialogConfig);
   }
 
-  onDelete($key){
-    this.service.deleteDelivery($key);
+  onDelete($keys){
+    this.service.deleteDelivery($keys);
   }
 
 }
