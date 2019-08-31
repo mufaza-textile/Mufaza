@@ -33,8 +33,8 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="">Phone Number</label>
-    <input #phone="ngModel" name="phone" [(ngModel)]="shipping.phone" type="number" size="50" pattern=".{9,10}" class="form-control-feedback" required title="3 characters minimum" required>
+    <label for="">Mobile Number</label>
+    <input #phone="ngModel" name="phone" [(ngModel)]="shipping.phone" type="number" size="50" pattern=".{9,10}" class="form-control" required title="3 characters minimum" required>
     <div class="alert alert-danger" *ngIf= "phone.invalid && (phone.dirty || phone.touched )">
       <div *ngIf="phone.errors.required">Enter a valid phone number</div>
       <div *ngIf="phone.errors.pattern">Length should be between 9 to 10</div>
