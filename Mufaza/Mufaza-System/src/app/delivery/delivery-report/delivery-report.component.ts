@@ -16,7 +16,7 @@ export class DeliveryReportComponent implements OnInit {
  
   listData: MatTableDataSource<any>;
   
-  displayedColumns: string[] =[`riderId`,`orderId`,`cusName`,`deliveryAddress`,`deliveryDate`,`actions`];
+  displayedColumns: string[] =[`#`,`riderId`,`orderId`,`cusName`,`deliveryAddress`,`deliveryDate`,`actions`];
   
       @ViewChild(MatSort,{static: true}) sort: MatSort;
       @ViewChild(MatPaginator,{static: true}) paginator: MatPaginator;
@@ -61,7 +61,7 @@ export class DeliveryReportComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
+    dialogConfig.width = "40%";
     this.dialog.open(DeliveryAllocateRiderComponent,dialogConfig);
   }
 

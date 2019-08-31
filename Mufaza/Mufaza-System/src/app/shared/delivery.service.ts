@@ -10,10 +10,10 @@ export class DeliveryService {
 
   constructor(private firebase :AngularFireDatabase) { }
 
-  deliveryList : AngularFireList<any>;
+  deliveryLists : AngularFireList<any>;
 
   form: FormGroup = new FormGroup({
-    $key: new FormControl(null),
+    $keys: new FormControl(null),
     riderName: new FormControl('', Validators.required),
     riderAddress: new FormControl(''),
     riderMobile : new FormControl('',[Validators.required,Validators.minLength(10)]),
@@ -23,7 +23,7 @@ export class DeliveryService {
 
 initializeFormGroup() {
     this.form.setValue({
-      $key: null,
+      $keys: null,
       riderName: '',
       riderAddress: '',
       riderMobile: '',
@@ -33,37 +33,37 @@ initializeFormGroup() {
   }
 
   getDelivery(){
-    this.deliveryList =this.firebase.list('delivery');
-    return this.deliveryList.snapshotChanges(); 
+    this.deliveryLists =this.firebase.list('deliveryy');
+    return this.deliveryLists.snapshotChanges(); 
   }
 
-  insertDelivery(delivery){
-    this.deliveryList.push({
-      riderName: delivery.riderName,
-      riderAddress: delivery.riderAddress,
-      riderMobile: delivery.riderMobile,
-      riderEmail: delivery.riderEmail,
-      bikenumber: delivery.bikenumber,
+  insertDelivery(deliveryy){
+    this.deliveryLists.push({
+      riderName: deliveryy.riderName,
+      riderAddress: deliveryy.riderAddress,
+      riderMobile: deliveryy.riderMobile,
+      riderEmail: deliveryy.riderEmail,
+      bikenumber: deliveryy.bikenumber,
     });
   }
 
-  updateDelivery(delivery){
-    this.deliveryList.update(delivery.$key,
+  updateDelivery(deliveryy){
+    this.deliveryLists.update(deliveryy.$keys,
       {
-        riderName: delivery.riderName,
-        riderAddress: delivery.riderAddress,
-        riderMobile: delivery.riderMobile,
-        riderEmail: delivery.riderEmail,
-        bikenumber: delivery.bikenumber
+        riderName: deliveryy.riderName,
+        riderAddress: deliveryy.riderAddress,
+        riderMobile: deliveryy.riderMobile,
+        riderEmail: deliveryy.riderEmail,
+        bikenumber: deliveryy.bikenumber
       } );
   }
 
-  populateForm(delivery) {
-    this.form.patchValue(delivery);
+  populateForm(deliveryy) {
+    this.form.patchValue(deliveryy);
   }
 
-  deleteDelivery($key:string){
-    this.deliveryList.remove($key);
+  deleteDelivery($keys:string){
+    this.deliveryLists.remove($keys);
   }
 
 }
