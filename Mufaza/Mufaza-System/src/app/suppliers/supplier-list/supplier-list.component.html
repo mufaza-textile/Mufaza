@@ -2,7 +2,7 @@
 
 <div class="search-div">
 
-  <button mat-raised-button>
+  <button mat-raised-button (click)="onCreate()">
 
     <mat-icon>add</mat-icon>Create
 
@@ -22,9 +22,9 @@
 
 </div>
 
-<div class="mat-elevation-z8">
+<div class="mat-elevation-z8 table">
 
-    <mat-table [dataSource]="listData"  matSort>
+    <mat-table DataPreview [dataSource]="listData" multiTemplateDataRows  matSort width = "100%">
   
       <ng-container matColumnDef="supName">
   
@@ -58,6 +58,22 @@
   
       </ng-container>
 
+      <ng-container matColumnDef="quantity">
+  
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</mat-header-cell>
+  
+        <mat-cell *matCellDef="let element">{{element.quantity}}</mat-cell>
+  
+      </ng-container>
+
+      <ng-container matColumnDef="oDate">
+  
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Order Date</mat-header-cell>
+  
+        <mat-cell *matCellDef="let element">{{element.oDate | date}}</mat-cell>
+  
+      </ng-container>
+
       <ng-container matColumnDef="address">
 
         <mat-header-cell *matHeaderCellDef  mat-sort-header>Address</mat-header-cell>
@@ -75,24 +91,18 @@
       </ng-container>
 
       
-    <ng-container matColumnDef="actions">
-
+      <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
-  
         <mat-cell *matCellDef="let row">
-  
-          <button mat-icon-button><mat-icon>launch</mat-icon></button>
-  
-          <button mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
-  
+          <button mat-icon-button (click)="onEdit(row)"><mat-icon>launch</mat-icon></button>
+          <button mat-icon-button color="warn" (click)="onDelete(row.$key)"><mat-icon>delete_outline</mat-icon></button>
         </mat-cell>
-  
       </ng-container>
   
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <!-- <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  
+   -->
       
    <ng-container matColumnDef="expandedDetail" class="xyz">
       <mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
@@ -150,3 +160,11 @@
     
   
   </div>
+  
+
+
+
+
+
+
+  

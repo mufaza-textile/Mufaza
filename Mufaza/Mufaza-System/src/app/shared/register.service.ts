@@ -2,13 +2,23 @@ import { Injectable } from '@angular/core';
 
 import { FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
 import { AngularFireDatabase,AngularFireList } from "angularfire2/database";
+import { __values } from 'tslib';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
-
-  constructor(private firebase :AngularFireDatabase) { }
+  array =[];
+  constructor(private firebase :AngularFireDatabase) { 
+    list => {
+      this.array = list.map(item =>{
+        return {
+          $key: item.key,
+          ...item.payload.val()
+        };
+      });
+    }
+  }
 
   registerList : AngularFireList<any>;
 
@@ -18,7 +28,6 @@ export class RegisterService {
     empId : new FormControl('',[Validators.required,Validators.maxLength(5),this.alphaNumeric('abc')]),
     position : new FormControl('',[Validators.required]),
     password : new FormControl('',[Validators.required,Validators.minLength(5)])
-    //confirmpswd : new FormControl('',[Validators.required,Validators.minLength(8)])
   
 
 
@@ -43,11 +52,9 @@ export class RegisterService {
     this.form.setValue({
 
       $key:null,
-      userName:'',
       empId:'',
-      position:0,
+      position:'',
       password:''
-     // confirmpswd:''
       
     });
 }
@@ -58,8 +65,7 @@ getInternalUsers(){
 }
 insertInternalUser(user){
   this.registerList.push({
-      userName:user.userName,
-      employeeId:user.empId,
+      userId:user.empId,
       position:user.position,
       password:user.password
   });
@@ -68,7 +74,6 @@ insertInternalUser(user){
 updateInternalUser(user){
   this.registerList.update(user.$key,
     {
-      userName:user.userName,
       employeeId:user.empId,
       position:user.position,
       password:user.password
@@ -77,5 +82,9 @@ updateInternalUser(user){
 
 deleteInternalUser($key: string){
   this.registerList.remove($key);
+}
+
+populateForm(user){
+  this.form.patchValue(user);
 }
 }

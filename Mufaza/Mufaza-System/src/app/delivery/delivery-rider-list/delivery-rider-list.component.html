@@ -29,7 +29,7 @@
 
     <div class="mat-elevation-z8">
 
-      <mat-table [dataSource]="listDataa"  matSort>
+      <mat-table [dataSource]="listData"  matSort>
 
           <ng-container matColumnDef="#">
     
@@ -88,7 +88,7 @@
     
             <button mat-icon-button (click)="onEdit(row)" ><mat-icon>launch</mat-icon></button>
     
-            <button mat-icon-button color="warn" (click)="onDelete(row.$keys)"><mat-icon>delete_outline</mat-icon></button>
+            <button mat-icon-button color="warn" (click)="onDelete(row.$key)"><mat-icon>delete_outline</mat-icon></button>
     
           </mat-cell>
     

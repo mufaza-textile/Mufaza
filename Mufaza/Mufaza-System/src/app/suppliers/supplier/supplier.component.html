@@ -1,3 +1,8 @@
+<mat-toolbar>
+  <span>{{service.form.controls['$key'].value?"Modify Supplier":"New Supplier"}}</span>
+  <span class="fill-remaining-space"></span>
+  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
 <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()">
     <mat-grid-list cols="2" rowHeight="300px">
       <mat-grid-tile>
@@ -34,6 +39,11 @@
                         </ng-container>
                 </mat-select>
             </mat-form-field>
+
+            <mat-form-field>
+              <input formControlName="quantity" matInput placeholder="Quantity" type="number">
+              <mat-error *ngIf="service.form.controls['quantity'].errors?.required">This field is mandatory.</mat-error>
+           </mat-form-field>
 
             <mat-form-field>
                     <input formControlName="oDate" matInput [matDatepicker]="picker" placeholder="Order Date">

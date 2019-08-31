@@ -16,7 +16,6 @@ import { PromoComponent } from './promo/promo.component';
 const routes: Routes = [
   {path: 'suppliers', component: SuppliersComponent},
   {path: 'product', component: AddProductFormComponent},
-  {path: 'delivery', component: DeliveryComponent}
   {path: 'delivery', component: DeliveryComponent},
   {path: 'employees', component: EmployeesComponent},
   {path: 'internal-user', component: InternalUserComponent},
