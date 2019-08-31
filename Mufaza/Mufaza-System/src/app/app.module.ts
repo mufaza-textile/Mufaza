@@ -42,6 +42,7 @@ import { PromoService } from './shared/promo.service';
 
 import { SuppliesComponent } from './suppliers/supplies/supplies.component';
 import { SuppliesService } from "./shared/supplies.service";
+import { TailoringService } from "./shared/tailoring.service";
 
 
 @NgModule({
@@ -93,6 +94,7 @@ import { SuppliesService } from "./shared/supplies.service";
       DatePipe,
       DeliveryService,
       SuppliesService,
+      TailoringService,
 
       PromoService
 

@@ -1,1 +1,104 @@
-<p>tailoring works!</p>
+<form [formGroup] ="service.form" class="normal-form">
+
+    <mat-grid-list cols="2" rowHeight="350px">
+
+        <mat-grid-tile>
+            <div class="controles-container2">
+                <input type="hidden" formControlName="$key">
+
+                <mat-form-field>
+                    <input formControlName="orderID" matInput placeholder="Order ID*">
+                    <mat-error>This field is mandatory.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                        <input formControlName="customerID" matInput placeholder="Customer ID*">
+                        <mat-error>This field is mandatory.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                        <input formControlName="username" matInput placeholder="Username*">
+                        <mat-error>This field is mandatory.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                        <mat-select formControlName="chest" placeholder="Chest">
+                            <mat-option>None</mat-option>
+                                <ng-container *ngFor="let chest of chests">
+                                    <mat-option value="{{chest.id}}">{{chest.value}}</mat-option>
+                                </ng-container>
+                        </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                        <mat-select formControlName="shoulder" placeholder="Shoulder">
+                            <mat-option>None</mat-option>
+                                <ng-container *ngFor="let shoulder of shoulders">
+                                    <mat-option value="{{shoulder.id}}">{{shoulder.value}}</mat-option>
+                                </ng-container>
+                        </mat-select>
+                </mat-form-field>
+
+
+
+            </div>
+
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <div class="controles-container">
+
+                <mat-form-field>
+                            <mat-select formControlName="arms" placeholder="Arms">
+                                <mat-option>None</mat-option>
+                                    <ng-container *ngFor="let arms of armss">
+                                        <mat-option value="{{arms.id}}">{{arms.value}}</mat-option>
+                                    </ng-container>
+                            </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                        <mat-select formControlName="frontNeck" placeholder="Front Neck">
+                            <mat-option>None</mat-option>
+                                <ng-container *ngFor="let frontNeck of frontNecks">
+                                    <mat-option value="{{frontNeck.id}}">{{frontNeck.value}}</mat-option>
+                                </ng-container>
+                        </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                    <mat-select formControlName="backNeck" placeholder="Back Neck">
+                        <mat-option>None</mat-option>
+                            <ng-container *ngFor="let backNeck of backNecks">
+                                <mat-option value="{{backNeck.id}}">{{backNeck.value}}</mat-option>
+                            </ng-container>
+                    </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                    <mat-select formControlName="length" placeholder="Length">
+                        <mat-option>None</mat-option>
+                            <ng-container *ngFor="let length of lengths">
+                                <mat-option value="{{length.id}}">{{length.value}}</mat-option>
+                            </ng-container>
+                    </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input formControlName="deliveryDate" matInput [matDatepicker]="picker" placeholder="Delivery Date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <div class="button-row">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+                    <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+            </div>
+
+
+
+            </div>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+</form>
