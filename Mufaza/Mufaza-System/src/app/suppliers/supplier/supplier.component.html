@@ -20,17 +20,18 @@
                 <mat-error>Invalid Email</mat-error>
           </mat-form-field>
           <mat-form-field>
-                <input formControlName="mobile" matInput placeholder="Mobile" type="number">
-                <mat-error *ngIf="service.form.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
-                <mat-error *ngIf="service.form.controls['mobile'].errors?.minlength">10 characters required</mat-error>
-          </mat-form-field>
-          <mat-form-field>
-                <input formControlName="address" matInput placeholder="Address">
-          </mat-form-field>
+              <input formControlName="mobile" matInput placeholder="Mobile" type="number">
+              <mat-error *ngIf="service.form.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
+              <mat-error *ngIf="service.form.controls['mobile'].errors?.minlength">10 characters required</mat-error>
+        </mat-form-field>
         </div>
       </mat-grid-tile>
       <mat-grid-tile>
         <div class="controles-container">
+
+          <mat-form-field>
+                <input formControlName="address" matInput placeholder="Address">
+          </mat-form-field>
             <mat-form-field>
                 <mat-select formControlName="oType" placeholder="Order Type">
                     <mat-option>None</mat-option>
@@ -38,23 +39,6 @@
                             <mat-option value="{{oType.$key}}">{{oType.name}}</mat-option>
                         </ng-container>
                 </mat-select>
-            </mat-form-field>
-
-            <mat-form-field>
-              <input formControlName="quantity" matInput placeholder="Quantity" type="number">
-              <mat-error *ngIf="service.form.controls['quantity'].errors?.required">This field is mandatory.</mat-error>
-           </mat-form-field>
-
-            <mat-form-field>
-                    <input formControlName="oDate" matInput [matDatepicker]="picker" placeholder="Order Date">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-
-            <mat-form-field>
-                    <input formControlName="payment" matInput placeholder="Payment" type="number"  class="example-right-align">
-                    <span matPrefix>RS&nbsp;</span>
-                    <span matSuffix>.00</span>
             </mat-form-field>
 
             <div class="button-row">
