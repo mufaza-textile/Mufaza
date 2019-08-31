@@ -18,7 +18,7 @@ export class DeliveryAddService {
     orderId: new FormControl('',Validators.required),
     cusName : new FormControl(''),
     deliveryAddress : new FormControl(''),
-    deliveryDate: new FormControl('', Validators.required)
+    deliveryDate: new FormControl('',)
   });
 
 initializeFormGroup() {

@@ -27,8 +27,7 @@
             </mat-form-field>
                         
             <mat-form-field>
-                <input formControlName="riderMobile" matInput placeholder="Mobile" type="number">
-                <mat-error *ngIf="service.form.controls['riderMobile'].errors?.required">This field is mandatory.</mat-error>
+                <input formControlName="riderMobile" matInput placeholder="Mobile">
                 <mat-error *ngIf="service.form.controls['riderMobile'].errors?.minlength">10 characters required</mat-error>
             </mat-form-field>
       
