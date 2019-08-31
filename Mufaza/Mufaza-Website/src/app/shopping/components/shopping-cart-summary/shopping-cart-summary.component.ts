@@ -3,7 +3,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {PromotionService} from 'shared/services/promotion.service';
 import {Promotions} from 'shared/models/Promotions';
 import { FirebaseListObservable } from 'angularfire2/database';
-import{ShoppingCartSummary} from '../../../shared/models/shopping-cart-summary';
 import { NewPriceService } from 'shared/services/new-price.service';
 
 @Component({

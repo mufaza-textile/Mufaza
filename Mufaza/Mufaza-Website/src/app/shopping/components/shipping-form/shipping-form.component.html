@@ -32,6 +32,13 @@
       <div *ngIf="city.errors.required">City is required.</div>
     </div>
   </div>
+  <div class="form-group">
+    <label for="">Phone Number</label>
+    <input #phone="ngModel" name="phone" [(ngModel)]="shipping.phone" type="number" class="form-control" required>
+    <div class="alert alert-danger" *ngIf="phone.touched && phone.invalid">
+      <div *ngIf="phone.errors.required">Phone Number is required.</div>
+    </div>
+  </div>
   <button 
     [disabled]="!f.valid"
     (click)="placeOrder()"

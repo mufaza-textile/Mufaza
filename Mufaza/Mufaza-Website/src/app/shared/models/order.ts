@@ -1,7 +1,6 @@
 import { ShoppingCart } from './shopping-cart';
 import { ShoppingCartSummaryComponent } from 'app/shopping/components/shopping-cart-summary/shopping-cart-summary.component';
 import { ViewChild, AfterContentChecked, AfterViewChecked, AfterViewInit } from '@angular/core';
-import { ShoppingCartSummary } from './shopping-cart-summary';
 
 export class Order{
 

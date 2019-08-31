@@ -8,7 +8,6 @@ import { Order } from "../../../shared/models/order";
 import { ShoppingCartSummaryComponent } from '../shopping-cart-summary/shopping-cart-summary.component';
 import { FormGroup } from '@angular/forms';
 import { SummaryResolver } from '@angular/compiler';
-import { ShoppingCartSummary } from 'shared/models/shopping-cart-summary';
 import { NewPriceService } from 'shared/services/new-price.service';
 
 @Component({
