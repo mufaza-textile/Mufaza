@@ -43,6 +43,10 @@ import { PromoService } from './shared/promo.service';
 import { SuppliesComponent } from './suppliers/supplies/supplies.component';
 import { SuppliesService } from "./shared/supplies.service";
 import { TailoringService } from "./shared/tailoring.service";
+import { ModifyProductComponent } from './products/modify-product/modify-product.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductComponent } from './products/product/product.component';
+import { ProductListComponent } from './products/product-list/product-list.component';
 
 
 @NgModule({
@@ -51,6 +55,8 @@ import { TailoringService } from "./shared/tailoring.service";
       SuppliersComponent,
       SupplierComponent,
       AddProductFormComponent,
+      ProductsComponent,
+      ProductComponent,
       InternalUserComponent,
       RegisterComponent,
       SupplierListComponent,
@@ -69,10 +75,10 @@ import { TailoringService } from "./shared/tailoring.service";
       PromoComponent,
       PromoListComponent,
       PromocodeComponent,
-
-
-
-      SuppliesComponent
+      SuppliesComponent,
+      ProductListComponent,
+      ModifyProductComponent,
+      
 
    ],
    imports: [
@@ -104,6 +110,7 @@ import { TailoringService } from "./shared/tailoring.service";
    ],
    entryComponents: [
       SupplierComponent,
+      ProductComponent,
       InternalUserComponent,
       EmployeeComponent,
       RegisterComponent,

@@ -30,7 +30,7 @@ export class SupplierListComponent implements OnInit {
 
   listData: MatTableDataSource<any>;
   
-  displayedColumns: string[] =[`supName`,`compName`,`oDate`,`quantity`,`payment`,`actions`];
+  displayedColumns: string[] =[`supName`,`compName`,`email`,`mobile`,`address`,`actions`];
 
 
   key : string;

@@ -26,7 +26,7 @@ export class ShoppingCartSummaryComponent implements OnInit{
 }
 
 ngOnInit(){
-
+this.promotionService.getPromocodes
 }
 
   promotion(promocode: string){
@@ -36,6 +36,18 @@ ngOnInit(){
       this.promo = true;
       this.error = false;
       this.newPrice = (this.cart.totalPrice - (this.cart.totalPrice * 0.1));
+      this.sharedService.addnewprice(this.newPrice);
+    }
+    else if(this.promocode === "20off") {
+      this.promo = true;
+      this.error = false;
+      this.newPrice = (this.cart.totalPrice - (this.cart.totalPrice * 0.2));
+      this.sharedService.addnewprice(this.newPrice);
+    }
+    else if(this.promocode === "30off") {
+      this.promo = true;
+      this.error = false;
+      this.newPrice = (this.cart.totalPrice - (this.cart.totalPrice * 0.3));
       this.sharedService.addnewprice(this.newPrice);
     }
     else {

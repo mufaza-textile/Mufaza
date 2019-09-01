@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
+import { OrderService } from './order.service';
+import { ShoppingCartService } from './shopping-cart.service';
 
 
 @Injectable()
 export class PromotionService {
-  private basePath: string = '/promotions/';
 
   promocode: FirebaseObjectObservable<any>;
 
   promocodes: FirebaseListObservable<any[]>;
 
-  constructor( private db: AngularFireDatabase) {
+  constructor( public af: AngularFireDatabase) {
+    this.promocodes = this.af.list('/promotions');
   
   }
 
   getPromocodes(){
-   this.promocodes = this.db.list(this.basePath);
     return this.promocodes;
   }
 
