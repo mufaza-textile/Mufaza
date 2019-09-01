@@ -75,15 +75,10 @@ import { ProductListComponent } from './products/product-list/product-list.compo
       PromoComponent,
       PromoListComponent,
       PromocodeComponent,
-
-
-
       SuppliesComponent,
-
-
-
+      ProductListComponent,
       ModifyProductComponent,
-      ProductListComponent
+      
 
    ],
    imports: [

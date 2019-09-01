@@ -17,7 +17,8 @@
                     <input [(ngModel)]="price" formControlName="price" matInput placeholder="Price" type="number">
                       <span matPrefix>LKR&nbsp;</span>
                       <span matSuffix>.00</span>
-                      <mat-error>This field is mandatory.</mat-error>
+                      <mat-error *ngIf="service.form.controls['price'].errors?.required">This field is mandatory.</mat-error>
+              <mat-error *ngIf="service.form.controls['price'].errors?.min">Price cannot be a negative value</mat-error>
                     </mat-form-field>
                             
                     <mat-form-field>
