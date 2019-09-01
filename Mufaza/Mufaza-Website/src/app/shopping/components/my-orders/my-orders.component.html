@@ -4,6 +4,7 @@
     <tr>
       <th>Customer Name</th>
       <th>Date</th>
+      <th>New Price</th>
       <th></th>
     </tr>
   </thead> 
@@ -11,6 +12,7 @@
     <tr *ngFor="let order of orders$ | async">
       <td>{{ order.shipping.name }}</td>
       <td>{{ order.datePlaced | date}}</td>
+      <td>{{ order.newprice}}</td>
       <td>
         <a href="https://console.firebase.google.com/project/mufaza-textile/database/mufaza-textile/data">View</a>
       </td>
