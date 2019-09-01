@@ -53,7 +53,7 @@ initializeFormGroup() {
       title: product.title,
       price: product.price,
       category: product.category,
-      imgUrl: product.imgUrl,
+      imageUrl: product.imgUrl,
     });
   }
 
@@ -63,7 +63,7 @@ initializeFormGroup() {
         title: product.title,
       price: product.price,
       category: product.category,
-      imgUrl: product.imgUrl,
+      imageUrl: product.imgUrl,
       } );
   }
 
