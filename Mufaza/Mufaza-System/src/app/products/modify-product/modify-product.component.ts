@@ -4,20 +4,17 @@ import { OrderTypesService } from "../../shared/order-types.service";
 import { ProductService } from '../../shared/product.service';
 import { NotifcationService } from "../../shared/notifcation.service";
 import { MatTableDataSource,MatSort,MatPaginator, MatDialogConfig, MatDialog } from "@angular/material";
-import { ModifyProductComponent } from '../modify-product/modify-product.component';
-
 
 @Component({
-  selector: 'app-add-product-form',
-  templateUrl: './add-product-form.component.html',
-  styleUrls: ['./add-product-form.component.css']
+  selector: 'app-modify-product',
+  templateUrl: './modify-product.component.html',
+  styleUrls: ['./modify-product.component.css']
 })
-export class AddProductFormComponent implements OnInit {
+export class ModifyProductComponent implements OnInit {
 
-  constructor(private service: ProductService, 
-    private ordType : OrderTypesService, 
-    private notificationService : NotifcationService,
-     private dialog: MatDialog,) { }
+  
+  constructor(private service: ProductService, private ordType : OrderTypesService, 
+    private notificationService : NotifcationService, private dialog: MatDialog,) { }
 
   
   listData: MatTableDataSource<any>;
