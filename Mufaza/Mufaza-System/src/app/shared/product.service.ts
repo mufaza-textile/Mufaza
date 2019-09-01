@@ -11,16 +11,16 @@ export class ProductService {
   array=[];
   
   constructor(private firebase :AngularFireDatabase) {
-    this.departmentList = this.firebase.list('products');
-    this.departmentList.snapshotChanges().subscribe(
-      list => {
-        this.array = list.map(item =>{
-          return {
-            $key: item.key,
-            ...item.payload.val()
-          };
-        });
-      });
+    // this.departmentList = this.firebase.list('products');
+    // this.departmentList.snapshotChanges().subscribe(
+    //   list => {
+    //     this.array = list.map(item =>{
+    //       return {
+    //         $key: item.key,
+    //         ...item.payload.val()
+    //       };
+    //     });
+    //   });
    }
 
   productList : AngularFireList<any>;
@@ -28,7 +28,7 @@ export class ProductService {
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
     title: new FormControl('', Validators.required),
-    price: new FormControl('', Validators.required),
+    price: new FormControl('', [Validators.required, Validators.min(0)]),
     category: new FormControl('0'),
     imgUrl: new FormControl('')
   });
@@ -61,9 +61,9 @@ initializeFormGroup() {
     this.productList.update(product.$key,
       {
         title: product.title,
-      price: product.price,
-      category: product.category,
-      imgUrl: product.imgUrl,
+        price: product.price,
+        category: product.category,
+        imgUrl: product.imgUrl,
       } );
   }
 
@@ -71,4 +71,7 @@ initializeFormGroup() {
     this.productList.remove($key);
   }
 
+  populateForm(product) {
+    this.form.patchValue(product);
+  }
 }

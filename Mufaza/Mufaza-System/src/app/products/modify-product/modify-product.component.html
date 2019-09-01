@@ -1,82 +1,8 @@
-<mat-tab-group>
-  
-  <mat-tab label="Products Report">
-    <mat-toolbar>
-        <span class="fill-remaining-space"></span>
-        <span>Products Report</span>
-        <span class="fill-remaining-space"></span>
-    </mat-toolbar>
-<br>
-    <mat-form-field class="search-form-field" floatLabel="never">
-
-      <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
-  
-      <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey"  (click)="onSearchClear()">
-  
-        <mat-icon>close</mat-icon>
-  
-      </button>
-  
-    </mat-form-field>
-<br><br>
-      <div class="mat-elevation-z8">
-
-          <mat-table [dataSource]="listData"  matSort>
-
-              <ng-container matColumnDef="#">
-        
-                  <mat-header-cell *matHeaderCellDef  mat-sort-header>#</mat-header-cell>
-            
-                  <mat-cell *matCellDef="let element; index as i">{{i + 1}}</mat-cell>
-            
-                </ng-container>
-        
-            <ng-container matColumnDef="title">
-        
-              <mat-header-cell *matHeaderCellDef  mat-sort-header>Title</mat-header-cell>
-        
-              <mat-cell *matCellDef="let element">{{element.title}}</mat-cell>
-        
-            </ng-container>
-      
-            <ng-container matColumnDef="price">
-      
-              <mat-header-cell *matHeaderCellDef  mat-sort-header>Price</mat-header-cell>
-        
-              <mat-cell *matCellDef="let element">{{element.price}}</mat-cell>
-        
-            </ng-container>
-      
-          <ng-container matColumnDef="actions">
-      
-              <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        
-              <mat-cell *matCellDef="let row">
-        
-                <button mat-icon-button (click)="onEdit(row)"><mat-icon>launch</mat-icon></button>
-        
-                <button mat-icon-button color="warn" (click)="onDelete(row.$key)"><mat-icon>delete_outline</mat-icon></button>
-        
-              </mat-cell>
-        
-            </ng-container>
-        
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        
-            
-          </mat-table>
-          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
-      </div>
-   </mat-tab>
-
-  <mat-tab label="Add Product"> 
-      <mat-toolbar>
+      <!-- <mat-toolbar>
         <span class="fill-remaining-space"></span>
         <span>Add New Product Form</span>
         <span class="fill-remaining-space"></span>
-      </mat-toolbar>
+      </mat-toolbar> -->
       <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()" style="padding-left : 5%">
         <mat-grid-list cols="2" rowHeight="400px" rowWidth="400px">
           <mat-grid-tile>
@@ -119,20 +45,13 @@
           <mat-grid-tile>
             <div class="controles-container">
               <div class="card" style="width: 290px; height:400px">
-                  <!-- <span class="border border-primary"> -->
                   <img [src] = "imgUrl" width="280px" height="300px" style="padding : 5px 5px 5px 5px;" class="card-img-top" class="rounded">
                     <div class="card-body">
                       <h3 class="card-title"><b>{{title}} </b> </h3>
                       <h4 class="card-text"> {{price | currency : 'LKR ' : true}}</h4>
                     </div>
-                  <!-- </span> -->
                 </div>
               </div>
             </mat-grid-tile>
           </mat-grid-list>  
-        </form>     
-  </mat-tab>
-
-  
-</mat-tab-group>
-<app-modify-product></app-modify-product>
+        </form>  
