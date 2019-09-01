@@ -75,7 +75,7 @@ export class AuthService {
          this.ngZone.run(() => {
            this.router.navigate(['dashboard']);
          });
-        // this.SetUserData(result.user);
+        this.SetUserData(result.user);
        }).catch((error) => {
          window.alert(error.message)
        })
@@ -98,7 +98,7 @@ export class AuthService {
    SendVerificationMail() {
      return this.afAuth.auth.currentUser.sendEmailVerification()
      .then(() => {
-       this.router.navigate(['verify-email-address']);
+       this.router.navigate(['verifyemail']);
      })
    }
  

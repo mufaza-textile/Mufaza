@@ -74,7 +74,7 @@ insertInternalUser(user){
 updateInternalUser(user){
   this.registerList.update(user.$key,
     {
-      employeeId:user.empId,
+      userId:user.empId,
       position:user.position,
       password:user.password
     })
