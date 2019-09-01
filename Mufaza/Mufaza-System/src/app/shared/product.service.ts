@@ -11,16 +11,16 @@ export class ProductService {
   array=[];
   
   constructor(private firebase :AngularFireDatabase) {
-    this.departmentList = this.firebase.list('products');
-    this.departmentList.snapshotChanges().subscribe(
-      list => {
-        this.array = list.map(item =>{
-          return {
-            $key: item.key,
-            ...item.payload.val()
-          };
-        });
-      });
+    // this.departmentList = this.firebase.list('products');
+    // this.departmentList.snapshotChanges().subscribe(
+    //   list => {
+    //     this.array = list.map(item =>{
+    //       return {
+    //         $key: item.key,
+    //         ...item.payload.val()
+    //       };
+    //     });
+    //   });
    }
 
   productList : AngularFireList<any>;
@@ -71,4 +71,7 @@ initializeFormGroup() {
     this.productList.remove($key);
   }
 
+  populateForm(product) {
+    this.form.patchValue(product);
+  }
 }
