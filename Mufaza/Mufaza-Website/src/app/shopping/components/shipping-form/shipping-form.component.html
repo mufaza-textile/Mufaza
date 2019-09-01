@@ -1,7 +1,7 @@
 <form #f="ngForm">
     <button
     (click)="f.reset({})"
-    class="float-right btn btn-outline-danger btn-sm"
+    class="btn btn-secondary"
     style="margin-left: 450px"
     [disabled] = "!form-group">Reset</button>
   <div class="form-group">
@@ -41,10 +41,10 @@
 
     </div>
   </div>
-  <button
+  <button 
     [disabled]="!f.valid"
     (click)="placeOrder()"
     class="btn btn-primary">Place Order</button>
+   
 
-
-</form>
+</form>    

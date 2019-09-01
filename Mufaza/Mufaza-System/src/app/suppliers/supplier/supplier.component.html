@@ -20,7 +20,7 @@
                 <mat-error>Invalid Email</mat-error>
           </mat-form-field>
           <mat-form-field>
-              <input formControlName="mobile" matInput placeholder="Mobile" >
+              <input formControlName="mobile" matInput placeholder="Mobile" type="number">
               <mat-error *ngIf="service.form.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
               <mat-error *ngIf="service.form.controls['mobile'].errors?.minlength">10 characters required</mat-error>
         </mat-form-field>

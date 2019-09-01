@@ -26,7 +26,7 @@ export class ShoppingCartSummaryComponent implements OnInit{
 }
 
 ngOnInit(){
-
+this.promotionService.getPromocodes
 }
 
   promotion(promocode: string){

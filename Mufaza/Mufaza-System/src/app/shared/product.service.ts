@@ -28,7 +28,7 @@ export class ProductService {
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
     title: new FormControl('', Validators.required),
-    price: new FormControl('', Validators.required),
+    price: new FormControl('', [Validators.required, Validators.min(0)]),
     category: new FormControl('0'),
     imgUrl: new FormControl('')
   });
