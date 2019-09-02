@@ -35,12 +35,12 @@ form.normal-form{
 
 
 snack-bar-container.success{
-    background-color: green;
+    background-color: rgb(16, 35, 147);
     color: #fff;
 }
 
 snack-bar-container.notification simple-snack-bar{
-    font-size: 18px !important;
+    font-size: 20px !important;
     font-weight: bold;
 }
 
@@ -62,7 +62,6 @@ mat-footer-row mat-footer-cell{
 }
 
 
-
 /* filter controls */
 
 .search-div{
@@ -79,7 +78,9 @@ mat-footer-row mat-footer-cell{
 
           padding: 5px 10px;
 
-          background-color: #f5f5f5;
+          background-color: #fffefe;
+
+          border-color: #165be4;
 
           border-radius: 5px;
 
@@ -128,7 +129,7 @@ mat-footer-row mat-footer-cell{
 }
 .confirm-dialog-container .content-container{
     margin: 5px 5px 15px 5px;
-    color: #8f9cb5;
+    color: #ffffff;
     display: flex;
 }
 .confirm-dialog-container #close-icon{

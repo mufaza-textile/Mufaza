@@ -8,6 +8,10 @@ import { AddProductFormComponent } from "./products/add-product-form/add-product
 import {RegisterComponent} from "./internal-user/register/register.component";
 import { DeliveryComponent } from './delivery/delivery.component';
 import { EmployeesComponent } from './employees/employees.component';
+
+import { InternalUserComponent} from './internal-user/internal-user.component'
+import { EmployeesalaryComponent } from './employeesalary/employeesalary.component';
+
 import { InternalUserComponent} from './internal-user/internal-user.component';
 import { TailoringsComponent } from "./tailorings/tailorings.component";
 import { SuppliesComponent } from "./suppliers/supplies/supplies.component";
@@ -19,6 +23,7 @@ const routes: Routes = [
   {path: 'products', component: ProductsComponent},
   {path: 'delivery', component: DeliveryComponent},
   {path: 'employees', component: EmployeesComponent},
+  {path: 'employeesalary', component: EmployeesalaryComponent},
   {path: 'internal-user', component: InternalUserComponent},
   {path: 'tailoring', component: TailoringsComponent},
   {path: 'supplies', component: SuppliesComponent},

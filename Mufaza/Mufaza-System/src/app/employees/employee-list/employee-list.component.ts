@@ -5,11 +5,20 @@ import { MatTableDataSource, MatSort, MatPaginator} from '@angular/material';
 import { MatDialog,MatDialogConfig} from "@angular/material";
 import { EmployeeComponent } from '../employee/employee.component';
 import { NotifcationService} from 'src/app/shared/notifcation.service';
+import { state, trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.css']
+  styleUrls: ['./employee-list.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0', display: 'none'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('150ms cubic-bezier(0.4, 0.0, 1, 1)')),
+  ]),
+],
+
 })
 export class EmployeeListComponent implements OnInit {
   dialogService: any;
@@ -46,6 +55,8 @@ export class EmployeeListComponent implements OnInit {
         this.listData.sort= this.sort;
         this.listData.paginator=this.paginator
       });
+    
+      
       
   }
  
@@ -79,7 +90,17 @@ export class EmployeeListComponent implements OnInit {
     onDelete($key){
     
           this.service.deleteEmployee($key);
+           {
+            if(confirm("Are you sure to delete ? ")) {
+              console.log("Implement delete functionality here");
+             
+             } else {
+               (confirm("You pressed Cancel!"));
+           }}
+              
+            }
+          }
           
     
-    }
-  } 
+    
+  
