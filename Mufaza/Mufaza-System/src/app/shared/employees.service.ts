@@ -99,7 +99,7 @@ export class EmployeesService {
 
 
   populateForm(employee){
-  this.form.patchValue(employee); //department which is to be ommited
+  this.form.setValue(employee); //department which is to be ommited
 }
 
 

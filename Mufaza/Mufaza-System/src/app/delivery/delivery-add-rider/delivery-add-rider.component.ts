@@ -30,7 +30,7 @@ export class DeliveryAddRiderComponent implements OnInit {
   
     onSubmit(){
       if(this.service.form.valid){
-        if (!this.service.form.get('$key').value)
+        if (!this.service.form.get('$keys').value)
         this.service.insertDelivery(this.service.form.value)
         else
         this.service.updateDelivery(this.service.form.value);

@@ -1,0 +1,155 @@
+
+
+
+
+<form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()">
+    <mat-grid-list cols="2" rowHeight="300px">
+        
+      <mat-grid-tile>
+        <div class="controles-container">
+           
+
+            <mat-form-field>
+              <input formControlName="quantity" matInput placeholder="Quantity" type="number">
+              <mat-error *ngIf="service.form.controls['quantity'].errors?.required">This field is mandatory.</mat-error>
+           </mat-form-field>
+           <mat-form-field>
+            <input formControlName="oDate" matInput [matDatepicker]="picker" placeholder="Order Date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+           </mat-form-field>
+
+            <mat-form-field>
+                    <input formControlName="payment" matInput placeholder="Payment" type="number"  class="example-right-align">
+                    <span matPrefix>RS&nbsp;</span>
+                    <span matSuffix>.00</span>
+            </mat-form-field>
+
+            <div class="button-row">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+                    <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+            </div>
+
+
+
+
+
+
+
+
+        </div>       
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="mat-elevation-z8 table">
+
+    <mat-table DataPreview [dataSource]="listData"   matSort width = "100%">
+  
+
+
+      <ng-container matColumnDef="quantity">
+  
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</mat-header-cell>
+  
+        <mat-cell *matCellDef="let element">{{element.quantity}}</mat-cell>
+  
+      </ng-container>
+
+      <ng-container matColumnDef="oDate">
+  
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Order Date</mat-header-cell>
+  
+        <mat-cell *matCellDef="let element">{{element.oDate | date}}</mat-cell>
+  
+      </ng-container>
+
+
+      <ng-container matColumnDef="payment">
+
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>Payment</mat-header-cell>
+  
+        <mat-cell *matCellDef="let element">{{element.payment}}</mat-cell>
+  
+      </ng-container>
+
+      
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-icon-button (click)="onEdit(row)"><mat-icon>launch</mat-icon></button>
+          <button mat-icon-button color="warn" (click)="onDelete(row.$key)"><mat-icon>delete_outline</mat-icon></button>
+        </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  
+      
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+
+    
+  
+  </div>
+  

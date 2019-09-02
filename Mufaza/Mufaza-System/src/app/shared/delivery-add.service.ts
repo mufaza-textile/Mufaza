@@ -16,9 +16,9 @@ export class DeliveryAddService {
     $key: new FormControl(null),
     riderId: new FormControl('', Validators.required),
     orderId: new FormControl('',Validators.required),
-    cusName : new FormControl('',Validators.required),
+    cusName : new FormControl(''),
     deliveryAddress : new FormControl(''),
-    deliveryDate: new FormControl('', Validators.required)
+    deliveryDate: new FormControl('',)
   });
 
 initializeFormGroup() {

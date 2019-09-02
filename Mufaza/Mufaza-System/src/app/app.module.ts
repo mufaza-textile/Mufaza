@@ -33,6 +33,7 @@ import { DepartmentService } from './shared/department.service';
 import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
 import {UserListComponent} from './internal-user/user-list/user-list.component';
 import { DeliveryService } from './shared/delivery.service';
+
 import { EmployeesalaryComponent } from './employeesalary/employeesalary.component';
 import { SalaryComponent } from './employeesalary/salary/salary.component';
 
@@ -58,8 +59,7 @@ import { SalaryComponent } from './employeesalary/salary/salary.component';
     EmployeesalaryComponent,
     SalaryComponent, 
   ],
-
-  imports: [
+imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
@@ -77,4 +77,3 @@ import { SalaryComponent } from './employeesalary/salary/salary.component';
     entryComponents:[SupplierComponent,InternalUserComponent,EmployeesalaryComponent,EmployeeComponent,RegisterComponent,DeliveryAddRiderComponent,DeliveryAllocateRiderComponent, MatConfirmDialogComponent]
 })
 export class AppModule { }
-  

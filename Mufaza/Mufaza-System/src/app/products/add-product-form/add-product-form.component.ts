@@ -3,7 +3,8 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import { OrderTypesService } from "../../shared/order-types.service";
 import { ProductService } from '../../shared/product.service';
 import { NotifcationService } from "../../shared/notifcation.service";
-import { MatTableDataSource,MatSort,MatPaginator } from "@angular/material";
+import { MatTableDataSource,MatSort,MatPaginator, MatDialogConfig, MatDialog } from "@angular/material";
+import { ModifyProductComponent } from '../modify-product/modify-product.component';
 
 
 @Component({
@@ -13,7 +14,10 @@ import { MatTableDataSource,MatSort,MatPaginator } from "@angular/material";
 })
 export class AddProductFormComponent implements OnInit {
 
-  constructor(private service: ProductService, private ordType : OrderTypesService, private notificationService : NotifcationService) { }
+  constructor(private service: ProductService, 
+    private ordType : OrderTypesService, 
+    private notificationService : NotifcationService,
+     private dialog: MatDialog,) { }
 
   
   listData: MatTableDataSource<any>;
@@ -22,6 +26,7 @@ export class AddProductFormComponent implements OnInit {
   
       @ViewChild(MatSort,{static: true}) sort: MatSort;
       @ViewChild(MatPaginator,{static: true}) paginator: MatPaginator;
+      searchKey: string;
   ngOnInit() {
     this.service.getProducts().subscribe(
       list => {
@@ -55,7 +60,34 @@ onClear() {
 
   }
 
+  onSearchClear() {
+    this.searchKey = "";
+    this.applyFilter();
+  }
+
+  applyFilter() {
+    this.listData.filter = this.searchKey.trim().toLowerCase();
+  }
+
   onDelete($key){
     this.service.deleteProduct($key);
+  }
+
+  onCreate() {
+    this.service.initializeFormGroup();
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    this.dialog.open(ModifyProductComponent,dialogConfig);
+  }
+
+  onEdit(row){
+    this.service.populateForm(row);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    this.dialog.open(ModifyProductComponent,dialogConfig);
   }
 }
