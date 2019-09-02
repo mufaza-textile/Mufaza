@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule  } from "@angular/platform-browser/animations";
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database";
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SuppliersComponent } from './suppliers/suppliers.component';
@@ -13,7 +12,7 @@ import { SupplierComponent } from './suppliers/supplier/supplier.component';
 import { SuppliersService } from './shared/suppliers.service';
 import { environment } from "../environments/environment";
 import { OrderTypesService } from "./shared/order-types.service";
-import { AddProductFormComponent } from './products/add-product-form/add-product-form.component';
+
 import { ProductService } from './shared/product.service';
 import { InternalUserComponent } from './internal-user/internal-user.component';
 import { RegisterComponent } from './internal-user/register/register.component';
@@ -33,16 +32,18 @@ import { DepartmentService } from './shared/department.service';
 import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
 import {UserListComponent} from './internal-user/user-list/user-list.component';
 import { DeliveryService } from './shared/delivery.service';
-
 import { EmployeesalaryComponent } from './employeesalary/employeesalary.component';
 import { SalaryComponent } from './employeesalary/salary/salary.component';
+import { SuppliesComponent } from './suppliers/supplies/supplies.component';
+import { PromoComponent } from './promo/promo.component';
+import { PromoListComponent } from './promo/promo-list/promo-list.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SuppliersComponent,
     SupplierComponent,
-    AddProductFormComponent,
     InternalUserComponent,
     RegisterComponent,
     SupplierListComponent,
@@ -57,7 +58,15 @@ import { SalaryComponent } from './employeesalary/salary/salary.component';
     MatConfirmDialogComponent,
     UserListComponent,
     EmployeesalaryComponent,
+    PromoComponent,
+    PromoListComponent,
     SalaryComponent, 
+
+    SuppliesComponent,
+    PromoComponent
+   
+ 
+
   ],
 imports: [
     BrowserModule,
@@ -70,7 +79,7 @@ imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
 
-  providers: [SuppliersService,OrderTypesService,ProductService,EmployeesService, RegisterService,DatePipe, DeliveryService],
+  providers: [SuppliersService,OrderTypesService ,ProductService,EmployeesService, RegisterService,DatePipe, DeliveryService],
 
   bootstrap: [AppComponent],
   
