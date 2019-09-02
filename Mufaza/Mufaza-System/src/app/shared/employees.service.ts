@@ -20,7 +20,7 @@ export class EmployeesService {
     designation : new FormControl(''),
     email : new FormControl('',Validators.email),
     address : new FormControl(''),
-    mobile : new FormControl('',[Validators.required,Validators.minLength(10)]),
+    mobile:new FormControl('',[Validators.required,Validators.pattern('[6-8]\\d{8}')]),
     department: new FormControl(0),
     joined : new FormControl(''),
     salary : new FormControl(''),
@@ -29,6 +29,7 @@ export class EmployeesService {
 
 
   });
+  
 
   initializeFormGroup(){
 
@@ -98,7 +99,7 @@ export class EmployeesService {
 
 
   populateForm(employee){
-  this.form.setValue(employee); //department which is to be ommited
+  this.form.patchValue(employee); //department which is to be ommited
 }
 
 

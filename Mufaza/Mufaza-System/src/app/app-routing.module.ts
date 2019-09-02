@@ -6,12 +6,14 @@ import {RegisterComponent} from "./internal-user/register/register.component";
 import { DeliveryComponent } from './delivery/delivery.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { InternalUserComponent} from './internal-user/internal-user.component'
+import { EmployeesalaryComponent } from './employeesalary/employeesalary.component';
 
 const routes: Routes = [
   {path: 'suppliers', component: SuppliersComponent},
   {path: 'product', component: AddProductFormComponent},
   {path: 'delivery', component: DeliveryComponent},
   {path: 'employees', component: EmployeesComponent},
+  {path: 'employeesalary', component: EmployeesalaryComponent},
   {path: 'internal-user', component: InternalUserComponent},
 ];
 

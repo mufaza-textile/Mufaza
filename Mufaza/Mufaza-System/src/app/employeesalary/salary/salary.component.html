@@ -1,0 +1,6 @@
+<div class="mat-elevation-z8">
+  <mat-table [dataSource]="listData"  matSort>
+    <ng-container matColumnDef="empName">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header>Full Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.empName}}</mat-cell>
+    </ng-container>
