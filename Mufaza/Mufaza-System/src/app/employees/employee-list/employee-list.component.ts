@@ -20,7 +20,7 @@ export class EmployeeListComponent implements OnInit {
     private dialog: MatDialog) { } 
 
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['empName', 'email', 'mobile','address', 'department','actions'];
+  displayedColumns: string[] = ['$key','empName', 'email', 'mobile','department','actions'];
  
   @ViewChild (MatSort,{static:true}) sort: MatSort;
   @ViewChild (MatPaginator,{static:true}) paginator: MatPaginator;

@@ -12,6 +12,8 @@ import { InternalUserComponent} from './internal-user/internal-user.component';
 import { TailoringsComponent } from "./tailorings/tailorings.component";
 import { SuppliesComponent } from "./suppliers/supplies/supplies.component";
 import { PromoComponent } from './promo/promo.component';
+import { SalaryemployeeComponent } from './salaryemployee/salaryemployee.component';
+
 
 
 const routes: Routes = [
@@ -19,6 +21,7 @@ const routes: Routes = [
   {path: 'products', component: ProductsComponent},
   {path: 'delivery', component: DeliveryComponent},
   {path: 'employees', component: EmployeesComponent},
+  {path: 'salaryemployee', component:SalaryemployeeComponent},
   {path: 'internal-user', component: InternalUserComponent},
   {path: 'tailoring', component: TailoringsComponent},
   {path: 'supplies', component: SuppliesComponent},
