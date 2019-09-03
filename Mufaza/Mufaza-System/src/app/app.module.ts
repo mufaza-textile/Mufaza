@@ -39,7 +39,6 @@ import { PromoComponent } from './promo/promo.component';
 import { PromoListComponent } from './promo/promo-list/promo-list.component';
 import { PromocodeComponent } from './promo/promocode/promocode.component';
 import { PromoService } from './shared/promo.service';
-
 import { SuppliesComponent } from './suppliers/supplies/supplies.component';
 import { SuppliesService } from "./shared/supplies.service";
 import { TailoringService } from "./shared/tailoring.service";
@@ -47,6 +46,9 @@ import { ModifyProductComponent } from './products/modify-product/modify-product
 import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './products/product/product.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
+import { SalaryemployeeComponent } from './salaryemployee/salaryemployee.component';
+import { SalaryComponent } from './salaryemployee/salary/salary.component';
+
 
 
 @NgModule({
@@ -78,6 +80,8 @@ import { ProductListComponent } from './products/product-list/product-list.compo
       SuppliesComponent,
       ProductListComponent,
       ModifyProductComponent,
+      SalaryemployeeComponent,
+      SalaryComponent,
       
 
    ],
@@ -101,7 +105,6 @@ import { ProductListComponent } from './products/product-list/product-list.compo
       DeliveryService,
       SuppliesService,
       TailoringService,
-
       PromoService
 
    ],
