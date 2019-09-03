@@ -48,20 +48,11 @@ export class TailoringComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.service.getTailroings();
   }
 
   onClear(){
     this.service.form.reset();
     this.service.initializeFormGroup();
-  }
-
-  onSubmit(){
-    if(this.service.form.valid){
-      this.service.insertTailoring(this.service.form.value);
-      this.service.form.reset();
-      this.service.initializeFormGroup();
-    }
   }
 
 }

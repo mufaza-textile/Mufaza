@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators} from "@angular/forms"
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 @Injectable()
 export class TailoringService {
 
-  constructor(private firebase: AngularFireDatabase) { }
-
-  tailoringList: AngularFireList<any>;
+  constructor() { }
 
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
@@ -39,45 +36,4 @@ export class TailoringService {
       deliveryDate: ''
     });
   }
-
-  getTailroings(){
-    this.tailoringList =this.firebase.list('tailorings');
-    return this.tailoringList.snapshotChanges();
-  }
-
-  insertTailoring(tailoring){
-    this.tailoringList.push({
-      orderID: tailoring.orderID,
-      customerID: tailoring.customerID,
-      username:  tailoring.username,
-      chest: tailoring.chest,
-      shoulder: tailoring.shoulder,
-      arms: tailoring.arms,
-      frontNeck: tailoring.frontNeck,
-      backNeck: tailoring.backNeck,
-      length: tailoring.length,
-      deliveryDate: tailoring.deliveryDate
-    });
-  }
-
-  updateTailoring(tailoring){
-    this.tailoringList.update(tailoring.$key,
-      {
-        orderID: tailoring.orderID,
-        customerID: tailoring.customerID,
-        username:  tailoring.username,
-        chest: tailoring.chest,
-        shoulder: tailoring.shoulder,
-        arms: tailoring.arms,
-        frontNeck: tailoring.frontNeck,
-        backNeck: tailoring.backNeck,
-        length: tailoring.length,
-        deliveryDate: tailoring.deliveryDate
-      });
-  }
-
-  deleteTailoring($key: string){
-    this.tailoringList.remove($key);
-  }
-
 }

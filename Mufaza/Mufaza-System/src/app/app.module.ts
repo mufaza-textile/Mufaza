@@ -33,47 +33,94 @@ import { DepartmentService } from './shared/department.service';
 import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
 import {UserListComponent} from './internal-user/user-list/user-list.component';
 import { DeliveryService } from './shared/delivery.service';
+import { TailoringsComponent } from './tailorings/tailorings.component';
+import { TailoringComponent } from './tailorings/tailoring/tailoring.component';
+import { PromoComponent } from './promo/promo.component';
+import { PromoListComponent } from './promo/promo-list/promo-list.component';
+import { PromocodeComponent } from './promo/promocode/promocode.component';
+import { PromoService } from './shared/promo.service';
 
-import { EmployeesalaryComponent } from './employeesalary/employeesalary.component';
-import { SalaryComponent } from './employeesalary/salary/salary.component';
+import { SuppliesComponent } from './suppliers/supplies/supplies.component';
+import { SuppliesService } from "./shared/supplies.service";
+import { TailoringService } from "./shared/tailoring.service";
+import { ModifyProductComponent } from './products/modify-product/modify-product.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductComponent } from './products/product/product.component';
+import { ProductListComponent } from './products/product-list/product-list.component';
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SuppliersComponent,
-    SupplierComponent,
-    AddProductFormComponent,
-    InternalUserComponent,
-    RegisterComponent,
-    SupplierListComponent,
-    EmployeesComponent,
-    EmployeeComponent,
-    EmployeeListComponent,
-    DeliveryComponent,
-    DeliveryRiderListComponent,
-    DeliveryAllocateRiderComponent,
-    DeliveryReportComponent,
-    DeliveryAddRiderComponent,
-    MatConfirmDialogComponent,
-    UserListComponent,
-    EmployeesalaryComponent,
-    SalaryComponent, 
-  ],
-imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule, 
-    BrowserAnimationsModule,
-    AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
-  ],
+   declarations: [
+      AppComponent,
+      SuppliersComponent,
+      SupplierComponent,
+      AddProductFormComponent,
+      ProductsComponent,
+      ProductComponent,
+      InternalUserComponent,
+      RegisterComponent,
+      SupplierListComponent,
+      EmployeesComponent,
+      EmployeeComponent,
+      EmployeeListComponent,
+      DeliveryComponent,
+      DeliveryRiderListComponent,
+      DeliveryAllocateRiderComponent,
+      DeliveryReportComponent,
+      DeliveryAddRiderComponent,
+      MatConfirmDialogComponent,
+      UserListComponent,
+      TailoringsComponent,
+      TailoringComponent,
+      PromoComponent,
+      PromoListComponent,
+      PromocodeComponent,
+      SuppliesComponent,
+      ProductListComponent,
+      ModifyProductComponent,
+      
 
-  providers: [SuppliersService,OrderTypesService,ProductService,EmployeesService, RegisterService,DatePipe, DeliveryService],
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      MaterialModule,
+      FormsModule,
+      ReactiveFormsModule,
+      BrowserAnimationsModule,
+      AngularFireDatabaseModule,
+      AngularFireModule.initializeApp(environment.firebaseConfig)
+   ],
+   providers: [
+      SuppliersService,
+      OrderTypesService,
+      ProductService,
+      EmployeesService,
+      RegisterService,
+      DatePipe,
+      DeliveryService,
+      SuppliesService,
+      TailoringService,
 
-  bootstrap: [AppComponent],
-  
-    entryComponents:[SupplierComponent,InternalUserComponent,EmployeesalaryComponent,EmployeeComponent,RegisterComponent,DeliveryAddRiderComponent,DeliveryAllocateRiderComponent, MatConfirmDialogComponent]
+      PromoService
+
+   ],
+   bootstrap: [
+      AppComponent
+   ],
+   entryComponents: [
+      SupplierComponent,
+      ProductComponent,
+      InternalUserComponent,
+      EmployeeComponent,
+      RegisterComponent,
+      DeliveryAddRiderComponent,
+      DeliveryAllocateRiderComponent,
+      MatConfirmDialogComponent,
+      PromoComponent,
+      PromocodeComponent
+
+   ]
 })
 export class AppModule { }
+  
