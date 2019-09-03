@@ -11,6 +11,12 @@
   </div>
   <div class="mat-elevation-z8">
     <mat-table [dataSource]="listData"  matSort>
+
+        <ng-container matColumnDef="$key">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Employee ID</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.$key}}</mat-cell>
+          </ng-container>
+
       <ng-container matColumnDef="empName">
         <mat-header-cell *matHeaderCellDef  mat-sort-header>Full Name</mat-header-cell>
         <mat-cell *matCellDef="let element">{{element.empName}}</mat-cell>
@@ -22,10 +28,6 @@
       <ng-container matColumnDef="mobile">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Mobile</mat-header-cell>
         <mat-cell *matCellDef="let element">{{element.mobile}}</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="address">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Address</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.address}}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="department">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Department</mat-header-cell>

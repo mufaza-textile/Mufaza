@@ -15,12 +15,12 @@ export class EmployeesService {
 
   form : FormGroup = new FormGroup({
 
-    $key : new FormControl(null),
+    $key : new FormControl(null,Validators.required),
     empName : new FormControl('',Validators.required),
     designation : new FormControl(''),
     email : new FormControl('',Validators.email),
     address : new FormControl(''),
-    mobile : new FormControl('',[Validators.required,Validators.minLength(10)]),
+    mobile : new FormControl('',[Validators.required,Validators.pattern('[6-8]\\d{8}')]),
     department: new FormControl(0),
     joined : new FormControl(''),
     salary : new FormControl(''),
