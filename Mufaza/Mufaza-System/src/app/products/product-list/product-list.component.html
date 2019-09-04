@@ -48,6 +48,14 @@
   
       </ng-container>
 
+      <ng-container matColumnDef="category">
+
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>Category</mat-header-cell>
+  
+        <mat-cell *matCellDef="let element">{{element.category}}</mat-cell>
+  
+      </ng-container>
+
     <ng-container matColumnDef="actions">
 
         <mat-header-cell *matHeaderCellDef></mat-header-cell>

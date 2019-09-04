@@ -31,7 +31,7 @@
                     </mat-form-field>
           
                     <mat-form-field>
-                      <input [(ngModel)]="imgUrl" formControlName="imgUrl" matInput placeholder="Image URL">
+                      <input [(ngModel)]="imageUrl" formControlName="imageUrl" matInput placeholder="Image URL">
                     </mat-form-field>
   
                     <br><br>
@@ -47,7 +47,7 @@
               <div class="controles-container">
                 <div class="card" style="width: 290px; height:400px">
                     <!-- <span class="border border-primary"> -->
-                    <img [src] = "imgUrl" width="280px" height="300px" style="padding : 5px 5px 5px 5px;" class="card-img-top" class="rounded">
+                    <img [src] = "imageUrl" width="280px" height="300px" style="padding : 5px 5px 5px 5px;" class="card-img-top" class="rounded">
                       <div class="card-body">
                         <h3 class="card-title"><b>{{title}} </b> </h3>
                         <h4 class="card-text"> {{price | currency : 'LKR ' : true}}</h4>

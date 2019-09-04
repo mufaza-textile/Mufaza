@@ -7,8 +7,8 @@ import { AngularFireDatabase,AngularFireList } from "angularfire2/database";
 })
 export class ProductService {
 
-  departmentList:AngularFireList<any>;
-  array=[];
+  // departmentList:AngularFireList<any>;
+  // array=[];
   
   constructor(private firebase :AngularFireDatabase) {
     // this.departmentList = this.firebase.list('products');
@@ -30,7 +30,7 @@ export class ProductService {
     title: new FormControl('', Validators.required),
     price: new FormControl('', [Validators.required, Validators.min(0)]),
     category: new FormControl('0'),
-    imgUrl: new FormControl('')
+    imageUrl: new FormControl('')
   });
 
 initializeFormGroup() {
@@ -39,7 +39,7 @@ initializeFormGroup() {
       title: '',
       price: '',
       category: '0',
-      imgUrl: ''
+      imageUrl: ''
     });
   }
 
@@ -53,7 +53,7 @@ initializeFormGroup() {
       title: product.title,
       price: product.price,
       category: product.category,
-      imageUrl: product.imgUrl,
+      imageUrl: product.imageUrl,
     });
   }
 
@@ -63,7 +63,7 @@ initializeFormGroup() {
         title: product.title,
       price: product.price,
       category: product.category,
-      imageUrl: product.imgUrl,
+      imageUrl: product.imageUrl,
       } );
   }
 

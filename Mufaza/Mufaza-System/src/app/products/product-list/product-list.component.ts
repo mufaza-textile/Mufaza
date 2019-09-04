@@ -18,7 +18,7 @@ export class ProductListComponent implements OnInit {
 
     listData: MatTableDataSource<any>;
 
-    displayedColumns: string[] =[`#`,`title`,`price`,'actions'];
+    displayedColumns: string[] =[`#`,`title`,`price`,'category','actions'];
 
     @ViewChild(MatSort,{static: true}) sort: MatSort;
       @ViewChild(MatPaginator,{static: true}) paginator: MatPaginator;
