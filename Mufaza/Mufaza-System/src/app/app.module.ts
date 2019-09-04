@@ -48,6 +48,7 @@ import { ProductComponent } from './products/product/product.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { SalaryemployeeComponent } from './salaryemployee/salaryemployee.component';
 import { SalaryComponent } from './salaryemployee/salary/salary.component';
+import { SupplyComponent } from './suppliers/supplies/supply/supply.component';
 
 
 
@@ -82,6 +83,7 @@ import { SalaryComponent } from './salaryemployee/salary/salary.component';
       ModifyProductComponent,
       SalaryemployeeComponent,
       SalaryComponent,
+      SupplyComponent,
       
 
    ],
@@ -121,7 +123,8 @@ import { SalaryComponent } from './salaryemployee/salary/salary.component';
       DeliveryAllocateRiderComponent,
       MatConfirmDialogComponent,
       PromoComponent,
-      PromocodeComponent
+      PromocodeComponent,
+      SupplyComponent
 
    ]
 })

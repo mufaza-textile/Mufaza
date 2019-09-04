@@ -5,13 +5,14 @@ import { AngularFireDatabase,AngularFireList } from "angularfire2/database";
 import * as _ from 'lodash';
 // import { SupplierListComponent } from "./../suppliers/supplier-list/supplier-list.component";
 import { SuppliersService } from "./../shared/suppliers.service";
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SuppliesService {
 
-  constructor(private db :AngularFireDatabase,
+  constructor(private db :AngularFireDatabase, private datePipe: DatePipe
 
 
 ) { }
@@ -23,7 +24,14 @@ export class SuppliesService {
 
     $key : new FormControl(null),
     
-    quantity : new FormControl(''),
+    XS : new FormControl(0,Validators.required),
+    S : new FormControl(0,Validators.required),
+    M : new FormControl(0,Validators.required),
+    L : new FormControl(0,Validators.required),
+    XL : new FormControl(0,Validators.required),
+    XXL : new FormControl(0,Validators.required),
+    BrandName : new FormControl('',Validators.required),
+
     oDate : new FormControl(''),
     payment : new FormControl('')
   
@@ -39,8 +47,13 @@ export class SuppliesService {
     this.form.setValue({
 
       $key:null,
-      oType:0,
-      quantity:'',
+      XS :0,
+      S : 0,
+      M :0,
+      L : 0,
+      XL : 0,
+      XXL : 0,
+      BrandName : '',
       oDate:'',
       payment:'',
     })
@@ -59,8 +72,14 @@ export class SuppliesService {
     insertSupply(supplier){
 
       this.supplyList.push({
-        quantity: supplier.quantity,
-        oDate: supplier.oDate,
+        XS : supplier.XS,
+        S : supplier.S,
+        M : supplier.M,
+        L : supplier.L,
+        XL : supplier.XL,
+        XXL : supplier.XXL,
+        BrandName : supplier.BrandName,
+        oDate: supplier.oDate == "" ? "" : this.datePipe.transform(supplier.oDate, 'yyyy-MM-dd'),
         payment: supplier.payment
       });
 
@@ -71,9 +90,13 @@ export class SuppliesService {
     updateSupply(supplier){
       this.supplyList.update(supplier.$key,
         {
-
-          quantity: supplier.quantity,
-          oDate: supplier.oDate,
+          XS : supplier.XS,
+          S : supplier.S,
+          M : supplier.M,
+          L : supplier.L,
+          XL : supplier.XL,
+          XXL : supplier.XXL,
+          oDate: supplier.oDate == "" ? "" : this.datePipe.transform(supplier.oDate, 'yyyy-MM-dd'), 
           payment: supplier.payment
         } );
     }
