@@ -30,6 +30,7 @@ export class ProductService {
     title: new FormControl('', Validators.required),
     price: new FormControl('', [Validators.required, Validators.min(0)]),
     category: new FormControl('0'),
+    sizes: new FormControl('0'),
     imageUrl: new FormControl('')
   });
 
@@ -39,6 +40,7 @@ initializeFormGroup() {
       title: '',
       price: '',
       category: '0',
+      sizes: '0',
       imageUrl: ''
     });
   }
@@ -53,6 +55,7 @@ initializeFormGroup() {
       title: product.title,
       price: product.price,
       category: product.category,
+      sizes: product.sizes,
       imageUrl: product.imageUrl,
     });
   }
@@ -63,6 +66,7 @@ initializeFormGroup() {
         title: product.title,
       price: product.price,
       category: product.category,
+      sizes: product.sizes,
       imageUrl: product.imageUrl,
       } );
   }
@@ -72,6 +76,6 @@ initializeFormGroup() {
   }
 
   populateForm(product) {
-    this.form.patchValue(product);
+    this.form.setValue(product);
   }
 }

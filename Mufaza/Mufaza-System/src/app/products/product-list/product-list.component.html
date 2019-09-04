@@ -1,11 +1,13 @@
 <div class="search-div">
 
     <button mat-raised-button (click)="onCreate()">
-  
       <mat-icon>add</mat-icon>Create
-  
     </button>
-  
+  &nbsp;
+    <button mat-raised-button >
+      <mat-icon>filter_list</mat-icon>Filter
+    </button>
+
     <mat-form-field class="search-form-field" floatLabel="never">
   
       <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
@@ -53,6 +55,14 @@
         <mat-header-cell *matHeaderCellDef  mat-sort-header>Category</mat-header-cell>
   
         <mat-cell *matCellDef="let element">{{element.category}}</mat-cell>
+  
+      </ng-container>
+
+      <ng-container matColumnDef="sizes">
+
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>Sizes</mat-header-cell>
+  
+        <mat-cell *matCellDef="let element">{{element.sizes}}</mat-cell>
   
       </ng-container>
 

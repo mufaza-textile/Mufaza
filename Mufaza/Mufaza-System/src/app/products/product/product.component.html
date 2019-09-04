@@ -12,7 +12,7 @@
                       <input [(ngModel)]="title" formControlName="title" matInput placeholder="Title*">
                       <mat-error>This field is mandatory.</mat-error>
                   </mat-form-field>
-  
+                  
                   <mat-form-field>
                     <input [(ngModel)]="price" formControlName="price" matInput placeholder="Price" type="number">
                       <span matPrefix>LKR&nbsp;</span>
@@ -26,6 +26,15 @@
                         <mat-option>None</mat-option>
                           <ng-container *ngFor="let oType of ordType.array">
                              <mat-option value="{{oType.name}}">{{oType.name}}</mat-option>
+                          </ng-container>
+                      </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                      <mat-select [(ngModel)]="size" formControlName="sizes" placeholder="Size" multiple>
+                        <mat-option>None</mat-option>
+                          <ng-container *ngFor="let size of sizes.array">
+                             <mat-option value="{{size.name}}">{{size.name}}</mat-option>
                           </ng-container>
                       </mat-select>
                     </mat-form-field>

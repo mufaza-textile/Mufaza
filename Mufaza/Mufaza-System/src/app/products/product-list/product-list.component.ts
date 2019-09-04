@@ -18,7 +18,7 @@ export class ProductListComponent implements OnInit {
 
     listData: MatTableDataSource<any>;
 
-    displayedColumns: string[] =[`#`,`title`,`price`,'category','actions'];
+    displayedColumns: string[] =[`#`,`title`,`price`,'category','sizes','actions'];
 
     @ViewChild(MatSort,{static: true}) sort: MatSort;
       @ViewChild(MatPaginator,{static: true}) paginator: MatPaginator;
@@ -78,8 +78,8 @@ export class ProductListComponent implements OnInit {
         this.dialog.open(ProductComponent,dialogConfig);
       }
     
-      onEdit(row){
-        this.service.populateForm(row);
+      onEdit(element){
+        this.service.populateForm(element);
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = false;
         dialogConfig.autoFocus = true;
