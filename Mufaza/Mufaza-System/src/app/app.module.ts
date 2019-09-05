@@ -49,7 +49,8 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { SalaryemployeeComponent } from './salaryemployee/salaryemployee.component';
 import { SalaryComponent } from './salaryemployee/salary/salary.component';
 import { SupplyComponent } from './suppliers/supplies/supply/supply.component';
-
+import { MatSliderModule } from '@angular/material';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -89,12 +90,14 @@ import { SupplyComponent } from './suppliers/supplies/supply/supply.component';
    ],
    imports: [
       BrowserModule,
+      MatSliderModule,
       AppRoutingModule,
       MaterialModule,
       FormsModule,
       ReactiveFormsModule,
       BrowserAnimationsModule,
       AngularFireDatabaseModule,
+      MatExpansionModule,  
       AngularFireModule.initializeApp(environment.firebaseConfig)
    ],
    providers: [

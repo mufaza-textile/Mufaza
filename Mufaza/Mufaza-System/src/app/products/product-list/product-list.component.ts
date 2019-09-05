@@ -4,11 +4,19 @@ import { ProductService } from '../../shared/product.service';
 import { NotifcationService } from "../../shared/notifcation.service";
 import { MatTableDataSource,MatSort,MatPaginator } from "@angular/material";
 import { MatDialog, MatDialogConfig } from "@angular/material";
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0', display: 'none'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class ProductListComponent implements OnInit {
 
@@ -18,7 +26,7 @@ export class ProductListComponent implements OnInit {
 
     listData: MatTableDataSource<any>;
 
-    displayedColumns: string[] =[`#`,`title`,`price`,'category','sizes','actions'];
+    displayedColumns: string[] =[`index`,`title`,`price`,'category','sizes','date','actions'];
 
     @ViewChild(MatSort,{static: true}) sort: MatSort;
       @ViewChild(MatPaginator,{static: true}) paginator: MatPaginator;
@@ -75,6 +83,7 @@ export class ProductListComponent implements OnInit {
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
         dialogConfig.width = "60%";
+        dialogConfig.height = "95%";
         this.dialog.open(ProductComponent,dialogConfig);
       }
     
@@ -86,5 +95,4 @@ export class ProductListComponent implements OnInit {
         dialogConfig.width = "60%";
         this.dialog.open(ProductComponent,dialogConfig);
       }
-
 }

@@ -5,6 +5,7 @@ import { ProductService } from '../../shared/product.service';
 import { OrderTypesService } from "../../shared/order-types.service";
 import { NotifcationService } from "../../shared/notifcation.service";
 import { SizesService } from "../../shared/sizes.service";
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-product',
@@ -13,11 +14,15 @@ import { SizesService } from "../../shared/sizes.service";
 })
 export class ProductComponent implements OnInit {
 
+
   constructor(private service: ProductService,
     private ordType : OrderTypesService,
     private sizes : SizesService,
+    private datePipe: DatePipe,
     private notificationService : NotifcationService,
-    public dialogRef: MatDialogRef <ProductComponent> ) { }
+    public dialogRef: MatDialogRef <ProductComponent> ) {}
+
+
 
     ngOnInit() {
       this.service.getProducts();

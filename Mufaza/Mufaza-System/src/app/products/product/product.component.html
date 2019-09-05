@@ -4,7 +4,7 @@
     <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
   </mat-toolbar>
         <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()" style="padding-left : 5%">
-          <mat-grid-list cols="2" rowHeight="400px" rowWidth="400px">
+          <mat-grid-list cols="2" rowHeight="500px" rowWidth="400px">
             <mat-grid-tile>
               <div class="controles-container2">
                 <input type="hidden" formControlName="$key">
@@ -18,7 +18,7 @@
                       <span matPrefix>LKR&nbsp;</span>
                       <span matSuffix>.00</span>
                       <mat-error *ngIf="service.form.controls['price'].errors?.required">This field is mandatory.</mat-error>
-              <mat-error *ngIf="service.form.controls['price'].errors?.min">Price cannot be a negative value</mat-error>
+                      <mat-error *ngIf="service.form.controls['price'].errors?.min">Price cannot be a negative value</mat-error>
                     </mat-form-field>
                             
                     <mat-form-field>
@@ -39,10 +39,22 @@
                       </mat-select>
                     </mat-form-field>
           
+                    <mat-form-field >
+                        <input [(ngModel)]="quantity" formControlName="quantity" matInput placeholder="Quantity" type="number">
+                        <mat-error *ngIf="service.form.controls['quantity'].errors?.required">This field is mandatory.</mat-error>
+                      <mat-error *ngIf="service.form.controls['quantity'].errors?.min">Quantity cannot be a negative value</mat-error>
+                      </mat-form-field>
+
                     <mat-form-field>
                       <input [(ngModel)]="imageUrl" formControlName="imageUrl" matInput placeholder="Image URL">
                     </mat-form-field>
   
+                    <mat-form-field>
+                        <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+
                     <br><br>
   
                     <div class="button-row">
@@ -59,7 +71,7 @@
                     <img [src] = "imageUrl" width="280px" height="300px" style="padding : 5px 5px 5px 5px;" class="card-img-top" class="rounded">
                       <div class="card-body">
                         <h3 class="card-title"><b>{{title}} </b> </h3>
-                        <h4 class="card-text"> {{price | currency : 'LKR ' : true}}</h4>
+                        <h4 class="card-text"> {{price | currency : 'LKR ' : 'code'}}</h4>
                       </div>
                     <!-- </span> -->
                   </div>
@@ -67,3 +79,5 @@
               </mat-grid-tile>
             </mat-grid-list>  
           </form>   
+
+          

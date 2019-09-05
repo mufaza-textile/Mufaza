@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFireDatabase,AngularFireList } from "angularfire2/database";
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ProductService {
   // departmentList:AngularFireList<any>;
   // array=[];
   
-  constructor(private firebase :AngularFireDatabase) {
+  constructor(private firebase :AngularFireDatabase, private datePipe: DatePipe) {
     // this.departmentList = this.firebase.list('products');
     // this.departmentList.snapshotChanges().subscribe(
     //   list => {
@@ -30,8 +31,10 @@ export class ProductService {
     title: new FormControl('', Validators.required),
     price: new FormControl('', [Validators.required, Validators.min(0)]),
     category: new FormControl('0'),
-    sizes: new FormControl('0'),
-    imageUrl: new FormControl('')
+    sizes: new FormControl([]),
+    quantity: new FormControl('', [Validators.required, Validators.min(0)]),
+    imageUrl: new FormControl(''),
+    date: new FormControl('')
   });
 
 initializeFormGroup() {
@@ -40,8 +43,10 @@ initializeFormGroup() {
       title: '',
       price: '',
       category: '0',
-      sizes: '0',
-      imageUrl: ''
+      sizes: [],
+      quantity: '',
+      imageUrl: '',
+      date: ''
     });
   }
 
@@ -56,7 +61,9 @@ initializeFormGroup() {
       price: product.price,
       category: product.category,
       sizes: product.sizes,
+      quantity: product.quantity,
       imageUrl: product.imageUrl,
+      date: product.date == "" ? "" : this.datePipe.transform(product.date, 'yyyy-MM-dd'),
     });
   }
 
@@ -67,7 +74,9 @@ initializeFormGroup() {
       price: product.price,
       category: product.category,
       sizes: product.sizes,
+      quantity: product.quantity,
       imageUrl: product.imageUrl,
+      date: product.date == "" ? "" : this.datePipe.transform(product.date, 'yyyy-MM-dd'),
       } );
   }
 
@@ -76,6 +85,6 @@ initializeFormGroup() {
   }
 
   populateForm(product) {
-    this.form.setValue(product);
+    this.form.patchValue(product);
   }
 }
