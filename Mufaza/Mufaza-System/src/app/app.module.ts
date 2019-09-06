@@ -46,9 +46,11 @@ import { ProductComponent } from './products/product/product.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { SalaryemployeeComponent } from './salaryemployee/salaryemployee.component';
 import { SalaryComponent } from './salaryemployee/salary/salary.component';
+import { SalaryslipComponent } from './salaryemployee/salaryslip/salaryslip.component';
 import { SupplyComponent } from './suppliers/supplies/supply/supply.component';
 import { MatSliderModule } from '@angular/material';
 import {MatExpansionModule} from '@angular/material/expansion';
+
 
 
 @NgModule({
@@ -80,8 +82,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
       ProductListComponent,
       SalaryemployeeComponent,
       SalaryComponent,
+     SalaryslipComponent,
       SupplyComponent,
-      
+
 
    ],
    imports: [
@@ -93,8 +96,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
       ReactiveFormsModule,
       BrowserAnimationsModule,
       AngularFireDatabaseModule,
+     AngularFireModule.initializeApp(environment.firebaseConfig),
       MatExpansionModule,  
       AngularFireModule.initializeApp(environment.firebaseConfig)
+
    ],
    providers: [
       SuppliersService,
@@ -106,7 +111,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
       DeliveryService,
       SuppliesService,
       TailoringService,
-      PromoService
+      PromoService,
+     
 
    ],
    bootstrap: [
