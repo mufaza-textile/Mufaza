@@ -1,0 +1,76 @@
+
+
+
+
+  <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()">
+        <mat-grid-list cols="2" rowHeight="300px">
+    
+          <mat-grid-tile>
+            <div class="controles-container2">
+    
+                <mat-form-field>
+                    <input formControlName="XS" matInput placeholder="XS" type="number">
+                    <mat-error *ngIf="service.form.controls['XS'].errors?.required">This field is mandatory.</mat-error>
+                 </mat-form-field>
+                 <mat-form-field>
+                    <input formControlName="S" matInput placeholder="S" type="number">
+                    <mat-error *ngIf="service.form.controls['S'].errors?.required">This field is mandatory.</mat-error>
+                 </mat-form-field>
+                 <mat-form-field>
+                    <input formControlName="M" matInput placeholder="M" type="number">
+                    <mat-error *ngIf="service.form.controls['M'].errors?.required">This field is mandatory.</mat-error>
+                 </mat-form-field>
+                 <mat-form-field>
+                    <input formControlName="L" matInput placeholder="L" type="number">
+                    <mat-error *ngIf="service.form.controls['L'].errors?.required">This field is mandatory.</mat-error>
+                 </mat-form-field>
+                 <mat-form-field>
+                    <input formControlName="XL" matInput placeholder="XL" type="number">
+                    <mat-error *ngIf="service.form.controls['XL'].errors?.required">This field is mandatory.</mat-error>
+                 </mat-form-field>
+                 <mat-form-field>
+                    <input formControlName="XXL" matInput placeholder="XXL" type="number">
+                    <mat-error *ngIf="service.form.controls['XXL'].errors?.required">This field is mandatory.</mat-error>
+                 </mat-form-field>
+    
+                  </div>
+                </mat-grid-tile>
+                 
+                <mat-grid-tile>
+                  <div class="controles-container">
+                      <mat-form-field>
+                          <input formControlName="BrandName" matInput placeholder="Brand Name" >
+                          <mat-error *ngIf="service.form.controls['BrandName'].errors?.required">This field is mandatory.</mat-error>
+                       </mat-form-field>
+                        <mat-form-field>
+                          <input formControlName="oDate" matInput [matDatepicker]="picker" placeholder="Order Date">
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+            
+                        <mat-form-field>
+                                <input formControlName="payment" matInput placeholder="Payment" type="number"  class="example-right-align">
+                                <span matPrefix>RS&nbsp;</span>
+                                <span matSuffix>.00</span>
+                        </mat-form-field>
+          
+                <div class="button-row">
+                        <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+                        <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+                </div>
+    
+    
+    
+    
+    
+            </div>       
+          </mat-grid-tile>
+        </mat-grid-list>
+      </form>
+  
+  
+  
+  
+  
+  
+  

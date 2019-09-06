@@ -13,7 +13,6 @@ import { SupplierComponent } from './suppliers/supplier/supplier.component';
 import { SuppliersService } from './shared/suppliers.service';
 import { environment } from "../environments/environment";
 import { OrderTypesService } from "./shared/order-types.service";
-import { AddProductFormComponent } from './products/add-product-form/add-product-form.component';
 import { ProductService } from './shared/product.service';
 import { InternalUserComponent } from './internal-user/internal-user.component';
 import { RegisterComponent } from './internal-user/register/register.component';
@@ -42,14 +41,15 @@ import { PromoService } from './shared/promo.service';
 import { SuppliesComponent } from './suppliers/supplies/supplies.component';
 import { SuppliesService } from "./shared/supplies.service";
 import { TailoringService } from "./shared/tailoring.service";
-import { ModifyProductComponent } from './products/modify-product/modify-product.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './products/product/product.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { SalaryemployeeComponent } from './salaryemployee/salaryemployee.component';
 import { SalaryComponent } from './salaryemployee/salary/salary.component';
-
 import { SalaryslipComponent } from './salaryemployee/salaryslip/salaryslip.component';
+import { SupplyComponent } from './suppliers/supplies/supply/supply.component';
+import { MatSliderModule } from '@angular/material';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -58,7 +58,6 @@ import { SalaryslipComponent } from './salaryemployee/salaryslip/salaryslip.comp
       AppComponent,
       SuppliersComponent,
       SupplierComponent,
-      AddProductFormComponent,
       ProductsComponent,
       ProductComponent,
       InternalUserComponent,
@@ -81,27 +80,26 @@ import { SalaryslipComponent } from './salaryemployee/salaryslip/salaryslip.comp
       PromocodeComponent,
       SuppliesComponent,
       ProductListComponent,
-      ModifyProductComponent,
       SalaryemployeeComponent,
       SalaryComponent,
-      SalaryslipComponent,
-   
-      
-    
- 
-      
+     SalaryslipComponent,
+      SupplyComponent,
+
 
    ],
    imports: [
       BrowserModule,
+      MatSliderModule,
       AppRoutingModule,
       MaterialModule,
       FormsModule,
       ReactiveFormsModule,
       BrowserAnimationsModule,
       AngularFireDatabaseModule,
-      AngularFireModule.initializeApp(environment.firebaseConfig),
-      
+     AngularFireModule.initializeApp(environment.firebaseConfig),
+      MatExpansionModule,  
+      AngularFireModule.initializeApp(environment.firebaseConfig)
+
    ],
    providers: [
       SuppliersService,
@@ -130,7 +128,8 @@ import { SalaryslipComponent } from './salaryemployee/salaryslip/salaryslip.comp
       DeliveryAllocateRiderComponent,
       MatConfirmDialogComponent,
       PromoComponent,
-      PromocodeComponent
+      PromocodeComponent,
+      SupplyComponent
 
    ]
 })

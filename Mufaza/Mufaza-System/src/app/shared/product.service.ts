@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFireDatabase,AngularFireList } from "angularfire2/database";
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  departmentList:AngularFireList<any>;
-  array=[];
+  // departmentList:AngularFireList<any>;
+  // array=[];
   
-  constructor(private firebase :AngularFireDatabase) {
+  constructor(private firebase :AngularFireDatabase, private datePipe: DatePipe) {
     // this.departmentList = this.firebase.list('products');
     // this.departmentList.snapshotChanges().subscribe(
     //   list => {
@@ -30,7 +31,10 @@ export class ProductService {
     title: new FormControl('', Validators.required),
     price: new FormControl('', [Validators.required, Validators.min(0)]),
     category: new FormControl('0'),
-    imgUrl: new FormControl('')
+    sizes: new FormControl([]),
+    quantity: new FormControl('', [Validators.required, Validators.min(0)]),
+    imageUrl: new FormControl(''),
+    date: new FormControl('')
   });
 
 initializeFormGroup() {
@@ -39,7 +43,10 @@ initializeFormGroup() {
       title: '',
       price: '',
       category: '0',
-      imgUrl: ''
+      sizes: [],
+      quantity: '',
+      imageUrl: '',
+      date: ''
     });
   }
 
@@ -53,7 +60,10 @@ initializeFormGroup() {
       title: product.title,
       price: product.price,
       category: product.category,
-      imageUrl: product.imgUrl,
+      sizes: product.sizes,
+      quantity: product.quantity,
+      imageUrl: product.imageUrl,
+      date: product.date == "" ? "" : this.datePipe.transform(product.date, 'yyyy-MM-dd'),
     });
   }
 
@@ -63,7 +73,10 @@ initializeFormGroup() {
         title: product.title,
       price: product.price,
       category: product.category,
-      imageUrl: product.imgUrl,
+      sizes: product.sizes,
+      quantity: product.quantity,
+      imageUrl: product.imageUrl,
+      date: product.date == "" ? "" : this.datePipe.transform(product.date, 'yyyy-MM-dd'),
       } );
   }
 

@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SuppliersComponent } from "./suppliers/suppliers.component";
 import { ProductsComponent } from "./products/products.component";
-import { AddProductFormComponent } from "./products/add-product-form/add-product-form.component";
 import {RegisterComponent} from "./internal-user/register/register.component";
 import { DeliveryComponent } from './delivery/delivery.component';
 import { EmployeesComponent } from './employees/employees.component';

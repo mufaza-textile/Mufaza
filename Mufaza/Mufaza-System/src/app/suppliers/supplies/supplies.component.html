@@ -2,45 +2,6 @@
 
 
 
-<form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()">
-    <mat-grid-list cols="2" rowHeight="300px">
-        
-      <mat-grid-tile>
-        <div class="controles-container">
-           
-
-            <mat-form-field>
-              <input formControlName="quantity" matInput placeholder="Quantity" type="number">
-              <mat-error *ngIf="service.form.controls['quantity'].errors?.required">This field is mandatory.</mat-error>
-           </mat-form-field>
-           <mat-form-field>
-            <input formControlName="oDate" matInput [matDatepicker]="picker" placeholder="Order Date">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-           </mat-form-field>
-
-            <mat-form-field>
-                    <input formControlName="payment" matInput placeholder="Payment" type="number"  class="example-right-align">
-                    <span matPrefix>RS&nbsp;</span>
-                    <span matSuffix>.00</span>
-            </mat-form-field>
-
-            <div class="button-row">
-                    <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
-                    <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
-            </div>
-
-
-
-
-
-
-
-
-        </div>       
-      </mat-grid-tile>
-    </mat-grid-list>
-  </form>
 
 
 
@@ -66,20 +27,29 @@
 
 
 
+   
 
+    <div class="search-div">
 
-
-
-
-
-
-
-
-
-
-
-
-
+        <button mat-raised-button (click)="onCreate()">
+      
+          <mat-icon>add</mat-icon>Create
+      
+        </button>
+      
+        <mat-form-field class="search-form-field" floatLabel="never">
+      
+          <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+      
+          <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey"  (click)="onSearchClear()">
+      
+            <mat-icon>close</mat-icon>
+      
+          </button>
+      
+        </mat-form-field>
+      
+      </div>
 
 
 
@@ -87,15 +57,15 @@
 
 <div class="mat-elevation-z8 table">
 
-    <mat-table DataPreview [dataSource]="listData"   matSort width = "100%">
+    <mat-table DataPreview [dataSource]="listData" multiTemplateDataRows  matSort width = "100%">
   
 
 
-      <ng-container matColumnDef="quantity">
+      <ng-container matColumnDef="BrandName">
   
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>BrandName</mat-header-cell>
   
-        <mat-cell *matCellDef="let element">{{element.quantity}}</mat-cell>
+        <mat-cell *matCellDef="let element">{{element.BrandName}}</mat-cell>
   
       </ng-container>
 
@@ -125,12 +95,62 @@
         </mat-cell>
       </ng-container>
   
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <!-- <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  
+   -->
       
-]
+   <ng-container matColumnDef="expandedDetail" class="xyz">
+      <mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+         <div class="example-element-detail"
+              [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+              <span class="fill-remaining-space"></span>
+              <table style="width:100%; align-content:center;" class="abc" >
+                  <span class="fill-remaining-space"></span>
+                  <tr>                   
+                     <td ><p style="color: orangered;">XS</p></td><td><p>&nbsp; &nbsp; -&nbsp; &nbsp; </p></td> <td>  <p style="color:black;font-size: 17px;"> &nbsp; &nbsp;  {{element.XS}}  </p></td>                      
+                 </tr>
+                 <tr>
+                    <td><p style="color: orangered">S</p> </td><td><p>&nbsp; &nbsp; -&nbsp; &nbsp; </p></td> <td>  <p style="color:black;font-size: 17px;">&nbsp; &nbsp; {{element.S}}</p></td>
+                 </tr>
+                 <tr>
+                   <td><p style="color: orangered">M</p> </td> <td><p>&nbsp; &nbsp; -&nbsp; &nbsp; </p></td><td>  <p style="color:black;font-size: 17px;">&nbsp; &nbsp; {{element.M}}</p></td>
+                </tr>
+                <tr>
+                    <td><p style="color: orangered">L</p> </td> <td><p>&nbsp; &nbsp; -&nbsp; &nbsp; </p></td><td>  <p style="color:black;font-size: 17px;">&nbsp; &nbsp; {{element.L}}</p></td>
+                 </tr>
+                 <tr>
+                    <td><p style="color: orangered">XL</p> </td> <td><p>&nbsp; &nbsp; -&nbsp; &nbsp; </p></td><td>  <p style="color:black;font-size: 17px;">&nbsp; &nbsp; {{element.XL}}</p></td>
+                 </tr>
+                 <tr>
+                    <td><p style="color: orangered">XXL</p> </td> <td><p>&nbsp; &nbsp; -&nbsp; &nbsp; </p></td><td>  <p style="color:black;font-size: 17px;">&nbsp; &nbsp; {{element.XXL}}</p></td>
+                 </tr>
+
+
+          </table>  
+        
+         </div>
+      </mat-cell>
+   </ng-container>
+
+
+
+
+
+
+
+   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+   <mat-row *matRowDef="let row; columns: displayedColumns;"
+                                         class="example-element-row"
+                                         [class.example-expanded-row]="expandedElement === row"
+                                         (click)="expandedElement = row"
+                                     ></mat-row>
+   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+
+
+
+
+
 
 
 
