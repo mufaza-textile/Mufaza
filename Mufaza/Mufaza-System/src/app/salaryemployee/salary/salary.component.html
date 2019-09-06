@@ -1,1 +1,76 @@
-<p>salary works!</p>
+<div class="controles-container">
+        <div>
+                <span>Date-</span>
+        {{currentDate | date:'yyyy-MM-dd'}}
+ </div>
+ </div>  
+  <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()">
+      <mat-grid-list cols="2" rowHeight="500px">
+        <mat-grid-tile>
+          <div class="controles-container2">
+            <input type="hidden" formControlName="$key">
+            <mat-form-field>
+              <input formControlName="empID" matInput placeholder="Employee ID">
+              <mat-error>This field is mandatory</mat-error>
+            </mat-form-field>
+  
+  
+            <mat-form-field>
+              <input formControlName="empName" matInput placeholder="Employee Name">
+            </mat-form-field>
+            
+            <mat-form-field>
+                <input formControlName="designation" matInput placeholder="Designation">
+              </mat-form-field>    
+
+            <mat-form-field>
+              <input formControlName="basic" matInput placeholder="Basic Salary" type="number"  class="example-right-align">
+              <span matPrefix>RS&nbsp;</span>
+              <span matSuffix>.00</span>
+           </mat-form-field>
+                
+           <mat-form-field>
+            <input formControlName="allow" matInput placeholder="Allowance" type="number"  class="example-right-align">
+            <span matPrefix>RS&nbsp;</span>
+            <span matSuffix>.00</span>
+         </mat-form-field>
+               
+       
+  
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="controles-container2">
+            
+     
+                <mat-form-field>
+                        <input formControlName="tax" matInput placeholder="Tax" type="number"  class="example-right-align">
+                        <span matPrefix>RS&nbsp;</span>
+                        <span matSuffix>.00</span>
+                     </mat-form-field>
+
+
+            <mat-form-field>
+              <input formControlName="date" matInput placeholder="Joined">
+            </mat-form-field>
+                
+            <mat-form-field>
+              <input formControlName="bankAcc" matInput placeholder="Bank Account Number" type="number"  class="example-right-align">
+           </mat-form-field>
+  
+     
+           <mat-form-field>
+              <input formControlName="pfAcc" matInput placeholder="PF Account Number" type="number"  class="example-right-align">
+           </mat-form-field>
+  
+           <div class="button-row">
+              <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+              <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+      </div>
+  
+  
+  
+          </div>       
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>

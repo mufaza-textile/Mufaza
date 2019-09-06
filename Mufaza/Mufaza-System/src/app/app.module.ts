@@ -46,10 +46,12 @@ import { ProductComponent } from './products/product/product.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { SalaryemployeeComponent } from './salaryemployee/salaryemployee.component';
 import { SalaryComponent } from './salaryemployee/salary/salary.component';
+import { SalaryslipComponent } from './salaryemployee/salaryslip/salaryslip.component';
 import { SupplyComponent } from './suppliers/supplies/supply/supply.component';
 import { MatSliderModule } from '@angular/material';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ProductStockComponent } from './products/product-stock/product-stock.component';
+
 
 
 @NgModule({
@@ -81,6 +83,7 @@ import { ProductStockComponent } from './products/product-stock/product-stock.co
       ProductListComponent,
       SalaryemployeeComponent,
       SalaryComponent,
+     SalaryslipComponent,
       SupplyComponent,
       ProductStockComponent,
       
@@ -95,8 +98,10 @@ import { ProductStockComponent } from './products/product-stock/product-stock.co
       ReactiveFormsModule,
       BrowserAnimationsModule,
       AngularFireDatabaseModule,
+     AngularFireModule.initializeApp(environment.firebaseConfig),
       MatExpansionModule,  
       AngularFireModule.initializeApp(environment.firebaseConfig)
+
    ],
    providers: [
       SuppliersService,
@@ -108,7 +113,8 @@ import { ProductStockComponent } from './products/product-stock/product-stock.co
       DeliveryService,
       SuppliesService,
       TailoringService,
-      PromoService
+      PromoService,
+     
 
    ],
    bootstrap: [
