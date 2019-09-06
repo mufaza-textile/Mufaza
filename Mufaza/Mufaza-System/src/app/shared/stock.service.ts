@@ -7,6 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   providedIn: 'root'
 })
 export class StockService {
+  ID: string;
 
   constructor(private firebase :AngularFireDatabase, private datePipe: DatePipe) { }
 
@@ -27,18 +28,27 @@ export class StockService {
     });
   }
 
+
+setId(id){
+  this.ID = id;
+  console.log('aaaaaa' + this.ID);
+}
+
 getId(){
-  
+  return this.ID;
 }
 
   getStockDetail(){
-    this.stockList =this.firebase.list('stocks');
-    this.productList =this.firebase.list('products');
+    let id = this.getId();
+
+    this.stockList = this.firebase.list('/products/' + this.ID + '/stock/');
     
     return this.stockList.snapshotChanges(); 
   }
 
   insertStock(stock){
+    let id = this.getId();
+    this.stockList = this.firebase.list('/products/' + '-Lo21w_jLufgZ-stwOrH' + '/stock/');
     this.stockList.push({
       quantity: stock.quantity,
       date: stock.date == "" ? "" : this.datePipe.transform(stock.date, 'yyyy-MM-dd'),

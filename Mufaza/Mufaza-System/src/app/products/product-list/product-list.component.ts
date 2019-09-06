@@ -1,6 +1,7 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { ProductComponent } from "./../product/product.component";
 import { ProductService } from '../../shared/product.service';
+import { StockService } from '../../shared/stock.service';
 import { NotifcationService } from "../../shared/notifcation.service";
 import { MatTableDataSource,MatSort,MatPaginator } from "@angular/material";
 import { MatDialog, MatDialogConfig } from "@angular/material";
@@ -22,6 +23,7 @@ import { ProductStockComponent } from '../product-stock/product-stock.component'
 export class ProductListComponent implements OnInit {
 
   constructor(private service : ProductService,
+    private stockService : StockService,
     private notificationService : NotifcationService,
     private dialog: MatDialog,) { }
 
@@ -97,12 +99,13 @@ export class ProductListComponent implements OnInit {
         this.dialog.open(ProductComponent,dialogConfig);
       }
 
-      onAddStock(){
+      onAddStock(id){
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
         dialogConfig.width = "40%";
         dialogConfig.height = "50%";
+        this.stockService.setId(id);
         this.dialog.open(ProductStockComponent,dialogConfig);
       }
 }
