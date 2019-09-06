@@ -100,18 +100,21 @@
                  [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
 
                  <div class="controles-container">
-                    <div class="card" style="width: 290px; height:400px">
+                    <div class="card" style="width: 300px; height:400px">
                         <!-- <span class="border border-primary"> -->
+                            <div class="example-element-diagram">
                         <img [src] = "element.imageUrl" width="280px" height="200px" style="padding : 5px 5px 5px 5px;" class="card-img-top" class="rounded">
-                          <div class="card-body">
+                         
+                        <div class="card-body">
                             <h3 class="card-title"><b>{{element.title}} </b> </h3>
                             <h4 class="card-text"> {{element.price | currency : 'LKR ' : 'code'}}</h4>
                             <span *ngIf="50 > element.quantity"><h4 class="card-text" style="color: red">In Stock : {{element.quantity}}</h4></span>
                             <span *ngIf="element.quantity > 50"><h4 class="card-text" style="color: green">In Stock : {{element.quantity}}</h4></span>
-                            <button mat-button color="accent" mat-raised-button (click)="onCreate()">
+                            <button mat-button color="accent" mat-raised-button (click)="onAddStock()">
                                 <mat-icon>add</mat-icon>Add Stock
                               </button>
                           </div>
+                        </div> 
                         <!-- </span> -->
                       </div>
                     </div>
@@ -120,14 +123,6 @@
         </ng-container>
     
     
-    
-    
-    
-    
-  
-
-
-
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   
       <mat-row *matRowDef="let row; columns: displayedColumns;"

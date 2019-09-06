@@ -49,6 +49,7 @@ import { SalaryComponent } from './salaryemployee/salary/salary.component';
 import { SupplyComponent } from './suppliers/supplies/supply/supply.component';
 import { MatSliderModule } from '@angular/material';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { ProductStockComponent } from './products/product-stock/product-stock.component';
 
 
 @NgModule({
@@ -81,6 +82,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
       SalaryemployeeComponent,
       SalaryComponent,
       SupplyComponent,
+      ProductStockComponent,
       
 
    ],
@@ -123,7 +125,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
       MatConfirmDialogComponent,
       PromoComponent,
       PromocodeComponent,
-      SupplyComponent
+      SupplyComponent,
+      ProductStockComponent
 
    ]
 })
