@@ -49,6 +49,8 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { SalaryemployeeComponent } from './salaryemployee/salaryemployee.component';
 import { SalaryComponent } from './salaryemployee/salary/salary.component';
 
+import { SalaryslipComponent } from './salaryemployee/salaryslip/salaryslip.component';
+
 
 
 @NgModule({
@@ -82,6 +84,11 @@ import { SalaryComponent } from './salaryemployee/salary/salary.component';
       ModifyProductComponent,
       SalaryemployeeComponent,
       SalaryComponent,
+      SalaryslipComponent,
+   
+      
+    
+ 
       
 
    ],
@@ -93,7 +100,8 @@ import { SalaryComponent } from './salaryemployee/salary/salary.component';
       ReactiveFormsModule,
       BrowserAnimationsModule,
       AngularFireDatabaseModule,
-      AngularFireModule.initializeApp(environment.firebaseConfig)
+      AngularFireModule.initializeApp(environment.firebaseConfig),
+      
    ],
    providers: [
       SuppliersService,
@@ -105,7 +113,8 @@ import { SalaryComponent } from './salaryemployee/salary/salary.component';
       DeliveryService,
       SuppliesService,
       TailoringService,
-      PromoService
+      PromoService,
+     
 
    ],
    bootstrap: [

@@ -1,8 +1,26 @@
-<div class="container">
-        <mat-toolbar>
+<div class="controles-container">
+    <mat-tab-group>
+        <mat-tab label="Salary">
+            <mat-toolbar>
             <span class="fill-remaining-space"></span>
-            <span>Salary Employee</span>
+            <span>Salary Management</span>
             <span class="fill-remaining-space"></span>
-        </mat-toolbar>
-      <app-salary></app-salary>
-    </div>
+          </mat-toolbar>
+<app-salary></app-salary>
+          </mat-tab>
+       
+      
+         
+              <mat-tab label="Salary Slip">
+                  <mat-toolbar>
+                  <span class="fill-remaining-space"></span>
+                  <span>Salary Slip</span>
+                  <span class="fill-remaining-space"></span>
+                </mat-toolbar>
+      <app-salaryslip></app-salaryslip>
+                </mat-tab>
+             
+            
+
+
+  </mat-tab-group>

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as  Material from "@angular/material";
 
+
 @NgModule({
   declarations: [],
   imports: [
@@ -24,6 +25,8 @@ import * as  Material from "@angular/material";
     Material.MatSortModule,
     Material.MatAutocompleteModule,
     Material.MatDialogModule,
+   
+   
 
   ],
   exports: [
@@ -44,7 +47,10 @@ import * as  Material from "@angular/material";
     Material.MatPaginatorModule,
     Material.MatSortModule,
     Material.MatAutocompleteModule,
-    Material.MatDialogModule, 
+    Material.MatDialogModule,
+   
+  
+   
 
   ]
 })
