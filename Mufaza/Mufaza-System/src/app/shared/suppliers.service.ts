@@ -19,7 +19,7 @@ export class SuppliersService {
     supName : new FormControl('',Validators.required),
     compName : new FormControl(''),
     email : new FormControl('',Validators.email),
-    mobile : new FormControl('',[Validators.required,Validators.minLength(10)]),
+    mobile : new FormControl('',[Validators.required,Validators.pattern('[6-8]\\d{8}')]),
     address : new FormControl(''),
     oType : new FormControl(0),
 
