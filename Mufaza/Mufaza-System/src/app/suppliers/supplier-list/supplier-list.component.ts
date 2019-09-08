@@ -6,9 +6,9 @@ import { MatDialog, MatDialogConfig } from "@angular/material";
 import { DataSource } from '@angular/cdk/collections';
 import { Observable, of } from 'rxjs';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { element } from 'protractor';
+import { element, $ } from 'protractor';
 import { Router } from '@angular/router';
-
+import { SuppliesService } from "../../shared/supplies.service";
 
 @Component({
   selector: 'app-supplier-list',
@@ -26,7 +26,8 @@ export class SupplierListComponent implements OnInit {
 
   constructor(private service : SuppliersService,
     private dialog: MatDialog,
-    private router : Router) { }
+    private router : Router,
+    private serv : SuppliesService) { }
 
   listData: MatTableDataSource<any>;
   
@@ -91,9 +92,10 @@ export class SupplierListComponent implements OnInit {
   }
 
   navigate($key){
-    this.router.navigateByUrl('supplies');
+    this.serv.getSupplys($key);
+    // this.router.navigateByUrl('supplies');
   }
-getkey(){
+getkey() : string {
   return this.key;
 }
 
