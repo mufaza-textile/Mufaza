@@ -7,6 +7,7 @@ import { MatTableDataSource,MatSort,MatPaginator } from "@angular/material";
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ProductStockComponent } from '../product-stock/product-stock.component';
+import { ProductStockListComponent } from '../product-stock-list/product-stock-list.component';
 
 @Component({
   selector: 'app-product-list',
@@ -108,4 +109,15 @@ export class ProductListComponent implements OnInit {
         this.stockService.setId(id);
         this.dialog.open(ProductStockComponent,dialogConfig);
       }
+
+      onStockInfo(id){
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.width = "60%";
+        dialogConfig.height = "90%";
+        this.stockService.setId(id);
+        this.dialog.open(ProductStockListComponent,dialogConfig);
+      }
 }
+

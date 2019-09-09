@@ -28,8 +28,6 @@ export class ProductStockComponent implements OnInit {
     if(this.service.form.valid){
       if (!this.service.form.get('$key').value)
       this.service.insertStock(this.service.form.value)
-      else
-      this.service.updateProduct(this.service.form.value);
       this.service.form.reset();
       this.service.initializeFormGroup();
       this.notificationService.success(':: Submitted Succesfully' );

@@ -51,6 +51,7 @@ import { SupplyComponent } from './suppliers/supplies/supply/supply.component';
 import { MatSliderModule } from '@angular/material';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ProductStockComponent } from './products/product-stock/product-stock.component';
+import { ProductStockListComponent } from './products/product-stock-list/product-stock-list.component';
 
 
 
@@ -86,6 +87,7 @@ import { ProductStockComponent } from './products/product-stock/product-stock.co
      SalaryslipComponent,
       SupplyComponent,
       ProductStockComponent,
+      ProductStockListComponent,
       
 
    ],
@@ -132,8 +134,8 @@ import { ProductStockComponent } from './products/product-stock/product-stock.co
       PromoComponent,
       PromocodeComponent,
       SupplyComponent,
-      ProductStockComponent
-
+      ProductStockComponent,
+      ProductStockListComponent
    ]
 })
 export class AppModule { }

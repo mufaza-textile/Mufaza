@@ -110,9 +110,15 @@
                             <h4 class="card-text"> {{element.price | currency : 'LKR ' : 'code'}}</h4>
                             <span *ngIf="50 > element.quantity"><h4 class="card-text" style="color: red">In Stock : {{element.quantity}}</h4></span>
                             <span *ngIf="element.quantity > 50"><h4 class="card-text" style="color: green">In Stock : {{element.quantity}}</h4></span>
-                            <button mat-button color="accent" mat-raised-button (click)="onAddStock(element.$key)">
-                                <mat-icon>add</mat-icon>Add Stock
-                              </button>
+                            <button mat-button color="primary" mat-raised-button (click)="onAddStock(element.$key)">
+                                <mat-icon>add</mat-icon> Add Stock
+                            </button>
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            <button mat-button color="basic" mat-raised-button (click)="onStockInfo(element.$key)">
+                                <mat-icon>info</mat-icon> Info
+                            </button>
                           </div>
                         </div> 
                         <!-- </span> -->
