@@ -18,7 +18,7 @@ export class PromotionService {
   }
 
   getPromocodes(){
-    return this.promocodes;
+    return this.af.list('/promotions');
   }
 
   

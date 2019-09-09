@@ -18,6 +18,8 @@ export class ShoppingCartSummaryComponent implements OnInit{
   promo: boolean = false;
   error:boolean= false;
   newPrice: number;
+
+
   public promotions: FirebaseListObservable<Promotions[]>;
 
 
