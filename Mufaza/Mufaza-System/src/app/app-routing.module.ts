@@ -12,6 +12,7 @@ import { TailoringsComponent } from "./tailorings/tailorings.component";
 import { SuppliesComponent } from "./suppliers/supplies/supplies.component";
 import { PromoComponent } from './promo/promo.component';
 import { SalaryemployeeComponent } from './salaryemployee/salaryemployee.component';
+import { OrdersComponent } from './orders/orders.component';
 
 
 
@@ -24,7 +25,9 @@ const routes: Routes = [
   {path: 'internal-user', component: InternalUserComponent},
   {path: 'tailoring', component: TailoringsComponent},
   {path: 'supplies', component: SuppliesComponent},
-  {path: 'promo', component: PromoComponent}
+  {path: 'promo', component: PromoComponent},
+  {path: 'orders', component: OrdersComponent}
+
 
 
 ];

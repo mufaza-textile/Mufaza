@@ -9,6 +9,7 @@ import { ShoppingCartSummaryComponent } from '../shopping-cart-summary/shopping-
 import { FormGroup } from '@angular/forms';
 import { SummaryResolver } from '@angular/compiler';
 import { NewPriceService } from 'shared/services/new-price.service';
+import { Product } from 'shared/models/product';
 
 @Component({
   selector: 'shipping-form',
@@ -18,10 +19,13 @@ import { NewPriceService } from 'shared/services/new-price.service';
 export class ShippingFormComponent implements OnInit, OnDestroy {
 
   @Input('cart') cart: ShoppingCart;
+  @Input('producr') product: Product;
+
   shipping = {};
   userSubscription: Subscription;
   userId: string;
   newPrice: number;
+ 
 
   constructor(
     private router: Router,

@@ -1,8 +1,10 @@
 import { Product } from './product';
 import { ShoppingCartItem } from './shopping-cart-item';
+import { ProductCardComponent } from 'shared/components/product-card/product-card.component';
 
 export class ShoppingCart {
   items: ShoppingCartItem[] = [];
+  quantity: number;
 
 
   constructor(private itemsMap: { [productId: string]: ShoppingCartItem }) {
@@ -17,6 +19,7 @@ export class ShoppingCart {
   getQuantity(product: Product) {
     let item = this.itemsMap[product.$key];
     return item ? item.quantity : 0;
+   
   }
 
   get totalPrice() {
