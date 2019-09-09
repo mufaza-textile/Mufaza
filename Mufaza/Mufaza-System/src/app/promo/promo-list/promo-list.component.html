@@ -44,6 +44,14 @@
             <mat-cell *matCellDef="let element">{{element.discount}}</mat-cell>
       
           </ng-container>
+
+          <ng-container matColumnDef="dateAdded">
+      
+            <mat-header-cell *matHeaderCellDef  mat-sort-header>Date Added</mat-header-cell>
+      
+            <mat-cell *matCellDef="let element">{{element.dateAdded | date:'yyyy-MM-dd'}}</mat-cell>
+      
+          </ng-container>
     
         <ng-container matColumnDef="actions">
     
