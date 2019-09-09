@@ -44,7 +44,10 @@
   <button 
     [disabled]="!f.valid"
     (click)="placeOrder()"
-    class="btn btn-primary">Place Order</button>
+    class="btn btn-primary">Place Order</button>  <button
+    (click)="enter()"
+    class="btn btn-warning"
+    [disabled] = "!form-group">Demo</button>
    
 
 </form>    
