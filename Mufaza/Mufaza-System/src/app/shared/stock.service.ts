@@ -48,7 +48,7 @@ getId(){
 
   insertStock(stock){
     let id = this.getId();
-    this.stockList = this.firebase.list('/products/' + '-Lo21w_jLufgZ-stwOrH' + '/stock/');
+    this.stockList = this.firebase.list('/products/' + this.ID + '/stock/');
     this.stockList.push({
       quantity: stock.quantity,
       date: stock.date == "" ? "" : this.datePipe.transform(stock.date, 'yyyy-MM-dd'),
@@ -57,13 +57,13 @@ getId(){
 
 
 
-  updateProduct(product){
-    this.productList.update(product.$key,
-      {
-      quantity: product.quantity,
-      last_date: product.date == "" ? "" : this.datePipe.transform(product.date, 'yyyy-MM-dd'),
-      } );
-  }
+  // updateProduct(product){
+  //   this.productList.update(product.$key,
+  //     {
+  //     quantity: product.quantity,
+  //     last_date: product.date == "" ? "" : this.datePipe.transform(product.date, 'yyyy-MM-dd'),
+  //     } );
+  // }
 
 }
 
