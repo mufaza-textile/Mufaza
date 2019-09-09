@@ -100,13 +100,14 @@ export class ProductListComponent implements OnInit {
         this.dialog.open(ProductComponent,dialogConfig);
       }
 
-      onAddStock(id){
+      onAddStock(id, qty){
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
         dialogConfig.width = "40%";
         dialogConfig.height = "50%";
         this.stockService.setId(id);
+        this.stockService.setQty(qty);
         this.dialog.open(ProductStockComponent,dialogConfig);
       }
 
