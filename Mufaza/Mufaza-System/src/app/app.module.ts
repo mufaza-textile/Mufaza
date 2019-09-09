@@ -53,6 +53,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { ProductStockComponent } from './products/product-stock/product-stock.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderReportComponent } from './orders/order-report/order-report.component';
+import { OrderService } from './shared/order.service';
 
 
 
@@ -118,6 +119,7 @@ import { OrderReportComponent } from './orders/order-report/order-report.compone
       SuppliesService,
       TailoringService,
       PromoService,
+      OrderService
      
 
    ],

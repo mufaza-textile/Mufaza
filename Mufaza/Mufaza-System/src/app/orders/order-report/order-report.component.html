@@ -1,1 +1,89 @@
-<p>order-report works!</p>
+<div class="search-div">
+
+    <button mat-raised-button (click)="oncreate()">
+  
+      <mat-icon>add</mat-icon>Create
+  
+    </button>
+
+    <mat-form-field class="search-form-field" floatLabel="never">
+
+        <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyfilter()">
+    
+        <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey"  (click)="onSearchclear()">
+    
+          <mat-icon>close</mat-icon>
+    
+        </button>
+    
+      </mat-form-field>  
+    </div>
+      <div class="mat-elevation-z8">
+
+        <mat-table [dataSource]="listData"  matSort>
+
+            <ng-container matColumnDef="#">
+      
+                <mat-header-cell *matHeaderCellDef  mat-sort-header>#</mat-header-cell>
+          
+                <mat-cell *matCellDef="let element; index as i">{{i + 1}}</mat-cell>
+          
+              </ng-container>
+              <ng-container matColumnDef="shipping.name">
+      
+                <mat-header-cell *matHeaderCellDef  mat-sort-header>Customer Name</mat-header-cell>
+          
+                <mat-cell *matCellDef="let element">{{element.shipping.name}}</mat-cell>
+          
+              </ng-container>
+              <ng-container matColumnDef="datePlaced">
+      
+                <mat-header-cell *matHeaderCellDef  mat-sort-header>Date Placed</mat-header-cell>
+          
+                <mat-cell *matCellDef="let element">{{element.datePlaced}}</mat-cell>
+          
+              </ng-container>
+      
+    
+          <ng-container matColumnDef="totalprice">
+      
+            <mat-header-cell *matHeaderCellDef  mat-sort-header>Total Price</mat-header-cell>
+      
+            <mat-cell *matCellDef="let element">${{element.totalprice}}</mat-cell>
+      
+          </ng-container>
+          <ng-container matColumnDef="newprice">
+      
+            <mat-header-cell *matHeaderCellDef  mat-sort-header>New Price</mat-header-cell>
+      
+            <mat-cell *matCellDef="let element">${{element.newprice}}</mat-cell>
+      
+          </ng-container>
+     
+          
+          
+    
+        <ng-container matColumnDef="actions">
+    
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      
+            <mat-cell *matCellDef="let row">
+      
+    
+      
+              <button mat-icon-button color="warn" (click)="ondelete(row.$key)"><mat-icon>delete_outline</mat-icon></button>
+      
+            </mat-cell>
+      
+          </ng-container>
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      
+          
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+    
+        
+      </div>

@@ -10,11 +10,13 @@ import { FormGroup } from '@angular/forms';
 import { SummaryResolver } from '@angular/compiler';
 import { NewPriceService } from 'shared/services/new-price.service';
 import { Product } from 'shared/models/product';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'shipping-form',
   templateUrl: './shipping-form.component.html',
-  styleUrls: ['./shipping-form.component.css']
+  styleUrls: ['./shipping-form.component.css'],
+  providers: [DatePipe]
 })
 export class ShippingFormComponent implements OnInit, OnDestroy {
 
@@ -25,13 +27,18 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
   userSubscription: Subscription;
   userId: string;
   newPrice: number;
+  datePlaced = new Date();
+  datePlaced2: string;
  
 
   constructor(
     private router: Router,
     private authService: AuthService,
     private orderService: OrderService,
-    private sharedService: NewPriceService) {
+    private sharedService: NewPriceService,
+    private datePipe: DatePipe) {
+
+      this.datePlaced2 = this.datePipe.transform(this.datePlaced,'yyyy-MM-dd');
   }
 
   ngOnInit() {
@@ -43,7 +50,7 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
   }
 
   async placeOrder() {
-    let order = new Order(this.userId, this.shipping, this.cart,this.sharedService.newprice);
+    let order = new Order(this.userId, this.shipping,this.datePlaced2, this.cart,this.sharedService.newprice);
     console.log(this.sharedService.newPrice);
 
     let result = await this.orderService.placeOrder(order);
