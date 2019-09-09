@@ -29,6 +29,11 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
   newPrice: number;
   datePlaced = new Date();
   datePlaced2: string;
+  addressLine1:string;
+  addressLine2: string;
+  city:string;
+  phone: number;
+  
  
 
   constructor(
@@ -57,4 +62,8 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
     this.router.navigate(['/order-success', result.key]);
   }
 
+  async enter(){
+   this.shipping={name: "savandi",addressLine1: "madiwela",addressLine2: "kotte",city:"colombo",phone: "0773648388"};
+  
+}
 }
