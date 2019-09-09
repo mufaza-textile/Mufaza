@@ -9,7 +9,9 @@ import { MatDialogRef } from '@angular/material';
   styleUrls: ['./promocode.component.css']
 })
 export class PromocodeComponent implements OnInit {
-
+  
+  minFromDate= new Date();
+  maxToDate = new Date();
   constructor(private service: PromoService, private notificationService: NotifcationService, private dialogRef: MatDialogRef<PromocodeComponent>) { }
 
 
