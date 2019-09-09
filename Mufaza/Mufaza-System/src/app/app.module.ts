@@ -55,7 +55,8 @@ import { ProductStockListComponent } from './products/product-stock-list/product
 import { OrdersComponent } from './orders/orders.component';
 import { OrderReportComponent } from './orders/order-report/order-report.component';
 import { OrderService } from './shared/order.service';
-
+import { TrendingComponent } from './trending/trending.component';
+import { TrendingReportComponent } from './trending/trending-report/trending-report.component';
 
 
 @NgModule({
@@ -87,14 +88,14 @@ import { OrderService } from './shared/order.service';
       ProductListComponent,
       SalaryemployeeComponent,
       SalaryComponent,
-     SalaryslipComponent,
+      SalaryslipComponent,
       SupplyComponent,
       ProductStockComponent,
       ProductStockListComponent,
       OrdersComponent,
       OrderReportComponent,
-      
-
+      TrendingComponent,
+      TrendingReportComponent
    ],
    imports: [
       BrowserModule,
@@ -105,10 +106,9 @@ import { OrderService } from './shared/order.service';
       ReactiveFormsModule,
       BrowserAnimationsModule,
       AngularFireDatabaseModule,
-     AngularFireModule.initializeApp(environment.firebaseConfig),
-      MatExpansionModule,  
+      AngularFireModule.initializeApp(environment.firebaseConfig),
+      MatExpansionModule,
       AngularFireModule.initializeApp(environment.firebaseConfig)
-
    ],
    providers: [
       SuppliersService,
@@ -122,8 +122,6 @@ import { OrderService } from './shared/order.service';
       TailoringService,
       PromoService,
       OrderService
-     
-
    ],
    bootstrap: [
       AppComponent

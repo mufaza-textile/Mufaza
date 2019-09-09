@@ -13,6 +13,7 @@ import { SuppliesComponent } from "./suppliers/supplies/supplies.component";
 import { PromoComponent } from './promo/promo.component';
 import { SalaryemployeeComponent } from './salaryemployee/salaryemployee.component';
 import { OrdersComponent } from './orders/orders.component';
+import { TrendingComponent } from './trending/trending.component';
 
 
 
@@ -26,9 +27,8 @@ const routes: Routes = [
   {path: 'tailoring', component: TailoringsComponent},
   {path: 'supplies', component: SuppliesComponent},
   {path: 'promo', component: PromoComponent},
-  {path: 'orders', component: OrdersComponent}
-
-
+  {path: 'orders', component: OrdersComponent},
+  {path: 'trending', component: TrendingComponent}
 
 ];
 
