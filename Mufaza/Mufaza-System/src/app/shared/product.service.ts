@@ -64,6 +64,7 @@ initializeFormGroup() {
       quantity: product.quantity,
       imageUrl: product.imageUrl,
       date: product.date == "" ? "" : this.datePipe.transform(product.date, 'yyyy-MM-dd'),
+      lastDate : ''
     });
   }
 
@@ -77,6 +78,7 @@ initializeFormGroup() {
       quantity: product.quantity,
       imageUrl: product.imageUrl,
       date: product.date == "" ? "" : this.datePipe.transform(product.date, 'yyyy-MM-dd'),
+      
       } );
   }
 
