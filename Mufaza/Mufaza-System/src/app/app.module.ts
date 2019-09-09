@@ -51,6 +51,8 @@ import { SupplyComponent } from './suppliers/supplies/supply/supply.component';
 import { MatSliderModule } from '@angular/material';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ProductStockComponent } from './products/product-stock/product-stock.component';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderReportComponent } from './orders/order-report/order-report.component';
 
 
 
@@ -86,6 +88,8 @@ import { ProductStockComponent } from './products/product-stock/product-stock.co
      SalaryslipComponent,
       SupplyComponent,
       ProductStockComponent,
+      OrdersComponent,
+      OrderReportComponent,
       
 
    ],
