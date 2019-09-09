@@ -1,20 +1,8 @@
-<div class="search-div">
-
-  <mat-form-field class="search-form-field" floatLabel="never">
-
-      <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyfilter()">
-  
-      <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey"  (click)="onSearchclear()">
-  
-        <mat-icon>close</mat-icon>
-  
-      </button>
-  
-    </mat-form-field>  
-  </div>
+<button mat-button color="accent" (click)="print()">
+  <mat-icon class="mat-24" aria-label="Example icon-button with a heart icon">print</mat-icon></button>
     <div class="mat-elevation-z8">
 
-      <mat-table [dataSource]="listData"  matSort>
+      <mat-table id="table" [dataSource]="listData"  matSort>
 
           <ng-container matColumnDef="#">
     
@@ -23,13 +11,12 @@
               <mat-cell *matCellDef="let element; index as i">{{i + 1}}</mat-cell>
         
             </ng-container>
-            <ng-container matColumnDef="shipping.name">
+            <ng-container matColumnDef="productName">
     
               <mat-header-cell *matHeaderCellDef  mat-sort-header>Product Title</mat-header-cell>
         
               <mat-cell *matCellDef="let element;">{{element.items[0].title}}</mat-cell>
               
-        
             </ng-container>
             <ng-container matColumnDef="datePlaced">
     
@@ -45,7 +32,7 @@
     
         
       </mat-table>
-      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+      
   
       
     </div>
