@@ -26,8 +26,8 @@ export class OrderService {
      CustomerName : new FormControl('',[Validators.required]),
      DatePlaced : new FormControl('',[Validators.required,Validators.maxLength(30)]),
      TotalPrice : new FormControl('',[Validators.required]),
-     NewPrice : new FormControl('',[Validators.required])
-    
+     NewPrice : new FormControl('',[Validators.required]),
+    CustomerContactNo:new FormControl('',[Validators.required])
      
    });
  
@@ -39,7 +39,8 @@ export class OrderService {
       CustomerName:'',
       DatePlaced:'',
       TotalPrice:'',
-      NewPrice:''
+      NewPrice:'',
+      CustomerContactNo:''
     
       
     });

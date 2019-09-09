@@ -11,7 +11,7 @@ export class OrderReportComponent implements OnInit {
 
   constructor(private service: OrderService,private dialog: MatDialog){}
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] =[`#`, `shipping.name`,`datePlaced`,`totalprice`,`newprice`,'actions'];
+  displayedColumns: string[] =[`#`, `shipping.name`,`shipping.phone`,`datePlaced`,`totalprice`,`newprice`,`items[0].quantity`,`items[0].title`,'actions'];
   
   
   @ViewChild(MatSort,{static: true}) sort: MatSort;
