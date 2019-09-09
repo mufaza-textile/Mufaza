@@ -5,7 +5,6 @@ import { OrderService } from 'src/app/shared/order.service';
 @Component({
   selector: 'app-order-report',
   templateUrl: './order-report.component.html',
-  styleUrls: ['./order-report.component.css']
 })
 export class OrderReportComponent implements OnInit {
 
