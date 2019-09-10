@@ -21,8 +21,8 @@
 
             </mat-form-field>
             <mat-form-field>
-              <input matInput [matDatepicker]="picker" placeholder="Choose a date" 
-                  formControlName="dateAdded"
+              <input formControlName="dateAdded" matInput [matDatepicker]="picker" placeholder="Choose a date" 
+                  
                     [min]="minFromDate" 
                      [max]="maxToDate" >
               <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>

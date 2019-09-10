@@ -36,7 +36,7 @@ export class PromoService {
       $key:null,
       promocode:'',
       discount:'',
-      dateAdded:''
+      dateAdded:'',
       
     });
 }
@@ -45,11 +45,12 @@ getPromocodes(){
   return this.registerList.snapshotChanges();
 }
 insertPromocode(promocode){
+  var date = new Date().toISOString();
   this.registerList.push({
       promocode:promocode.promocode,
       discount:promocode.discount,
-      dateAdded:promocode.dateAdded
-  });
+      dateAdded:date
+  })
 }
   updatePromocode(promocode){
     this.registerList.update(promocode.$key,
