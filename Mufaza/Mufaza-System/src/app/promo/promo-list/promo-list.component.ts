@@ -13,7 +13,7 @@ export class PromoListComponent implements OnInit {
 
   constructor(private service: PromoService,private dialog: MatDialog){}
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] =[`#`, `promocode`,`discount`, `dateAdded`,'actions'];
+  displayedColumns: string[] =[`#`, `promocode`,`discount`,`dateAdded`,'actions'];
   
   
   @ViewChild(MatSort,{static: true}) sort: MatSort;

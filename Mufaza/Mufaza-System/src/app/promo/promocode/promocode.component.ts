@@ -27,9 +27,11 @@ export class PromocodeComponent implements OnInit {
   onSubmit(){
     if(this.service.form.valid){
       if (!this.service.form.get('$key').value)
-      this.service.insertPromocode(this.service.form.value);
+          this.service.insertPromocode(this.service.form.value);
+      
      else
       this.service.updatePromocode(this.service.form.value);
+      
       this.service.form.reset();
       this.service.initializeFormGroup(); 
       this.notificationService.success(':: Submitted Succesfully' );
