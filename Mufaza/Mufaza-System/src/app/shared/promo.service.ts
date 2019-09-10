@@ -45,7 +45,7 @@ getPromocodes(){
   return this.registerList.snapshotChanges();
 }
 insertPromocode(promocode){
-  var date = new Date().toISOString();
+  var date = promocode.dateAdded.toISOString();
   this.registerList.push({
       promocode:promocode.promocode,
       discount:promocode.discount,
