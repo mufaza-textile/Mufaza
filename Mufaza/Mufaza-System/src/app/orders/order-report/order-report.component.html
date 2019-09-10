@@ -1,19 +1,17 @@
 <div class="search-div">
 
-    <mat-form-field class="search-form-field" floatLabel="never">
-
-        <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyfilter()">
-    
-        <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey"  (click)="onSearchclear()">
-    
-          <mat-icon>close</mat-icon>
-    
-        </button>
-    
-      </mat-form-field>  
-    </div>
+  <button mat-stroked-button color="primary" (click)="print()">
+    <mat-icon class="mat-24" aria-label="Example icon-button with a heart icon">print</mat-icon></button>
+    <br/>
+    <div id="report">
+        <mat-toolbar>
+            <span class="fill-remaining-space"></span>
+            <span>Order Report</span>
+            <span class="fill-remaining-space"></span>
+        </mat-toolbar>
+       
       <div class="mat-elevation-z8">
-
+          
         <mat-table [dataSource]="listData"  matSort>
 
             <ng-container matColumnDef="#">
@@ -74,11 +72,7 @@
             <mat-cell *matCellDef="let element">{{element.items[0].title}} + {{element.items[1].title}}</mat-cell>
       
           </ng-container>
-          
-       
-
-          
-    
+        
         <ng-container matColumnDef="actions">
     
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
@@ -97,7 +91,8 @@
       
           
         </mat-table>
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
-    
+      </div>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" showFirstLastButtons></mat-paginator>
+     
         
       </div>

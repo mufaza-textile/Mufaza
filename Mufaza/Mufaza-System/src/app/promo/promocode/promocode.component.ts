@@ -31,10 +31,10 @@ export class PromocodeComponent implements OnInit {
       
      else
       this.service.updatePromocode(this.service.form.value);
-      
+
       this.service.form.reset();
       this.service.initializeFormGroup(); 
-      this.notificationService.success(':: Submitted Succesfully' );
+      this.notificationService.success('::Promotion Code Added Successfully' );
       this.onClose();
     }
 

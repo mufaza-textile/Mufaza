@@ -3,6 +3,7 @@ import { MatTableDataSource,MatSort,MatPaginator } from "@angular/material";
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { PromoService } from 'src/app/shared/promo.service';
 import { PromocodeComponent } from '../promocode/promocode.component';
+import { NotifcationService } from 'src/app/shared/notifcation.service';
 
 @Component({
   selector: 'app-promo-list',
@@ -11,7 +12,7 @@ import { PromocodeComponent } from '../promocode/promocode.component';
 })
 export class PromoListComponent implements OnInit {
 
-  constructor(private service: PromoService,private dialog: MatDialog){}
+  constructor(private service: PromoService,private dialog: MatDialog,private notificationService: NotifcationService){}
   listData: MatTableDataSource<any>;
   displayedColumns: string[] =[`#`, `promocode`,`discount`,`dateAdded`,'actions'];
   
@@ -66,6 +67,7 @@ export class PromoListComponent implements OnInit {
 
   ondelete($key){
     this.service.deletePromocode($key);
+    this.notificationService.warn('Promotion Code deleted!');
 
   }
 
