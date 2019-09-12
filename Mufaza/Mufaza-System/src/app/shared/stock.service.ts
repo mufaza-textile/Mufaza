@@ -17,6 +17,7 @@ export class StockService {
 
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
+    supplier: new FormControl('0'),
     quantity: new FormControl('', [Validators.required, Validators.min(0)]),
     date: new FormControl('')
   });
@@ -24,6 +25,7 @@ export class StockService {
   initializeFormGroup() {
     this.form.setValue({
       $key: null,
+      supplier: '0',
       quantity: '',
       date: ''
     });
@@ -61,6 +63,7 @@ getQty(){
     this.productList =this.firebase.list('products');
     this.stockList = this.firebase.list('/products/' + this.ID + '/stock/');
     this.stockList.push({
+      supplier : stock.supplier,
       quantity: stock.quantity,
       date: stock.date == "" ? "" : this.datePipe.transform(stock.date, 'yyyy-MM-dd'),
     });

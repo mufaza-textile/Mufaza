@@ -11,6 +11,8 @@ export class ProductService {
   // departmentList:AngularFireList<any>;
   // array=[];
   
+  
+
   constructor(private firebase :AngularFireDatabase, private datePipe: DatePipe) {
     // this.departmentList = this.firebase.list('products');
     // this.departmentList.snapshotChanges().subscribe(

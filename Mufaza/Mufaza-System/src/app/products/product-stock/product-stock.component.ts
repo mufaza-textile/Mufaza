@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { StockService } from '../../shared/stock.service';
 import { NotifcationService } from "../../shared/notifcation.service";
+import { SuppliersService } from "../../shared/suppliers.service";
 
 @Component({
   selector: 'app-product-stock',
@@ -11,6 +12,7 @@ import { NotifcationService } from "../../shared/notifcation.service";
 export class ProductStockComponent implements OnInit {
 
   constructor(private service: StockService,
+    private suppro : SuppliersService,
     private notificationService : NotifcationService,
     public dialogRef: MatDialogRef <ProductStockComponent> ) { }
 

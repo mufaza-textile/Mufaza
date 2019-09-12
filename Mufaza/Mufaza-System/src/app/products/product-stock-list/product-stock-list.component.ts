@@ -14,7 +14,7 @@ export class ProductStockListComponent implements OnInit {
 
   listData: MatTableDataSource<any>;
 
-  displayedColumns: string[] =[`index`,`quantity`,'date'];
+  displayedColumns: string[] =[`index`,`supplier`,`quantity`,'date'];
 
   @ViewChild(MatSort,{static: true}) sort: MatSort;
       @ViewChild(MatPaginator,{static: true}) paginator: MatPaginator;

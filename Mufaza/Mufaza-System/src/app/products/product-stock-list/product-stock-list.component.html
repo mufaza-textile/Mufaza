@@ -16,7 +16,13 @@
         
             </ng-container>
     
-  
+            <ng-container matColumnDef="supplier">
+    
+                    <mat-header-cell *matHeaderCellDef  mat-sort-header>Supplier</mat-header-cell>
+              
+                    <mat-cell *matCellDef="let element">{{element.supplier}}</mat-cell>
+              
+            </ng-container>
   
             
         <ng-container matColumnDef="quantity">

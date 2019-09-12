@@ -5,11 +5,19 @@
 </mat-toolbar>
 
 <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()" style="padding-left : 5%">
-        <mat-grid-list cols="1" rowHeight="200px" rowWidth="400px">
+        <mat-grid-list cols="1" rowHeight="250px" rowWidth="400px">
           <mat-grid-tile>
             <div class="controles-container2">
               <input type="hidden" formControlName="$key">
                 
+              <mat-form-field>
+                    <mat-select [(ngModel)]="supplier" formControlName="supplier" placeholder="Supplier">
+                      <mat-option>None</mat-option>
+                        <ng-container *ngFor="let supplier of suppro.array">
+                           <mat-option value="{{supplier.compName}}">{{supplier.compName}}</mat-option>
+                        </ng-container>
+                    </mat-select>
+                  </mat-form-field>
         
                   <mat-form-field >
                       <input [(ngModel)]="quantity" formControlName="quantity" matInput placeholder="Quantity" type="number">
