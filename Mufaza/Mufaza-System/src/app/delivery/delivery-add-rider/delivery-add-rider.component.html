@@ -27,8 +27,8 @@
             </mat-form-field>
                         
             <mat-form-field>
-                <input formControlName="riderMobile" matInput placeholder="Mobile">
-                <mat-error *ngIf="service.form.controls['riderMobile'].errors?.minlength">10 characters required</mat-error>
+                <input formControlName="riderMobile" matInput placeholder="Mobile" type="number">
+                <mat-error *ngIf="service.form.controls['riderMobile'].errors?.pattern">10 characters required</mat-error>
             </mat-form-field>
       
             <mat-form-field>
@@ -37,7 +37,7 @@
             </mat-form-field>
 
             <mat-form-field>
-                <input formControlName="bikenumber" matInput placeholder="Bike Number" type="number">
+                <input formControlName="bikenumber" matInput placeholder="Bike Number">
                 <mat-error>This field is mandatory.</mat-error>
             </mat-form-field>
 

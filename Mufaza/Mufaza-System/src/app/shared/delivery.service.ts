@@ -16,7 +16,7 @@ export class DeliveryService {
     $keys: new FormControl(null),
     riderName: new FormControl('', Validators.required),
     riderAddress: new FormControl(''),
-    riderMobile : new FormControl('ng',Validators.minLength(10)),
+    riderMobile : new FormControl('ng',Validators.pattern('[6-8]\\d{8}')),
     riderEmail : new FormControl('bad *@* -',Validators.email),
     bikenumber: new FormControl('', Validators.required)
   });
