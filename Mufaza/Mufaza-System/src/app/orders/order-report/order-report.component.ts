@@ -42,6 +42,10 @@ export class OrderReportComponent implements OnInit {
     this.service.delete($key);
 
   }
+  objectKeys(obj) {
+    return Object.keys(obj);
+}
+
   print(){
     var data = document.getElementById("report");  
     html2canvas(data).then(canvas => {  

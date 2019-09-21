@@ -17,4 +17,7 @@ export class MyOrdersComponent {
 
     this.orders$ = authService.user$.switchMap(u => orderService.getOrdersByUser(u.uid));
   }
+  objectKeys(obj) {
+    return Object.keys(obj);
+}
 }
