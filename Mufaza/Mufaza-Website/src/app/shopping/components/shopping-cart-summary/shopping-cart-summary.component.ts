@@ -2,7 +2,7 @@ import { ShoppingCart } from '../../../shared/models/shopping-cart';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {PromotionService} from 'shared/services/promotion.service';
 import {Promotions} from 'shared/models/Promotions';
-import { FirebaseListObservable } from 'angularfire2/database';
+import { FirebaseListObservable, FirebaseObjectObservable, AngularFireDatabase } from 'angularfire2/database';
 import { NewPriceService } from 'shared/services/new-price.service';
 import { async } from '@angular/core/testing';
 
@@ -13,6 +13,7 @@ import { async } from '@angular/core/testing';
 })
 export class ShoppingCartSummaryComponent implements OnInit{
 
+
   promocodes$;
 
   @Input('cart') cart: ShoppingCart;
@@ -20,38 +21,49 @@ export class ShoppingCartSummaryComponent implements OnInit{
   promo: boolean = false;
   error:boolean= false;
   newPrice: number;
+  discount : number;
+  data : any;
 
 
   public promotions: FirebaseListObservable<Promotions[]>;
 
 
-  constructor(public promotionService: PromotionService, private sharedService: NewPriceService){
+  constructor(public promotionService: PromotionService, private sharedService: NewPriceService,private db: AngularFireDatabase){
     this.promocodes$ = promotionService.getPromocodes;
 }
 
 ngOnInit(){
-this.promotionService.getPromocodes
+}
+
+getPromoByCode(code : string){
+  return this.db.list('/promotions',{
+    query:{
+      orderByChild: 'promocode',
+      equalTo: code
+    }
+  });
 }
 
   promotion(promocode2: string){
-    this.promocode = promocode2;
+   this.getPromoByCode(promocode2).subscribe((data:any)=>{
+
     
-    if(this.promocode === "10off") {
+    if(this.promocode === promocode2) {
       this.promo = true;
       this.error = false;
-      this.newPrice = (this.cart.totalPrice - (this.cart.totalPrice * 0.1));
+      this.newPrice = (this.cart.totalPrice - (this.cart.totalPrice * data[0].discount * 0.01));
       this.sharedService.addnewprice(this.newPrice);
     }
-    else if(this.promocode === "20off") {
+    else if(this.promocode === promocode2) {
       this.promo = true;
       this.error = false;
-      this.newPrice = (this.cart.totalPrice - (this.cart.totalPrice * 0.2));
+      this.newPrice = (this.cart.totalPrice - (this.cart.totalPrice * data[0].discount * 0.01));
       this.sharedService.addnewprice(this.newPrice);
     }
-    else if(this.promocode === "30off") {
+    else if(this.promocode === promocode2) {
       this.promo = true;
       this.error = false;
-      this.newPrice = (this.cart.totalPrice - (this.cart.totalPrice * 0.3));
+      this.newPrice = (this.cart.totalPrice - (this.cart.totalPrice * data[0].discount * 0.01));
       this.sharedService.addnewprice(this.newPrice);
     }
     else {
@@ -61,6 +73,8 @@ this.promotionService.getPromocodes
       this.sharedService.newPrice = this.newPrice;
 
   }
+ } );  
+    
   }
 }
 
