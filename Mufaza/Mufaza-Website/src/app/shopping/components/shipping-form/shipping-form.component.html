@@ -3,7 +3,7 @@
     (click)="f.reset({})"
     class="btn btn-secondary"
     style="margin-left: 450px"
-    [disabled] = "!form-group">Reset</button>
+    [disabled] = "name.invalid && addressLine1.invalid && city.invalid ">Reset</button>
   <div class="form-group">
     <label for="">Name</label>
     <input #name="ngModel" name="name" [(ngModel)]="shipping.name" type="text" class="form-control" required>

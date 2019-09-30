@@ -46,35 +46,22 @@ getPromoByCode(code : string){
 
   promotion(promocode2: string){
    this.getPromoByCode(promocode2).subscribe((data:any)=>{
-
+try{
     
-    if(this.promocode === promocode2) {
+    if(data) {
       this.promo = true;
       this.error = false;
       this.newPrice = (this.cart.totalPrice - (this.cart.totalPrice * data[0].discount * 0.01));
       this.sharedService.addnewprice(this.newPrice);
-    }
-    else if(this.promocode === promocode2) {
-      this.promo = true;
-      this.error = false;
-      this.newPrice = (this.cart.totalPrice - (this.cart.totalPrice * data[0].discount * 0.01));
-      this.sharedService.addnewprice(this.newPrice);
-    }
-    else if(this.promocode === promocode2) {
-      this.promo = true;
-      this.error = false;
-      this.newPrice = (this.cart.totalPrice - (this.cart.totalPrice * data[0].discount * 0.01));
-      this.sharedService.addnewprice(this.newPrice);
-    }
-    else {
-      this.error= true;
-      this.promo = false;
-      this.newPrice = this.cart.totalPrice;
-      this.sharedService.newPrice = this.newPrice;
+     
 
+  }}
+  catch(err){
+    this.error= true;
+    this.promo = false;
+    this.newPrice = this.cart.totalPrice;
+    this.sharedService.newPrice = this.newPrice;
   }
- } );  
-    
+ });
   }
 }
-
