@@ -2,98 +2,110 @@
     <span>{{service.form.controls['$key'].value?"Modify Product":"New Product"}}</span>
     <span class="fill-remaining-space"></span>
     <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
-  </mat-toolbar>
-        <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()" style="padding-left : 5%">
-
-          <mat-grid-list cols="2" rowHeight="500px" rowWidth="400px">
-
-            <mat-grid-tile>
-
-              <div class="controles-container2">
-
-                <input type="hidden" formControlName="$key">
+</mat-toolbar>
 
 
-                  <mat-form-field>
-                      <input formControlName="title" matInput placeholder="Title*">
-                      <mat-error>This field is mandatory.</mat-error>
-                  </mat-form-field>
+
+<form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()" style="padding-left : 5%">
+
+  <mat-grid-list cols="2" rowHeight="500px" rowWidth="400px">
+
+    <mat-grid-tile>
+
+      <div class="controles-container2">
+
+         <input type="hidden" formControlName="$key">
+
+
+            <mat-form-field>
+                <input formControlName="title" matInput placeholder="Title*">
+                <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
 
                   
-                  <mat-form-field>
-                    <input formControlName="price" matInput placeholder="Price" type="number">
-                      <span matPrefix>LKR&nbsp;</span>
-                      <span matSuffix>.00</span>
-                      <mat-error *ngIf="service.form.controls['price'].errors?.required">This field is mandatory.</mat-error>
-                      <mat-error *ngIf="service.form.controls['price'].errors?.min">Price cannot be a negative value</mat-error>
-                    </mat-form-field>
+            <mat-form-field>
+              <input formControlName="price" matInput placeholder="Price" type="number">
+                <span matPrefix>LKR&nbsp;</span>
+                <span matSuffix>.00</span>
+                <mat-error *ngIf="service.form.controls['price'].errors?.required">This field is mandatory.</mat-error>
+                <mat-error *ngIf="service.form.controls['price'].errors?.min">Price cannot be a negative value</mat-error>
+            </mat-form-field>
                             
 
-                    <mat-form-field>
-                      <mat-select formControlName="category" placeholder="Category">
-                        <mat-option>None</mat-option>
-                          <ng-container *ngFor="let oType of ordType.array">
-                             <mat-option value="{{oType.name}}">{{oType.name}}</mat-option>
-                          </ng-container>
-                      </mat-select>
-                    </mat-form-field>
+            <mat-form-field>
+              <mat-select formControlName="category" placeholder="Category">
+                <mat-option>None</mat-option>
+                  <ng-container *ngFor="let oType of ordType.array">
+                     <mat-option value="{{oType.name}}">{{oType.name}}</mat-option>
+                  </ng-container>
+              </mat-select>
+            </mat-form-field>
 
 
-                    <mat-form-field>
-                      <mat-select formControlName="sizes" placeholder="Size" multiple>
-                        <mat-option>None</mat-option>
-                          <ng-container *ngFor="let size of sizes.array">
-                             <mat-option value="{{size.name}}">{{size.name}}</mat-option>
-                          </ng-container>
-                      </mat-select>
-                    </mat-form-field>
+            <mat-form-field>
+              <mat-select formControlName="sizes" placeholder="Size" multiple>
+                <mat-option>None</mat-option>
+                  <ng-container *ngFor="let size of sizes.array">
+                     <mat-option value="{{size.name}}">{{size.name}}</mat-option>
+                  </ng-container>
+              </mat-select>
+            </mat-form-field>
           
 
-                    <mat-form-field >
-                        <input formControlName="quantity" matInput placeholder="Quantity" type="number">
-                        <mat-error *ngIf="service.form.controls['quantity'].errors?.required">This field is mandatory.</mat-error>
-                      <mat-error *ngIf="service.form.controls['quantity'].errors?.min">Quantity cannot be a negative value</mat-error>
-                      </mat-form-field>
+            <mat-form-field >
+                <input formControlName="quantity" matInput placeholder="Quantity" type="number">
+                <mat-error *ngIf="service.form.controls['quantity'].errors?.required">This field is mandatory.</mat-error>
+              <mat-error *ngIf="service.form.controls['quantity'].errors?.min">Quantity cannot be a negative value</mat-error>
+            </mat-form-field>
 
 
-                    <mat-form-field>
-                      <input formControlName="imageUrl" matInput placeholder="Image URL">
-                    </mat-form-field>
+            <mat-form-field>
+              <input formControlName="imageUrl" matInput placeholder="Image URL">
+            </mat-form-field>
   
 
-                    <mat-form-field>
-                        <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Date">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                      </mat-form-field>
+            <mat-form-field>
+                <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
 
-                    <br><br>
+            <br><br>
   
-                    <div class="button-row">
-                      <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
-                      <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
-                    </div>   
+            <div class="button-row">
+              <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+              <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+            </div>   
 
-              </div>  
+        </div>  
 
-            </mat-grid-tile>
+      </mat-grid-tile>
   
-            <mat-grid-tile>
-              <div class="controles-container">
-                <div class="card" style="width: 290px; height:400px">
-                    <!-- <span class="border border-primary"> -->
-                    <img [src] = "imageUrl" width="280px" height="300px" style="padding : 5px 5px 5px 5px;" class="card-img-top" class="rounded">
-                      <div class="card-body">
-                        <h3 class="card-title"><b>{{title}} </b> </h3>
-                        <h4 class="card-text"> {{price | currency : 'LKR ' : 'code'}}</h4>
-                      </div>
-                    <!-- </span> -->
-                  </div>
-                </div>
-              </mat-grid-tile>
+      <mat-grid-tile>
+
+        <div class="controles-container">
+
+          <div class="card" style="width: 290px; height:400px">
+
+              <!-- <span class="border border-primary"> -->
+
+              <img [src] = "imageUrl" width="280px" height="300px" style="padding : 5px 5px 5px 5px;" class="card-img-top" class="rounded">
+                
+              <div class="card-body">
+                  <h3 class="card-title"><b>{{title}} </b> </h3>
+                  <h4 class="card-text"> {{price | currency : 'LKR ' : 'code'}}</h4>
+              </div>
+              <!-- </span> -->
+          </div>
+
+        </div>
+
+      </mat-grid-tile>
 
 
-            </mat-grid-list>  
-          </form>   
+    </mat-grid-list> 
+
+
+</form>   
 
           

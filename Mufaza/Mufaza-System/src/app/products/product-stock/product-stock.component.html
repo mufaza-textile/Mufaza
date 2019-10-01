@@ -10,6 +10,8 @@
             <div class="controles-container2">
               <input type="hidden" formControlName="$key">
                 
+
+
               <mat-form-field>
                     <mat-select [(ngModel)]="supplier" formControlName="supplier" placeholder="Supplier">
                       <mat-option>None</mat-option>
@@ -19,27 +21,34 @@
                     </mat-select>
                   </mat-form-field>
         
-                  <mat-form-field >
-                      <input [(ngModel)]="quantity" formControlName="quantity" matInput placeholder="Quantity" type="number">
-                      <mat-error *ngIf="service.form.controls['quantity'].errors?.required">This field is mandatory.</mat-error>
-                    <mat-error *ngIf="service.form.controls['quantity'].errors?.min">Quantity cannot be a negative value</mat-error>
-                    </mat-form-field>
 
 
-                  <mat-form-field>
-                      <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Date">
-                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                      <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
+              <mat-form-field >
+                  <input [(ngModel)]="quantity" formControlName="quantity" matInput placeholder="Quantity" type="number">
+                  <mat-error *ngIf="service.form.controls['quantity'].errors?.required">This field is mandatory.</mat-error>
+                <mat-error *ngIf="service.form.controls['quantity'].errors?.min">Quantity cannot be a negative value</mat-error>
+              </mat-form-field>
+
+
+
+              <mat-form-field>
+                  <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Date">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
 
                   <br><br>
 
-                  <div class="button-row">
-                    <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
-                    <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
-                  </div>          
+
+              <div class="button-row">
+                <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+                <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+              </div>        
+
             </div>  
+
           </mat-grid-tile>
 
-          </mat-grid-list>  
-        </form>   
+        </mat-grid-list>  
+        
+    </form>   
