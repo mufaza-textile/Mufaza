@@ -8,6 +8,9 @@ import { MatDialog, MatDialogConfig } from "@angular/material";
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ProductStockComponent } from '../product-stock/product-stock.component';
 import { ProductStockListComponent } from '../product-stock-list/product-stock-list.component';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 @Component({
   selector: 'app-product-list',
@@ -119,6 +122,24 @@ export class ProductListComponent implements OnInit {
         dialogConfig.height = "90%";
         this.stockService.setId(id);
         this.dialog.open(ProductStockListComponent,dialogConfig);
+      }
+
+      print(){
+        
+        var data = document.getElementById("report");  
+        html2canvas(data).then(canvas => {  
+          // Few necessary setting options  
+          var imgWidth = 208;       
+          var imgHeight = canvas.height * imgWidth / canvas.width;   
+      
+          const contentDataURL = canvas.toDataURL('image/png')  
+          let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+          pdf.text ('Products Report', 10, 10);
+          var position = 0;  
+          pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
+          pdf.save('Products-Report.pdf'); // Generated PDF  
+          this.notificationService.success('Report Printed Succesfully!' ); 
+        });  
       }
 }
 
