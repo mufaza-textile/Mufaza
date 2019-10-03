@@ -34,6 +34,11 @@ export class EmployeeListComponent implements OnInit {
       list => {
         let array = list.map(item => {
           let department = this.departmentService.getDepartment(item.payload.val()['department']);
+        
+          // if(item.payload.val()['id'] === id){
+          //   return true;
+          // }
+          // return false;
           return {
             $key: item.key,
             department,

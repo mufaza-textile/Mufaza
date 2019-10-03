@@ -15,7 +15,7 @@ export class EmployeesService {
 
   form : FormGroup = new FormGroup({
 
-    $key : new FormControl(null,),
+    $key : new FormControl(null),
     empName : new FormControl('',Validators.required),
     designation : new FormControl(''),
     email : new FormControl('',Validators.email),

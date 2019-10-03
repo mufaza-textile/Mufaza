@@ -9,18 +9,48 @@
 <app-salary></app-salary>
           </mat-tab>
        
-      
+          <h3>Sum of two Numbers using AngularJS</h3>
+
+          <div ng-app="">
+               <h3>Using Double Negation</h3>
+          
+              <p>First Number:
+                  <input type="text" ng-model="a" />
+              </p>
+              <p>Second Number:
+                  <input type="text" ng-model="b" />
+              </p>
+              <p>Sum: {{ a -- b }}</p>
+               <h3>Using Input Type Number</h3>
+          
+              <p>First Number:
+                  <input type="number" ng-model="c" />
+              </p>
+              <p>Second Number:
+                  <input type="number" ng-model="d" />
+              </p>
+              <p>Sum: {{ c + d }}</p>
+          </div>
+
          
               <mat-tab label="Salary Slip">
                   <mat-toolbar>
+                        <div>
+                                <span>Date-</span>
+                        {{currentDate | date:'yyyy-MM-dd'}}
+                 </div>
                   <span class="fill-remaining-space"></span>
                   <span>Salary Slip Of Mufaza Company</span>
                   <span class="fill-remaining-space"></span>
+
                 </mat-toolbar>
       <app-salaryslip></app-salaryslip>
                 </mat-tab>
              
             
 
+                
+
 
   </mat-tab-group>
+  
