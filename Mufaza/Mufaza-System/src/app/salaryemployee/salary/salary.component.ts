@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NotifcationService } from 'src/app/shared/notifcation.service';
 
 import { SalaryService } from "../../shared/salary.service";
 import { SalaryslipComponent } from '../salaryslip/salaryslip.component';
 import { MatDialog,MatDialogConfig, MatDialogRef} from "@angular/material";
+import * as jsPDF from 'jspdf'; 
 
 @Component({
   selector: 'app-salary',
@@ -12,11 +13,32 @@ import { MatDialog,MatDialogConfig, MatDialogRef} from "@angular/material";
 })
 
 
-
-
-
-
 export class SalaryComponent implements OnInit {
+
+  
+
+  @ViewChild('content',{static:true}) content: ElementRef;
+
+  public downloadPDF() {
+    
+  
+  
+    let doc = new jsPDF();
+  
+    let specialElementHandlers = {
+      '#editor':function(elemenet, renderer){
+        return  true;
+      }
+    };
+    
+    let content = this.content.nativeElement;
+    doc.fromHTML(content.innerHTML,15,15, {
+      'width':190,
+      'elementHandlers':specialElementHandlers
+    });
+  doc.save('salary.pdf');
+  }
+
 
 
 constructor(private service: SalaryService,

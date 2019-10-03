@@ -2,13 +2,17 @@
 <mat-toolbar>
     <span>{{service.form.controls['$key'].value?"Salary Form":"Salary Form  of Mufaza Employees"}}</span>
     <span class="fill-remaining-space"></span>
-    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+    <button mat-raised-button (click) = "downloadPDF()">
+      <mat-icon>save_alt</mat-icon> Download PDF
+    </button>  
+
   </mat-toolbar>
   
         <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()" style="padding-left : 10%">
           <mat-grid-list cols="2" rowHeight="500px" rowWidth="300px">
             <mat-grid-tile>
-                
+              
+    
                     <div class="controles-container2">
                   <mat-form-field>
                       <input [(ngModel)]="$key" formControlName="$key" matInput placeholder="Employee ID">
@@ -89,7 +93,7 @@
 
 
 
-
+<div id = "content"#content>
     <div class="controles-container2">
       <mat-tab-group>
     <mat-tab label="Salary Slip">
@@ -237,3 +241,4 @@
       </mat-grid-tile>
   
   </mat-grid-list>
+  </div>
