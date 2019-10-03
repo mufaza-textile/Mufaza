@@ -4,7 +4,8 @@ import { NotifcationService } from 'src/app/shared/notifcation.service';
 import { SalaryService } from "../../shared/salary.service";
 import { SalaryslipComponent } from '../salaryslip/salaryslip.component';
 import { MatDialog,MatDialogConfig, MatDialogRef} from "@angular/material";
-import * as jsPDF from 'jspdf'; 
+import * as jsPDF from 'jspdf';
+import html2canvas from 'html2canvas'; 
 
 @Component({
   selector: 'app-salary',
@@ -14,31 +15,6 @@ import * as jsPDF from 'jspdf';
 
 
 export class SalaryComponent implements OnInit {
-
-  
-
-  @ViewChild('content',{static:true}) content: ElementRef;
-
-  public downloadPDF() {
-    
-  
-  
-    let doc = new jsPDF();
-  
-    let specialElementHandlers = {
-      '#editor':function(elemenet, renderer){
-        return  true;
-      }
-    };
-    
-    let content = this.content.nativeElement;
-    doc.fromHTML(content.innerHTML,15,15, {
-      'width':190,
-      'elementHandlers':specialElementHandlers
-    });
-  doc.save('salary.pdf');
-  }
-
 
 
 constructor(private service: SalaryService,
@@ -90,6 +66,26 @@ totalE(basic,allow){
   basic+allow;
 this.totalE
 
+}
+
+
+
+downloadPDF(){
+  var data = document.getElementById("report");  
+  html2canvas(data).then(canvas => {  
+    // Few necessary setting options  
+    var imgWidth = 208;   
+    var pageHeight = 295;    
+    var imgHeight = canvas.height * imgWidth / canvas.width;  
+    var heightLeft = imgHeight;  
+
+    const contentDataURL = canvas.toDataURL('image/png')  
+    let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+    var position = 0;  
+    pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
+    pdf.save('employee.pdf'); // Generated PDF  
+    this.notificationService.success('Report Printed Succesfully!' ); 
+  });  
 }
 
 }
