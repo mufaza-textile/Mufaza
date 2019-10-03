@@ -58,7 +58,6 @@ import { OrderService } from './shared/order.service';
 import { TrendingComponent } from './trending/trending.component';
 import { TrendingReportComponent } from './trending/trending-report/trending-report.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { LoginService } from './shared/login.service'
 
 
 @NgModule({
