@@ -74,6 +74,7 @@ export class EmployeeListComponent implements OnInit {
       dialogConfig.disableClose = true;
       dialogConfig.autoFocus = true;
       dialogConfig.width = "60%";
+      dialogConfig.height="85%";
       this.dialog.open(EmployeeComponent,dialogConfig);  
     }
 
