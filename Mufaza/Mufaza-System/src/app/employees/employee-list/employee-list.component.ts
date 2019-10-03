@@ -40,11 +40,6 @@ export class EmployeeListComponent implements OnInit {
       list => {
         let array = list.map(item => {
           let department = this.departmentService.getDepartment(item.payload.val()['department']);
-        
-          // if(item.payload.val()['id'] === id){
-          //   return true;
-          // }
-          // return false;
           return {
             $key: item.key,
             department,
@@ -74,7 +69,7 @@ export class EmployeeListComponent implements OnInit {
       dialogConfig.disableClose = true;
       dialogConfig.autoFocus = true;
       dialogConfig.width = "60%";
-      dialogConfig.height="85%";
+    
       this.dialog.open(EmployeeComponent,dialogConfig);  
     }
 
@@ -90,6 +85,8 @@ export class EmployeeListComponent implements OnInit {
 
     onDelete($key){
           this.service.deleteEmployee($key);
+          this.notificationService.success(':: Deleted successfully');
+         
     }
 
     
@@ -107,13 +104,14 @@ export class EmployeeListComponent implements OnInit {
     
         const contentDataURL = canvas.toDataURL('image/png')  
         let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+        pdf.text('Employee LIst of Mufaza Company', 10, 10);
         var position = 0;  
-        pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
+
+        pdf.addImage(contentDataURL, 'PNG',0, position, imgWidth, imgHeight)  
         pdf.save('employee.pdf'); // Generated PDF  
         this.notificationService.success('Report Printed Succesfully!' ); 
       });  
     }
-  
-  }
+} 
   
       
