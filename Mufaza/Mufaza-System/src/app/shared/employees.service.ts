@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFireDatabase,AngularFireList } from "angularfire2/database";
 import * as _ from 'lodash';
+import * as jsPDF from 'jspdf'; 
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeesService {
-
 
   constructor(private firebase :AngularFireDatabase) { }
 
@@ -15,7 +16,7 @@ export class EmployeesService {
 
   form : FormGroup = new FormGroup({
 
-    $key : new FormControl(null,),
+    $key : new FormControl(null),
     empName : new FormControl('',Validators.required),
     designation : new FormControl(''),
     email : new FormControl('',Validators.email),
@@ -50,6 +51,7 @@ export class EmployeesService {
 
     getEmployees(){
       this.employeeList =this.firebase.list('employees');
+    
       return this.employeeList.snapshotChanges(); 
     }
 //snapshotchnges it will return the observerble from the angularfire

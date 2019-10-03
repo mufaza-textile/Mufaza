@@ -8,11 +8,16 @@
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
+    <button mat-raised-button color="accent" (click)="downloadPDF()">
+        <mat-icon>save_alt</mat-icon> Download PDF
+      </button>
+      &nbsp;
   </div>
-  <div class="mat-elevation-z8">
+  <div id="report">
+     
+  <div  class="mat-elevation-z8" >
     <mat-table [dataSource]="listData"  matSort>
-
-        <ng-container matColumnDef="$key">
+       <ng-container matColumnDef="$key">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Employee ID</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.$key}}</mat-cell>
           </ng-container>
@@ -33,6 +38,7 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header>Department</mat-header-cell>
         <mat-cell *matCellDef="let element">{{element.department}}</mat-cell>
       </ng-container>
+   
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let row">
@@ -40,6 +46,7 @@
           <button mat-icon-button  color="warn"(click)="onDelete(row.$key)"><mat-icon>delete_outline</mat-icon></button>
         </mat-cell>
       </ng-container>
+    
       <ng-container matColumnDef="loading">
         <mat-footer-cell *matFooterCellDef colspan="6">
           Loading data...
@@ -56,4 +63,5 @@
       <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}"></mat-footer-row>
     </mat-table>
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+  </div>
   </div>
