@@ -1,17 +1,21 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NotifcationService } from 'src/app/shared/notifcation.service';
-
 import { SalaryService } from "../../shared/salary.service";
 import { SalaryslipComponent } from '../salaryslip/salaryslip.component';
 import { MatDialog,MatDialogConfig, MatDialogRef} from "@angular/material";
-import * as jsPDF from 'jspdf';
-import html2canvas from 'html2canvas'; 
+import *as  jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-salary',
   templateUrl: './salary.component.html',
   styleUrls: ['./salary.component.css']
 })
+
+
+
+
 
 
 export class SalaryComponent implements OnInit {
@@ -68,8 +72,6 @@ this.totalE
 
 }
 
-
-
 downloadPDF(){
   var data = document.getElementById("report");  
   html2canvas(data).then(canvas => {  
@@ -83,9 +85,10 @@ downloadPDF(){
     let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
     var position = 0;  
     pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
-    pdf.save('employee.pdf'); // Generated PDF  
+    pdf.save('salary.pdf'); // Generated PDF  
     this.notificationService.success('Report Printed Succesfully!' ); 
   });  
 }
 
 }
+

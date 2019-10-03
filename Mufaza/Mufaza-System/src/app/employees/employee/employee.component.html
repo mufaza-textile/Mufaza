@@ -4,7 +4,7 @@
         <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
       </mat-toolbar>
 <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()">
-    <mat-grid-list cols="2" rowHeight="400px">
+    <mat-grid-list cols="2" rowHeight="300px">
 
       <mat-grid-tile>
         <div class="controles-container2">
@@ -14,25 +14,23 @@
           <mat-error>This field is mandatory</mat-error>
         </mat-form-field>
 
-        <mat-form-field>
-          <input [(ngModel)]="empName" formControlName="empName" matInput placeholder="Employee Name">
-          <input formControlName="empName" matInput placeholder="Employee Name*">
-          <mat-error>This field is mandatory.</mat-error>
-      </mat-form-field>
 
           <mat-form-field>
-              <input [(ngModel)]="designation" formControlName="designation" matInput placeholder="Designation">
+            <input formControlName="empName" matInput placeholder="Employee Name">
+            <mat-error>This field is mandatory</mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field>
                 <input formControlName="designation" matInput placeholder="Designation">
           </mat-form-field>
 
           <mat-form-field>
-              <input [(ngModel)]="email" formControlName="email" matInput placeholder="Email">
                 <input formControlName="email" matInput placeholder="Email">
                 <mat-error>Invalid Email</mat-error>
           </mat-form-field>
 
           <mat-form-field>
-              <input [(ngModel)]="mobile" formControlName="mobile" matInput placeholder="Mobile">
                 <input formControlName="mobile" matInput placeholder="Mobile" type="number">
                 <mat-error *ngIf="service.form.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
                 <mat-error *ngIf="service.form.controls['mobile'].errors?.pattern">10 characters required</mat-error>
@@ -44,36 +42,31 @@
             <mat-grid-tile>
               <div class="controles-container">
                 <mat-form-field>
-                 <mat-select [(ngModel)]="department" formControlName="department" matInput placeholder="Department">
                 <mat-select formControlName="department" placeholder="Department">
                   <mat-option>None</mat-option>
                   <ng-container *ngFor="let department of departmentService.array">
                     <mat-option value="{{department.$key}}">{{department.code}}-{{department.name}}</mat-option>
                   </ng-container>
                 </mat-select>
-                 </mat-select>
             </mat-form-field>
-             
+
+            
           <mat-form-field>
-              <input [(ngModel)]="address" formControlName="address" matInput placeholder="Address">
               <input formControlName="address" matInput placeholder="Address">
            </mat-form-field>
 
             <mat-form-field>
-                <input [(ngModel)]="joined" formControlName="joined" matInput placeholder="Joined Date">
                     <input formControlName="joined" matInput [matDatepicker]="picker" placeholder="Joined Date">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field>
-                <input [(ngModel)]="salary" formControlName="salary" matInput placeholder="Salary">
                     <input formControlName="salary" matInput placeholder="Salary" type="number"  class="example-right-align">
                     <span matPrefix>RS&nbsp;</span>
                     <span matSuffix>.00</span>
             </mat-form-field>
             <div class="add-bottom-padding">
-                <input [(ngModel)]="isPermanent" formControlName="isPermanent" matInput placeholder="Permanent Employee">
                 <mat-checkbox formControlName="isPermanent">Permanent Employee</mat-checkbox>
               </div>
       
@@ -83,9 +76,10 @@
             </div>
 
 
-            </div>
-              
-      
+
+
+
+        </div>       
       </mat-grid-tile>
     </mat-grid-list>
   </form>

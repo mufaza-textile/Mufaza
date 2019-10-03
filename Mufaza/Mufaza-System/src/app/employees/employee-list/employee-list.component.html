@@ -12,16 +12,10 @@
         <mat-icon>save_alt</mat-icon> Download PDF
       </button>
       &nbsp;
-    <!--<button mat-raised-button (click) = "downloadPDF()">
-      <mat-icon>save_alt</mat-icon> Download PDF
-    </button>-->
-  
   </div>
-  <div  class="mat-elevation-z8" >
-    
-      <div id="report">
+  <div id="report">
      
-
+  <div  class="mat-elevation-z8" >
     <mat-table [dataSource]="listData"  matSort>
        <ng-container matColumnDef="$key">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Employee ID</mat-header-cell>
@@ -52,6 +46,7 @@
           <button mat-icon-button  color="warn"(click)="onDelete(row.$key)"><mat-icon>delete_outline</mat-icon></button>
         </mat-cell>
       </ng-container>
+    
       <ng-container matColumnDef="loading">
         <mat-footer-cell *matFooterCellDef colspan="6">
           Loading data...
