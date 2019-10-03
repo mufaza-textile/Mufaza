@@ -1,76 +1,235 @@
-<div class="controles-container">
-        <div>
-                <span>Date-</span>
-        {{currentDate | date:'yyyy-MM-dd'}}
- </div>
- </div>  
-  <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()">
-      <mat-grid-list cols="2" rowHeight="500px">
-        <mat-grid-tile>
-          <div class="controles-container2">
-            <input type="hidden" formControlName="$key">
-            <mat-form-field>
-              <input formControlName="empID" matInput placeholder="Employee ID">
-              <mat-error>This field is mandatory</mat-error>
-            </mat-form-field>
-  
-  
-            <mat-form-field>
-              <input formControlName="empName" matInput placeholder="Employee Name">
-            </mat-form-field>
-            
-            <mat-form-field>
-                <input formControlName="designation" matInput placeholder="Designation">
-              </mat-form-field>    
 
-            <mat-form-field>
-              <input formControlName="basic" matInput placeholder="Basic Salary" type="number"  class="example-right-align">
-              <span matPrefix>RS&nbsp;</span>
-              <span matSuffix>.00</span>
-           </mat-form-field>
+<mat-toolbar>
+    <span>{{service.form.controls['$key'].value?"Salary Form":"Salary Form"}}</span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+  </mat-toolbar>
+  
+        <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()" style="padding-left : 10%">
+          <mat-grid-list cols="2" rowHeight="500px" rowWidth="300px">
+            <mat-grid-tile>
                 
-           <mat-form-field>
-            <input formControlName="allow" matInput placeholder="Allowance" type="number"  class="example-right-align">
-            <span matPrefix>RS&nbsp;</span>
-            <span matSuffix>.00</span>
-         </mat-form-field>
+                    <div class="controles-container2">
+                  <mat-form-field>
+                      <input [(ngModel)]="$key" formControlName="$key" matInput placeholder="Employee ID">
+                      <mat-error>This field is mandatory.</mat-error>
+                  </mat-form-field>
+               <!-- <input type="hidden" formControlName="$key">-->
+                  <mat-form-field>
+                      <input [(ngModel)]="empName" formControlName="empName" matInput placeholder="Employee Name">
+                      <mat-error>This field is mandatory.</mat-error>
+                  </mat-form-field>
+                  
+                  <mat-form-field>
+                      <input [(ngModel)]="designation" formControlName="designation" matInput placeholder="Designation">
+                  </mat-form-field>
+
+
+                  <mat-form-field>
+                    <input [(ngModel)]="basic" formControlName="basic" matInput placeholder="Basic Salary" type="number">
+                      <span matPrefix>LKR&nbsp;</span>
+                      <span matSuffix>.00</span>
+                     <mat-error *ngIf="service.form.controls['basic'].errors?.required">This field is mandatory.</mat-error>
+                      <mat-error *ngIf="service.form.controls['basic'].errors?.min">Price cannot be a negative value</mat-error>
+                    </mat-form-field>
+                       
+                    <mat-form-field>
+                      <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Date" >
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+              </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="controles-container">
+                  
+                    <mat-form-field>
+                        <input [(ngModel)]="allow" formControlName="allow" matInput placeholder="Allowance" type="number">
+                          <span matPrefix>LKR&nbsp;</span>
+                          <span matSuffix>.00</span>
+                          <mat-error *ngIf="service.form.controls['allow'].errors?.min">Price cannot be a negative value</mat-error> 
+                        </mat-form-field>
+              
                
-       
+               
+
+                        <mat-form-field>
+                            <input [(ngModel)]="tax" formControlName="tax" matInput placeholder="Tax" type="number">
+                              <span matPrefix>LKR&nbsp;</span>
+                              <span matSuffix>.00</span>
+                             <mat-error *ngIf="service.form.controls['tax'].errors?.required">This field is mandatory.</mat-error>
+                              <mat-error *ngIf="service.form.controls['tax'].errors?.min">Price cannot be a negative value</mat-error> 
+                            </mat-form-field>
+
+              
+                    <mat-form-field>
+                        <input [(ngModel)]="bankAcc" formControlName="bankAcc" matInput placeholder="Bank Account Number">
+
+                    </mat-form-field>
+                    
+                    <mat-form-field>
+                        <input [(ngModel)]="pfAcc" formControlName="pfAcc" matInput placeholder="PF AccountNumber">
+
+                    </mat-form-field>
+                 
+                    <div class="button-row">
+                      <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+                      <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+                    </div>  
+                    
+
+              </div>                    
+            </mat-grid-tile>
   
-          </div>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <div class="controles-container2">
-            
-     
-                <mat-form-field>
-                        <input formControlName="tax" matInput placeholder="Tax" type="number"  class="example-right-align">
-                        <span matPrefix>RS&nbsp;</span>
-                        <span matSuffix>.00</span>
-                     </mat-form-field>
+            </mat-grid-list>  
+          </form>   
+
+          
 
 
-            <mat-form-field>
-              <input formControlName="date" matInput placeholder="Joined">
-            </mat-form-field>
-                
-            <mat-form-field>
-              <input formControlName="bankAcc" matInput placeholder="Bank Account Number" type="number"  class="example-right-align">
-           </mat-form-field>
+
+
+    <div class="controles-container2">
+      <mat-tab-group>
+    <mat-tab label="Salary Slip">
+      <mat-toolbar>
+            <div>
+                    <span>Date-</span>
+            {{currentDate | date:'yyyy-MM-dd'}}
+     </div>
+      <span class="fill-remaining-space"></span>
+      <span>Salary Slip Of Mufaza Company</span>
+      <span class="fill-remaining-space"></span>
+
+    </mat-toolbar>
+ </mat-tab>
+    
+  </mat-tab-group>
+</div>
+<mat-grid-list cols="2" rowHeight="5:1">
+    <mat-grid-tile >
+      <div>
+        
+        <tr>
+<h5>Employee ID:{{$key}}</h5>
+<h5>Employee Name:{{empName}}</h5>
+
+<h5>Employee Designation:{{designation}}</h5>
+
+</tr>
+</div>
+</mat-grid-tile>
+<mat-grid-tile>
+<tr>
+
+
+<h5>Date: {{currentDate | date:'dd/MM/yyyy'}}</h5
+  ><h5>Bank Account number :{{bankAcc}}</h5>
+  <h5>PF Account Number :{{pfAcc}}</h5>
+</tr>
+</mat-grid-tile>
+</mat-grid-list>
+
+  <mat-grid-list cols="2" rowHeight="4:1">
+
+
+      <mat-grid-tile class = "m">
+              <table class="table table-striped">
+           
+                  <thead>
+                          <tr>
+                            
+                            <th scope="col">Earnings</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Gross Salary</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>Allowance</td>
+                            <td>
+                                <span> {{allow}}.00</span>
+                             </td>
+                            <td>
+                                 <span> {{allow}}.00</span>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>Basic Salary</td>
+                                <td>
+                                        <span>{{basic}}.00</span>
+                                </td>
+                                <td>
+                                    <span>{{basic}}.00</span>
+                                </td>
+                              </tr>
+                              <tr>
+                                  <td>Total Earnings</td>
+                                     <td>
+                                         <span></span>
+                                     </td>
+                                     <td>
+                                         <span> {{allow + basic}}.00</span> <!--{{allow -- basic}}-- will get the same answer-->
+                                     </td>
+                                   </tr>
+                             
+                                   
+                                      
+                                       
+                                   
+                          </tbody>
+               
+              
+            </table>
   
-     
-           <mat-form-field>
-              <input formControlName="pfAcc" matInput placeholder="PF Account Number" type="number"  class="example-right-align">
-           </mat-form-field>
+      </mat-grid-tile>
   
-           <div class="button-row">
-              <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
-              <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
-      </div>
+      <mat-grid-tile>
+             
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      
+      <th scope="col">Deduction</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Gross Salary</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Tax</td>
+      <td>
+          <span> {{tax}}.00</span>
+      <td>
+          <span> {{tax}}.00</span>
+      </td>
+    </tr>
+    <tr>
+       <td>Total Deduction</td>
+          <td>
+              <span></span>
+          </td>
+          <td>
+              <span> {{tax}}.00</span>
+          </td>
+        </tr>
   
+      <tr>
   
+        <tr>
+              <th scope="col">Net Amount</th>
+                 <td>
+                      
+                      <span matSuffix></span>
+                 </td>
+                 <td> 
+                       <span matSuffix>{{allow+basic-tax}}.00</span>
+               </td>
+               </tr>
+    </tbody>
+  </table>
   
-          </div>       
-        </mat-grid-tile>
-      </mat-grid-list>
-    </form>
+      </mat-grid-tile>
+  
+  </mat-grid-list>

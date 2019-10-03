@@ -10,9 +10,14 @@ import { MatDialog,MatDialogConfig, MatDialogRef} from "@angular/material";
   templateUrl: './salary.component.html',
   styleUrls: ['./salary.component.css']
 })
+
+
+
+
+
+
 export class SalaryComponent implements OnInit {
 
-  
 
 constructor(private service: SalaryService,
   private notificationService : NotifcationService,
@@ -20,12 +25,12 @@ constructor(private service: SalaryService,
    
 
 ngOnInit() {
- 
-  this.service.getSalary();//this will called when ALL the modification  and deletion happens
+
+  this.service.getSalary();
+  //this will called when ALL the modification  and deletion happens
 }
+
 currentDate=new Date();
-
-
 
 
 onClear() {
@@ -36,16 +41,6 @@ onClear() {
 
 /*form is valid or not , 
 */
-
-onCreate(){
-  this.service.initializeFormGroup ();
-  const dialogConfig = new MatDialogConfig();
-  dialogConfig.disableClose = true;
-  dialogConfig.autoFocus = true;
-  dialogConfig.width = "60%";
-  this.dialog.open(SalaryslipComponent,dialogConfig);  
-}
-
 
 
 onSubmit() {
@@ -65,6 +60,14 @@ onClose() {
   this.service.form.reset();
   this.service.initializeFormGroup();
  
+}
+
+
+
+totalE(basic,allow){
+  basic+allow;
+this.totalE
+
 }
 
 }
