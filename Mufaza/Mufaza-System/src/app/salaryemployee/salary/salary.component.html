@@ -1,6 +1,6 @@
 
 <mat-toolbar>
-    <span>{{service.form.controls['$key'].value?"Salary Form":"Salary Form"}}</span>
+    <span>{{service.form.controls['$key'].value?"Salary Form":"Salary Form  of Mufaza Employees"}}</span>
     <span class="fill-remaining-space"></span>
     <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
   </mat-toolbar>
@@ -72,12 +72,12 @@
                         <input [(ngModel)]="pfAcc" formControlName="pfAcc" matInput placeholder="PF AccountNumber">
 
                     </mat-form-field>
-                 
+                 <!--
                     <div class="button-row">
                       <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
                       <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
                     </div>  
-                    
+                  -->
 
               </div>                    
             </mat-grid-tile>
@@ -112,10 +112,9 @@
       <div>
         
         <tr>
-<h5>Employee ID:{{$key}}</h5>
-<h5>Employee Name:{{empName}}</h5>
-
-<h5>Employee Designation:{{designation}}</h5>
+<h5>Employee ID:   {{$key}}</h5>
+<h5>Employee Name:   {{empName}}</h5>
+<h5>Employee Designation:   {{designation}}</h5>
 
 </tr>
 </div>
@@ -124,9 +123,9 @@
 <tr>
 
 
-<h5>Date: {{currentDate | date:'dd/MM/yyyy'}}</h5
-  ><h5>Bank Account number :{{bankAcc}}</h5>
-  <h5>PF Account Number :{{pfAcc}}</h5>
+<h5>Date: {{currentDate | date:'dd/MM/yyyy'}}</h5>
+<h5>Bank Account number :   {{bankAcc}}</h5>
+<h5>PF Account Number :   {{pfAcc}}</h5>
 </tr>
 </mat-grid-tile>
 </mat-grid-list>
@@ -230,6 +229,11 @@
     </tbody>
   </table>
   
+
+<div></div>
+
+
+
       </mat-grid-tile>
   
   </mat-grid-list>

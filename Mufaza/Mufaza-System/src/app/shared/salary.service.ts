@@ -101,10 +101,5 @@ insertSalary(sal){
     this.form.patchValue(sal);
   }
 
-/*totalE(totale){
-  this.salaryList.query(basic,allow{
-  basic+allow;
 
-  });
-}*/
 }

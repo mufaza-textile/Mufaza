@@ -50,6 +50,7 @@ export class EmployeesService {
 
     getEmployees(){
       this.employeeList =this.firebase.list('employees');
+    
       return this.employeeList.snapshotChanges(); 
     }
 //snapshotchnges it will return the observerble from the angularfire
