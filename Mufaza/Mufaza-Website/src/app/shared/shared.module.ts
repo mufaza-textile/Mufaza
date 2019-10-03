@@ -18,6 +18,7 @@ import { ShoppingCartService } from './services/shopping-cart.service';
 import { UserService } from './services/user.service';
 import{ PromotionService } from './services/promotion.service';
 import { NewPriceService } from './services/new-price.service';
+import { SecureInnerPagesGuard} from './services/secure-inner-pages.guard'
 @NgModule({
   imports: [
     CommonModule,
@@ -52,7 +53,8 @@ import { NewPriceService } from './services/new-price.service';
     ShoppingCartService,
     OrderService,
     PromotionService,
-    NewPriceService
+    NewPriceService,
+    
   ]
 })
 export class SharedModule { }

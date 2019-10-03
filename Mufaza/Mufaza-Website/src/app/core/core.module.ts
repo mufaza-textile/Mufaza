@@ -5,7 +5,9 @@ import { HomeComponent } from './components/home/home.component';
 import { BsNavbarComponent } from './components/bs-navbar/bs-navbar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
+import { ProfileNavbarComponent } from './components/profile-navbar/profile-navbar.component';
 
 @NgModule({
   imports: [
@@ -16,10 +18,13 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     BsNavbarComponent,
     HomeComponent,
     LoginComponent,
-    EditProfileComponent,        
+    ChangePasswordComponent,
+    DeleteAccountComponent,
+    ProfileNavbarComponent,        
   ],
   exports: [
-    BsNavbarComponent
+    BsNavbarComponent,
+    ProfileNavbarComponent
   ]
 })
 export class CoreModule { }

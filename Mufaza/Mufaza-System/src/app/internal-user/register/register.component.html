@@ -9,14 +9,17 @@
     <mat-grid-list cols="2" rowHeight="300px">
       <mat-grid-tile>
         <div class="controles-container2">
-          <input type="hidden" formControlName="$key">
-          
+            <mat-form-field>
+          <input  formControlName="$key" matInput placeholder="Username">
+          <mat-error *ngIf="service.form.controls['$key'].errors?.minLength">Minimum 5 characters</mat-error>
+        </mat-form-field>
+
           <mat-form-field>
-                <input formControlName="empId" matInput placeholder="Employee ID">
+                <input formControlName="userId" matInput placeholder="Employee Name">
           </mat-form-field>
           <mat-form-field>
                 <input matInput placeholder="Enter your password" formControlName="password" [type]="hide ? 'password' : 'text'">
-                
+                <mat-error *ngIf="service.form.controls['password'].errors?.minLength">Minimum 8 characters</mat-error>
               </mat-form-field>
         </div>
       </mat-grid-tile>
