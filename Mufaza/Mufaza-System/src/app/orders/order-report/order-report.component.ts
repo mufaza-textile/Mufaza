@@ -11,9 +11,11 @@ import { NotifcationService } from 'src/app/shared/notifcation.service';
   templateUrl: './order-report.component.html',
 })
 export class OrderReportComponent implements OnInit {
+orders$;
 
-
-  constructor(private service: OrderService,private dialog: MatDialog, private   notificationService: NotifcationService){}
+  constructor(private service: OrderService,private dialog: MatDialog, private   notificationService: NotifcationService){
+    this.orders$ = service.getOrders();
+  }
   listData: MatTableDataSource<any>;
   displayedColumns: string[] =[`#`, `shipping.name`,`shipping.phone`,`datePlaced`,`totalprice`,`newprice`,`items[0].quantity`,`items[0].title`,'actions'];
   
