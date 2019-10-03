@@ -24,7 +24,8 @@ export class PromoService {
  
      $key : new FormControl(null),
      promocode : new FormControl('',[Validators.required,Validators.maxLength(30)]),
-     discount : new FormControl('',[Validators.required])
+     discount : new FormControl('',[Validators.required]),
+     dateAdded : new FormControl('',[Validators.required])
   
    });
  
@@ -34,7 +35,8 @@ export class PromoService {
 
       $key:null,
       promocode:'',
-      discount:''
+      discount:'',
+      dateAdded:'',
       
     });
 }
@@ -43,16 +45,19 @@ getPromocodes(){
   return this.registerList.snapshotChanges();
 }
 insertPromocode(promocode){
+  var date = promocode.dateAdded.toISOString();
   this.registerList.push({
       promocode:promocode.promocode,
-      discount:promocode.discount
-  });
+      discount:promocode.discount,
+      dateAdded:date
+  })
 }
   updatePromocode(promocode){
     this.registerList.update(promocode.$key,
       {
         promocode:promocode.promocode,
-        discount:promocode.discount
+        discount:promocode.discount,
+        dateAdded:promocode.dateAdded
       })
   }
   

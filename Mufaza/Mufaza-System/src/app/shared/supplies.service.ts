@@ -2,8 +2,11 @@ import { SupplierComponent } from './../suppliers/supplier/supplier.component';
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFireDatabase,AngularFireList } from "angularfire2/database";
+import { Router } from '@angular/router';
+
+
 import * as _ from 'lodash';
-// import { SupplierListComponent } from "./../suppliers/supplier-list/supplier-list.component";
+import { SupplierListComponent } from "./../suppliers/supplier-list/supplier-list.component";
 import { SuppliersService } from "./../shared/suppliers.service";
 import { DatePipe } from '@angular/common';
 
@@ -12,12 +15,14 @@ import { DatePipe } from '@angular/common';
 })
 export class SuppliesService {
 
-  constructor(private db :AngularFireDatabase, private datePipe: DatePipe
+  constructor(private db :AngularFireDatabase, private datePipe: DatePipe,    private router : Router,
+
 
 
 ) { }
 
-    sup : SuppliersService;
+key : string;
+    sup : SupplierListComponent;
   supplyList : AngularFireList<any>;
 
   form : FormGroup = new FormGroup({
@@ -47,27 +52,29 @@ export class SuppliesService {
     this.form.setValue({
 
       $key:null,
-      XS :0,
-      S : 0,
-      M :0,
-      L : 0,
-      XL : 0,
-      XXL : 0,
+      XS :'',
+      S : '',
+      M :'',
+      L : '',
+      XL : '',
+      XXL : '',
       BrandName : '',
       oDate:'',
       payment:'',
     })
   }
 
-    getSupply(){
-      
-      let supId = '-LmUCXuRjB9WgipDRdUS';  
-      // let supId = this.sup.form.get('$key').value;
+    getSupply() {
+      let supId = this.key;
       this.supplyList= this.db.list('/suppliers/'+ supId + '/supply/') ;
       return this.supplyList.snapshotChanges(); 
 
     }
 
+    getSupplys(supId) {
+      this.key = supId;
+    this.router.navigateByUrl('supplies');
+    }
 
     insertSupply(supplier){
 

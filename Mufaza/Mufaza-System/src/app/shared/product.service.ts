@@ -11,6 +11,8 @@ export class ProductService {
   // departmentList:AngularFireList<any>;
   // array=[];
   
+  
+
   constructor(private firebase :AngularFireDatabase, private datePipe: DatePipe) {
     // this.departmentList = this.firebase.list('products');
     // this.departmentList.snapshotChanges().subscribe(
@@ -64,6 +66,7 @@ initializeFormGroup() {
       quantity: product.quantity,
       imageUrl: product.imageUrl,
       date: product.date == "" ? "" : this.datePipe.transform(product.date, 'yyyy-MM-dd'),
+      lastDate : ''
     });
   }
 
@@ -77,6 +80,7 @@ initializeFormGroup() {
       quantity: product.quantity,
       imageUrl: product.imageUrl,
       date: product.date == "" ? "" : this.datePipe.transform(product.date, 'yyyy-MM-dd'),
+      
       } );
   }
 

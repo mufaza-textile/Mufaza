@@ -1,0 +1,42 @@
+<button mat-button color="accent" (click)="print()">
+  <mat-icon class="mat-24" aria-label="Example icon-button with a heart icon">print</mat-icon></button>
+    <div id="report" class="mat-elevation-z8">
+      <mat-toolbar>
+        <span class="fill-remaining-space"></span>
+        <span>Trending Products</span>
+        <span class="fill-remaining-space"></span>
+    </mat-toolbar>
+      <mat-table id="table" [dataSource]="listData"  matSort>
+
+          <ng-container matColumnDef="#">
+    
+              <mat-header-cell *matHeaderCellDef  mat-sort-header>#</mat-header-cell>
+        
+              <mat-cell *matCellDef="let element; index as i">{{i + 1}}</mat-cell>
+        
+            </ng-container>
+            <ng-container matColumnDef="productName">
+    
+              <mat-header-cell *matHeaderCellDef  mat-sort-header>Product Title</mat-header-cell>
+        
+              <mat-cell *matCellDef="let element;">{{element.items[0].title}}</mat-cell>
+              
+            </ng-container>
+            <ng-container matColumnDef="datePlaced">
+    
+              <mat-header-cell *matHeaderCellDef  mat-sort-header>Date Placed</mat-header-cell>
+        
+              <mat-cell *matCellDef="let element">{{element.datePlaced}}</mat-cell>
+        
+            </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+        
+      </mat-table>
+      
+  
+      
+    </div>

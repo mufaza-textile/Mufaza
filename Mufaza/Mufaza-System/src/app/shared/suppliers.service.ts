@@ -8,8 +8,21 @@ import * as _ from 'lodash';
   providedIn: 'root'
 })
 export class SuppliersService {
+  array=[];
+  supproList:AngularFireList<any>;
 
-  constructor(private firebase :AngularFireDatabase) { }
+  constructor(private firebase :AngularFireDatabase) {
+    this.supproList = this.firebase.list('suppliers');
+    this.supproList.snapshotChanges().subscribe(
+      list => {
+        this.array = list.map(item =>{
+          return {
+            $key: item.key,
+            ...item.payload.val()
+          };
+        });
+      });
+   }
 
   supplierList : AngularFireList<any>;
 

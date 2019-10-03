@@ -7,18 +7,25 @@ import { ShoppingCartService } from './shopping-cart.service';
 
 @Injectable()
 export class PromotionService {
-
-  promocode: FirebaseObjectObservable<any>;
+    promocode: FirebaseObjectObservable<any>;
 
   promocodes: FirebaseListObservable<any[]>;
 
   constructor( public af: AngularFireDatabase) {
+    list => {
+      this.promocodes = list.map(item =>{
+        return {
+          $key: item.key,
+          ...item.payload.val()
+        };
+      });
+    }
     this.promocodes = this.af.list('/promotions');
   
   }
 
   getPromocodes(){
-    return this.promocodes;
+    return this.af.list('/promotions');
   }
 
   

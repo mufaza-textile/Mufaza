@@ -3,7 +3,7 @@
     (click)="f.reset({})"
     class="btn btn-secondary"
     style="margin-left: 450px"
-    [disabled] = "!form-group">Reset</button>
+    [disabled] = "name.invalid && addressLine1.invalid && city.invalid ">Reset</button>
   <div class="form-group">
     <label for="">Name</label>
     <input #name="ngModel" name="name" [(ngModel)]="shipping.name" type="text" class="form-control" required>
@@ -44,7 +44,10 @@
   <button 
     [disabled]="!f.valid"
     (click)="placeOrder()"
-    class="btn btn-primary">Place Order</button>
+    class="btn btn-primary">Place Order</button>  <button
+    (click)="enter()"
+    class="btn btn-warning"
+    [disabled] = "!form-group">Demo</button>
    
 
 </form>    

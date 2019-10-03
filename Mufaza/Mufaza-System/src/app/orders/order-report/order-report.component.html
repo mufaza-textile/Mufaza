@@ -1,0 +1,98 @@
+<div class="search-div">
+
+  <button mat-stroked-button color="primary" (click)="print()">
+    <mat-icon class="mat-24" aria-label="Example icon-button with a heart icon">print</mat-icon></button>
+    <br/>
+    <div id="report">
+        <mat-toolbar>
+            <span class="fill-remaining-space"></span>
+            <span>Order Report</span>
+            <span class="fill-remaining-space"></span>
+        </mat-toolbar>
+       
+      <div class="mat-elevation-z8">
+          
+        <mat-table [dataSource]="listData"  matSort>
+
+            <ng-container matColumnDef="#">
+      
+                <mat-header-cell *matHeaderCellDef  mat-sort-header>#</mat-header-cell>
+          
+                <mat-cell *matCellDef="let element; index as i">{{i + 1}}</mat-cell>
+          
+              </ng-container>
+              <ng-container matColumnDef="shipping.name">
+      
+                <mat-header-cell *matHeaderCellDef  mat-sort-header>Customer Name</mat-header-cell>
+          
+                <mat-cell *matCellDef="let element">{{element.shipping.name}}</mat-cell>
+          
+              </ng-container>
+              <ng-container matColumnDef="shipping.phone">
+      
+                <mat-header-cell *matHeaderCellDef  mat-sort-header>Mobile No</mat-header-cell>
+          
+                <mat-cell *matCellDef="let element">{{element.shipping.phone}}</mat-cell>
+          
+              </ng-container>
+              <ng-container matColumnDef="datePlaced">
+      
+                <mat-header-cell *matHeaderCellDef  mat-sort-header>Date Placed</mat-header-cell>
+          
+                <mat-cell *matCellDef="let element">{{element.datePlaced}}</mat-cell>
+          
+              </ng-container>
+      
+    
+          <ng-container matColumnDef="totalprice">
+      
+            <mat-header-cell *matHeaderCellDef  mat-sort-header>Total Price</mat-header-cell>
+      
+            <mat-cell *matCellDef="let element">${{element.totalprice}}</mat-cell>
+      
+          </ng-container>
+          <ng-container matColumnDef="newprice">
+      
+            <mat-header-cell *matHeaderCellDef  mat-sort-header>New Price</mat-header-cell>
+      
+            <mat-cell *matCellDef="let element">${{element.newprice}}</mat-cell>
+      
+          </ng-container>
+          <ng-container matColumnDef="items[0].quantity">
+      
+            <mat-header-cell *matHeaderCellDef  mat-sort-header>Quantities</mat-header-cell>
+      
+            <mat-cell *matCellDef="let element">{{element.items[0].quantity}} + {{element.items[1].quantity}}</mat-cell>
+      
+          </ng-container>
+          <ng-container matColumnDef="items[0].title">
+      
+            <mat-header-cell *matHeaderCellDef  mat-sort-header>Product titles</mat-header-cell>
+      
+            <mat-cell *matCellDef="let element">{{element.items[0].title}} + {{element.items[1].title}}</mat-cell>
+      
+          </ng-container>
+        
+        <ng-container matColumnDef="actions">
+    
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      
+            <mat-cell *matCellDef="let row">
+      
+              <button mat-icon-button color="warn" (click)="ondelete(row.$key)"><mat-icon>delete_outline</mat-icon></button>
+      
+            </mat-cell>
+      
+          </ng-container>
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      
+          
+        </mat-table>
+      </div>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" showFirstLastButtons></mat-paginator>
+     
+        
+      </div>

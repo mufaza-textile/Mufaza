@@ -9,7 +9,9 @@ import { MatDialogRef } from '@angular/material';
   styleUrls: ['./promocode.component.css']
 })
 export class PromocodeComponent implements OnInit {
-
+  
+  minFromDate= new Date();
+  maxToDate = new Date();
   constructor(private service: PromoService, private notificationService: NotifcationService, private dialogRef: MatDialogRef<PromocodeComponent>) { }
 
 
@@ -25,12 +27,14 @@ export class PromocodeComponent implements OnInit {
   onSubmit(){
     if(this.service.form.valid){
       if (!this.service.form.get('$key').value)
-      this.service.insertPromocode(this.service.form.value);
+          this.service.insertPromocode(this.service.form.value);
+      
      else
       this.service.updatePromocode(this.service.form.value);
+
       this.service.form.reset();
       this.service.initializeFormGroup(); 
-      this.notificationService.success(':: Submitted Succesfully' );
+      this.notificationService.success('::Promotion Code Added Successfully' );
       this.onClose();
     }
 

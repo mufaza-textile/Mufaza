@@ -50,7 +50,13 @@ import { SalaryslipComponent } from './salaryemployee/salaryslip/salaryslip.comp
 import { SupplyComponent } from './suppliers/supplies/supply/supply.component';
 import { MatSliderModule } from '@angular/material';
 import {MatExpansionModule} from '@angular/material/expansion';
-
+import { ProductStockComponent } from './products/product-stock/product-stock.component';
+import { ProductStockListComponent } from './products/product-stock-list/product-stock-list.component';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderReportComponent } from './orders/order-report/order-report.component';
+import { OrderService } from './shared/order.service';
+import { TrendingComponent } from './trending/trending.component';
+import { TrendingReportComponent } from './trending/trending-report/trending-report.component';
 
 
 @NgModule({
@@ -82,10 +88,14 @@ import {MatExpansionModule} from '@angular/material/expansion';
       ProductListComponent,
       SalaryemployeeComponent,
       SalaryComponent,
-     SalaryslipComponent,
+      SalaryslipComponent,
       SupplyComponent,
-
-
+      ProductStockComponent,
+      ProductStockListComponent,
+      OrdersComponent,
+      OrderReportComponent,
+      TrendingComponent,
+      TrendingReportComponent
    ],
    imports: [
       BrowserModule,
@@ -96,10 +106,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
       ReactiveFormsModule,
       BrowserAnimationsModule,
       AngularFireDatabaseModule,
-     AngularFireModule.initializeApp(environment.firebaseConfig),
-      MatExpansionModule,  
+      AngularFireModule.initializeApp(environment.firebaseConfig),
+      MatExpansionModule,
       AngularFireModule.initializeApp(environment.firebaseConfig)
-
    ],
    providers: [
       SuppliersService,
@@ -112,8 +121,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
       SuppliesService,
       TailoringService,
       PromoService,
-     
-
+      OrderService
    ],
    bootstrap: [
       AppComponent
@@ -129,8 +137,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
       MatConfirmDialogComponent,
       PromoComponent,
       PromocodeComponent,
-      SupplyComponent
-
+      SupplyComponent,
+      ProductStockComponent,
+      ProductStockListComponent
    ]
 })
 export class AppModule { }
