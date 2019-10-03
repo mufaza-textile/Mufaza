@@ -74,6 +74,7 @@ export class EmployeeListComponent implements OnInit {
       dialogConfig.disableClose = true;
       dialogConfig.autoFocus = true;
       dialogConfig.width = "60%";
+      dialogConfig.height="85%";
       this.dialog.open(EmployeeComponent,dialogConfig);  
     }
 
@@ -96,21 +97,23 @@ export class EmployeeListComponent implements OnInit {
 
     
     downloadPDF(){
-
       var data = document.getElementById("report");  
       html2canvas(data).then(canvas => {  
         // Few necessary setting options  
-        //var imgWidth = 208;       
-        //var imgHeight = canvas.height * imgWidth / canvas.width;   
-
-        //const contentDataURL = canvas.toDataURL('image/png')  
+        var imgWidth = 208;   
+        var pageHeight = 295;    
+        var imgHeight = canvas.height * imgWidth / canvas.width;  
+        var heightLeft = imgHeight;  
+    
+        const contentDataURL = canvas.toDataURL('image/png')  
         let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
-        pdf.text ('Products Report', 10, 10);
         var position = 0;  
-        //pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
-        pdf.save('Products-Report.pdf'); // Generated PDF  
+        pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
+        pdf.save('employee.pdf'); // Generated PDF  
         this.notificationService.success('Report Printed Succesfully!' ); 
       });  
     }
-}
+  
+  }
+  
       

@@ -1,12 +1,16 @@
-
 <mat-toolbar>
     <span>{{service.form.controls['$key'].value?"Salary Form":"Salary Form  of Mufaza Employees"}}</span>
     <span class="fill-remaining-space"></span>
-    <button mat-raised-button (click) = "downloadPDF()">
+  
+  <button  mat-raised-button color="accent" (click) = "downloadPDF()">
       <mat-icon>save_alt</mat-icon> Download PDF
-    </button>  
-
+    </button>
+    
+    
   </mat-toolbar>
+&nbsp;
+ 
+    &nbsp;
   
         <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()" style="padding-left : 10%">
           <mat-grid-list cols="2" rowHeight="500px" rowWidth="300px">
@@ -93,7 +97,7 @@
 
 
 
-<div id = "content"#content>
+<div id = "report">
     <div class="controles-container2">
       <mat-tab-group>
     <mat-tab label="Salary Slip">
