@@ -83,7 +83,7 @@ export class PaymentReportComponent implements OnInit {
     });  
 
   }
- 
+  
 
 }
 // console.log(this.x);

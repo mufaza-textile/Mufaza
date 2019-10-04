@@ -14,6 +14,7 @@ import { SupplierListComponent } from "./../suppliers/supplier-list/supplier-lis
 import { SuppliersService } from "./../shared/suppliers.service";
 import { DatePipe } from '@angular/common';
 import { log } from 'util';
+import { PaymentReportComponent } from '../suppliers/report/payment-report/payment-report.component';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class SuppliesService {
 ) { }
 
 
-
+    private payRepComp : PaymentReportComponent
     private basePath:string = '/supplybill';
     uploads: AngularFireList<Upload[]>;
 
@@ -269,27 +270,26 @@ payment(name){
    this.key =   this.form2.get('supName').value
    this.supNamerep =name;
     this.getSupply().subscribe (list => {
-      this.arrRep = list.map(item =>{
+      let array= list.map(item =>{
         return {
           $key: item.key,
           ...item.payload.val()
         };
       });
-      this.arrRep.forEach(element => {
-        this.supplypayment.push(element.payment);
-        this.supplyBrand.push(element.BrandName);
-      });
       
+      this.arr(array)
+      // this.payRepComp.paychart();
+
     }
    );
 
-    console.log(this.supplyBrand);
-    console.log(this.supplypayment);
-    console.log(this.arrRep);
+    // console.log(this.supplyBrand);
+    // console.log(this.supplypayment);
+    // console.log(this.arrRep);
 
-    console.log(this.form2.get('yaxis').value);
+    // console.log(this.form2.get('yaxis').value);
 
-    console.log(this.supplyList);
+    // console.log(this.supplyList);
     
     // if(this.supplyBrand[0] == null ){
     //   this.payment(this.supNamerep);
@@ -313,7 +313,6 @@ quantity(name){
         this.supplyquantity.push(element.quantity);
         this.supplyBrand.push(element.BrandName);
       });
-
     }
    );
 
@@ -321,6 +320,14 @@ quantity(name){
   
 }
 
-
+  arr(arr){
+    console.log(arr);
+    arr.forEach(element => {
+      this.supplypayment.push(element.payment);
+      this.supplyBrand.push(element.BrandName);
+    });
+    console.log( this.supplypayment);
+    
+  }
 
 }
