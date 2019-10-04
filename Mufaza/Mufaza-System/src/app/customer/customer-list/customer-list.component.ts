@@ -3,7 +3,8 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { CustomerService } from 'src/app/shared/customer.service';
 import { NotifcationService} from 'src/app/shared/notifcation.service';
 import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import * as jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 
 @Component({
@@ -44,22 +45,20 @@ export class CustomerListComponent implements OnInit {
     this.listData.filter = this.searchKey.trim().toLowerCase();
   }
 
-  download(){
+  print(){
+        
     var data = document.getElementById("report");  
     html2canvas(data).then(canvas => {  
       // Few necessary setting options  
-      var imgWidth = 208;   
-      var pageHeight = 295;    
-      var imgHeight = canvas.height * imgWidth / canvas.width;  
-      var heightLeft = imgHeight;  
+      var imgWidth = 208;       
+      var imgHeight = canvas.height * imgWidth / canvas.width;   
   
       const contentDataURL = canvas.toDataURL('image/png')  
       let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
-      pdf.text('Registered Customers', 10, 10);
+      pdf.text ('Customers Report', 10, 10);
       var position = 0;  
-
-      pdf.addImage(contentDataURL, 'PNG',0, position, imgWidth, imgHeight)  
-      pdf.save('customers.pdf'); // Generated PDF  
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
+      pdf.save('Customer-List.pdf'); // Generated PDF  
       this.notificationService.success('Report Printed Succesfully!' ); 
     });  
   }
