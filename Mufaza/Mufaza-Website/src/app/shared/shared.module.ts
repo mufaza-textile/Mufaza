@@ -18,7 +18,7 @@ import { ShoppingCartService } from './services/shopping-cart.service';
 import { UserService } from './services/user.service';
 import{ PromotionService } from './services/promotion.service';
 import { NewPriceService } from './services/new-price.service';
-import { SecureInnerPagesGuard} from './services/secure-inner-pages.guard'
+
 @NgModule({
   imports: [
     CommonModule,
