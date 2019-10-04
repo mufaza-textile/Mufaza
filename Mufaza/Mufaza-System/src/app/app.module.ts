@@ -58,6 +58,9 @@ import { OrderService } from './shared/order.service';
 import { TrendingComponent } from './trending/trending.component';
 import { TrendingReportComponent } from './trending/trending-report/trending-report.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { CustomerComponent } from './customer/customer.component';
+import { CustomerListComponent } from './customer/customer-list/customer-list.component';
+import { CustomerService } from './shared/customer.service'
 
 
 @NgModule({
@@ -97,7 +100,9 @@ import { NavigationComponent } from './navigation/navigation.component';
       OrderReportComponent,
       TrendingComponent,
       TrendingReportComponent,
-      NavigationComponent
+      NavigationComponent,
+      CustomerComponent,
+      CustomerListComponent
    ],
    imports: [
       BrowserModule,
@@ -124,6 +129,7 @@ import { NavigationComponent } from './navigation/navigation.component';
       TailoringService,
       PromoService,
       OrderService,
+      CustomerService
       
    ],
    bootstrap: [

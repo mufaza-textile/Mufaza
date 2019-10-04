@@ -1,0 +1,80 @@
+<div class="search-div">
+
+        <mat-form-field class="search-form-field" floatLabel="never">
+
+                <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyfilter()">
+            
+                <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey"  (click)="onSearchclear()">
+            
+                  <mat-icon>close</mat-icon>
+            
+                </button>
+            
+              </mat-form-field> 
+
+    <button mat-raised-button color="accent" (click)="download()">
+        <mat-icon>save_alt</mat-icon> Download PDF
+      </button>
+      
+         
+        <div class="mat-elevation-z8">
+            
+          <mat-table [dataSource]="listData"  matSort>
+  
+              <ng-container matColumnDef="#">
+        
+                  <mat-header-cell *matHeaderCellDef  mat-sort-header>#</mat-header-cell>
+            
+                  <mat-cell *matCellDef="let element; index as i">{{i + 1}}</mat-cell>
+            
+                </ng-container>
+
+                <ng-container matColumnDef="email">
+        
+                    <mat-header-cell *matHeaderCellDef  mat-sort-header>Email Address</mat-header-cell>
+              
+                    <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
+              
+                  </ng-container>
+                 
+                <ng-container matColumnDef="displayName">
+        
+                  <mat-header-cell *matHeaderCellDef  mat-sort-header>Customer Name</mat-header-cell>
+            
+                  <mat-cell *matCellDef="let element">{{(element.displayName) ? element.displayName : 'Unknown' }} </mat-cell>
+            
+                </ng-container>
+               
+        
+      
+           
+
+  
+           
+  
+  
+          
+          
+          <ng-container matColumnDef="actions">
+      
+              <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        
+              <mat-cell *matCellDef="let row">
+        
+                <button mat-icon-button color="warn" (click)="ondelete(row.$key)"><mat-icon>delete_outline</mat-icon></button>
+        
+              </mat-cell>
+        
+            </ng-container>
+        
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        
+            
+          </mat-table>
+        </div>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" showFirstLastButtons></mat-paginator>
+       
+          
+        </div>
