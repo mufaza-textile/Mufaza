@@ -34,7 +34,7 @@ export class PromocodeComponent implements OnInit {
 
       this.service.form.reset();
       this.service.initializeFormGroup(); 
-      this.notificationService.success('::Promotion Code Added Successfully' );
+      this.notificationService.success('::Submit Successful!' );
       this.onClose();
     }
 

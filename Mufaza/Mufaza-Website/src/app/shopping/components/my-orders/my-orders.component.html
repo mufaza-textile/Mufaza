@@ -13,8 +13,8 @@
     <tr *ngFor="let order of orders$ | async">
       <td>{{ order.shipping.name }}</td>
       <td>{{ order.datePlaced | date}}</td> 
-      <td>Rs. {{ order.totalprice}}</td>
-      <td>Rs. {{ order.newprice}}</td>
+      <td>LKR {{ order.totalprice}}</td>
+      <td>LKR {{ order.newprice}}</td>
       <td>
       <tr *ngFor="let key of objectKeys(order.items)"><td>{{order.items[key].title}} - {{order.items[key].quantity}}</td></tr>  
     </td>
