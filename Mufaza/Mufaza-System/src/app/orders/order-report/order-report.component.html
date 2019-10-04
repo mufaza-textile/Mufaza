@@ -14,9 +14,9 @@
           
         <mat-table [dataSource]="listData"  matSort>
 
-            <ng-container matColumnDef="#">
+            <ng-container matColumnDef="Order No">
       
-                <mat-header-cell *matHeaderCellDef  mat-sort-header>#</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef  mat-sort-header>Order No</mat-header-cell>
           
                 <mat-cell *matCellDef="let element; index as i">{{i + 1}}</mat-cell>
           
