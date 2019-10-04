@@ -1,7 +1,7 @@
 <div class="search-div">
 
-  <button mat-stroked-button color="primary" (click)="print()">
-    <mat-icon class="mat-24" aria-label="Example icon-button with a heart icon">print</mat-icon></button>
+  <button mat-raised-button color="accent" (click)="print()">
+    <mat-icon class="mat-24" aria-label="Example icon-button with a heart icon">print</mat-icon> Generate Report</button>
     <br/>
     <div id="report">
         <mat-toolbar>
@@ -58,12 +58,10 @@
             <mat-cell *matCellDef="let element">${{element.newprice}}</mat-cell>
       
           </ng-container>
-          <ng-container matColumnDef="items[key].quantity">
+          <ng-container  matColumnDef="items[0].quantity">
       
-            <mat-header-cell *matHeaderCellDef  mat-sort-header>Quantities</mat-header-cell>
-      
-            <mat-cell *matCellDef="let element" *ngFor="let key of objectKeys(element.items)">{{element.items[key].quantity}}</mat-cell>
-      
+            <mat-header-cell *matHeaderCellDef  mat-sort-header>Quantities</mat-header-cell>  
+            <mat-cell *matCellDef="let element" > {{element.items[0].quantity}} + {{element.items[1].quantity}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="items[0].title">
       

@@ -42,6 +42,10 @@ orders$;
 
   ondelete($key){
     this.service.delete($key);
+    this.service.form.reset();
+    this.service.initializeFormGroup(); 
+    this.notificationService.warn('Order Successfully Deleted!');
+  
 
   }
   objectKeys(obj) {
