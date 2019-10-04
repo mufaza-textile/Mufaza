@@ -52,7 +52,7 @@ try{
       this.promo = true;
       this.error = false;
       this.newPrice = (this.cart.totalPrice - (this.cart.totalPrice * data[0].discount * 0.01));
-      this.sharedService.addnewprice(this.newPrice);
+      this.sharedService.addnewprice(this.newPrice.toFixed(2));
      
 
   }}
