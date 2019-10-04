@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule} from "@angular/forms"
 
 import { environment } from './../environments/environment';
 // import { AdminModule } from './admin/admin.module';
@@ -19,8 +20,10 @@ import { VerifyEmailComponent } from './core/components/verify-email/verify-emai
 import { ForgotPasswordComponent } from './core/components/forgot-password/forgot-password.component';
 import { MyProfileComponent } from './core/components/my-profile/my-profile.component';
 import { AuthService } from 'shared/services/auth.service';
-import { EditProfileComponent} from './core/components/edit-profile/edit-profile.component'
-
+import { ChangePasswordComponent } from './core/components/change-password/change-password.component';
+import { DeleteAccountComponent } from './core/components/delete-account/delete-account.component';
+import { SecureInnerPagesGuard } from 'shared/services/secure-inner-pages.guard';
+import { AuthGuard} from 'shared/services/auth-guard.service'
 
 @NgModule({
   declarations: [
@@ -30,7 +33,6 @@ import { EditProfileComponent} from './core/components/edit-profile/edit-profile
     SignInComponent,
     SignUpComponent,
     MyProfileComponent, 
-    //EditProfileComponent 
   ],
   imports: [
     BrowserModule,
@@ -39,17 +41,18 @@ import { EditProfileComponent} from './core/components/edit-profile/edit-profile
     ShoppingModule,
     CoreModule,
     ReactiveFormsModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot([
       { path: '', component: ProductsComponent },
       { path: 'login', component: LoginComponent },
       { path: 'signin', component: SignInComponent },
       { path: 'signup', component: SignUpComponent },
-      { path: 'dashboard', component: MyProfileComponent },
+      { path: 'dashboard', component: MyProfileComponent, canActivate: [AuthGuard] },
       { path: 'forgotpassword', component: ForgotPasswordComponent },
       { path: 'verifyemail', component: VerifyEmailComponent },
-      { path: 'editinfo', component: EditProfileComponent },
-
+      { path: 'changepassword', component: ChangePasswordComponent, canActivate: [AuthGuard] },
+      { path: 'deleteaccount', component: DeleteAccountComponent, canActivate: [AuthGuard]}
     ])    
   ],
   providers: [

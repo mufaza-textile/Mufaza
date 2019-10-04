@@ -63,11 +63,12 @@ export class PromoListComponent implements OnInit {
     dialogConfig.autoFocus= true;
     dialogConfig.width = "60%";
     this.dialog.open(PromocodeComponent,dialogConfig);
+
   }
 
   ondelete($key){
     this.service.deletePromocode($key);
-    this.notificationService.warn('Promotion Code deleted!');
+    this.notificationService.warn('::Promotion Code deleted!');
 
   }
 

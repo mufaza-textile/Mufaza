@@ -1,0 +1,36 @@
+<!-- Sidebar navigation -->
+<div class="container-fluid">
+  <div class="row">
+
+    <nav class="col-md-2 d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLink='/dashboard'>
+              <i class="fas fa-user"></i>User Profile
+            </a>
+          </li>
+         
+          
+          <li class = "nav-item">
+            <a class="nav-link" routerLink="/changepassword" >
+              <i class="fas fa-edit"></i>Change Password
+            </a>
+          </li>
+          <li class = "nav-item">
+            <a class="nav-link" routerLink='/deleteaccount'>
+              <i class="fas fa-user-times"></i>Delete Account
+            </a>
+          </li>
+
+           <!-- Calling SignOut() Api from AuthService -->
+           <li class="nav-item">
+            <a class="nav-link" (click)="authService.SignOut()">
+              <i class="fas fa-sign-out-alt"></i>Log out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>

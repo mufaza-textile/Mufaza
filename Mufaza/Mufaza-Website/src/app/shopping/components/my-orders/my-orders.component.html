@@ -6,18 +6,16 @@
       <th>Date Placed</th>
       <th>Total Price</th>
       <th>New Price</th>
-      <th>Item Count</th>
-      <th>Product Titles</th>
+      <th>Product Titles & Quantities</th>
     </tr>
   </thead> 
   <tbody>
     <tr *ngFor="let order of orders$ | async">
       <td>{{ order.shipping.name }}</td>
       <td>{{ order.datePlaced | date}}</td> 
-      <td>${{ order.totalprice}}</td>
-      <td>${{ order.newprice}}</td>
-      <td>{{ order.itemscount}}</td>
-      <td *ngFor="let key of objectKeys(order.items)">{{order.items[key].title}}</td>  
+      <td>Rs. {{ order.totalprice}}</td>
+      <td>Rs. {{ order.newprice}}</td>
+      <td *ngFor="let key of objectKeys(order.items)">{{order.items[key].title}} - {{order.items[key].quantity}} <br></td>  
       
     </tr>
 

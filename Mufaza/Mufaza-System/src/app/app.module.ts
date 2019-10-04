@@ -61,6 +61,10 @@ import { UploadComponent } from './suppliers/supplies/supply/upload/upload.compo
 import { ReportComponent } from './suppliers/report/report.component';
 import { PaymentReportComponent } from './suppliers/report/payment-report/payment-report.component';
 import { QuantityReportComponent } from './suppliers/report/quantity-report/quantity-report.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { CustomerComponent } from './customer/customer.component';
+import { CustomerListComponent } from './customer/customer-list/customer-list.component';
+import { CustomerService } from './shared/customer.service'
 
 
 @NgModule({
@@ -103,7 +107,10 @@ import { QuantityReportComponent } from './suppliers/report/quantity-report/quan
       UploadComponent,
       ReportComponent,
       PaymentReportComponent,
-      QuantityReportComponent
+      QuantityReportComponent,
+      NavigationComponent,
+      CustomerComponent,
+      CustomerListComponent
    ],
    imports: [
       BrowserModule,
@@ -129,7 +136,9 @@ import { QuantityReportComponent } from './suppliers/report/quantity-report/quan
       SuppliesService,
       TailoringService,
       PromoService,
-      OrderService
+      OrderService,
+      CustomerService
+      
    ],
    bootstrap: [
       AppComponent
@@ -151,7 +160,8 @@ import { QuantityReportComponent } from './suppliers/report/quantity-report/quan
       UploadComponent,
       ReportComponent,
       PaymentReportComponent,
-      QuantityReportComponent
+      QuantityReportComponent,
+      NavigationComponent
    ]
 })
 export class AppModule { }

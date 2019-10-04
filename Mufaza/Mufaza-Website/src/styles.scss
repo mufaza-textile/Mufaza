@@ -53,4 +53,9 @@ h1, h2, h3 {
   padding-left: 18% !important;
 }
 
+input.ng-invalid.ng-dirty{
+  border: 1px solid red;
+}
+
+
 

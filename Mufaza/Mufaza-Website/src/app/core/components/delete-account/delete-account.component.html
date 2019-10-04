@@ -1,0 +1,30 @@
+<app-profile-navbar></app-profile-navbar>
+
+<div class="displayTable">
+    <div class="displayTableCell">
+  
+      
+  
+      <div class="authBlock">
+        <h3>Delete Account</h3>
+  
+        <div class="formGroup" *ngIf="authService.userData as user">
+          <p class="text-center">Your account <strong>{{user.email}}</strong> will be deleted.</p>
+          <p class="text-center">This action is not reversible.You will be signed out and redirected to the home page.</p>
+        </div>
+  
+        <!-- Calling SendVerificationMail() method using authService Api -->
+        <div class="formGroup" *ngIf="authService.userData as user">
+          <button  class="btn googleBtn" (click)="authService.DeleteAccount()">
+            <i class="fas fa-user-times"></i>
+            Click here to delete your account
+          </button>
+        </div>
+  
+      </div>
+  
+     
+    </div>
+  </div>
+  
+  

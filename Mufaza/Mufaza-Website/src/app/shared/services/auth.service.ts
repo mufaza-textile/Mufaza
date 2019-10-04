@@ -10,16 +10,20 @@ import * as firebase from 'firebase';
 import { Injectable, NgZone } from '@angular/core';
 import { User } from "../models/user";
 import { auth } from 'firebase/app';
+import {Customer} from "../models/customer";
 //import { AngularFireAuth } from "@angular/fire/auth";
 //import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
-import {AngularFireDatabase, } from 'angularfire2/database';
+import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { from } from 'rxjs/observable/from';
 //import {AngularFireDatabase} from '@angular/fire/database'
 
 
 @Injectable()
 export class AuthService {
   user$: Observable<firebase.User>;
+  duser : FirebaseListObservable<any>
+
 
   constructor(
     private userService: UserService,
@@ -58,7 +62,7 @@ export class AuthService {
   get appUser$() : Observable<AppUser> {
     return this.user$
       .switchMap(user => {
-        if (user) return this.userService.get(user.uid);
+        if (this.isLoggedIn) return this.userService.get(user.uid);
 
         return Observable.of(null);
       });    
@@ -73,7 +77,7 @@ export class AuthService {
      return this.afAuth.auth.signInWithEmailAndPassword(email, password)
        .then((result) => {
          this.ngZone.run(() => {
-           this.router.navigate(['dashboard']);
+           this.router.navigate(['/']);
          });
         this.SetUserData(result.user);
        }).catch((error) => {
@@ -111,11 +115,28 @@ export class AuthService {
        window.alert(error)
      })
    }
+
+   ChangePassword(passwordResetEmail) {
+    return this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail)
+    .then(() => {
+      window.alert('Password reset email sent, check your inbox.');
+      this.SignOut();
+     this.router.navigate(['signin']);
+    }).catch((error) => {
+      window.alert(error)
+    })
+  }
  
    // Returns true when user is looged in and email is verified
    get isLoggedIn(): boolean {
-     const user = JSON.parse(localStorage.getItem('user'));
-     return (user !== null && user.emailVerified !== false) ? true : false;
+    //  const user = JSON.parse(localStorage.getItem('user'));
+    //  if (user == null){
+    //    return false;
+    //  }else{
+    //  return (user.emailVerified !== false) ? true : false;
+    // }
+    const user = JSON.parse(localStorage.getItem('user'));
+    return (user !== null && user.emailVerified !== false) ? true : false;
    }
  
    // Sign in with Google
@@ -128,7 +149,7 @@ export class AuthService {
      return this.afAuth.auth.signInWithPopup(provider)
      .then((result) => {
         this.ngZone.run(() => {
-           this.router.navigate(['dashboard']);
+          this.router.navigate(['/']);
          })
        this.SetUserData(result.user);
      }).catch((error) => {
@@ -168,11 +189,11 @@ export class AuthService {
       
    } 
  
-   UpdateUserData(add,name,phone){
+   UpdateUserData(customer : Customer){
     this.db.object('/customers/'+ this.userData.uid).update({
-     address:add,
-     phoneNo:phone,
-     displayName:name
+     address:customer.address,
+     phoneNo:customer.phoneNo,
+     displayName:customer.displayName
     })
     this.router.navigate(['dashboard']);
    }
@@ -185,20 +206,33 @@ export class AuthService {
      })
    }
 
-   getCustomers(userId: string) {
-    return this.db.list('/customers', {
-      query: {
-        orderByChild: 'uid',
-        equalTo: userId        
-      }
+   DeleteAccount(){
+    firebase.auth().currentUser.delete().then(() => {
+      //window.alert("Successfully deleted your account")
+      window.alert(this.userData.uid)
+      this.db.object('/customers/' + this.userData.uid).remove();
+      this.SignOut().catch((error) => {
+        window.alert(error)
+      })
+
+    }).catch((error)=>{
+      window.alert(error)
+    });
+   }
+
+  
+
+  UpdatePassword(newPassword){
+    firebase.auth().currentUser.updatePassword(newPassword).then(()=>{
+      window.alert("Successfully updated password")
+    }).catch((error)=>{
+      window.alert(error)
     });
   }
-
  
-   // getCustomers(user){
-   //  return this.db.object('/customers/'+ user.uid);
-   // }
+   
   
+   
 }
 
 
