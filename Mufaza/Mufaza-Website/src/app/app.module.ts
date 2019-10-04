@@ -9,7 +9,6 @@ import { environment } from './../environments/environment';
 // import { AdminModule } from './admin/admin.module';
 // import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './core/components/login/login.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { ProductsComponent } from './shopping/components/products/products.component';
@@ -22,7 +21,6 @@ import { MyProfileComponent } from './core/components/my-profile/my-profile.comp
 import { AuthService } from 'shared/services/auth.service';
 import { ChangePasswordComponent } from './core/components/change-password/change-password.component';
 import { DeleteAccountComponent } from './core/components/delete-account/delete-account.component';
-import { SecureInnerPagesGuard } from 'shared/services/secure-inner-pages.guard';
 import { AuthGuard} from 'shared/services/auth-guard.service'
 
 
@@ -46,13 +44,12 @@ import { AuthGuard} from 'shared/services/auth-guard.service'
     AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot([
       { path: '', component: ProductsComponent },
-      { path: 'login', component: LoginComponent },
       { path: 'signin', component: SignInComponent },
       { path: 'signup', component: SignUpComponent },
       { path: 'dashboard', component: MyProfileComponent, canActivate: [AuthGuard] },
       { path: 'forgotpassword', component: ForgotPasswordComponent },
       { path: 'verifyemail', component: VerifyEmailComponent },
-      { path: 'changepassword', component: ChangePasswordComponent, canActivate: [AuthGuard] },
+      { path: 'updateinfo', component: ChangePasswordComponent, canActivate: [AuthGuard] },
       { path: 'deleteaccount', component: DeleteAccountComponent, canActivate: [AuthGuard]},
 
     ])    
