@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SuppliersService } from "../../shared/suppliers.service";
 import { OrderTypesService } from "../../shared/order-types.service";
 import { NotifcationService } from "../../shared/notifcation.service";
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-supplier',
@@ -12,7 +13,8 @@ export class SupplierComponent implements OnInit {
 
   constructor(private service: SuppliersService,
     private ordType : OrderTypesService,
-    private notificationService : NotifcationService) { }
+    private notificationService : NotifcationService,
+    public dialogRef: MatDialogRef <SupplierComponent> ) { }
 
   ngOnInit() {
     this.service.getSuppliers();
@@ -43,7 +45,8 @@ export class SupplierComponent implements OnInit {
   onClose() {
     this.service.form.reset();
     this.service.initializeFormGroup();
-   
+    this.dialogRef.close();
+
   }
 
 

@@ -1,0 +1,28 @@
+<form [formGroup]="service.form2" class="normal-form" (submit)= "showreport()">
+    <mat-grid-list cols="2" rowHeight="300px">
+
+        <div class="controles-container">
+
+          <!-- <mat-form-field>
+                <input formControlName="address" matInput placeholder="Address">
+          </mat-form-field> -->
+            <mat-form-field>
+                <mat-select formControlName="supName" placeholder="Company" [(ngModel)]="key">
+                    <mat-option>None</mat-option>
+                        <ng-container *ngFor="let supName of array">
+                            <mat-option value="{{supName.$key}}">{{supName.compName}}</mat-option>
+                        </ng-container>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <br>
+            <p>Select type of report :</p>
+            <mat-radio-group aria-label="Type of graph" formControlName="yaxis">
+                <mat-radio-button value="1" >Quantity</mat-radio-button>
+                <mat-radio-button value="2">Payment</mat-radio-button>
+              </mat-radio-group>
+
+            <div class="button-row">
+                    <button mat-raised-button color="primary" type="submit" >Show Report</button>
+
+            </div>

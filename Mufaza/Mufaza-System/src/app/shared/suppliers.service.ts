@@ -70,6 +70,7 @@ export class SuppliersService {
         mobile: supplier.mobile,
         address: supplier.address,
         oType: supplier.oType,
+        count: 0
        
       });
     }

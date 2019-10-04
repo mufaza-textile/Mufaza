@@ -3,6 +3,7 @@ import { SuppliesService } from "../../../shared/supplies.service";
 import { OrderTypesService } from "../../../shared/order-types.service";
 import { NotifcationService } from "../../../shared/notifcation.service";
 import { MatDialogRef } from '@angular/material';
+import { DatePipe } from '@angular/common';
 
 
 @Component({

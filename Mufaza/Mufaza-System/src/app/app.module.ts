@@ -57,6 +57,10 @@ import { OrderReportComponent } from './orders/order-report/order-report.compone
 import { OrderService } from './shared/order.service';
 import { TrendingComponent } from './trending/trending.component';
 import { TrendingReportComponent } from './trending/trending-report/trending-report.component';
+import { UploadComponent } from './suppliers/supplies/supply/upload/upload.component';
+import { ReportComponent } from './suppliers/report/report.component';
+import { PaymentReportComponent } from './suppliers/report/payment-report/payment-report.component';
+import { QuantityReportComponent } from './suppliers/report/quantity-report/quantity-report.component';
 
 
 @NgModule({
@@ -95,7 +99,11 @@ import { TrendingReportComponent } from './trending/trending-report/trending-rep
       OrdersComponent,
       OrderReportComponent,
       TrendingComponent,
-      TrendingReportComponent
+      TrendingReportComponent,
+      UploadComponent,
+      ReportComponent,
+      PaymentReportComponent,
+      QuantityReportComponent
    ],
    imports: [
       BrowserModule,
@@ -139,7 +147,11 @@ import { TrendingReportComponent } from './trending/trending-report/trending-rep
       PromocodeComponent,
       SupplyComponent,
       ProductStockComponent,
-      ProductStockListComponent
+      ProductStockListComponent,
+      UploadComponent,
+      ReportComponent,
+      PaymentReportComponent,
+      QuantityReportComponent
    ]
 })
 export class AppModule { }
