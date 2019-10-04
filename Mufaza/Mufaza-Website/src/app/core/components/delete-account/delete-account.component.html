@@ -10,7 +10,7 @@
   
         <div class="formGroup" *ngIf="authService.userData as user">
           <p class="text-center">Your account <strong>{{user.email}}</strong> will be deleted.</p>
-          <p class="text-center">This action is not reversible.You will be signed out and redirected to the home page.</p>
+          <p class="text-center">This action is not reversible.You will be signed out and redirected to the home page upon deleting the account.</p>
         </div>
   
         <!-- Calling SendVerificationMail() method using authService Api -->

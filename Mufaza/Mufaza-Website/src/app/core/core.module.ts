@@ -20,7 +20,7 @@ import { ProfileNavbarComponent } from './components/profile-navbar/profile-navb
     LoginComponent,
     ChangePasswordComponent,
     DeleteAccountComponent,
-    ProfileNavbarComponent,        
+    ProfileNavbarComponent,
   ],
   exports: [
     BsNavbarComponent,

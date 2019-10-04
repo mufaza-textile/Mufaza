@@ -25,6 +25,7 @@ import { DeleteAccountComponent } from './core/components/delete-account/delete-
 import { SecureInnerPagesGuard } from 'shared/services/secure-inner-pages.guard';
 import { AuthGuard} from 'shared/services/auth-guard.service'
 
+
 @NgModule({
   declarations: [
     AppComponent ,
@@ -52,7 +53,8 @@ import { AuthGuard} from 'shared/services/auth-guard.service'
       { path: 'forgotpassword', component: ForgotPasswordComponent },
       { path: 'verifyemail', component: VerifyEmailComponent },
       { path: 'changepassword', component: ChangePasswordComponent, canActivate: [AuthGuard] },
-      { path: 'deleteaccount', component: DeleteAccountComponent, canActivate: [AuthGuard]}
+      { path: 'deleteaccount', component: DeleteAccountComponent, canActivate: [AuthGuard]},
+
     ])    
   ],
   providers: [
