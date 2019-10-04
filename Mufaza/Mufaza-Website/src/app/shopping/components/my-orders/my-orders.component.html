@@ -15,8 +15,9 @@
       <td>{{ order.datePlaced | date}}</td> 
       <td>Rs. {{ order.totalprice}}</td>
       <td>Rs. {{ order.newprice}}</td>
-      <td *ngFor="let key of objectKeys(order.items)">{{order.items[key].title}} - {{order.items[key].quantity}} <br></td>  
-      
+      <td>
+      <tr *ngFor="let key of objectKeys(order.items)"><td>{{order.items[key].title}} - {{order.items[key].quantity}}</td></tr>  
+    </td>
     </tr>
 
     
