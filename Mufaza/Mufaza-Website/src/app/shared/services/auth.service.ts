@@ -48,16 +48,7 @@ export class AuthService {
     })
   }
 
-  login() {
-    let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
-    localStorage.setItem('returnUrl', returnUrl);
-    
-    this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
-  }
-
-  logout() { 
-    this.afAuth.auth.signOut();
-  }
+  
 
   get appUser$() : Observable<AppUser> {
     return this.user$
@@ -69,7 +60,6 @@ export class AuthService {
   }
 
   
-   //customerList : AngularFireList<any> = this.db.list('customers/${user.uid}');
    userData: any; // Save logged in user data
 
    // Sign in with email/password
@@ -98,7 +88,7 @@ export class AuthService {
        })
    }
  
-   // Send email verfificaiton when new user sign up
+   // Send email verrificaiton when new user sign up
    SendVerificationMail() {
      return this.afAuth.auth.currentUser.sendEmailVerification()
      .then(() => {
@@ -106,7 +96,7 @@ export class AuthService {
      })
    }
  
-   // Reset Forggot password
+   // Reset Forgot password
    ForgotPassword(passwordResetEmail) {
      return this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail)
      .then(() => {
@@ -116,25 +106,11 @@ export class AuthService {
      })
    }
 
-   ChangePassword(passwordResetEmail) {
-    return this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail)
-    .then(() => {
-      window.alert('Password reset email sent, check your inbox.');
-      this.SignOut();
-     this.router.navigate(['signin']);
-    }).catch((error) => {
-      window.alert(error)
-    })
-  }
+ 
  
    // Returns true when user is looged in and email is verified
    get isLoggedIn(): boolean {
-    //  const user = JSON.parse(localStorage.getItem('user'));
-    //  if (user == null){
-    //    return false;
-    //  }else{
-    //  return (user.emailVerified !== false) ? true : false;
-    // }
+    
     const user = JSON.parse(localStorage.getItem('user'));
     return (user !== null && user.emailVerified !== false) ? true : false;
    }
@@ -157,25 +133,9 @@ export class AuthService {
      })
    }
  
-   /* Setting up user data when sign in with username/password, 
-   sign up with username/password and sign in with social auth  
-   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-   // SetUserData(user) {
-   //   const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-   //   const userData: User = {
-   //     uid: user.uid,
-   //     email: user.email,
-   //     displayName: user.displayName,
-   //     photoURL: user.photoURL,
-   //     emailVerified: user.emailVerified
-   //   }
-   //   return userRef.set(userData, {
-   //     merge: true
-   //   })
-   // }
- 
+   
+ //set user data in database
    SetUserData(user) {
-    //const customerList : AngularFireList<any> = this.db.list('customers/${user.uid}');
  
     this.db.object('/customers/'+ user.uid).update({
      uid: user.uid,
@@ -189,14 +149,7 @@ export class AuthService {
       
    } 
  
-   UpdateUserData(customer : Customer){
-    this.db.object('/customers/'+ this.userData.uid).update({
-     address:customer.address,
-     phoneNo:customer.phoneNo,
-     displayName:customer.displayName
-    })
-    this.router.navigate(['dashboard']);
-   }
+
 
    // Sign out 
    SignOut() {
@@ -206,10 +159,11 @@ export class AuthService {
      })
    }
 
+   //to delete account
    DeleteAccount(){
     firebase.auth().currentUser.delete().then(() => {
       //window.alert("Successfully deleted your account")
-      window.alert(this.userData.uid)
+      window.alert("Successfully deleted the account")
       this.db.object('/customers/' + this.userData.uid).remove();
       this.SignOut().catch((error) => {
         window.alert(error)
@@ -221,7 +175,7 @@ export class AuthService {
    }
 
   
-
+//to Update Password
   UpdatePassword(newPassword){
     firebase.auth().currentUser.updatePassword(newPassword).then(()=>{
       window.alert("Successfully updated password")
@@ -230,13 +184,22 @@ export class AuthService {
     });
   }
  
+  //to Update display name
+  Updatename(name){
+    firebase.auth().currentUser.updateProfile({
+      displayName:name,
+      photoURL:this.userData.photoURL
+    }).then(()=>{
+      window.alert("Successfully updated")
+      this.SetUserData(this.userData);
+    }).catch((error)=>{
+      window.alert(error)
+    });
+  }
    
   
    
 }
 
 
-// @Injectable({
-//   providedIn: 'root'
-// })
 

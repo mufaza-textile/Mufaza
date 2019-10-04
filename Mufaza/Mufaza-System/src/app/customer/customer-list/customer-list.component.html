@@ -12,13 +12,14 @@
             
               </mat-form-field> 
 
-    <button mat-raised-button color="accent" (click)="download()">
-        <mat-icon>save_alt</mat-icon> Download PDF
-      </button>
-      
+              <button mat-raised-button color="accent" (click)="print()">
+                <mat-icon>save_alt</mat-icon>
+              </button>
+            
+</div>
          
         <div class="mat-elevation-z8">
-            
+          <div id="report"> 
           <mat-table [dataSource]="listData"  matSort>
   
               <ng-container matColumnDef="#">

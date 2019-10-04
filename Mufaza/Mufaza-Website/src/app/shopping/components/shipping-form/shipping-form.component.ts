@@ -63,7 +63,7 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
   }
 
   async enter(){
-   this.shipping={name: "savandi",addressLine1: "madiwela",addressLine2: "kotte",city:"colombo",phone: "0773648388"};
+   this.shipping={name: "Savandi Subhartha",addressLine1: "madiwela",addressLine2: "kotte",city:"colombo",phone: "0773648388"};
   
 }
 }

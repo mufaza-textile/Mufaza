@@ -9,11 +9,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private userService: UserService, private auth: AuthService, router: Router) {
+  constructor(private auth: AuthService, router: Router) {
     auth.user$.subscribe(user => {
       if (!user) return; 
 
-      userService.save(user);
 
       let returnUrl = localStorage.getItem('returnUrl');
       if (!returnUrl) return; 
