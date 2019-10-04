@@ -58,16 +58,27 @@
             <mat-cell *matCellDef="let element">${{element.newprice}}</mat-cell>
       
           </ng-container>
-          <ng-container  matColumnDef="items[0].quantity">
+
+          <ng-container  matColumnDef="Quantities">
       
             <mat-header-cell *matHeaderCellDef  mat-sort-header>Quantities</mat-header-cell>  
-            <mat-cell *matCellDef="let element" > {{element.items[0].quantity}} + {{element.items[1].quantity}}</mat-cell>
+            <mat-cell *matCellDef="let element" > 
+                <ng-container *ngFor = "let key of objectKeys(element.items)">
+                    *{{element.items[key].quantity}} <br><br>
+                </ng-container>
+              </mat-cell>
           </ng-container>
-          <ng-container matColumnDef="items[0].title">
+
+
+          <ng-container matColumnDef="Titles">
       
-            <mat-header-cell *matHeaderCellDef  mat-sort-header>Product titles</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef  mat-sort-header>Product Titles</mat-header-cell>
       
-            <mat-cell *matCellDef="let element">{{element.items[0].title}} + {{element.items[1].title}}</mat-cell>
+            <mat-cell *matCellDef="let element" >
+              <ng-container *ngFor = "let key of objectKeys(element.items)">
+                  *{{element.items[key].title}} <br><br>
+              </ng-container>
+            </mat-cell>
       
           </ng-container>
         

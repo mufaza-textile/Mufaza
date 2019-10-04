@@ -17,7 +17,7 @@ orders$;
     this.orders$ = service.getOrders();
   }
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] =[`Order No`, `shipping.name`,`shipping.phone`,`datePlaced`,`totalprice`,`newprice`,`items[0].quantity`,`items[0].title`,'actions'];
+  displayedColumns: string[] =[`Order No`, `shipping.name`,`shipping.phone`,`datePlaced`,`totalprice`,`newprice`,`Quantities`,`Titles`,'actions'];
   
   
   @ViewChild(MatSort,{static: true}) sort: MatSort;
