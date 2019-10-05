@@ -24,6 +24,7 @@ import 'jspdf-autotable';
     ]),
   ],
 })
+
 export class ProductListComponent implements OnInit {
 
   constructor(private service : ProductService,
