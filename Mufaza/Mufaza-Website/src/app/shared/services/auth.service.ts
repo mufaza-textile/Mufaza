@@ -67,6 +67,7 @@ export class AuthService {
      return this.afAuth.auth.signInWithEmailAndPassword(email, password)
        .then((result) => {
          this.ngZone.run(() => {
+          window.alert("Signed in Successfully")
            this.router.navigate(['/']);
          });
         this.SetUserData(result.user);
@@ -81,7 +82,8 @@ export class AuthService {
        .then((result) => {
          /* Call the SendVerificaitonMail() function when new user sign 
          up and returns promise */
-         this.SendVerificationMail();
+         window.alert("Check your email account and click on the link to register");
+         this.SendVerificationMail().then();
          this.SetUserData(result.user);
        }).catch((error) => {
          window.alert(error.message)
@@ -96,7 +98,7 @@ export class AuthService {
      })
    }
  
-   // Reset Forgot password
+   // Send email for Forgot password
    ForgotPassword(passwordResetEmail) {
      return this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail)
      .then(() => {
@@ -120,7 +122,7 @@ export class AuthService {
      return this.AuthLogin(new auth.GoogleAuthProvider());
    }
  
-   // Auth logic to run auth providers
+   // Auth login to run auth providers
    AuthLogin(provider) {
      return this.afAuth.auth.signInWithPopup(provider)
      .then((result) => {

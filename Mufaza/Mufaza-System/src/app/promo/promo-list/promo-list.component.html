@@ -1,6 +1,7 @@
 
 <div class="search-div">
-
+    <button mat-raised-button color="accent" (click)="print()">
+        <mat-icon class="mat-24" aria-label="Example icon-button with a heart icon">print</mat-icon> Generate Report</button>
     <button mat-raised-button (click)="oncreate()">
   
       <mat-icon>add</mat-icon>Create
@@ -12,21 +13,23 @@
     
         <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey"  (click)="onSearchclear()">
     
-          <mat-icon>close</mat-icon>
+          <mat-icon>close</mat-icon>  
     
         </button>
-    
+      
       </mat-form-field>  
-
-      <div class="mat-elevation-z8">
+      <mat-spinner *ngIf = "showSpinner" style="margin:0 auto;" ></mat-spinner>
+      <div id = "report">
+        
+            <div class="mat-elevation-z8">
 
         <mat-table [dataSource]="listData"  matSort>
 
-            <ng-container matColumnDef="#">
-      
-                <mat-header-cell *matHeaderCellDef  mat-sort-header>#</mat-header-cell>
+            <ng-container matColumnDef="Promocode No" >
+       
+                <mat-header-cell *matHeaderCellDef  mat-sort-header>Promocode No</mat-header-cell>
           
-                <mat-cell *matCellDef="let element; index as i">{{i + 1}}</mat-cell>
+                <mat-cell *matCellDef="let element; index as i" >{{i + 1}}</mat-cell>
           
               </ng-container>
               <ng-container matColumnDef="promocode">
@@ -73,7 +76,9 @@
       
           
         </mat-table>
+      </div>
+    </div>
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" showFirstLastButtons></mat-paginator>
     
         
-      </div>
+    

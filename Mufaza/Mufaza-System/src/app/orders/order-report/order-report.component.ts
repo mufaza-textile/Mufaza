@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatTableDataSource, MatSort, MatPaginator, MatDialogConfig } from '@angular/material';
+import { MatDialog, MatTableDataSource, MatSort, MatPaginator, MatProgressSpinnerModule } from '@angular/material';
 import { OrderService } from 'src/app/shared/order.service';
 import html2canvas from 'html2canvas';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { NotifcationService } from 'src/app/shared/notifcation.service';
@@ -12,12 +13,14 @@ import { NotifcationService } from 'src/app/shared/notifcation.service';
 })
 export class OrderReportComponent implements OnInit {
 orders$;
+progress;
+showSpinner = true;
 
   constructor(private service: OrderService,private dialog: MatDialog, private   notificationService: NotifcationService){
     this.orders$ = service.getOrders();
   }
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] =[`Order No`, `shipping.name`,`shipping.phone`,`datePlaced`,`totalprice`,`newprice`,`Quantities`,`Titles`,'actions'];
+  displayedColumns: string[] =[`Order ID`,`shipping.name`,`shipping.phone`,`datePlaced`,`totalprice`,`newprice`,`Quantities`,`Titles`,'actions'];
   
   
   @ViewChild(MatSort,{static: true}) sort: MatSort;
@@ -34,8 +37,10 @@ orders$;
           };
         });
         this.listData = new MatTableDataSource(array);
+        this.progress = array.length;
         this.listData.sort = this.sort;
         this.listData.paginator = this.paginator;
+        this.showSpinner = false;
       }
     );
   }
@@ -48,6 +53,7 @@ orders$;
   
 
   }
+
   objectKeys(obj) {
     return Object.keys(obj);
 }

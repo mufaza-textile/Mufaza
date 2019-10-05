@@ -1,8 +1,14 @@
+<div style="align-items: flex-end">    
+  <mat-progress-bar [value] ="progress" mode="determinate" color="primary"> 
+  </mat-progress-bar></div>
+  <mat-spinner *ngIf = "showSpinner" style="margin:0 auto;" ></mat-spinner>
 <div class="search-div">
 
   <button mat-raised-button color="accent" (click)="print()">
     <mat-icon class="mat-24" aria-label="Example icon-button with a heart icon">print</mat-icon> Generate Report</button>
     <br/>
+    
+</div>
     <div id="report">
         <mat-toolbar>
             <span class="fill-remaining-space"></span>
@@ -10,15 +16,15 @@
             <span class="fill-remaining-space"></span>
         </mat-toolbar>
        
-      <div class="mat-elevation-z8">
-          
-        <mat-table [dataSource]="listData"  matSort>
 
-            <ng-container matColumnDef="Order No">
+      <div class="mat-elevation-z8">
+        <mat-table [dataSource]="listData"  matSort>
+         
+            <ng-container matColumnDef="Order ID">
       
-                <mat-header-cell *matHeaderCellDef  mat-sort-header>Order No</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef  mat-sort-header>Order ID</mat-header-cell>
           
-                <mat-cell *matCellDef="let element; index as i">{{i + 1}}</mat-cell>
+                <mat-cell *matCellDef="let element; index as i">{{i+1}}</mat-cell>
           
               </ng-container>
               <ng-container matColumnDef="shipping.name">
@@ -59,30 +65,34 @@
       
           </ng-container>
 
+    
+
           <ng-container  matColumnDef="Quantities">
-      
+  
             <mat-header-cell *matHeaderCellDef  mat-sort-header>Quantities</mat-header-cell>  
             <mat-cell *matCellDef="let element" > 
                 <ng-container *ngFor = "let key of objectKeys(element.items)">
-                    *{{element.items[key].quantity}} <br><br>
-                </ng-container>
+                
+                    *{{element.items[key].quantity}}<br><br>
+                  
+                  </ng-container>
               </mat-cell>
           </ng-container>
-
 
           <ng-container matColumnDef="Titles">
       
             <mat-header-cell *matHeaderCellDef  mat-sort-header>Product Titles</mat-header-cell>
       
             <mat-cell *matCellDef="let element" >
+              
               <ng-container *ngFor = "let key of objectKeys(element.items)">
-                  *{{element.items[key].title}} <br><br>
-              </ng-container>
+                  *{{element.items[key].title}}<br><br></ng-container>
+                  
             </mat-cell>
       
           </ng-container>
         
-        <ng-container matColumnDef="actions">
+        <div matColumnDef="actions">
     
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
       
@@ -92,7 +102,7 @@
       
             </mat-cell>
       
-          </ng-container>
+        </div>
       
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       
@@ -100,8 +110,8 @@
       
           
         </mat-table>
-      </div>
+      </div>   
+    </div>
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" showFirstLastButtons></mat-paginator>
-     
-        
-      </div>
+    
+      

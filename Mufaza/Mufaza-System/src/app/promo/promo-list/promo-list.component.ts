@@ -4,6 +4,10 @@ import { MatDialog, MatDialogConfig } from "@angular/material";
 import { PromoService } from 'src/app/shared/promo.service';
 import { PromocodeComponent } from '../promocode/promocode.component';
 import { NotifcationService } from 'src/app/shared/notifcation.service';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import html2canvas from 'html2canvas';
+import * as jsPDF from 'jspdf';
+
 
 @Component({
   selector: 'app-promo-list',
@@ -11,10 +15,10 @@ import { NotifcationService } from 'src/app/shared/notifcation.service';
   styleUrls: ['./promo-list.component.css']
 })
 export class PromoListComponent implements OnInit {
-
+  showSpinner = true;
   constructor(private service: PromoService,private dialog: MatDialog,private notificationService: NotifcationService){}
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] =[`#`, `promocode`,`discount`,`dateAdded`,'actions'];
+  displayedColumns: string[] =[`Promocode No`, `promocode`,`discount`,`dateAdded`,'actions'];
   
   
   @ViewChild(MatSort,{static: true}) sort: MatSort;
@@ -33,14 +37,19 @@ export class PromoListComponent implements OnInit {
         this.listData = new MatTableDataSource(array);
         this.listData.sort = this.sort;
         this.listData.paginator = this.paginator;
+        this.showSpinner = false;
       }
     );
+   
   }
 
   onSearchclear(){
     this.searchKey = "";
     this.applyfilter();
   }
+  
+   
+  
 
   oncreate(){
     this.service.initializeFormGroup();
@@ -70,6 +79,23 @@ export class PromoListComponent implements OnInit {
     this.service.deletePromocode($key);
     this.notificationService.warn('::Promotion Code deleted!');
 
+  }
+  print(){
+    var data = document.getElementById("report");  
+    html2canvas(data).then(canvas => {  
+      // Few necessary setting options  
+      var imgWidth = 208;   
+      var pageHeight = 295;    
+      var imgHeight = canvas.height * imgWidth / canvas.width;  
+      var heightLeft = imgHeight;  
+  
+      const contentDataURL = canvas.toDataURL('image/png')  
+      let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+      var position = 0;  
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
+      pdf.save('promotions.pdf'); // Generated PDF  
+      this.notificationService.success('Report Printed Succesfully!' ); 
+    });  
   }
 
 }
