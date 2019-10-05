@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DeliveryService } from '../../shared/delivery.service';
 import { MatTableDataSource,MatSort,MatPaginator, MatDialogConfig, MatDialog } from "@angular/material";
-import { DeliveryAddRiderComponent } from './../delivery-add-rider/delivery-add-rider.component'
+import { DeliveryAddRiderComponent } from './../delivery-add-rider/delivery-add-rider.component';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import html2canvas from 'html2canvas'
 
 @Component({
   selector: 'app-delivery-rider-list',
@@ -69,6 +72,23 @@ export class DeliveryRiderListComponent implements OnInit {
 
   onDelete($keys){
     this.service.deleteDelivery($keys);
+  }
+
+  print(){
+    var data = document.getElementById("deliverRiderList");  
+    html2canvas(data).then(canvas => {  
+      // Few necessary setting options  
+      var imgWidth = 208;   
+      var pageHeight = 295;    
+      var imgHeight = canvas.height * imgWidth / canvas.width;  
+      var heightLeft = imgHeight;  
+  
+      const contentDataURL = canvas.toDataURL('image/png')  
+      let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+      var position = 0;  
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
+      pdf.save('riderList.pdf'); // Generated PDF   
+    });  
   }
 
 }
