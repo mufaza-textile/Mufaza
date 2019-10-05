@@ -7,6 +7,7 @@ import { NotifcationService } from 'src/app/shared/notifcation.service';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import html2canvas from 'html2canvas';
 import * as jsPDF from 'jspdf';
+import { DialogService } from 'src/app/shared/dailog.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ import * as jsPDF from 'jspdf';
 })
 export class PromoListComponent implements OnInit {
   showSpinner = true;
-  constructor(private service: PromoService,private dialog: MatDialog,private notificationService: NotifcationService){}
+  constructor(private service: PromoService,private dialog: MatDialog,private notificationService: NotifcationService, private dialogService: DialogService){}
   listData: MatTableDataSource<any>;
   displayedColumns: string[] =[`Promocode No`, `promocode`,`discount`,`dateAdded`,'actions'];
   
@@ -76,10 +77,15 @@ export class PromoListComponent implements OnInit {
   }
 
   ondelete($key){
+    this.dialogService.openConfirmDialog("Are you sure you want to delete this record?")
+    .afterClosed().subscribe(res =>{
+      if(res){
     this.service.deletePromocode($key);
-    this.notificationService.warn('::Promotion Code deleted!');
+    this.notificationService.warn('::Promotion Code Successfully Deleted!');
 
   }
+});
+}
   print(){
     var data = document.getElementById("report");  
     html2canvas(data).then(canvas => {  

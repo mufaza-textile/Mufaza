@@ -6,6 +6,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { NotifcationService } from 'src/app/shared/notifcation.service';
+import { DialogService } from 'src/app/shared/dailog.service';
 
 @Component({
   selector: 'app-order-report',
@@ -15,8 +16,9 @@ export class OrderReportComponent implements OnInit {
 orders$;
 progress;
 showSpinner = true;
+searchKey: string;
 
-  constructor(private service: OrderService,private dialog: MatDialog, private   notificationService: NotifcationService){
+  constructor(private service: OrderService,private dialog: MatDialog, private   notificationService: NotifcationService, private dialogService: DialogService){
     this.orders$ = service.getOrders();
   }
   listData: MatTableDataSource<any>;
@@ -25,7 +27,6 @@ showSpinner = true;
   
   @ViewChild(MatSort,{static: true}) sort: MatSort;
   @ViewChild(MatPaginator,{static: true}) paginator: MatPaginator;
-  searchKey: string;
 
   ngOnInit() {
     this.service.getOrders().subscribe(
@@ -37,19 +38,40 @@ showSpinner = true;
           };
         });
         this.listData = new MatTableDataSource(array);
+
+        if(array.length < 151){
         this.progress = array.length;
+      }else
+        this.progress = Buffer;
         this.listData.sort = this.sort;
         this.listData.paginator = this.paginator;
         this.showSpinner = false;
       }
     );
   }
+  onSearchclear(){
+    this.searchKey = "";
+    this.applyfilter();
+  }
+  applyfilter(){
 
+    this.listData.filter = this.searchKey.trim().toLowerCase();
+
+  }
   ondelete($key){
-    this.service.delete($key);
-    this.service.form.reset();
-    this.service.initializeFormGroup(); 
+    this.dialogService.openConfirmDialog("Are you sure you want to delete this record?")
+    .afterClosed().subscribe(res =>{
+      if(res){
+
+        this.service.delete($key);
+     this.service.form.reset();
+      this.service.initializeFormGroup(); 
     this.notificationService.warn('::Order Successfully Deleted!');
+      }
+
+
+
+    });
   
 
   }
