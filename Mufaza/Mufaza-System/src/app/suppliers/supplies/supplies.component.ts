@@ -9,7 +9,7 @@ import { Upload } from '../../shared/upload';
 import { UploadComponent } from '../supplies/supply/upload/upload.component';
 import * as _ from "lodash";
 import 'firebase/storage';
-import jsPDF from 'jspdf';
+import * as jsPDF from 'jspdf'; 
 import 'jspdf-autotable';
 import html2canvas from 'html2canvas';
 

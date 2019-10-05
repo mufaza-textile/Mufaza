@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TailoringService } from '../../shared/tailoring.service';
+import { NotificationService } from '../../shared/notification.service';
 import { from } from 'rxjs';
 
 @Component({
@@ -9,7 +10,11 @@ import { from } from 'rxjs';
 })
 export class TailoringComponent implements OnInit {
 
-  constructor(private service: TailoringService) { }
+  constructor(private service: TailoringService,
+    private notificationService : NotificationService,
+    ) {
+      
+    }
 
   chests =[
     { id: 1, value: "10"},
@@ -57,10 +62,13 @@ export class TailoringComponent implements OnInit {
   }
 
   onSubmit(){
+    console.log("hhjhjhfh");
+    
     if (this.service.form.valid){
       this.service.insertTailoring(this.service.form.value);
       this.service.form.reset();
       this.service.initializeFormGroup();
+      this.notificationService.success(':: Submitted Successfully!');
     }
   }
 }
