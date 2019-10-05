@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatTableDataSource, MatSort, MatPaginator, MatDialogConfig } from '@angular/material';
 import { OrderService } from 'src/app/shared/order.service';
-import jsPDF from 'jspdf';
+import * as jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import html2canvas from 'html2canvas';
 
@@ -12,8 +12,10 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./trending-report.component.css']
 })
 export class TrendingReportComponent implements OnInit {
-
-  constructor(private service: OrderService,private dialog: MatDialog){}
+  orders$;
+  constructor(private service: OrderService,private dialog: MatDialog){
+    this.orders$ = service.getOrders();
+  }
   listData: MatTableDataSource<any>;
   displayedColumns: string[] =[`#`, `productName`,`datePlaced`];
 
@@ -38,7 +40,9 @@ export class TrendingReportComponent implements OnInit {
     }
   );
   }
-
+  objectKeys(obj) {
+    return Object.keys(obj);
+}
   print(){
     var data = document.getElementById("report");  
     html2canvas(data).then(canvas => {  
