@@ -5,6 +5,7 @@ import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/data
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/take'; 
 import 'rxjs/add/operator/map'; 
+import { ProductCardComponent } from 'shared/components/product-card/product-card.component';
 
 @Injectable()
 export class ShoppingCartService {
@@ -19,10 +20,12 @@ export class ShoppingCartService {
 
   async addToCart(product: Product) { 
     this.updateItem(product, 1);
+    this.updateProd(product,-1);
   }
 
   async removeFromCart(product: Product) {
     this.updateItem(product, -1);
+    this.updateProd(product, 1);
   }
 
   async clearCart() { 
@@ -39,6 +42,21 @@ export class ShoppingCartService {
 
   private getItem(cartId: string, productId: string) {
     return this.db.object('/shopping-carts/' + cartId + '/items/' + productId);
+  }
+  private getProd(productId: string){
+    return this.db.object('/products/'+ productId);
+  }
+  private async updateProd(product: Product, change: number){
+    let item$ = this.getProd(product.$key);
+    item$.take(1).subscribe(item =>{
+      let quantity = (item.quantity || 0) + change;
+      let sales = (item.sales || 0) + (-1 *(change));
+      if (quantity === 0) item$.remove();
+      else item$.update({ 
+        quantity: quantity,
+        sales: sales
+      });
+    });
   }
 
   private async getOrCreateCartId(): Promise<string> { 
