@@ -1,7 +1,6 @@
 <mat-toolbar>
-    <span>{{service.form.controls['$key'].value?"Salary Form of Mufaza Employees":"Salary Form  of Mufaza Employees"}}</span>
+    <span>{{service.form.controls['$key'].value?"Salary Form update of Mufaza Employees":"Salary Form  of Mufaza Employees"}}</span>
     <span class="fill-remaining-space"></span>
-  
   <button  mat-raised-button color="accent" (click) = "downloadPDF()">
       <mat-icon>save_alt</mat-icon> Download PDF
     </button>
@@ -22,7 +21,7 @@
                       <input [(ngModel)]="$key" formControlName="$key" matInput placeholder="Employee ID">
                       <mat-error>This field is mandatory.</mat-error>
                   </mat-form-field>
-               <!-- <input type="hidden" formControlName="$key">-->
+              
                   <mat-form-field>
                       <input [(ngModel)]="empName" formControlName="empName" matInput placeholder="Employee Name">
                       <mat-error>This field is mandatory.</mat-error>
@@ -38,7 +37,7 @@
                       <span matPrefix>LKR&nbsp;</span>
                       <span matSuffix>.00</span>
                      <mat-error *ngIf="service.form.controls['basic'].errors?.required">This field is mandatory.</mat-error>
-                      <mat-error *ngIf="service.form.controls['basic'].errors?.min">Price cannot be a negative value</mat-error>
+                      <mat-error *ngIf="service.form.controls['basic'].errors?.min">Salary cannot be a negative value</mat-error>
                     </mat-form-field>
                        
                     <mat-form-field>
@@ -56,7 +55,7 @@
                         <input [(ngModel)]="allow" formControlName="allow" matInput placeholder="Allowance" type="number">
                           <span matPrefix>LKR&nbsp;</span>
                           <span matSuffix>.00</span>
-                          <mat-error *ngIf="service.form.controls['allow'].errors?.min">Price cannot be a negative value</mat-error> 
+                          <mat-error *ngIf="service.form.controls['allow'].errors?.min">Allowance cannot be a negative value</mat-error> 
                         </mat-form-field>
               
                
@@ -67,7 +66,7 @@
                               <span matPrefix>LKR&nbsp;</span>
                               <span matSuffix>.00</span>
                              <mat-error *ngIf="service.form.controls['tax'].errors?.required">This field is mandatory.</mat-error>
-                              <mat-error *ngIf="service.form.controls['tax'].errors?.min">Price cannot be a negative value</mat-error> 
+                              <mat-error *ngIf="service.form.controls['tax'].errors?.min">Tax cannot be a negative value</mat-error> 
                             </mat-form-field>
 
               
@@ -80,14 +79,18 @@
                         <input [(ngModel)]="pfAcc" formControlName="pfAcc" matInput placeholder="PF AccountNumber">
 
                     </mat-form-field>
-                 <!--
-                    <div class="button-row">
-                      <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
-                      <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
-                    </div>  
-                  -->
 
-              </div>                    
+                    <div class="add-bottom-padding">
+                        <mat-checkbox formControlName="isIssued">Slip Issued</mat-checkbox>
+                      </div>
+          
+            
+              <div class="button-row">
+                <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+                <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+        </div>   
+                       
+</div>
             </mat-grid-tile>
   
             </mat-grid-list>  
@@ -154,21 +157,21 @@
                           </thead>
                           <tbody>
                           <tr>
-                            <td>Allowance</td>
+                            <td>Basic Salary</td>
                             <td>
-                                <span> {{allow}}.00</span>
+                                <span> {{basic}}.00</span>
                              </td>
                             <td>
-                                 <span> {{allow}}.00</span>
+                                 <span> {{basic}}.00</span>
                             </td>
                           </tr>
                           <tr>
-                             <td>Basic Salary</td>
+                             <td>Allowance</td>
                                 <td>
-                                        <span>{{basic}}.00</span>
+                                        <span>{{allow}}.00</span>
                                 </td>
                                 <td>
-                                    <span>{{basic}}.00</span>
+                                    <span>{{allow}}.00</span>
                                 </td>
                               </tr>
                               <tr>
@@ -180,11 +183,7 @@
                                          <span> {{allow + basic}}.00</span> <!--{{allow -- basic}}-- will get the same answer-->
                                      </td>
                                    </tr>
-                             
-                                   
-                                      
-                                       
-                                   
+                   
                           </tbody>
                
               

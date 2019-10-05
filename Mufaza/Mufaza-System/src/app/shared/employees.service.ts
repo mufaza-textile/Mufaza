@@ -17,6 +17,7 @@ export class EmployeesService {
   form : FormGroup = new FormGroup({
 
     $key : new FormControl(null),
+    empID:new FormControl('',Validators.required),
     empName : new FormControl('',Validators.required),
     designation : new FormControl(''),
     email : new FormControl('',Validators.email),
@@ -24,7 +25,7 @@ export class EmployeesService {
     mobile : new FormControl('',[Validators.required,Validators.pattern('[6-8]\\d{8}')]),
     department: new FormControl(0),
     joined : new FormControl(''),
-    salary : new FormControl(''),
+    salary : new FormControl('',[Validators.required, Validators.min(0)]),
     isPermanent: new FormControl(false)
   
 
@@ -36,6 +37,7 @@ export class EmployeesService {
     this.form.setValue({
 
       $key:null,
+      empID:'',
       empName:'',
       designation:'',
       email:'',
@@ -59,6 +61,7 @@ export class EmployeesService {
 //employee object contains details automatically creted the primary key
     insertEmployee(employee){
       this.employeeList.push({
+      empID:employee.empID,
       empName: employee.empName,
       designation:employee.designation,
       email:employee.email,
@@ -75,6 +78,7 @@ export class EmployeesService {
     updateEmployee(employee){
       this.employeeList.update(employee.$key,
         {
+          empID:employee.empID,
           empName: employee.empName,
           designation:employee.designation,
           email:employee.email,

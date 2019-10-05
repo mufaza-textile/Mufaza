@@ -15,22 +15,22 @@
               <mat-cell *matCellDef="let element; index as i">{{i + 1}}</mat-cell>
         
             </ng-container>
-            <ng-container matColumnDef="productName">
+            <ng-container matColumnDef="title">
     
               <mat-header-cell *matHeaderCellDef  mat-sort-header>Product Title</mat-header-cell>
         
               <mat-cell *matCellDef="let element" >
-                <ng-container *ngFor = "let key of objectKeys(element.items);">
-                    {{element.items[key].title}}
-                </ng-container>
+                
+                    {{element.title}}<br>
+                
               </mat-cell>
               
             </ng-container>
-            <ng-container matColumnDef="datePlaced">
+            <ng-container matColumnDef="sales">
     
-              <mat-header-cell *matHeaderCellDef  mat-sort-header>Date Placed</mat-header-cell>
+              <mat-header-cell *matHeaderCellDef  mat-sort-header>Sales</mat-header-cell>
         
-              <mat-cell *matCellDef="let element">{{element.datePlaced}}</mat-cell>
+              <mat-cell *matCellDef="let element">{{element.sales}}</mat-cell>
         
             </ng-container>
     

@@ -1,5 +1,7 @@
 
 <div class="search-div">
+    <button mat-raised-button color="accent" (click)="print()">
+        <mat-icon class="mat-24" aria-label="Example icon-button with a heart icon">print</mat-icon> Generate Report</button>
     <button mat-raised-button (click)="oncreate()">
   
       <mat-icon>add</mat-icon>Create
@@ -17,7 +19,9 @@
       
       </mat-form-field>  
       <mat-spinner *ngIf = "showSpinner" style="margin:0 auto;" ></mat-spinner>
-      <div class="mat-elevation-z8">
+      <div id = "report">
+        
+            <div class="mat-elevation-z8">
 
         <mat-table [dataSource]="listData"  matSort>
 
@@ -72,7 +76,9 @@
       
           
         </mat-table>
+      </div>
+    </div>
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" showFirstLastButtons></mat-paginator>
     
         
-      </div>
+    
