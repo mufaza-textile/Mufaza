@@ -51,7 +51,6 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { ProductStockComponent } from './products/product-stock/product-stock.component';
 import { ProductStockListComponent } from './products/product-stock-list/product-stock-list.component';
 import { OrdersComponent } from './orders/orders.component';
-import { OrderReportComponent } from './orders/order-report/order-report.component';
 import { OrderService } from './shared/order.service';
 import { TrendingComponent } from './trending/trending.component';
 import { TrendingReportComponent } from './trending/trending-report/trending-report.component';
@@ -62,6 +61,7 @@ import { QuantityReportComponent } from './suppliers/report/quantity-report/quan
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 import { CustomerService } from './shared/customer.service'
+import { OrderReportComponent } from './orders/order-report/order-report.component';
 
 
 @NgModule({
