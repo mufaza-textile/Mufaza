@@ -14,8 +14,7 @@ import { SuppliersService } from './shared/suppliers.service';
 import { environment } from "../environments/environment";
 import { OrderTypesService } from "./shared/order-types.service";
 import { ProductService } from './shared/product.service';
-import { InternalUserComponent } from './internal-user/internal-user.component';
-import { RegisterComponent } from './internal-user/register/register.component';
+
 import { RegisterService } from './shared/register.service';
 import { SupplierListComponent } from './suppliers/supplier-list/supplier-list.component';
 import { EmployeesComponent } from './employees/employees.component';
@@ -30,7 +29,6 @@ import { DatePipe } from '@angular/common';
 import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
 import { DepartmentService } from './shared/department.service';
 import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
-import {UserListComponent} from './internal-user/user-list/user-list.component';
 import { DeliveryService } from './shared/delivery.service';
 import { TailoringsComponent } from './tailorings/tailorings.component';
 import { TailoringComponent } from './tailorings/tailoring/tailoring.component';
@@ -61,7 +59,6 @@ import { UploadComponent } from './suppliers/supplies/supply/upload/upload.compo
 import { ReportComponent } from './suppliers/report/report.component';
 import { PaymentReportComponent } from './suppliers/report/payment-report/payment-report.component';
 import { QuantityReportComponent } from './suppliers/report/quantity-report/quantity-report.component';
-import { NavigationComponent } from './navigation/navigation.component';
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 import { CustomerService } from './shared/customer.service'
@@ -74,8 +71,7 @@ import { CustomerService } from './shared/customer.service'
       SupplierComponent,
       ProductsComponent,
       ProductComponent,
-      InternalUserComponent,
-      RegisterComponent,
+      
       SupplierListComponent,
       EmployeesComponent,
       EmployeeComponent,
@@ -86,7 +82,6 @@ import { CustomerService } from './shared/customer.service'
       DeliveryReportComponent,
       DeliveryAddRiderComponent,
       MatConfirmDialogComponent,
-      UserListComponent,
       TailoringsComponent,
       TailoringComponent,
       PromoComponent,
@@ -108,7 +103,6 @@ import { CustomerService } from './shared/customer.service'
       ReportComponent,
       PaymentReportComponent,
       QuantityReportComponent,
-      NavigationComponent,
       CustomerComponent,
       CustomerListComponent
    ],
@@ -149,9 +143,7 @@ import { CustomerService } from './shared/customer.service'
    entryComponents: [
       SupplierComponent,
       ProductComponent,
-      InternalUserComponent,
       EmployeeComponent,
-      RegisterComponent,
       DeliveryAddRiderComponent,
       DeliveryAllocateRiderComponent,
       MatConfirmDialogComponent,
@@ -164,7 +156,6 @@ import { CustomerService } from './shared/customer.service'
       ReportComponent,
       PaymentReportComponent,
       QuantityReportComponent,
-      NavigationComponent
    ]
 })
 export class AppModule { }
