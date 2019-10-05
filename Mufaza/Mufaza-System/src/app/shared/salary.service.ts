@@ -8,14 +8,6 @@ import { EmployeesService } from 'src/app/shared/employees.service';
   providedIn: 'root'
 })
 export class SalaryService {
- /* empID:String='';
-  empName:String='';
-  designation:String='';
- basic:number;
- allow:number;
- tax:number;
- date:number;
- bankAcc:number;   */
 
   constructor(private firebase: AngularFireDatabase) {}
     salaryList : AngularFireList<any>;
@@ -24,7 +16,7 @@ export class SalaryService {
 
     form : FormGroup = new FormGroup({
   
-       $key: new FormControl(null,Validators.required),
+       $key: new FormControl(null),
       empName:new FormControl(''),
       designation : new FormControl(''),
       basic : new FormControl('',[Validators.required, Validators.min(0)]),
@@ -32,8 +24,8 @@ export class SalaryService {
       tax : new FormControl('',[Validators.required, Validators.min(0)]),
       date :new FormControl(''),
       bankAcc :new FormControl(''),
-      pfAcc:new FormControl('')
-
+      pfAcc:new FormControl(''),
+      isIssued:new FormControl(false)
   
    });
  
@@ -41,7 +33,6 @@ export class SalaryService {
 
     this.form.setValue({
       $key : null,
-      empID: '',
       empName :'',
       designation :'',
       basic : '',
@@ -50,6 +41,7 @@ export class SalaryService {
       date :'',
       bankAcc:'',
       pfAcc:'',
+      isIssued:false
     
       
     })
@@ -57,39 +49,38 @@ export class SalaryService {
 
 
 getSalary(){
-  this.salaryList = this.firebase.list('salary');
+  this.salaryList = this.firebase.list('salarys');
   return this.salaryList.snapshotChanges();
 }
-insertSalary(sal){
+insertSalary(salary){
 
   this.salaryList.push({
-    empID:sal.empID,
-    empName :sal.empName,
-    designation :sal.designation,
-    basic :sal.basic,
-    allow:sal.allow,
-   tax:sal.tax,
-   date:sal.date,
-   bankAcc:sal.bankAcc,
-   pfAcc:sal.pfAcc
-
+    empName :salary.empName,
+    designation :salary.designation,
+    basic :salary.basic,
+    allow:salary.allow,
+   tax:salary.tax,
+   date:salary.date,
+   bankAcc:salary.bankAcc,
+   pfAcc:salary.pfAcc,
+   isIssued:false
 
 
   });
 }
 
-  updateSalary(sal){
-    this.salaryList.update(sal.$key,
+  updateSalary(salary){
+    this.salaryList.update(salary.$key,
       {
-        empID:sal.empID,
-        empName: sal.empName,
-        designation:sal.designation,
-       basic:sal.basic,
-        allow:sal.allow,
-        tax:sal.tax,
-       date:sal.date,
-        bankAcc:sal.bankAcc,
-        pfAcc:sal.pfAcc
+        empName:salary.empName,
+        designation:salary.designation,
+       basic:salary.basic,
+        allow:salary.allow,
+        tax:salary.tax,
+       date:salary.date,
+        bankAcc:salary.bankAcc,
+        pfAcc:salary.pfAcc,
+        isIssued:salary.isIssued,
   
       });
   }
@@ -97,8 +88,8 @@ insertSalary(sal){
     this.salaryList.remove($key);
   }
   
-  populateForm(sal){
-    this.form.patchValue(sal);
+  populateForm(salary){
+    this.form.patchValue(salary);
   }
 
 
