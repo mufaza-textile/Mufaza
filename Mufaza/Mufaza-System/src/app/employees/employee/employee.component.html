@@ -1,6 +1,6 @@
 <mat-toolbar>
-        <span>{{service.form.controls['$key'].value?"Update Employee":"New Employee"}}</span>
-        <span class="fill-remaining-space"></span>
+    <span>{{service.form.controls['$key'].value?"Modify Employee":"New Employee"}}</span>
+    <span class="fill-remaining-space"></span>
         <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
       </mat-toolbar>
 <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()">
@@ -9,10 +9,24 @@
       <mat-grid-tile>
         <div class="controles-container2">
 
+
+            <input type="hidden" formControlName="$key">
+
+
+
             <mat-form-field>
-          <input formControlName="$key" matInput placeholder="Employee ID">
+          <input formControlName="$key"
+          [readonly]="!editable" matInput placeholder="Employee Code">
           <mat-error>This field is mandatory</mat-error>
         </mat-form-field>
+
+
+        <mat-form-field>
+            <input formControlName="empID" matInput placeholder="Employee ID">
+            <mat-error>This field is mandatory</mat-error>
+          </mat-form-field>
+
+
 
 
           <mat-form-field>
@@ -65,6 +79,7 @@
                     <input formControlName="salary" matInput placeholder="Salary" type="number"  class="example-right-align">
                     <span matPrefix>RS&nbsp;</span>
                     <span matSuffix>.00</span>
+                    <mat-error *ngIf="service.form.controls['salary'].errors?.min">Salary cannot be a negative value</mat-error> 
             </mat-form-field>
             <div class="add-bottom-padding">
                 <mat-checkbox formControlName="isPermanent">Permanent Employee</mat-checkbox>
