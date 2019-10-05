@@ -26,7 +26,7 @@ export class EmployeeListComponent implements OnInit {
     private dialog: MatDialog) { } 
 
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['$key','empName', 'email', 'mobile','department','actions'];
+  displayedColumns: string[] = ['$key','empID','empName', 'email', 'mobile','department','actions'];
  
   @ViewChild (MatSort,{static:true}) sort: MatSort;
   @ViewChild (MatPaginator,{static:true}) paginator: MatPaginator;
@@ -72,6 +72,16 @@ export class EmployeeListComponent implements OnInit {
     
       this.dialog.open(EmployeeComponent,dialogConfig);  
     }
+    
+    onSubmit(){
+      if(this.service.form.valid){
+        this.service.insertEmployee(this.service.form.value)
+        this.service.form.reset();
+        this.service.initializeFormGroup();
+        this.notificationService.success(':: Submitted Succesfully' );
+      }
+  
+    }
 
     onEdit(row){
       this.service.populateForm(row); 
@@ -79,7 +89,9 @@ export class EmployeeListComponent implements OnInit {
       dialogConfig.disableClose = true;
       dialogConfig.autoFocus = true;
       dialogConfig.width = "60%";
-      this.dialog.open(EmployeeComponent,dialogConfig);    
+      this.dialog.open(EmployeeComponent,dialogConfig); 
+
+      
     }
 
 
