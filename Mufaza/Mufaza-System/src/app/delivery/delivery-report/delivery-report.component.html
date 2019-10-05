@@ -5,7 +5,10 @@
         <span class="fill-remaining-space"></span>
     </mat-toolbar>-->
 
-    <div class="search-div" style="padding-left : 20%">
+    <div class="search-div" style="padding-left : 15%">
+
+      <button mat-button color="accent" (click)="print()">
+      <mat-icon class="mat-24" aria-label="Example icon-button with a heart icon">print</mat-icon></button>
 
       <button mat-raised-button (click)="onCreate()">
     
@@ -29,7 +32,7 @@
 
     <div class="mat-elevation-z8">
 
-          <mat-table [dataSource]="listData"  matSort>
+          <mat-table id="deliveryReport" [dataSource]="listData"  matSort>
 
               <ng-container matColumnDef="#">
         
