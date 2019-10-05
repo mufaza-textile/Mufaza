@@ -78,7 +78,8 @@ export class SupplierListComponent implements OnInit {
       });
 
       this.chart();
-
+      this.companyNameList = [];
+      this.supplysumList = [];
     }
     );
 
@@ -226,5 +227,5 @@ chart(){
   }
   });
 }
-
+  
 }
