@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule  } from "@angular/platform-browser/animations";
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database";
-
 import { AppRoutingModule } from './app-routing.module';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AppComponent } from './app.component';
 import { SuppliersComponent } from './suppliers/suppliers.component';
 import { SupplierComponent } from './suppliers/supplier/supplier.component';
@@ -48,7 +48,7 @@ import { SalaryemployeeComponent } from './salaryemployee/salaryemployee.compone
 import { SalaryComponent } from './salaryemployee/salary/salary.component';
 import { SalaryslipComponent } from './salaryemployee/salaryslip/salaryslip.component';
 import { SupplyComponent } from './suppliers/supplies/supply/supply.component';
-import { MatSliderModule } from '@angular/material';
+import { MatSliderModule, MatDialogModule, MatProgressBarModule } from '@angular/material';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ProductStockComponent } from './products/product-stock/product-stock.component';
 import { ProductStockListComponent } from './products/product-stock-list/product-stock-list.component';
@@ -116,8 +116,11 @@ import { CustomerService } from './shared/customer.service'
       BrowserModule,
       MatSliderModule,
       AppRoutingModule,
+      MatProgressSpinnerModule,
+      MatProgressBarModule,
       MaterialModule,
       FormsModule,
+      MatDialogModule,
       ReactiveFormsModule,
       BrowserAnimationsModule,
       AngularFireDatabaseModule,
