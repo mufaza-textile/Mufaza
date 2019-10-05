@@ -61,7 +61,8 @@ import { PaymentReportComponent } from './suppliers/report/payment-report/paymen
 import { QuantityReportComponent } from './suppliers/report/quantity-report/quantity-report.component';
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerListComponent } from './customer/customer-list/customer-list.component';
-import { CustomerService } from './shared/customer.service'
+import { CustomerService } from './shared/customer.service';
+import { TailoringListComponent } from './tailorings/tailoring-list/tailoring-list.component'
 
 
 @NgModule({
@@ -104,7 +105,8 @@ import { CustomerService } from './shared/customer.service'
       PaymentReportComponent,
       QuantityReportComponent,
       CustomerComponent,
-      CustomerListComponent
+      CustomerListComponent,
+      TailoringListComponent
    ],
    imports: [
       BrowserModule,
