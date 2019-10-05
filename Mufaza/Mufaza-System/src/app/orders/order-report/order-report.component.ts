@@ -20,7 +20,7 @@ showSpinner = true;
     this.orders$ = service.getOrders();
   }
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] =[`Order ID`, `shipping.name`,`shipping.phone`,`datePlaced`,`totalprice`,`newprice`,`Quantities`,`Titles`,'actions'];
+  displayedColumns: string[] =[`Order ID`,`shipping.name`,`shipping.phone`,`datePlaced`,`totalprice`,`newprice`,`Quantities`,`Titles`,'actions'];
   
   
   @ViewChild(MatSort,{static: true}) sort: MatSort;

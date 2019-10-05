@@ -24,7 +24,7 @@
       
                 <mat-header-cell *matHeaderCellDef  mat-sort-header>Order ID</mat-header-cell>
           
-                <mat-cell *matCellDef="let element; index as i">{{i + 1}}</mat-cell>
+                <mat-cell *matCellDef="let element; index as i">{{i+1}}</mat-cell>
           
               </ng-container>
               <ng-container matColumnDef="shipping.name">
@@ -65,28 +65,34 @@
       
           </ng-container>
 
+    
+
           <ng-container  matColumnDef="Quantities">
-      
+  
             <mat-header-cell *matHeaderCellDef  mat-sort-header>Quantities</mat-header-cell>  
             <mat-cell *matCellDef="let element" > 
                 <ng-container *ngFor = "let key of objectKeys(element.items)">
-                    *{{element.items[key].quantity}}</ng-container>
+                
+                    *{{element.items[key].quantity}}<br><br>
+                  
+                  </ng-container>
               </mat-cell>
           </ng-container>
-
 
           <ng-container matColumnDef="Titles">
       
             <mat-header-cell *matHeaderCellDef  mat-sort-header>Product Titles</mat-header-cell>
       
             <mat-cell *matCellDef="let element" >
+              
               <ng-container *ngFor = "let key of objectKeys(element.items)">
-                  *{{element.items[key].title}}</ng-container>
+                  *{{element.items[key].title}}<br><br></ng-container>
+                  
             </mat-cell>
       
           </ng-container>
         
-        <ng-container matColumnDef="actions">
+        <div matColumnDef="actions">
     
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
       
@@ -96,7 +102,7 @@
       
             </mat-cell>
       
-          </ng-container>
+        </div>
       
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       
@@ -104,9 +110,8 @@
       
           
         </mat-table>
-      </div>
-        
+      </div>   
     </div>
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" showFirstLastButtons></mat-paginator>
-     
+    
       
