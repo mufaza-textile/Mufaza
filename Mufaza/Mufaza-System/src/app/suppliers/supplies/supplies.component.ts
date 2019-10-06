@@ -77,7 +77,7 @@ export class SuppliesComponent implements OnInit {
   onCreate() {
     this.service.initializeFormGroup();
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     this.dialog.open(SupplyComponent,dialogConfig);
