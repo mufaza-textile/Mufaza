@@ -4,6 +4,7 @@
     <tr>
       <th>Name</th>
       <th>Date Placed</th>
+      <th>Address</th>
       <th>Total Price</th>
       <th>New Price</th>
       <th>Product Titles & Quantities</th>
@@ -15,6 +16,7 @@
     <tr *ngFor="let order of orders$ | async">
       <td>{{ order.shipping.name }}</td>
       <td>{{ order.datePlaced | date}}</td> 
+      <td>{{ order.shipping.addressLine1}}<br>{{order.shipping.addressLine2}}</td> 
       <td>LKR {{ order.totalprice}}</td>
       <td>LKR {{ order.newprice}}</td>
       <td>
