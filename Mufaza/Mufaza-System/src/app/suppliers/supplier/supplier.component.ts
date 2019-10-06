@@ -50,4 +50,21 @@ export class SupplierComponent implements OnInit {
   }
 
 
+
+
+
+demo(){
+
+  this.service.form.setValue({
+
+    $key:null,
+      supName:'Abilash',
+      compName:'AbiTeck',
+      email:'abilash2027@gmail.com',
+      mobile:'0771120622',
+      address:'57,Thelangapatha Rd, Wattala',
+      oType:0,
+  
+  })
+}
 }
