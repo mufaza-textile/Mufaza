@@ -52,6 +52,13 @@
                 <mat-cell *matCellDef="let element">{{element.shipping.phone}}</mat-cell>
           
               </ng-container>
+              <ng-container matColumnDef="shipping.addressLine1">
+      
+                <mat-header-cell *matHeaderCellDef  mat-sort-header>Address</mat-header-cell>
+          
+                <mat-cell *matCellDef="let element">{{element.shipping.addressLine1}}<br>{{element.shipping.addressLine2}}</mat-cell>
+          
+              </ng-container>
               <ng-container matColumnDef="datePlaced">
       
                 <mat-header-cell *matHeaderCellDef  mat-sort-header>Date Placed</mat-header-cell>
