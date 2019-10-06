@@ -17,10 +17,14 @@
     
         </button>
       
-      </mat-form-field>  
-      <mat-spinner *ngIf = "showSpinner" style="margin:0 auto;" ></mat-spinner>
+      </mat-form-field> 
+      <mat-spinner *ngIf = "showSpinner" style="margin:0 auto;" ></mat-spinner><br><br> 
       <div id = "report">
-        
+        <mat-toolbar>
+          <span class="fill-remaining-space"></span>
+          <span>Promotions Report</span>
+          <span class="fill-remaining-space"></span>
+      </mat-toolbar>
             <div class="mat-elevation-z8">
 
         <mat-table [dataSource]="listData"  matSort>

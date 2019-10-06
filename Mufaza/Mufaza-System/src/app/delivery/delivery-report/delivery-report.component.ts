@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource, MatDialogConfig, MatDialog } from '@angular/material';
 import { DeliveryAddService } from 'src/app/shared/delivery-add.service';
 import { DeliveryAllocateRiderComponent } from '../delivery-allocate-rider/delivery-allocate-rider.component';
-import jsPDF from 'jspdf';
+import * as jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import html2canvas from 'html2canvas'
 
