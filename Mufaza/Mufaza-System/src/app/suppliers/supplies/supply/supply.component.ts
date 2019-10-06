@@ -57,7 +57,7 @@ export class SupplyComponent implements OnInit {
   
         $key:null,
 
-        XS :10,
+        XS :'',
         S : 30,
         M :20,
         L : 30,
