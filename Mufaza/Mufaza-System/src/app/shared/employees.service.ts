@@ -4,13 +4,14 @@ import { AngularFireDatabase,AngularFireList } from "angularfire2/database";
 import * as _ from 'lodash';
 import * as jsPDF from 'jspdf'; 
 
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeesService {
 
-  constructor(private firebase :AngularFireDatabase) { }
+  constructor(private firebase :AngularFireDatabase, private datePipe: DatePipe,) { }
 
   employeeList : AngularFireList<any>;
 
@@ -68,7 +69,7 @@ export class EmployeesService {
       address:employee.address,
       mobile:employee.mobile,
       department:employee.department,
-      joined:employee.joined,
+      joined:employee.joined  == "" ? "" : this.datePipe.transform(employee.joined, 'yyyy-MM-dd'),
       salary:employee.salary,
       isPermanent:false
       });
@@ -85,7 +86,7 @@ export class EmployeesService {
           address:employee.address,
           mobile:employee.mobile,
           department:employee.department,
-          joined:employee.joined,
+          joined:employee.joined  == "" ? "" : this.datePipe.transform(employee.joined, 'yyyy-MM-dd'),
           salary:employee.salary,
           isPermanent: employee.isPermanent
 

@@ -1,6 +1,9 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { TailoringService } from 'src/app/shared/tailoring.service';
 import { MatTableDataSource,MatSort,MatPaginator } from '@angular/material';
+import { MatDialog, MatDialogConfig } from "@angular/material";
+import { TailoringComponent } from '../tailoring/tailoring.component';
+import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
   selector: 'app-tailoring-list',
@@ -9,7 +12,10 @@ import { MatTableDataSource,MatSort,MatPaginator } from '@angular/material';
 })
 export class TailoringListComponent implements OnInit {
 
-  constructor(private service: TailoringService) { }
+  constructor(private service: TailoringService,
+    private dialog: MatDialog,
+    private notificationService: NotificationService) 
+       { }
 
   listData: MatTableDataSource<any>;
   displayedColumns: String[] = ['orderID','customerID','username','chest','shoulder','arms','frontNeck','backNeck','length','actions']
@@ -43,4 +49,28 @@ export class TailoringListComponent implements OnInit {
     this.listData.filter = this.searchKey.trim().toLowerCase();
   }
 
+  onCreate(){
+    this.service.initializeFormGroup();
+    const diologConfig = new MatDialogConfig();
+    diologConfig.disableClose = true;
+    diologConfig.autoFocus = true;
+    diologConfig.width = "60%";
+    this.dialog.open(TailoringComponent,diologConfig);
+  }
+
+  onEdit(row){
+    this.service.populateForm(row);
+    const diologConfig = new MatDialogConfig();
+    diologConfig.disableClose = true;
+    diologConfig.autoFocus = true;
+    diologConfig.width = "60%";
+    this.dialog.open(TailoringComponent,diologConfig);
+  }
+
+  onDelete($key){
+    if(confirm('Aru you sure to delete this record?')){
+    this.service.deleteTailoring($key);
+    this.notificationService.warn('! Deleted Successfully');
+    }
+  }
 }
