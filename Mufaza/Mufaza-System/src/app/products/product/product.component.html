@@ -8,7 +8,7 @@
 
 <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()" style="padding-left : 5%">
 
-  <mat-grid-list cols="2" rowHeight="500px" rowWidth="400px">
+  <mat-grid-list cols="1" rowHeight="500px" rowWidth="100px">
 
     <mat-grid-tile>
 
@@ -30,7 +30,7 @@
                 <mat-error *ngIf="service.form.controls['price'].errors?.required">This field is mandatory.</mat-error>
                 <mat-error *ngIf="service.form.controls['price'].errors?.min">Price cannot be a negative value</mat-error>
             </mat-form-field>
-                            
+                          
 
             <mat-form-field>
               <mat-select formControlName="category" placeholder="Category">
@@ -81,26 +81,26 @@
 
       </mat-grid-tile>
   
-      <mat-grid-tile>
+      <!-- <mat-grid-tile>
 
         <div class="controles-container">
 
-          <div class="card" style="width: 290px; height:400px">
+          <div class="card" style="width: 290px; height:400px"> -->
 
               <!-- <span class="border border-primary"> -->
 
-              <img [src] = "imageUrl" width="280px" height="300px" style="padding : 5px 5px 5px 5px;" class="card-img-top" class="rounded">
+              <!-- <img [src] = "element.imageUrl" width="280px" height="300px" style="padding : 5px 5px 5px 5px;" class="card-img-top" class="rounded">
                 
               <div class="card-body">
                   <h3 class="card-title"><b>{{title}} </b> </h3>
                   <h4 class="card-text"> {{price | currency : 'LKR ' : 'code'}}</h4>
-              </div>
+              </div> -->
               <!-- </span> -->
-          </div>
+          <!-- </div>
 
         </div>
 
-      </mat-grid-tile>
+      </mat-grid-tile> -->
 
 
     </mat-grid-list> 
