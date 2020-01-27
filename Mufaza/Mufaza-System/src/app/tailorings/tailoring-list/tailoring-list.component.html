@@ -1,0 +1,177 @@
+<button mat-button color="accent" (click)="print()">
+        <mat-icon class="mat-24" aria-label="Example icon-button with a heart icon">print</mat-icon></button>
+        <button mat-raised-button color="primary" type="submit" (click)="report()">Generate Report</button>
+          <div id="report" class="mat-elevation-z8">  
+      
+      
+      
+      
+      <div class="search-div">
+      
+        <button mat-raised-button (click)="onCreate()">
+      
+          <mat-icon>add</mat-icon>Create
+      
+        </button>
+      
+        <mat-form-field class="search-form-field" floatLabel="never">
+      
+          <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+      
+          <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey"  (click)="onSearchClear()">
+      
+            <mat-icon>close</mat-icon>
+      
+          </button>
+      
+        </mat-form-field>
+      
+      </div>
+      
+      <div class="mat-elevation-z8 table">
+      
+          <mat-table DataPreview [dataSource]="listData" multiTemplateDataRows  matSort width = "100%">
+        
+            <ng-container matColumnDef="orderID">
+        
+              <mat-header-cell *matHeaderCellDef  mat-sort-header>Order ID</mat-header-cell>
+        
+              <mat-cell *matCellDef="let element">{{element.orderID}}</mat-cell>
+        
+            </ng-container>
+      
+            <ng-container matColumnDef="customerID">
+      
+              <mat-header-cell *matHeaderCellDef  mat-sort-header>Customer ID</mat-header-cell>
+        
+              <mat-cell *matCellDef="let element">{{element.customerID}}</mat-cell>
+        
+            </ng-container>
+      
+            <ng-container matColumnDef="username">
+      
+              <mat-header-cell *matHeaderCellDef  mat-sort-header>Username</mat-header-cell>
+        
+              <mat-cell *matCellDef="let element">{{element.username}}</mat-cell>
+        
+            </ng-container>
+        
+            <ng-container matColumnDef="chest">
+        
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Chest</mat-header-cell>
+        
+              <mat-cell *matCellDef="let element">{{element.chest}}</mat-cell>
+        
+            </ng-container>
+      
+            <ng-container matColumnDef="shoulder">
+        
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Shoulder</mat-header-cell>
+        
+              <mat-cell *matCellDef="let element">{{element.shoulder}}</mat-cell>
+        
+            </ng-container>
+
+            <ng-container matColumnDef="arms">
+      
+                    <mat-header-cell *matHeaderCellDef  mat-sort-header>Chest</mat-header-cell>
+              
+                    <mat-cell *matCellDef="let element">{{element.arms}}</mat-cell>
+              
+            </ng-container>
+
+            <ng-container matColumnDef="frontNeck">
+      
+                    <mat-header-cell *matHeaderCellDef  mat-sort-header>Front Neck</mat-header-cell>
+              
+                    <mat-cell *matCellDef="let element">{{element.frontNeck}}</mat-cell>
+              
+             </ng-container>
+
+             <ng-container matColumnDef="backNeck">
+      
+                    <mat-header-cell *matHeaderCellDef  mat-sort-header>Back Neck</mat-header-cell>
+              
+                    <mat-cell *matCellDef="let element">{{element.backNeck}}</mat-cell>
+              
+             </ng-container>
+
+             <ng-container matColumnDef="length">
+      
+                    <mat-header-cell *matHeaderCellDef  mat-sort-header>Length</mat-header-cell>
+              
+                    <mat-cell *matCellDef="let element">{{element.length}}</mat-cell>
+              
+             </ng-container>
+      
+
+      
+
+      
+            
+            <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef></mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                <button mat-icon-button (click)="onEdit(row)"><mat-icon>launch</mat-icon></button>
+                <button mat-icon-button color="warn" (click)="onDelete(row.$key)"><mat-icon>delete_outline</mat-icon></button>
+                <button mat-icon-button (click)="navigate(row)"><mat-icon>arrow_forward</mat-icon></button>
+      
+              </mat-cell>
+            </ng-container>
+        
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        
+            
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+         <!-- <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+         <mat-row *matRowDef="let row; columns: displayedColumns;"
+                                               class="example-element-row"
+                                               [class.example-expanded-row]="expandedElement === row"
+                                               (click)="navigate(row)"
+                                           ></mat-row>
+         <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr> -->
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+          </mat-table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+      
+          
+        
+        </div>
+        
+      
+      
+<!--       
+        <div style="text-align:center">
+      
+            <canvas id="barChart" ></canvas>
+          </div>
+          
+          
+          
+       -->
+      
+        
+        

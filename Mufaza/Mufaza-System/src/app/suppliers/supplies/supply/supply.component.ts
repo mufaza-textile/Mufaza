@@ -51,6 +51,23 @@ export class SupplyComponent implements OnInit {
       this.dialogRef.close();
     }
   
+    demo(){
+
+      this.service.form.setValue({
+  
+        $key:null,
+
+        XS :'',
+        S : 30,
+        M :20,
+        L : 30,
+        XL : 40,
+        XXL : 20,
+        BrandName : 'Nike Shoes',
+        oDate:'',
+        payment:20000,
+      })
+    }
   
   }
   

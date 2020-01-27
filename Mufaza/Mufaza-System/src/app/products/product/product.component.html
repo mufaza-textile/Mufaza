@@ -8,7 +8,7 @@
 
 <form [formGroup]="service.form" class="normal-form" (submit)= "onSubmit()" style="padding-left : 5%">
 
-  <mat-grid-list cols="1" rowHeight="500px" rowWidth="100px">
+  <mat-grid-list cols="1" rowHeight="500px" rowWidth="400px">
 
     <mat-grid-tile>
 
@@ -75,6 +75,8 @@
             <div class="button-row">
               <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
               <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+              <button mat-raised-button color="warn" (click)="demo()">Demo</button>
+
             </div>   
 
         </div>  
@@ -89,9 +91,9 @@
 
               <!-- <span class="border border-primary"> -->
 
-              <!-- <img [src] = "element.imageUrl" width="280px" height="300px" style="padding : 5px 5px 5px 5px;" class="card-img-top" class="rounded">
+              <!-- <img [src] = "imageUrl" width="280px" height="300px" style="padding : 5px 5px 5px 5px;" class="card-img-top" class="rounded"> -->
                 
-              <div class="card-body">
+              <!-- <div class="card-body">
                   <h3 class="card-title"><b>{{title}} </b> </h3>
                   <h4 class="card-text"> {{price | currency : 'LKR ' : 'code'}}</h4>
               </div> -->

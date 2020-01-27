@@ -81,4 +81,8 @@ export class TailoringService {
   deleteTailoring($key: string){
     this.tailoringList.remove($key);
   }
+
+  populateForm(tailoring){
+    this.form.patchValue(tailoring);
+  }
 }
